@@ -1,5 +1,4 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import java.util.Locale
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -12,7 +11,7 @@ plugins {
 
 fun isNonStable(version: String): Boolean {
     val stableKeyword = listOf("RELEASE", "FINAL", "GA").any {
-        version.uppercase(Locale.getDefault()).contains(it)
+        version.contains(it, ignoreCase = true)
     }
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
