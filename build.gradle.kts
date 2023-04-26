@@ -10,7 +10,7 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.gradle.versions) apply true
     alias(libs.plugins.detekt)
-    alias(libs.plugins.dependency.analysis)  apply true
+    alias(libs.plugins.dependency.analysis) apply true
 }
 
 fun isNonStable(version: String): Boolean {
@@ -77,4 +77,8 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
 
 tasks.withType<DetektCreateBaselineTask>().configureEach {
     jvmTarget = "17"
+}
+
+dependencyAnalysis {
+    issues { all { onAny { severity("fail") } } }
 }
