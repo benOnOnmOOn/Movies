@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.gradle.versions) apply true
     alias(libs.plugins.detekt)
+    alias(libs.plugins.dependency.analysis)  apply true
 }
 
 fun isNonStable(version: String): Boolean {

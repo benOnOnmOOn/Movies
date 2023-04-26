@@ -1,5 +1,13 @@
 [versions]
 com-android-application = "8.2.0-alpha01"
+foundation-layout = "1.4.2"
+insert-koin-koin-compose = "1.0.1"
+junit-junit = "4.13.2"
+kotlinx-coroutines-core = "1.7.0-RC"
+material3 = "1.0.1"
+koin-core = "3.4.0"
+mockk-dsl = "1.13.5"
+monitor = "1.6.1"
 org-jetbrains-kotlin-android = "1.8.20"
 core-ktx = "1.10.0"
 junit = "5.9.2"
@@ -19,16 +27,41 @@ retrofit = "2.9.0"
 mockk = "1.13.5"
 koin = "3.4.0"
 koin-compose = "3.4.4"
+ui-tooling = "1.4.2"
+ui-test-manifest = "1.4.2"
+ui-unit = "1.4.2"
+ui-text = "1.4.2"
+runtime = "1.4.2"
 
 [libraries]
+androidx-activity = { module = "androidx.activity:activity", version.ref = "activity-compose" }
+androidx-core = { module = "androidx.core:core", version.ref = "core-ktx" }
+androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation-layout" }
+androidx-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "foundation-layout" }
+androidx-lifecycle-common = { module = "androidx.lifecycle:lifecycle-common", version.ref = "lifecycle-runtime-ktx" }
+androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
+androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle-runtime-ktx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-runtime-ktx" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle-runtime-ktx" }
+androidx-monitor = { module = "androidx.test:monitor", version.ref = "monitor" }
+androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "ui-tooling" }
+androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "ui-test-manifest" }
+androidx-ui-unit = { module = "androidx.compose.ui:ui-unit", version.ref = "ui-unit" }
+androidx-ui-text = { module = "androidx.compose.ui:ui-text", version.ref = "ui-text" }
+androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+junit = { module = "junit:junit", version.ref = "junit-junit" }
 junit-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
 junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-core" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-core" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "insert-koin-koin-compose" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+mockk-dsl = { module = "io.mockk:mockk-dsl", version.ref = "mockk-dsl" }
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
@@ -59,6 +92,7 @@ com-android-library = { id = "com.android.library", version.ref = "com-android-l
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.46.0" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.22.0" }
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.20.0" }
 
 [bundles]
 

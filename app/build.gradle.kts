@@ -50,29 +50,43 @@ android {
 dependencies {
     implementation(project(":data:network"))
 
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
-    implementation(platform(libs.compose.bom))
     implementation(libs.ui)
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
 
-    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.foundation.layout)
+    implementation(libs.androidx.foundation)
+    implementation(libs.androidx.runtime)
+    implementation(libs.androidx.ui.text)
+    implementation(libs.androidx.ui.unit)
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.lifecycle.common)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.material3)
+
     implementation(libs.koin.android)
     implementation(libs.koin.android.compose)
+    implementation(libs.koin.compose)
+    implementation(libs.koin.core)
+
+    implementation(libs.kotlinx.coroutines.core)
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
     testRuntimeOnly(libs.junit.engine)
 
+    debugRuntimeOnly(libs.androidx.ui.test.manifest)
+    debugRuntimeOnly(libs.androidx.ui.tooling)
+
+    androidTestImplementation(libs.androidx.monitor)
+    androidTestImplementation(libs.junit)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
-    androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
 
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
 }

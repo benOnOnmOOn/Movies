@@ -35,27 +35,29 @@ android {
 }
 
 dependencies {
+    api(libs.koin.core)
 
     ksp(libs.moshi.kotlin.codegen)
 
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.moshi)
     implementation(libs.converter.moshi)
     implementation(libs.logging.interceptor)
     implementation(libs.okhttp)
     implementation(libs.retrofit)
     implementation(libs.koin.android)
+    implementation(libs.kotlinx.coroutines.core)
 
-    testImplementation(libs.junit.api)
     testRuntimeOnly(libs.junit.engine)
 
+    testImplementation(libs.mockk.dsl)
+    testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockk)
     testImplementation(libs.mockwebserver)
 
     androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.androidx.monitor)
+    androidTestImplementation(libs.junit)
+
+    runtimeOnly(libs.kotlinx.coroutines.android)
 }
