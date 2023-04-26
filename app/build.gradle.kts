@@ -87,6 +87,7 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.junit.api)
+    androidTestImplementation(libs.espresso.core)
     androidTestRuntimeOnly(libs.junit.engine)
 
 }
