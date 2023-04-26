@@ -1,5 +1,5 @@
 [versions]
-com-android-application = "8.1.0-alpha11"
+com-android-application = "8.2.0-alpha01"
 org-jetbrains-kotlin-android = "1.8.20"
 core-ktx = "1.10.0"
 junit = "5.9.2"
@@ -58,6 +58,7 @@ junit5 = { id = "de.mannodermaus.android-junit5", version = "1.8.2.1" }
 com-android-library = { id = "com.android.library", version.ref = "com-android-library" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.46.0" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.22.0" }
 
 [bundles]
 
