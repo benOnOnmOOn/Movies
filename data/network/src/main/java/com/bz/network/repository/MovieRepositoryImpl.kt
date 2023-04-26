@@ -70,20 +70,19 @@ internal class MovieRepositoryImpl(
             return Result.failure(NoInternetException())
 
         return withContext(Dispatchers.IO) {
-            try {
+            runCatching {
                 val response = apiCall()
 
                 if (response.isSuccessful) {
-                    response.body()?.let { apiResponse ->
-                        Result.success(mapper(apiResponse))
-                    } ?: Result.failure(EmptyBodyException())
+                    response
+                        .body()
+                        ?.let { apiResponse -> mapper(apiResponse) }
+                        ?: throw EmptyBodyException()
                 } else {
-                    Result.failure(HttpException(response.message()))
+                    throw HttpException(response.message())
                 }
-
-            } catch (e: Exception) {
-                Result.failure(e)
             }
+
         }
     }
 }

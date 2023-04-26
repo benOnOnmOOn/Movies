@@ -1,3 +1,4 @@
+@file:Suppress("FunctionNaming")
 package com.bz.movies.presentation
 
 import android.os.Bundle
@@ -40,10 +41,10 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
 
     val playingNowViewModel = koinViewModel<PlayingNowViewModel>()
-    val popularMoviesViewModel = koinViewModel<PopularMoviesViewModel>()
+//    val popularMoviesViewModel = koinViewModel<PopularMoviesViewModel>()
 
     val playingNow = playingNowViewModel.state.collectAsState()
-    val popularMovies = popularMoviesViewModel.state.collectAsState()
+//    val popularMovies = popularMoviesViewModel.state.collectAsState()
 
     Column {
         Text(

@@ -9,13 +9,14 @@ import com.bz.network.repository.model.PlayingNowMovieDto
 import com.bz.network.repository.model.PopularMovieDto
 import com.bz.network.repository.model.PopularMoviePageDto
 
+const val VOTE_MULTIPLER = 10
 internal fun MovieApiResponse.toPopularMovieDto() = PopularMovieDto(
     id = id,
     posterUrl = posterPath.orEmpty(),
     title = title.orEmpty(),
     publicationDate = releaseDate.orEmpty(),
     language = originalLanguage.orEmpty(),
-    rating = voteAverage?.let { it * 10 }?.toInt() ?: 0,
+    rating = voteAverage?.let { it * VOTE_MULTIPLER }?.toInt() ?: 0,
 )
 
 internal fun PopularMoviesPageApiResponse.toPopularMovieDto() =
