@@ -18,8 +18,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - name: Execute Gradle build
+      - name: Build apk
         run: ./gradlew app:assembleDebug
 
-      - name: Execute Gradle build
+      - name: Run detket plugin
         run: ./gradlew detektAll
