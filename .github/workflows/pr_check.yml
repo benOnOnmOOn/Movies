@@ -29,3 +29,13 @@ jobs:
 
       - name: Run dependency analysis android gradle plugin
         run: ./gradlew buildHealth
+
+      - name: Run Coverage
+        run: ./gradlew app:allDebugCoverage
+
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.3
+        with:
+          paths: ${{ github.workspace }}/build/reports/jacoco/allDebugCoverage/allDebugCoverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}

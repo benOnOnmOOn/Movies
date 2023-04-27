@@ -1,6 +1,7 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import java.util.Locale
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -12,6 +13,7 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.dependency.analysis) apply true
     jacoco
+    java
 }
 
 fun isNonStable(version: String): Boolean {
@@ -84,4 +86,101 @@ dependencyAnalysis {
     issues { all { onAny { severity("fail") } } }
 }
 
-apply("jacoco/project.gradle")
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+tasks.withType<Test> {
+    configure<JacocoTaskExtension> {
+        isIncludeNoLocationClasses = true
+        excludes = listOf("jdk.internal.*")
+    }
+}
+
+project.afterEvaluate {
+    val variants = listOf("debug", "prodNormalDebug")
+
+    tasks.create<JacocoReport>("allDebugCoverage") {
+
+        group = "Reporting"
+        description = "Generate overall Jacoco coverage report for the debug build."
+
+        reports {
+            xml.required.set(true)
+            csv.required.set(true)
+        }
+
+        val excludes = listOf(
+            "**/R.class",
+            "**/R$*.class",
+            "**/BuildConfig.*",
+            "**/Manifest*.*",
+            "**/*Test*.*",
+            "android/**/*.*",
+            "androidx/**/*.*",
+            "**/*${'$'}ViewInjector*.*",
+            "**/*Dagger*.*",
+            "**/*MembersInjector*.*",
+            "**/*_Factory.*",
+            "**/*_Provide*Factory*.*",
+            "**/*_ViewBinding*.*",
+            "**/AutoValue_*.*",
+            "**/R2.class",
+            "**/R2$*.class",
+            "**/*Directions$*",
+            "**/*Directions.*",
+            "**/*Binding.*"
+        )
+
+        val jClasses = subprojects.mapNotNull { proj ->
+            variants.map { variant ->
+                "${proj.buildDir}/intermediates/javac/$variant/classes"
+            }
+        }.flatten()
+        val kClasses = subprojects.mapNotNull { proj ->
+            variants.map { variant ->
+                "${proj.buildDir}/tmp/kotlin-classes/$variant"
+            }
+        }.flatten()
+
+        val javaClasses = jClasses
+            .filter { path ->
+                val file = File(path)
+                file.exists() && !file.isDirectory
+            }.mapNotNull { path ->
+                fileTree(mapOf(path to excludes))
+            }
+
+        val kotlinClasses = kClasses.filter { path ->
+            val file = File(path)
+            file.exists() && !file.isDirectory
+        }.mapNotNull { path ->
+            fileTree(mapOf(path to excludes))
+        }
+
+        classDirectories.setFrom(files(javaClasses, kotlinClasses))
+        val sources = subprojects.mapNotNull { proj ->
+            variants.map { variant ->
+                listOf(
+                    "${proj.projectDir}/src/main/java",
+                    "${proj.projectDir}/src/main/kotlin",
+                    "${proj.projectDir}/src/$variant/java",
+                    "${proj.projectDir}/src/$variant/kotlin"
+                )
+            }.flatten()
+        }.flatten()
+        sourceDirectories.setFrom(files(sources))
+
+        val executions = subprojects.mapNotNull { proj ->
+            variants.mapNotNull { variant ->
+                val path = "${proj.buildDir}/jacoco/test${
+                    variant.replaceFirstChar { it.titlecase() }
+                }UnitTest.exec"
+                if (File(path).exists()) path else null
+            }
+        }.flatten()
+
+        executionData.setFrom(files(executions))
+    }
+}
