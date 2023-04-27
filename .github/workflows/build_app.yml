@@ -1,4 +1,4 @@
-name: Run Gradle on PRs
+name: Build release app
 
 on:
   push:

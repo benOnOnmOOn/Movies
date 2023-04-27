@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.gradle.versions) apply true
     alias(libs.plugins.detekt)
     alias(libs.plugins.dependency.analysis) apply true
+    jacoco
 }
 
 fun isNonStable(version: String): Boolean {
@@ -82,3 +83,5 @@ tasks.withType<DetektCreateBaselineTask>().configureEach {
 dependencyAnalysis {
     issues { all { onAny { severity("fail") } } }
 }
+
+apply("jacoco/project.gradle")
