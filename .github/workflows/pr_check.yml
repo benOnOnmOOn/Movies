@@ -33,6 +33,12 @@ jobs:
       - name: Run Coverage
         run: ./gradlew allDebugCoverage
 
+      - name: Upload build reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-reports-jacoco
+          path: build/reports/jacoco
+
       - name: Add coverage to PR
         id: jacoco
         uses: madrapps/jacoco-report@v1.3
