@@ -1,10 +1,13 @@
 name: Run Gradle on PRs
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
+concurrency:
+  group: ${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   gradle:
     runs-on: ubuntu-latest
