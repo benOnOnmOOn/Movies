@@ -17,13 +17,11 @@ android {
 
     buildTypes {
         release {
-            release {
-                isMinifyEnabled = true
-                proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
-                )
-            }
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
         compileOptions {
             sourceCompatibility = JavaVersion.VERSION_17
@@ -57,6 +55,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.koin.android)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.androidx.core.ktx)
 
     testRuntimeOnly(libs.junit.engine)
 

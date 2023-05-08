@@ -31,6 +31,7 @@ koin-compose = "3.4.4"
 [libraries]
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activity-compose" }
 androidx-core = { module = "androidx.core:core", version.ref = "core-ktx" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 androidx-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "compose" }
 androidx-lifecycle-common = { module = "androidx.lifecycle:lifecycle-common", version.ref = "lifecycle-runtime-ktx" }
