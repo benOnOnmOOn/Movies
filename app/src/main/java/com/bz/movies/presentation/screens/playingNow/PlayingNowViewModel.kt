@@ -1,5 +1,6 @@
 package com.bz.movies.presentation.screens.playingNow
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bz.movies.presentation.mappers.toPlayingNowMovieItem
@@ -11,6 +12,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
+
+const val TAG = "PlayingNowViewModel"
 
 class PlayingNowViewModel(
     private val movieRepository: MovieRepository
@@ -37,6 +40,7 @@ class PlayingNowViewModel(
             }
         }
         result.onFailure {
+            Log.e(TAG, "fetchPlayingNowMovies: ", it)
             _state.update { PlayingNowState(isLoading = false) }
         }
 
