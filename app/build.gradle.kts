@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.junit5)
+    alias(libs.plugins.com.google.gms.google.services) apply false
+    alias(libs.plugins.firebase.crashlytics.gradle) apply false
 }
 
 android {
@@ -20,6 +22,8 @@ android {
 
     buildTypes {
         release {
+            apply(plugin = "com.google.gms.google-services")
+            apply(plugin = "com.google.firebase.crashlytics")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
@@ -40,9 +44,9 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.6"
+        kotlinCompilerExtensionVersion = "1.4.7"
     }
-    lint{
+    lint {
         baseline = file("lint-baseline.xml")
         abortOnError = true
         checkAllWarnings = true
@@ -57,6 +61,11 @@ android {
 
 dependencies {
     implementation(project(":data:network"))
+
+    releaseImplementation(platform(libs.firebase.bom))
+
+    releaseImplementation(libs.firebase.analytics.ktx)
+    releaseImplementation(libs.firebase.crashlytics.ktx)
 
     implementation(libs.activity.compose)
     implementation(libs.ui)
