@@ -11,6 +11,8 @@ plugins {
     alias(libs.plugins.gradle.versions) apply true
     alias(libs.plugins.detekt)
     alias(libs.plugins.dependency.analysis) apply true
+    alias(libs.plugins.com.google.gms.google.services ) apply false
+    alias(libs.plugins.firebase.crashlytics.gradle) apply false
 }
 
 fun isNonStable(version: String): Boolean {
