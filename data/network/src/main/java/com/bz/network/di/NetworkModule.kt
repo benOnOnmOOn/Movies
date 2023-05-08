@@ -8,6 +8,6 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val networkModule = module {
-    factory<ConnectivityManager> { androidContext().getSystemService<ConnectivityManager>()!! }
+    factory<ConnectivityManager?> { androidContext().getSystemService<ConnectivityManager>() }
     factory<InternetConnection> { InternetConnectionImpl(get()) }
 }

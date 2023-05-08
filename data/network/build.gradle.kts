@@ -50,13 +50,15 @@ dependencies {
 
     implementation(libs.moshi)
     implementation(libs.converter.moshi)
-    implementation(libs.logging.interceptor)
     implementation(libs.okhttp)
     implementation(libs.retrofit)
     implementation(libs.koin.android)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.ktx)
+
+    // use debug impl to prevent from adding this deps to release version
+    debugImplementation(libs.logging.interceptor)
 
     testRuntimeOnly(libs.junit.engine)
 
