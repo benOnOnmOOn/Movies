@@ -55,6 +55,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.koin.android)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.androidx.core)
     implementation(libs.androidx.core.ktx)
 
     testRuntimeOnly(libs.junit.engine)
