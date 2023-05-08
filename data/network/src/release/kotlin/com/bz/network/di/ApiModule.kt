@@ -1,6 +1,7 @@
 package com.bz.network.di
 
 import com.bz.network.api.service.MovieService
+import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -12,11 +13,17 @@ val apiModule = module {
     factory {
         Retrofit
             .Builder()
+            .client(get())
             .addConverterFactory(MoshiConverterFactory.create())
             .baseUrl(BASE_URL)
             .build()
     }
 
     factory<MovieService> { get<Retrofit>().create(MovieService::class.java) }
+
+    factory {
+        OkHttpClient.Builder()
+            .build()
+    }
 
 }
