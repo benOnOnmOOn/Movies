@@ -28,3 +28,8 @@ jobs:
 
       - name: Run dependency analysis android gradle plugin
         run: ./gradlew buildHealth
+
+      - name: Run snapshot action
+        uses: mikepenz/gradle-dependency-submission@v0.8.6
+        with:
+          gradle-build-module: ":app"
