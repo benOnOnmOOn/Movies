@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.junit5)
-    alias(libs.plugins.com.google.gms.google.services)
-    alias(libs.plugins.firebase.crashlytics.gradle)
+    alias(libs.plugins.com.google.gms.google.services) apply false
+    alias(libs.plugins.firebase.crashlytics.gradle) apply false
 }
 
 android {
@@ -22,6 +22,8 @@ android {
 
     buildTypes {
         release {
+            apply(plugin = "com.google.gms.google-services")
+            apply(plugin = "com.google.firebase.crashlytics")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
@@ -60,10 +62,10 @@ android {
 dependencies {
     implementation(project(":data:network"))
 
-    implementation(platform(libs.firebase.bom))
+    releaseImplementation(platform(libs.firebase.bom))
 
-    implementation(libs.firebase.analytics.ktx)
-    implementation(libs.firebase.crashlytics.ktx)
+    releaseImplementation(libs.firebase.analytics.ktx)
+    releaseImplementation(libs.firebase.crashlytics.ktx)
 
     implementation(libs.activity.compose)
     implementation(libs.ui)
