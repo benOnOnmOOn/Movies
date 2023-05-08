@@ -35,31 +35,40 @@ android {
         }
     }
 
-    dependencies {
-        api(libs.koin.core)
-
-        ksp(libs.moshi.kotlin.codegen)
-
-        implementation(libs.moshi)
-        implementation(libs.converter.moshi)
-        implementation(libs.logging.interceptor)
-        implementation(libs.okhttp)
-        implementation(libs.retrofit)
-        implementation(libs.koin.android)
-        implementation(libs.kotlinx.coroutines.core)
-
-        testRuntimeOnly(libs.junit.engine)
-
-        testImplementation(libs.mockk.dsl)
-        testImplementation(libs.junit)
-        testImplementation(libs.kotlinx.coroutines.test)
-        testImplementation(libs.mockk)
-        testImplementation(libs.mockwebserver)
-
-        androidTestImplementation(libs.androidx.test.ext.junit)
-        androidTestImplementation(libs.androidx.monitor)
-        androidTestImplementation(libs.junit)
-
-        runtimeOnly(libs.kotlinx.coroutines.android)
+    lint {
+        baseline = file("lint-baseline.xml")
+        abortOnError = true
+        checkAllWarnings = true
+        warningsAsErrors = true
+        checkReleaseBuilds = false
     }
+
+}
+
+dependencies {
+    api(libs.koin.core)
+
+    ksp(libs.moshi.kotlin.codegen)
+
+    implementation(libs.moshi)
+    implementation(libs.converter.moshi)
+    implementation(libs.logging.interceptor)
+    implementation(libs.okhttp)
+    implementation(libs.retrofit)
+    implementation(libs.koin.android)
+    implementation(libs.kotlinx.coroutines.core)
+
+    testRuntimeOnly(libs.junit.engine)
+
+    testImplementation(libs.mockk.dsl)
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockwebserver)
+
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.monitor)
+    androidTestImplementation(libs.junit)
+
+    runtimeOnly(libs.kotlinx.coroutines.android)
 }
