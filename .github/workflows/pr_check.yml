@@ -27,5 +27,8 @@ jobs:
       - name: Run detket plugin
         run: ./gradlew detektAll
 
+      - name: Run android lint
+        run: ./gradlew lint
+
       - name: Run dependency analysis android gradle plugin
         run: ./gradlew buildHealth
