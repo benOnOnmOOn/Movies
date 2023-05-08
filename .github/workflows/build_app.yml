@@ -32,7 +32,7 @@ jobs:
         run: ./gradlew buildHealth
 
       - name: Root Gradle Dependency Submission
-        uses: mikepenz/gradle-dependency-submission@{latest}
+        uses: mikepenz/gradle-dependency-submission@v0.8.6
         with:
           use-gradlew: false
           gradle-build-module: |-
