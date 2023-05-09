@@ -1,13 +1,28 @@
 package com.bz.network.di
 
+import android.content.Context
 import android.net.ConnectivityManager
 import androidx.core.content.getSystemService
 import com.bz.network.utils.InternetConnection
 import com.bz.network.utils.InternetConnectionImpl
-import org.koin.android.ext.koin.androidContext
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 
-val networkModule = module {
-    factory<ConnectivityManager?> { androidContext().getSystemService<ConnectivityManager>() }
-    factory<InternetConnection> { InternetConnectionImpl(get()) }
+
+@Module
+@InstallIn(SingletonComponent::class)
+internal class NetworkModule {
+
+    @Provides
+    fun provideConnectivityManager(@ApplicationContext context: Context): ConnectivityManager? =
+        context.getSystemService<ConnectivityManager>()
+
+    @Provides
+    fun provideInternetConnection(connectivityManager: ConnectivityManager?): InternetConnection =
+        InternetConnectionImpl(connectivityManager)
+
+
 }

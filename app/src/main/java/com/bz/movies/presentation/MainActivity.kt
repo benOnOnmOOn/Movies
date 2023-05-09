@@ -13,11 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.bz.movies.presentation.screens.playingNow.PlayingNowViewModel
-import com.bz.movies.presentation.screens.popular.PopularMoviesViewModel
 import com.bz.movies.presentation.theme.MoviesTheme
-import org.koin.androidx.compose.koinViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
 
@@ -40,7 +41,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
 
-    val playingNowViewModel = koinViewModel<PlayingNowViewModel>()
+    val playingNowViewModel : PlayingNowViewModel =  hiltViewModel()
 //    val popularMoviesViewModel = koinViewModel<PopularMoviesViewModel>()
 
     val playingNow = playingNowViewModel.state.collectAsState()

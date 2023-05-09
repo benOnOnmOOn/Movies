@@ -15,7 +15,6 @@ import com.bz.network.repository.model.PopularMoviePageDto
 import com.bz.network.utils.InternetConnection
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.koin.core.component.KoinComponent
 import retrofit2.Response
 
 private const val AUTH_KEY = "55957fcf3ba81b137f8fc01ac5a31fb5"
@@ -24,7 +23,7 @@ private const val LANGUAGE = "en-US"
 internal class MovieRepositoryImpl(
     private val movieService: MovieService,
     private val internetConnectionChecker: InternetConnection,
-) : MovieRepository, KoinComponent {
+) : MovieRepository {
 
     override suspend fun getPlayingNowMovies(): Result<List<PlayingNowMovieDto>> =
         executeApiCall(PlayingNowMoviesApiResponse::toPlayingNowMovieDto) {

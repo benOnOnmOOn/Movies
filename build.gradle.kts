@@ -13,6 +13,7 @@ plugins {
     alias(libs.plugins.dependency.analysis) apply true
     alias(libs.plugins.com.google.gms.google.services ) apply false
     alias(libs.plugins.firebase.crashlytics.gradle) apply false
+    alias(libs.plugins.com.google.dagger.hilt.android) apply false
 }
 
 fun isNonStable(version: String): Boolean {

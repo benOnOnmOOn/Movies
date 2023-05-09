@@ -2,11 +2,11 @@
 com-android-plugin = "8.0.1"
 compose = "1.4.3"
 firebase-bom = "32.0.0"
-insert-koin-koin-compose = "1.0.1"
+hilt = "2.45"
+hilt-navigation-compose = "1.0.0"
 junit-junit = "4.13.2"
 kotlinx-coroutines = "1.7.0"
 material3 = "1.0.1"
-koin-core = "3.4.0"
 mockk-dsl = "1.13.5"
 monitor = "1.6.1"
 org-jetbrains-kotlin-android = "1.8.21"
@@ -24,8 +24,6 @@ moshi = "1.14.0"
 okhttp = "4.11.0"
 retrofit = "2.9.0"
 mockk = "1.13.5"
-koin = "3.4.0"
-koin-compose = "3.4.4"
 
 
 [libraries]
@@ -34,6 +32,7 @@ androidx-core = { module = "androidx.core:core", version.ref = "core-ktx" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 androidx-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "compose" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
 androidx-lifecycle-common = { module = "androidx.lifecycle:lifecycle-common", version.ref = "lifecycle-runtime-ktx" }
 androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle-runtime-ktx" }
@@ -49,14 +48,14 @@ core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx
 firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 junit = { module = "junit:junit", version.ref = "junit-junit" }
 junit-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
 junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-core" }
-koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "insert-koin-koin-compose" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
@@ -80,8 +79,6 @@ logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-intercep
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
-koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
-koin-android-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin-compose" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "com-android-plugin" }
@@ -94,5 +91,6 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.22.0" }
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.20.0" }
 com-google-gms-google-services = { id = "com.google.gms.google-services", version = "4.3.15" }
 firebase-crashlytics-gradle = { id = "com.google.firebase.crashlytics", version = "2.9.5" }
+com-google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 [bundles]
 

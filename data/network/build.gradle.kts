@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
+    kotlin("kapt")
+    alias(libs.plugins.com.google.dagger.hilt.android)
 }
 
 android {
@@ -42,16 +44,24 @@ android {
 
 }
 
-dependencies {
-    api(libs.koin.core)
+kapt {
+    correctErrorTypes = true
+}
 
+hilt {
+    enableAggregatingTask = true
+}
+
+dependencies {
     ksp(libs.moshi.kotlin.codegen)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 
     implementation(libs.moshi)
     implementation(libs.converter.moshi)
     implementation(libs.okhttp)
     implementation(libs.retrofit)
-    implementation(libs.koin.android)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.ktx)

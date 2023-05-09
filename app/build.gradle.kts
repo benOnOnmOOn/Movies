@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.junit5)
     alias(libs.plugins.com.google.gms.google.services) apply false
     alias(libs.plugins.firebase.crashlytics.gradle) apply false
+    kotlin("kapt")
+    alias(libs.plugins.com.google.dagger.hilt.android)
 }
 
 android {
@@ -61,6 +63,10 @@ android {
     )
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
     implementation(project(":data:network"))
 
@@ -68,6 +74,10 @@ dependencies {
 
     releaseImplementation(libs.firebase.analytics.ktx)
     releaseImplementation(libs.firebase.crashlytics.ktx)
+
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
+    kapt(libs.hilt.android.compiler)
 
     implementation(libs.activity.compose)
     implementation(libs.ui)
@@ -87,11 +97,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.material3)
-
-    implementation(libs.koin.android)
-    implementation(libs.koin.android.compose)
-    implementation(libs.koin.compose)
-    implementation(libs.koin.core)
 
     implementation(libs.kotlinx.coroutines.core)
 
