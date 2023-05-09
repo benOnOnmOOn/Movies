@@ -17,19 +17,19 @@ const val BASE_URL = "https://api.themoviedb.org/3/"
 @InstallIn(SingletonComponent::class)
 internal class ApiModule {
     @Provides
-    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
+    internal fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().apply {
             setLevel(HttpLoggingInterceptor.Level.BODY)
         }
 
     @Provides
-    fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
+    internal fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
             .build()
 
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
+    internal fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
@@ -37,6 +37,6 @@ internal class ApiModule {
             .build()
 
     @Provides
-    fun provideApiService(retrofit: Retrofit): MovieService = retrofit.create()
+    internal fun provideApiService(retrofit: Retrofit): MovieService = retrofit.create()
 
 }

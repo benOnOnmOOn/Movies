@@ -14,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 internal class RepositoryModule {
 
     @Provides
-    fun provideMovieRepository(
+    internal fun provideMovieRepository(
         apiService: MovieService,
         internetConnection: InternetConnection,
     ): MovieRepository = MovieRepositoryImpl(apiService, internetConnection)

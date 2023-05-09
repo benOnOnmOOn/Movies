@@ -17,11 +17,11 @@ import dagger.hilt.components.SingletonComponent
 internal class NetworkModule {
 
     @Provides
-    fun provideConnectivityManager(@ApplicationContext context: Context): ConnectivityManager? =
+    internal fun provideConnectivityManager(@ApplicationContext context: Context): ConnectivityManager? =
         context.getSystemService<ConnectivityManager>()
 
     @Provides
-    fun provideInternetConnection(connectivityManager: ConnectivityManager?): InternetConnection =
+    internal fun provideInternetConnection(connectivityManager: ConnectivityManager?): InternetConnection =
         InternetConnectionImpl(connectivityManager)
 
 
