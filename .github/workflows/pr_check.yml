@@ -30,7 +30,7 @@ jobs:
       - name: Run android lint
         run: ./gradlew lint
 
-      - name: Run android lint
+      - name: Run unit test
         run: ./gradlew test
 
       - name: Run dependency analysis android gradle plugin
