@@ -4,7 +4,7 @@ import com.bz.network.api.service.MovieService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ViewModelComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,7 +14,7 @@ import retrofit2.create
 const val BASE_URL = "https://api.themoviedb.org/3/"
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 internal class ApiModule {
     @Provides
     internal fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
