@@ -2,8 +2,9 @@
 com-android-plugin = "8.0.1"
 compose = "1.4.3"
 firebase-bom = "32.0.0"
-hilt = "2.45"
+hilt = "2.46"
 hilt-navigation-compose = "1.0.0"
+javax-inject = "1"
 junit-junit = "4.13.2"
 kotlinx-coroutines = "1.7.0"
 material3 = "1.0.1"
@@ -45,11 +46,15 @@ androidx-ui-unit = { module = "androidx.compose.ui:ui-unit", version.ref = "comp
 androidx-ui-text = { module = "androidx.compose.ui:ui-text", version.ref = "compose" }
 androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+dagger = { module = "com.google.dagger:dagger", version.ref = "hilt" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "hilt" }
 firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+javax-inject = { module = "javax.inject:javax.inject", version.ref = "javax-inject" }
+hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hilt" }
 junit = { module = "junit:junit", version.ref = "junit-junit" }
 junit-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
 junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }

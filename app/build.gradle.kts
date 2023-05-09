@@ -75,9 +75,15 @@ dependencies {
     releaseImplementation(libs.firebase.analytics.ktx)
     releaseImplementation(libs.firebase.crashlytics.ktx)
 
+    //  HILT
+    kapt(libs.hilt.android.compiler)
+    kapt(libs.dagger.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
-    kapt(libs.hilt.android.compiler)
+    implementation(libs.hilt.core)
+    implementation(libs.dagger)
+    implementation(libs.javax.inject)
+    //
 
     implementation(libs.activity.compose)
     implementation(libs.ui)
@@ -112,5 +118,7 @@ dependencies {
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
+
+
 
 }
