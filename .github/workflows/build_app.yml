@@ -21,14 +21,21 @@ jobs:
         uses: gradle/gradle-build-action@v2
 
       # Build debug app to improve pr check build speed by storing debug cache
-      - name: Build apk
+      - name: Build debug apk
         run: ./gradlew app:assembleDebug
 
-      - name: Build apk
+      - name: Build release apk
         run: ./gradlew app:assembleRelease
 
       - name: Run detket plugin
         run: ./gradlew detektAll
+
+      - name: Run unit test
+        run: ./gradlew testDebugUnitTest
+
+      - name: Android Test Report
+        uses: asadmansr/android-test-report-action@v1.2.0
+        if: ${{ always() }} # IMPORTANT: run Android Test Report regardless
 
       - name: Run dependency analysis android gradle plugin
         run: ./gradlew buildHealth
