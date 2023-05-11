@@ -1,20 +1,21 @@
 @file:Suppress("FunctionNaming")
+
 package com.bz.movies.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.bz.movies.presentation.screens.playingNow.PlayingNowViewModel
+import androidx.navigation.compose.rememberNavController
+import com.bz.movies.presentation.navigation.BottomNavigationBar
+import com.bz.movies.presentation.navigation.MoviesNavHost
+import com.bz.movies.presentation.navigation.RootRoute
+import com.bz.movies.presentation.navigation.navigateToRootRoute
 import com.bz.movies.presentation.theme.MoviesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,51 +26,35 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val navController = rememberNavController()
+
             MoviesTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                Scaffold(
+                    bottomBar = {
+                        BottomNavigationBar(
+                            currentRootRoute = RootRoute.PlayingNow,
+                            navigateToTopLevelDestination = {
+                                navController.navigateToRootRoute(it.rootRoute)
+                            },
+                        )
+                    }
+
                 ) {
-                    Greeting("Android")
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(it),
+                        color = MaterialTheme.colorScheme.background
+                    ) {
+                        MoviesNavHost(
+                            navController = navController,
+                            modifier = Modifier.fillMaxSize(),
+                        )
+                    }
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
 
-    val playingNowViewModel : PlayingNowViewModel =  hiltViewModel()
-//    val popularMoviesViewModel = koinViewModel<PopularMoviesViewModel>()
-
-    val playingNow = playingNowViewModel.state.collectAsState()
-//    val popularMovies = popularMoviesViewModel.state.collectAsState()
-
-    Column {
-        Text(
-            text = "Hello $name!",
-            modifier = modifier
-        )
-
-        Text(
-            text = "Playing now !" + playingNow.value.playingNowMovies.joinToString(),
-            modifier = modifier
-        )
-
-        Text(
-            text = "Popular now !" + playingNow.value.playingNowMovies.joinToString(),
-            modifier = modifier
-        )
-    }
-
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MoviesTheme {
-        Greeting("Android")
-    }
-}

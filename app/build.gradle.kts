@@ -43,6 +43,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+        freeCompilerArgs = listOf(
+            "-Xjvm-default=all",
+            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+        )
     }
     buildFeatures {
         compose = true
@@ -86,6 +90,9 @@ dependencies {
     //
 
     implementation(libs.activity.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.common)
+    implementation(libs.androidx.navigation.runtime)
     implementation(libs.ui)
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)

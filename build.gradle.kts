@@ -43,8 +43,8 @@ val androidTestFiles = "**/androidTest/**"
 detekt {
     buildUponDefaultConfig = true
     allRules = false
-    config = files("$projectDir/config/detekt.yml")
-    baseline = file("$projectDir/config/baseline.xml")
+    config = files(configFile)
+    baseline = file(baselineFile)
     parallel = true
     ignoreFailures = false
     autoCorrect = false
@@ -64,6 +64,9 @@ tasks.withType<Detekt>().configureEach {
 tasks.register<Detekt>("detektAll") {
     description = "Runs Detekt for all modules"
     jvmTarget = "17"
+    allRules = false
+    config = files(configFile)
+    baseline = file(baselineFile)
     setSource(projectSource)
     include(kotlinFiles)
     exclude(resourceFiles, buildFiles, testFiles, androidTestFiles)
