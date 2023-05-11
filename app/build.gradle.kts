@@ -110,8 +110,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.startup.runtime)
 
     implementation(libs.kotlinx.coroutines.core)
+
+    implementation(libs.timber)
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
@@ -125,7 +128,5 @@ dependencies {
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
-
-
 
 }

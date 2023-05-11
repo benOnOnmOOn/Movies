@@ -26,6 +26,8 @@ moshi = "1.14.0"
 okhttp = "4.11.0"
 retrofit = "2.9.0"
 mockk = "1.13.5"
+startup-runtime = "1.1.1"
+timber = "5.0.1"
 
 
 [libraries]
@@ -44,6 +46,7 @@ androidx-monitor = { module = "androidx.test:monitor", version.ref = "monitor" }
 androidx-navigation-common = { module = "androidx.navigation:navigation-common", version.ref = "navigation-compose" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
 androidx-navigation-runtime = { module = "androidx.navigation:navigation-runtime", version.ref = "navigation-compose" }
+androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startup-runtime" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 androidx-ui-unit = { module = "androidx.compose.ui:ui-unit", version.ref = "compose" }
@@ -69,6 +72,7 @@ lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtim
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
 mockk-dsl = { module = "io.mockk:mockk-dsl", version.ref = "mockk-dsl" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
