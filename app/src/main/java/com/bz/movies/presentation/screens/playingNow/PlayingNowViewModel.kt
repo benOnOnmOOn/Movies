@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 const val TAG = "PlayingNowViewModel"
@@ -42,7 +43,7 @@ class PlayingNowViewModel @Inject constructor(
             }
         }
         result.onFailure {
-            Log.e(TAG, "fetchPlayingNowMovies: ", it)
+            Timber.e(it)
             _state.update { PlayingNowState(isLoading = false) }
         }
 
