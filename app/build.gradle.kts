@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
@@ -43,6 +45,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+        languageVersion = KotlinVersion.KOTLIN_2_0.version
         freeCompilerArgs = listOf(
             "-Xjvm-default=all",
             "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
@@ -58,6 +61,7 @@ android {
         baseline = file("lint-baseline.xml")
         abortOnError = true
         checkAllWarnings = true
+        checkDependencies = true
         warningsAsErrors = true
         checkReleaseBuilds = false
     }

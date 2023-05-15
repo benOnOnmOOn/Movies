@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
@@ -31,6 +33,7 @@ android {
         }
         kotlinOptions {
             jvmTarget = "17"
+            languageVersion = KotlinVersion.KOTLIN_2_0.version
         }
     }
 
