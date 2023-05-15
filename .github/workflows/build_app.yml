@@ -19,7 +19,8 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
-        gradle-home-cache-cleanup: true
+        with:
+          gradle-home-cache-cleanup: true
 
       # Build debug app to improve pr check build speed by storing debug cache
       - name: Build debug apk
