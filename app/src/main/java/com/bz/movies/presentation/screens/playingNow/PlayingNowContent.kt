@@ -3,11 +3,14 @@ package com.bz.movies.presentation.screens.playingNow
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
@@ -55,15 +58,21 @@ fun PlayingNowContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(playingNowState.playingNowMovies) { movieItem ->
-
-                AsyncImage(
-                    modifier = Modifier
-                        .height(40.dp)
+                Row(
+                    Modifier
                         .fillMaxWidth()
+                        .wrapContentHeight()
                         .padding(4.dp),
-                    model = movieItem.posterUrl,
-                    contentDescription = null,
-                )
+                ) {
+                    AsyncImage(
+                        modifier = Modifier
+                            .height(80.dp)
+                            .width(80.dp)
+                            .padding(4.dp),
+                        model = movieItem.posterUrl,
+                        contentDescription = null,
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(12.dp))
 

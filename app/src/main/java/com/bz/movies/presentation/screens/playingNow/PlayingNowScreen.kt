@@ -5,7 +5,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.bz.movies.presentation.theme.MoviesTheme
@@ -22,11 +22,10 @@ fun PlayingNowScreen(
 private fun PlayingNowScreen(
     state: PlayingNowState = PlayingNowState(),
 ) {
-    Column {
-        Text(
-            text = "PlayingNow !!",
-            modifier = Modifier
-        )
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "PlayingNow !!")
 
         PlayingNowContent(playingNowState = state) {
 
