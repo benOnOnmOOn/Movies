@@ -10,11 +10,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.bz.movies.presentation.navigation.BottomNavigationBar
 import com.bz.movies.presentation.navigation.MoviesNavHost
-import com.bz.movies.presentation.navigation.RootRoute
+import com.bz.movies.presentation.navigation.currentRootRouteAsState
 import com.bz.movies.presentation.navigation.navigateToRootRoute
 import com.bz.movies.presentation.theme.MoviesTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,12 +28,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
+            val currentRootRoute by navController.currentRootRouteAsState()
 
             MoviesTheme {
                 Scaffold(
                     bottomBar = {
                         BottomNavigationBar(
-                            currentRootRoute = RootRoute.PlayingNow,
+                            currentRootRoute = currentRootRoute,
                             navigateToTopLevelDestination = {
                                 navController.navigateToRootRoute(it.rootRoute)
                             },
