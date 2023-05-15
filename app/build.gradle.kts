@@ -49,6 +49,7 @@ android {
         freeCompilerArgs = listOf(
             "-Xjvm-default=all",
             "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+            "-opt-in=androidx.compose.material.ExperimentalMaterialApi"
         )
     }
     buildFeatures {
@@ -106,6 +107,7 @@ dependencies {
     implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.runtime)
+    implementation(libs.androidx.material)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
     implementation(libs.androidx.core)
@@ -115,6 +117,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.startup.runtime)
+    implementation(libs.coil.compose)
 
     implementation(libs.kotlinx.coroutines.core)
 
