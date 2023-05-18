@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.bz.presentation.screens"
+    namespace = "com.bz.core"
     compileSdk = 33
 
     defaultConfig {
@@ -27,7 +27,6 @@ android {
             )
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -35,11 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = "17"
         languageVersion = KotlinVersion.KOTLIN_2_0.version
-        freeCompilerArgs = listOf(
-            "-Xjvm-default=all",
-            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-            "-opt-in=androidx.compose.material.ExperimentalMaterialApi"
-        )
+        freeCompilerArgs = listOf("-Xjvm-default=all")
     }
     buildFeatures {
         compose = true
@@ -47,19 +42,22 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.7"
     }
-
     lint {
         baseline = file("lint-baseline.xml")
         abortOnError = true
         checkAllWarnings = true
+        checkDependencies = true
         warningsAsErrors = true
         checkReleaseBuilds = false
     }
+
+    packagingOptions.resources.excludes += setOf(
+        "META-INF/**"
+    )
 }
 
-
 dependencies {
-    api(project(":data:network"))
+    implementation(project(":presentation:screens"))
 
     releaseImplementation(platform(libs.firebase.bom))
 
@@ -68,51 +66,37 @@ dependencies {
 
     //  HILT
     kapt(libs.hilt.android.compiler)
-    kapt(libs.dagger.compiler)
-    implementation(libs.hilt.android)
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.hilt.core)
-    api(libs.dagger)
-    api(libs.javax.inject)
+    api(libs.hilt.android)
+    api(libs.hilt.core)
     //
 
+    implementation(libs.activity.compose)
     implementation(libs.androidx.navigation.compose)
-    api(libs.androidx.navigation.common)
-    api(libs.androidx.navigation.runtime)
-
-    api(libs.ui)
+    implementation(libs.ui)
     implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    api(libs.material3)
+    implementation(libs.material3)
 
+    implementation(libs.androidx.lifecycle.common)
+    api(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.navigation.common)
+    implementation(libs.androidx.navigation.runtime)
+
+    api(libs.androidx.activity)
     implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.foundation)
     api(libs.androidx.runtime)
-    implementation(libs.androidx.material)
-    implementation(libs.androidx.ui.text)
-    implementation(libs.androidx.ui.unit)
+    implementation(libs.androidx.material3)
     implementation(libs.androidx.core)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    api(libs.androidx.lifecycle.viewmodel)
-    api(libs.androidx.material3)
-    runtimeOnly(libs.androidx.startup.runtime)
-    implementation(libs.coil.compose)
-
-    implementation(libs.kotlinx.coroutines.core)
-
-    implementation(libs.timber)
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
-    testImplementation(libs.kotlinx.coroutines.test)
     testRuntimeOnly(libs.junit.engine)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.ui.tooling)
 
     androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
 
 }

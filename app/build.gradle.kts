@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
-    alias(libs.plugins.junit5)
     alias(libs.plugins.com.google.gms.google.services) apply false
     alias(libs.plugins.firebase.crashlytics.gradle) apply false
     alias(libs.plugins.com.google.dagger.hilt.android)
@@ -48,12 +47,7 @@ android {
         languageVersion = KotlinVersion.KOTLIN_2_0.version
         freeCompilerArgs = listOf("-Xjvm-default=all")
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.7"
-    }
+
     lint {
         baseline = file("lint-baseline.xml")
         abortOnError = true
@@ -72,8 +66,13 @@ kapt {
     correctErrorTypes = true
 }
 
+dependencyAnalysis {
+    issues { onUnusedDependencies { exclude(":presentation:core") } }
+}
+
 dependencies {
-    implementation(project(":presentation:screens"))
+    //don't warn
+    implementation(project(":presentation:core"))
 
     releaseImplementation(platform(libs.firebase.bom))
 
@@ -86,25 +85,7 @@ dependencies {
     implementation(libs.hilt.core)
     //
 
-    implementation(libs.activity.compose)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.material3)
-
-    implementation(libs.androidx.lifecycle.common)
-    implementation(libs.androidx.lifecycle.viewmodel)
-    implementation(libs.androidx.navigation.common)
-    implementation(libs.androidx.navigation.runtime)
-
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.foundation.layout)
-    implementation(libs.androidx.foundation)
-    implementation(libs.androidx.runtime)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.core)
     implementation(libs.androidx.startup.runtime)
-
 
     implementation(libs.timber)
 
