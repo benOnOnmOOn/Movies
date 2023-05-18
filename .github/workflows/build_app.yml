@@ -35,9 +35,5 @@ jobs:
       - name: Run unit test
         run: ./gradlew testDebugUnitTest
 
-      - name: Android Test Report
-        uses: asadmansr/android-test-report-action@v1.2.0
-        if: ${{ always() }} # IMPORTANT: run Android Test Report regardless
-
       - name: Run dependency analysis android gradle plugin
         run: ./gradlew buildHealth
