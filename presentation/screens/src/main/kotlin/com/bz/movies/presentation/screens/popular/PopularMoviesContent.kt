@@ -64,41 +64,8 @@ fun PopularMoviesContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(playingNowState.playingNowMovies) { movieItem ->
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .wrapContentHeight()
-                        .padding(4.dp),
-                ) {
-                    AsyncImage(
-                        modifier = Modifier
-                            .height(80.dp)
-                            .width(80.dp)
-                            .padding(4.dp),
-                        model = movieItem.posterUrl,
-                        contentDescription = movieItem.title,
-                    )
-                    Column(
-                        Modifier
-                            .fillMaxWidth()
-                            .wrapContentHeight()
-                            .weight(1f)
-                    ) {
-                        Text(text = movieItem.title)
-                        Text(text = movieItem.releaseDate)
-                        Text(text = "${movieItem.rating}/100")
-                    }
-                 
-                    Image(
-                        painterResource(R.drawable.ic_star),
-                        modifier = Modifier
-                            .height(40.dp)
-                            .width(40.dp)
-                            .padding(4.dp),
-                        contentDescription = "",
-                        contentScale = ContentScale.Crop,
-                    )
-                }
+
+                PopularMoviesItemContent(movieItem)
 
                 Spacer(modifier = Modifier.height(12.dp))
 
@@ -120,3 +87,41 @@ fun PopularMoviesContent(
     }
 
 }
+
+@Composable
+fun PopularMoviesItemContent(movieItem: PopularMovieItem) =
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(4.dp),
+    ) {
+        AsyncImage(
+            modifier = Modifier
+                .height(80.dp)
+                .width(80.dp)
+                .padding(4.dp),
+            model = movieItem.posterUrl,
+            contentDescription = movieItem.title,
+        )
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .weight(1f)
+        ) {
+            Text(text = movieItem.title)
+            Text(text = movieItem.releaseDate)
+            Text(text = "${movieItem.rating}/100")
+        }
+
+        Image(
+            painterResource(R.drawable.ic_star),
+            modifier = Modifier
+                .height(40.dp)
+                .width(40.dp)
+                .padding(4.dp),
+            contentDescription = "",
+            contentScale = ContentScale.Crop,
+        )
+    }
