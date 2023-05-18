@@ -34,3 +34,4 @@ gradleEnterprise {
 include(":app")
 include(":data:network")
 include(":presentation:screens")
+include(":presentation:core")
