@@ -1,8 +1,8 @@
-package com.bz.movies
+package com.bz.presentationscreens
 
 import androidx.test.platform.app.InstrumentationRegistry
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -14,6 +14,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.bz.movies", appContext.packageName)
+        assertEquals("com.bz.presentationscreens.test", appContext.packageName)
     }
 }

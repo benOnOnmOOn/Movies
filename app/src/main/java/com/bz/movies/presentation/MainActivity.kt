@@ -13,11 +13,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.bz.movies.presentation.navigation.BottomNavigationBar
-import com.bz.movies.presentation.navigation.MoviesNavHost
 import com.bz.movies.presentation.navigation.currentRootRouteAsState
 import com.bz.movies.presentation.navigation.navigateToRootRoute
-import com.bz.movies.presentation.theme.MoviesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,10 +27,10 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             val currentRootRoute by navController.currentRootRouteAsState()
 
-            MoviesTheme {
+            com.bz.movies.presentation.theme.MoviesTheme {
                 Scaffold(
                     bottomBar = {
-                        BottomNavigationBar(
+                        com.bz.movies.presentation.navigation.BottomNavigationBar(
                             currentRootRoute = currentRootRoute,
                             navigateToTopLevelDestination = {
                                 navController.navigateToRootRoute(it.rootRoute)
@@ -48,7 +45,7 @@ class MainActivity : ComponentActivity() {
                             .padding(it),
                         color = MaterialTheme.colorScheme.background
                     ) {
-                        MoviesNavHost(
+                        com.bz.movies.presentation.navigation.MoviesNavHost(
                             navController = navController,
                             modifier = Modifier.fillMaxSize(),
                         )
