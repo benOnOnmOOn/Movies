@@ -116,7 +116,6 @@ dependencies {
     debugRuntimeOnly(libs.androidx.ui.tooling)
 
     androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.junit)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
 
