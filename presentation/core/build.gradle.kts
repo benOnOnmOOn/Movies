@@ -67,8 +67,8 @@ dependencies {
 
     //  HILT
     kapt(libs.hilt.android.compiler)
-    implementation(libs.hilt.android)
-    implementation(libs.hilt.core)
+    api(libs.hilt.android)
+    api(libs.hilt.core)
     //
 
     implementation(libs.activity.compose)
@@ -78,20 +78,16 @@ dependencies {
     implementation(libs.material3)
 
     implementation(libs.androidx.lifecycle.common)
-    implementation(libs.androidx.lifecycle.viewmodel)
+    api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.navigation.common)
     implementation(libs.androidx.navigation.runtime)
 
-    implementation(libs.androidx.activity)
+    api(libs.androidx.activity)
     implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.foundation)
-    implementation(libs.androidx.runtime)
+    api(libs.androidx.runtime)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.core)
-    implementation(libs.androidx.startup.runtime)
-
-
-    implementation(libs.timber)
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)

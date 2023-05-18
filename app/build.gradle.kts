@@ -67,7 +67,12 @@ kapt {
     correctErrorTypes = true
 }
 
+dependencyAnalysis {
+    issues { onUnusedDependencies { exclude(":presentation:core") } }
+}
+
 dependencies {
+    //don't warn
     implementation(project(":presentation:core"))
 
     releaseImplementation(platform(libs.firebase.bom))
@@ -81,25 +86,7 @@ dependencies {
     implementation(libs.hilt.core)
     //
 
-    implementation(libs.activity.compose)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.material3)
-
-    implementation(libs.androidx.lifecycle.common)
-    implementation(libs.androidx.lifecycle.viewmodel)
-    implementation(libs.androidx.navigation.common)
-    implementation(libs.androidx.navigation.runtime)
-
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.foundation.layout)
-    implementation(libs.androidx.foundation)
-    implementation(libs.androidx.runtime)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.core)
     implementation(libs.androidx.startup.runtime)
-
 
     implementation(libs.timber)
 
