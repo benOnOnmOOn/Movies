@@ -33,13 +33,13 @@ fun NavController.navigateToRootRoute(rootRoute: RootRoute) {
 fun NavController.currentRootRouteAsState(): State<RootRoute> {
 
     val selectedItem =
-        remember { mutableStateOf(com.bz.movies.presentation.navigation.RootRoute.PlayingNow) }
+        remember { mutableStateOf(RootRoute.PlayingNow) }
 
     DisposableEffect(this) {
         val listener = NavController.OnDestinationChangedListener { _, destination, _ ->
-            val item = com.bz.movies.presentation.navigation.RootRoute.values()
+            val item = RootRoute.values()
                 .find { it.route == destination.route }
-            selectedItem.value = item ?: com.bz.movies.presentation.navigation.RootRoute.PlayingNow
+            selectedItem.value = item ?: RootRoute.PlayingNow
         }
         addOnDestinationChangedListener(listener)
 
