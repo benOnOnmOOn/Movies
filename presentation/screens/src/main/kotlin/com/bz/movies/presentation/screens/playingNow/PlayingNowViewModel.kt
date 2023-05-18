@@ -1,6 +1,5 @@
 package com.bz.movies.presentation.screens.playingNow
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bz.movies.presentation.mappers.toPlayingNowMovieItem
@@ -21,7 +20,6 @@ const val TAG = "PlayingNowViewModel"
 class PlayingNowViewModel @Inject constructor(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
-
 
     private val _state = MutableStateFlow(PlayingNowState())
     val state: StateFlow<PlayingNowState> = _state.asStateFlow()

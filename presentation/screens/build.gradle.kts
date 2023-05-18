@@ -1,44 +1,34 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
-    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.junit5)
-    alias(libs.plugins.com.google.gms.google.services) apply false
-    alias(libs.plugins.firebase.crashlytics.gradle) apply false
     alias(libs.plugins.com.google.dagger.hilt.android)
     kotlin("kapt")
 }
 
 android {
-    namespace = "com.bz.movies"
+    namespace = "com.bz.presentation.screens"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.bz.movies"
         minSdk = 28
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        resourceConfigurations.add("en")
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
-            apply(plugin = "com.google.gms.google-services")
-            apply(plugin = "com.google.firebase.crashlytics")
             isMinifyEnabled = true
-            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("debug")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -46,7 +36,11 @@ android {
     kotlinOptions {
         jvmTarget = "17"
         languageVersion = KotlinVersion.KOTLIN_2_0.version
-        freeCompilerArgs = listOf("-Xjvm-default=all")
+        freeCompilerArgs = listOf(
+            "-Xjvm-default=all",
+            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+            "-opt-in=androidx.compose.material.ExperimentalMaterialApi"
+        )
     }
     buildFeatures {
         compose = true
@@ -54,26 +48,19 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.7"
     }
+
     lint {
         baseline = file("lint-baseline.xml")
         abortOnError = true
         checkAllWarnings = true
-        checkDependencies = true
         warningsAsErrors = true
         checkReleaseBuilds = false
     }
-
-    packagingOptions.resources.excludes += setOf(
-        "META-INF/**"
-    )
 }
 
-kapt {
-    correctErrorTypes = true
-}
 
 dependencies {
-    implementation(project(":presentation:screens"))
+    api(project(":data:network"))
 
     releaseImplementation(platform(libs.firebase.bom))
 
@@ -82,41 +69,51 @@ dependencies {
 
     //  HILT
     kapt(libs.hilt.android.compiler)
+    kapt(libs.dagger.compiler)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.core)
+    api(libs.dagger)
+    api(libs.javax.inject)
     //
 
-    implementation(libs.activity.compose)
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.ui)
+    api(libs.androidx.navigation.common)
+    api(libs.androidx.navigation.runtime)
+
+    api(libs.ui)
     implementation(libs.ui.graphics)
-    implementation(libs.material3)
+    implementation(libs.ui.tooling.preview)
+    api(libs.material3)
 
-    implementation(libs.androidx.lifecycle.common)
-    implementation(libs.androidx.lifecycle.viewmodel)
-    implementation(libs.androidx.navigation.common)
-    implementation(libs.androidx.navigation.runtime)
-
-    implementation(libs.androidx.activity)
     implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.foundation)
-    implementation(libs.androidx.runtime)
-    implementation(libs.androidx.material3)
+    api(libs.androidx.runtime)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.ui.text)
+    implementation(libs.androidx.ui.unit)
     implementation(libs.androidx.core)
-    implementation(libs.androidx.startup.runtime)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    api(libs.androidx.lifecycle.viewmodel)
+    api(libs.androidx.material3)
+    runtimeOnly(libs.androidx.startup.runtime)
+    implementation(libs.coil.compose)
 
+    implementation(libs.kotlinx.coroutines.core)
 
     implementation(libs.timber)
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
     testRuntimeOnly(libs.junit.engine)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.ui.tooling)
 
     androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.junit.api)
+    androidTestImplementation(libs.junit)
     androidTestRuntimeOnly(libs.junit.engine)
 
 }

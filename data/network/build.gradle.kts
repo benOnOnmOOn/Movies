@@ -4,8 +4,8 @@ plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
-    kotlin("kapt")
     alias(libs.plugins.com.google.dagger.hilt.android)
+    kotlin("kapt")
 }
 
 android {
@@ -27,14 +27,15 @@ android {
                 "proguard-rules.pro"
             )
         }
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_17
-            targetCompatibility = JavaVersion.VERSION_17
-        }
-        kotlinOptions {
-            jvmTarget = "17"
-            languageVersion = KotlinVersion.KOTLIN_2_0.version
-        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+        languageVersion = KotlinVersion.KOTLIN_2_0.version
     }
 
     lint {
@@ -47,13 +48,6 @@ android {
 
 }
 
-kapt {
-    correctErrorTypes = true
-}
-
-hilt {
-    enableAggregatingTask = true
-}
 
 dependencies {
     ksp(libs.moshi.kotlin.codegen)

@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.bz.movies.presentation.screens.empty.Greeting
+import com.bz.movies.presentation.screens.playingNow.PlayingNowScreen
 
 
 @Composable
@@ -19,7 +20,7 @@ fun MoviesNavHost(
         startDestination = RootRoute.PlayingNow.route,
     ) {
         composable(RootRoute.PlayingNow.route) {
-            Greeting(RootRoute.PlayingNow.route)
+            PlayingNowScreen()
         }
         composable(RootRoute.Popular.route) {
             Greeting(RootRoute.Popular.route)

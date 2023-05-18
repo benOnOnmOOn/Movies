@@ -1,6 +1,6 @@
 package com.bz.movies.presentation.navigation
 
-import com.bz.movies.R
+import com.bz.presentation.screens.R
 
 
 data class TopLevelDestination(
