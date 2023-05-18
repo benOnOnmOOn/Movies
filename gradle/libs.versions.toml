@@ -99,7 +99,6 @@ androidx-material = { group = "androidx.compose.material", name = "material", ve
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "com-android-plugin" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
-junit5 = { id = "de.mannodermaus.android-junit5", version = "1.8.2.1" }
 com-android-library = { id = "com.android.library", version.ref = "com-android-plugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.46.0" }
