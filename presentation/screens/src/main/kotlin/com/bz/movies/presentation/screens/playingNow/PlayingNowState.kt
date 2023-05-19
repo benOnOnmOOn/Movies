@@ -1,11 +1,9 @@
 package com.bz.movies.presentation.screens.playingNow
 
+import com.bz.movies.presentation.screens.MovieItem
+
 data class PlayingNowState(
     val isLoading: Boolean = true,
-    val playingNowMovies: List<PlayingNowMovieItem> = emptyList()
+    val playingNowMovies: List<MovieItem> = emptyList()
 )
 
-data class PlayingNowMovieItem(
-    val id: Int,
-    val posterUrl: String,
-)

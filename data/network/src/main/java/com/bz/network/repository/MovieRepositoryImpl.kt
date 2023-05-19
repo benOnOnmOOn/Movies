@@ -5,12 +5,11 @@ import com.bz.network.api.model.PlayingNowMoviesApiResponse
 import com.bz.network.api.model.PopularMoviesPageApiResponse
 import com.bz.network.api.service.MovieService
 import com.bz.network.repository.mapper.toMovieDetailDto
-import com.bz.network.repository.mapper.toPlayingNowMovieDto
+import com.bz.network.repository.mapper.toMovieDto
 import com.bz.network.repository.mapper.toPopularMovieDto
 import com.bz.network.repository.mapper.toPopularMoviePageDto
 import com.bz.network.repository.model.MoveDetailDto
-import com.bz.network.repository.model.PlayingNowMovieDto
-import com.bz.network.repository.model.PopularMovieDto
+import com.bz.network.repository.model.MovieDto
 import com.bz.network.repository.model.PopularMoviePageDto
 import com.bz.network.utils.InternetConnection
 import kotlinx.coroutines.Dispatchers
@@ -25,8 +24,8 @@ internal class MovieRepositoryImpl(
     private val internetConnectionChecker: InternetConnection,
 ) : MovieRepository {
 
-    override suspend fun getPlayingNowMovies(): Result<List<PlayingNowMovieDto>> =
-        executeApiCall(PlayingNowMoviesApiResponse::toPlayingNowMovieDto) {
+    override suspend fun getPlayingNowMovies(): Result<List<MovieDto>> =
+        executeApiCall(PlayingNowMoviesApiResponse::toMovieDto) {
             movieService.getNowPlayingMovies(
                 apiKey = AUTH_KEY,
                 language = LANGUAGE,
@@ -34,7 +33,7 @@ internal class MovieRepositoryImpl(
             )
         }
 
-    override suspend fun getPopularMovies(page: Int): Result<List<PopularMovieDto>> =
+    override suspend fun getPopularMovies(page: Int): Result<List<MovieDto>> =
         executeApiCall(PopularMoviesPageApiResponse::toPopularMovieDto) {
             movieService.getPopularMoviePage(
                 apiKey = AUTH_KEY,

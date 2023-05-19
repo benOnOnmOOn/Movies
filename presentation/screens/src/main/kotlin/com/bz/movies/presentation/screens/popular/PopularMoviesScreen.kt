@@ -25,7 +25,7 @@ private fun PopularMoviesScreen(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "PlayingNow !!")
+        Text(text = "Popular now")
 
         PopularMoviesContent(playingNowState = state) {
 

@@ -2,9 +2,9 @@ package com.bz.movies.presentation.screens.popular
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bz.movies.presentation.mappers.toPopularMovieItem
+import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.network.repository.MovieRepository
-import com.bz.network.repository.model.PopularMovieDto
+import com.bz.network.repository.model.MovieDto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -33,7 +33,7 @@ class PopularMoviesViewModel @Inject constructor(
             _state.update {
                 PopularMoviesState(
                     isLoading = false,
-                    playingNowMovies = data.map(PopularMovieDto::toPopularMovieItem)
+                    playingNowMovies = data.map(MovieDto::toMovieItem)
                 )
             }
         }
