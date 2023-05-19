@@ -22,6 +22,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            @Suppress("UnstableApiUsage")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -75,14 +76,13 @@ dependencies {
     testRuntimeOnly(libs.junit.engine)
 
     testImplementation(libs.mockk.dsl)
-    testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockk)
     testImplementation(libs.mockwebserver)
+    testImplementation(libs.junit.api)
 
-    androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.junit.api)
 
     runtimeOnly(libs.kotlinx.coroutines.android)
 }

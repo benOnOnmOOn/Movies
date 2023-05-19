@@ -21,6 +21,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            @Suppress("UnstableApiUsage")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -112,7 +113,8 @@ dependencies {
     debugRuntimeOnly(libs.androidx.ui.tooling)
 
     androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.junit)
     androidTestRuntimeOnly(libs.junit.engine)
+    androidTestImplementation(libs.junit.api)
+
 
 }
