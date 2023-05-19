@@ -1,6 +1,5 @@
 package com.bz.network.api
 
-import com.bz.network.utils.enqueueFromFile
 import com.bz.network.api.model.BelongsToCollection
 import com.bz.network.api.model.Genre
 import com.bz.network.api.model.MovieDetailsApiResponse
@@ -10,10 +9,13 @@ import com.bz.network.api.model.ProductionCompany
 import com.bz.network.api.model.ProductionCountry
 import com.bz.network.api.model.SpokenLanguage
 import com.bz.network.api.service.MovieService
+import com.bz.network.utils.enqueueFromFile
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockWebServer
-import org.junit.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -46,11 +48,11 @@ internal class ApiTest {
 
         val response =
             movieService.getMovieDetails(language = "en-US", apiKey = "api-key", movieId = 23)
-        Assert.assertTrue(response.isSuccessful)
+        assertTrue(response.isSuccessful)
 
-        Assert.assertTrue(response.body() is MovieDetailsApiResponse)
+        assertTrue(response.body() is MovieDetailsApiResponse)
         val body = response.body()!!
-        Assert.assertEquals(EXPECTED_MOVIE_DETAILS, body)
+        assertEquals(EXPECTED_MOVIE_DETAILS, body)
     }
 
     @Test
@@ -59,9 +61,9 @@ internal class ApiTest {
 
         val response =
             movieService.getNowPlayingMovies(language = "en-US", apiKey = "api-key", page = "1")
-        Assert.assertTrue(response.isSuccessful)
+        assertTrue(response.isSuccessful)
 
-        Assert.assertTrue(response.body() is PlayingNowMoviesApiResponse)
+        assertTrue(response.body() is PlayingNowMoviesApiResponse)
 
     }
 
@@ -71,9 +73,9 @@ internal class ApiTest {
 
         val response =
             movieService.getPopularMoviePage(language = "en-US", apiKey = "api-key", page = 2)
-        Assert.assertTrue(response.isSuccessful)
+        assertTrue(response.isSuccessful)
 
-        Assert.assertTrue(response.body() is PopularMoviesPageApiResponse)
+        assertTrue(response.body() is PopularMoviesPageApiResponse)
 
     }
 

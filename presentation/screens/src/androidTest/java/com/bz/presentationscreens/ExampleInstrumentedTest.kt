@@ -1,8 +1,8 @@
 package com.bz.presentationscreens
 
 import androidx.test.platform.app.InstrumentationRegistry
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 /**
  * Instrumented test, which will execute on an Android device.
