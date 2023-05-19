@@ -2,9 +2,9 @@ package com.bz.movies.presentation.screens.playingNow
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bz.movies.presentation.mappers.toPlayingNowMovieItem
+import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.network.repository.MovieRepository
-import com.bz.network.repository.model.PlayingNowMovieDto
+import com.bz.network.repository.model.MovieDto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,8 +13,6 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
-
-const val TAG = "PlayingNowViewModel"
 
 @HiltViewModel
 class PlayingNowViewModel @Inject constructor(
@@ -36,7 +34,7 @@ class PlayingNowViewModel @Inject constructor(
             _state.update {
                 PlayingNowState(
                     isLoading = false,
-                    playingNowMovies = data.map(PlayingNowMovieDto::toPlayingNowMovieItem)
+                    playingNowMovies = data.map(MovieDto::toMovieItem)
                 )
             }
         }

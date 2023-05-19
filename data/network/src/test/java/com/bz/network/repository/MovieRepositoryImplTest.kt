@@ -4,9 +4,12 @@ import com.bz.network.api.model.Dates
 import com.bz.network.api.model.MovieApiResponse
 import com.bz.network.api.model.PlayingNowMoviesApiResponse
 import com.bz.network.api.service.MovieService
-import com.bz.network.repository.model.PlayingNowMovieDto
+import com.bz.network.repository.model.MovieDto
 import com.bz.network.utils.InternetConnection
-import io.mockk.*
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.every
+import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Assert.assertEquals
@@ -110,10 +113,14 @@ class MovieRepositoryImplTest {
             totalResults = 234,
         )
 
-        val EXPECTED_NOW_PLAYING_MOVIES: List<PlayingNowMovieDto> = listOf(
-            PlayingNowMovieDto(
+        val EXPECTED_NOW_PLAYING_MOVIES: List<MovieDto> = listOf(
+            MovieDto(
                 id = 1,
-                posterUrl = "poster/path"
+                posterUrl = "poster/path",
+                title = "Muminki",
+                publicationDate = "24-90-2567",
+                language = "Polish",
+                rating = 46
             )
         )
     }

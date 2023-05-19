@@ -1,14 +1,9 @@
 package com.bz.movies.presentation.screens.popular
 
+import com.bz.movies.presentation.screens.MovieItem
+
 data class PopularMoviesState(
     val isLoading: Boolean = true,
-    val playingNowMovies: List<PopularMovieItem> = emptyList()
+    val playingNowMovies: List<MovieItem> = emptyList()
 )
 
-data class PopularMovieItem(
-    val id: Int,
-    val posterUrl: String,
-    val title: String,
-    val releaseDate: String,
-    val rating: Int,
-)
