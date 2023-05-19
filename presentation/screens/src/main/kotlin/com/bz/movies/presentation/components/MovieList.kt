@@ -60,9 +60,11 @@ fun PopularMoviesItemContent(movieItem: MovieItem, isLast: Boolean) {
 
     Spacer(modifier = Modifier.height(12.dp))
 
-    Divider(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(2.dp),
-    )
+    if (!isLast) {
+        Divider(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(2.dp),
+        )
+    }
 }

@@ -14,8 +14,6 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
-const val TAG = "PlayingNowViewModel"
-
 @HiltViewModel
 class PlayingNowViewModel @Inject constructor(
     private val movieRepository: MovieRepository
