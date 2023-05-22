@@ -64,13 +64,16 @@ dependencies {
     api(libs.javax.inject)
     //
 
-    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.sqlite)
+    implementation(libs.kotlinx.coroutines.core)
+
+    api(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
     testImplementation(libs.junit.api)
 
-    androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.junit.api)
-
+    androidTestImplementation(libs.androidx.monitor)
 }
