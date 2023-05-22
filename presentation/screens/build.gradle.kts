@@ -89,7 +89,7 @@ dependencies {
     api(libs.ui)
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
-    api(libs.material3)
+    api(libs.androidx.material3)
 
     implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.foundation)

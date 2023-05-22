@@ -80,7 +80,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.ui)
     implementation(libs.ui.graphics)
-    implementation(libs.material3)
+    implementation(libs.androidx.material3)
 
     implementation(libs.androidx.lifecycle.common)
     api(libs.androidx.lifecycle.viewmodel)
