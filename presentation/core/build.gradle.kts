@@ -22,6 +22,7 @@ android {
         release {
             isMinifyEnabled = true
             proguardFiles(
+                @Suppress("UnstableApiUsage")
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
@@ -36,6 +37,7 @@ android {
         languageVersion = KotlinVersion.KOTLIN_2_0.version
         freeCompilerArgs = listOf("-Xjvm-default=all")
     }
+    @Suppress("UnstableApiUsage")
     buildFeatures {
         compose = true
     }
@@ -56,6 +58,10 @@ android {
     )
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
     implementation(project(":presentation:screens"))
 
@@ -74,7 +80,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.ui)
     implementation(libs.ui.graphics)
-    implementation(libs.material3)
+    implementation(libs.androidx.material3)
 
     implementation(libs.androidx.lifecycle.common)
     api(libs.androidx.lifecycle.viewmodel)

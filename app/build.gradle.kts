@@ -32,6 +32,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
+                @Suppress("UnstableApiUsage")
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )

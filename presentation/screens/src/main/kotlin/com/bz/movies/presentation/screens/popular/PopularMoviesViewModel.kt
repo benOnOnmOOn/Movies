@@ -2,6 +2,8 @@ package com.bz.movies.presentation.screens.popular
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bz.movies.database.repository.LocalMovieRepository
+import com.bz.movies.database.repository.model.FavoriteMovieDto
 import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.model.MovieDto
@@ -15,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PopularMoviesViewModel @Inject constructor(
-    private val movieRepository: MovieRepository
+    private val movieRepository: MovieRepository,
+    private val localMovieRepository: LocalMovieRepository,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(PopularMoviesState())
@@ -23,6 +26,7 @@ class PopularMoviesViewModel @Inject constructor(
 
     init {
         fetchPopularNowMovies()
+
     }
 
     private fun fetchPopularNowMovies() = viewModelScope.launch {
@@ -34,6 +38,19 @@ class PopularMoviesViewModel @Inject constructor(
                 PopularMoviesState(
                     isLoading = false,
                     playingNowMovies = data.map(MovieDto::toMovieItem)
+                )
+            }
+            data.forEach {
+
+                localMovieRepository.insertFavoriteMovie(
+                    FavoriteMovieDto(
+                        rating = it.rating,
+                        language = it.language,
+                        title = it.title,
+                        publicationDate = it.publicationDate,
+                        id = it.id,
+                        posterUrl = it.posterUrl
+                    )
                 )
             }
         }
