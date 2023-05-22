@@ -1,6 +1,12 @@
 pluginManagement {
     repositories {
-        google()
+        google {
+            content {
+                includeGroupByRegex("com.android.*")
+                includeGroupByRegex("androidx.*")
+                includeGroupByRegex("com.google.*")
+            }
+        }
         gradlePluginPortal()
     }
 }
@@ -9,6 +15,7 @@ plugins {
     id("com.gradle.enterprise") version ("3.13.1")
 }
 
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -35,3 +42,4 @@ include(":app")
 include(":data:network")
 include(":presentation:screens")
 include(":presentation:core")
+include(":data:database")

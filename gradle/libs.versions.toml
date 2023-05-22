@@ -1,5 +1,5 @@
 [versions]
-coil-compose = "2.3.0"
+coil-compose = "2.4.0"
 com-android-plugin = "8.0.1"
 compose = "1.4.3"
 firebase-bom = "32.0.0"
@@ -8,7 +8,6 @@ hilt-navigation-compose = "1.0.0"
 javax-inject = "1"
 kotlinx-coroutines = "1.7.1"
 material3 = "1.1.0"
-mockk-dsl = "1.13.5"
 monitor = "1.6.1"
 navigation-compose = "2.5.3"
 org-jetbrains-kotlin-android = "1.8.21"
@@ -26,6 +25,7 @@ moshi = "1.15.0"
 okhttp = "4.11.0"
 retrofit = "2.9.0"
 mockk = "1.13.5"
+room-runtime = "2.5.1"
 startup-runtime = "1.1.1"
 timber = "5.0.1"
 
@@ -46,6 +46,9 @@ androidx-monitor = { module = "androidx.test:monitor", version.ref = "monitor" }
 androidx-navigation-common = { module = "androidx.navigation:navigation-common", version.ref = "navigation-compose" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
 androidx-navigation-runtime = { module = "androidx.navigation:navigation-runtime", version.ref = "navigation-compose" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-runtime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room-runtime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room-runtime" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startup-runtime" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
@@ -71,7 +74,7 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
-mockk-dsl = { module = "io.mockk:mockk-dsl", version.ref = "mockk-dsl" }
+mockk-dsl = { module = "io.mockk:mockk-dsl", version.ref = "mockk" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
@@ -92,7 +95,7 @@ logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-intercep
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
-androidx-material = { group = "androidx.compose.material", name = "material", version = "1.4.3" }
+androidx-material = { group = "androidx.compose.material", name = "material", version.ref = "compose" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "com-android-plugin" }

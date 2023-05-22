@@ -22,6 +22,7 @@ android {
         release {
             isMinifyEnabled = true
             proguardFiles(
+                @Suppress("UnstableApiUsage")
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
@@ -36,6 +37,7 @@ android {
         languageVersion = KotlinVersion.KOTLIN_2_0.version
         freeCompilerArgs = listOf("-Xjvm-default=all")
     }
+    @Suppress("UnstableApiUsage")
     buildFeatures {
         compose = true
     }
@@ -54,6 +56,10 @@ android {
     packagingOptions.resources.excludes += setOf(
         "META-INF/**"
     )
+}
+
+kapt {
+    correctErrorTypes = true
 }
 
 dependencies {

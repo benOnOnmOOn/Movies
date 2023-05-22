@@ -42,6 +42,7 @@ android {
             "-opt-in=androidx.compose.material.ExperimentalMaterialApi"
         )
     }
+    @Suppress("UnstableApiUsage")
     buildFeatures {
         compose = true
     }
@@ -58,9 +59,13 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
 
 dependencies {
     api(project(":data:network"))
+    api(project(":data:database"))
 
     releaseImplementation(platform(libs.firebase.bom))
 
