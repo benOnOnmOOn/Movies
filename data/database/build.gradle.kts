@@ -49,6 +49,10 @@ android {
 
 }
 
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 kapt {
     correctErrorTypes = true
 }
