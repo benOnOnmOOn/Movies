@@ -1,4 +1,4 @@
-package com.bz.network.repository.model
+package com.bz.dto
 
 data class MovieDto(
     val id: Int,

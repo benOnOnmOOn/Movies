@@ -1,5 +1,6 @@
 package com.bz.network.repository
 
+import com.bz.dto.MovieDto
 import com.bz.network.api.model.MovieDetailsApiResponse
 import com.bz.network.api.model.PlayingNowMoviesApiResponse
 import com.bz.network.api.model.PopularMoviesPageApiResponse
@@ -9,7 +10,6 @@ import com.bz.network.repository.mapper.toMovieDto
 import com.bz.network.repository.mapper.toPopularMovieDto
 import com.bz.network.repository.mapper.toPopularMoviePageDto
 import com.bz.network.repository.model.MoveDetailDto
-import com.bz.network.repository.model.MovieDto
 import com.bz.network.repository.model.PopularMoviePageDto
 import com.bz.network.utils.InternetConnection
 import kotlinx.coroutines.Dispatchers

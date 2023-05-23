@@ -66,6 +66,7 @@ kapt {
 dependencies {
     api(project(":data:network"))
     api(project(":data:database"))
+    api(project(":data:dto"))
 
     releaseImplementation(platform(libs.firebase.bom))
 

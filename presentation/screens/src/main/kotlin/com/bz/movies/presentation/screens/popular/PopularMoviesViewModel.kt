@@ -2,11 +2,10 @@ package com.bz.movies.presentation.screens.popular
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bz.dto.MovieDto
 import com.bz.movies.database.repository.LocalMovieRepository
-import com.bz.movies.database.repository.model.FavoriteMovieDto
 import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.network.repository.MovieRepository
-import com.bz.network.repository.model.MovieDto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -43,7 +42,7 @@ class PopularMoviesViewModel @Inject constructor(
             data.forEach {
 
                 localMovieRepository.insertFavoriteMovie(
-                    FavoriteMovieDto(
+                    MovieDto(
                         rating = it.rating,
                         language = it.language,
                         title = it.title,

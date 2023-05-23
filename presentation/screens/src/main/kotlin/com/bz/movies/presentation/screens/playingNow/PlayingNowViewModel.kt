@@ -2,9 +2,9 @@ package com.bz.movies.presentation.screens.playingNow
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bz.dto.MovieDto
 import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.network.repository.MovieRepository
-import com.bz.network.repository.model.MovieDto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

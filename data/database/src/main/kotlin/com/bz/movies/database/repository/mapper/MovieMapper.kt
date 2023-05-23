@@ -1,9 +1,9 @@
 package com.bz.movies.database.repository.mapper
 
+import com.bz.dto.MovieDto
 import com.bz.movies.database.entity.MovieEntity
-import com.bz.movies.database.repository.model.FavoriteMovieDto
 
-internal fun MovieEntity.toMovieDto() = FavoriteMovieDto(
+internal fun MovieEntity.toMovieDto() = MovieDto(
     id = id.toInt(),
     posterUrl = posterUrl,
     title = title,
@@ -12,7 +12,7 @@ internal fun MovieEntity.toMovieDto() = FavoriteMovieDto(
     rating = rating,
 )
 
-internal fun FavoriteMovieDto.toEntity() = MovieEntity(
+internal fun MovieDto.toEntity() = MovieEntity(
     id = id.toLong(),
     posterUrl = posterUrl,
     title = title,
