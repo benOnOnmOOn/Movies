@@ -14,6 +14,7 @@ plugins {
     alias(libs.plugins.com.google.gms.google.services ) apply false
     alias(libs.plugins.firebase.crashlytics.gradle) apply false
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
+    alias(libs.plugins.org.jetbrains.kotlin.jvm) apply false
 }
 
 fun isNonStable(version: String): Boolean {

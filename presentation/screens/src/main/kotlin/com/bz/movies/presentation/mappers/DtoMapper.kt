@@ -1,7 +1,7 @@
 package com.bz.movies.presentation.mappers
 
+import com.bz.dto.MovieDto
 import com.bz.movies.presentation.screens.MovieItem
-import com.bz.network.repository.model.MovieDto
 
 fun MovieDto.toMovieItem() = MovieItem(
     id = id,

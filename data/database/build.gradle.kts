@@ -59,6 +59,7 @@ kapt {
 
 dependencies {
 
+    implementation(project(":data:dto"))
     // HILT
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

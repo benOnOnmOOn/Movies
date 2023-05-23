@@ -54,6 +54,8 @@ kapt {
 }
 
 dependencies {
+    implementation(project(":data:dto"))
+
     ksp(libs.moshi.kotlin.codegen)
 
     // HILT
