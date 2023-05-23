@@ -29,7 +29,6 @@ room-runtime = "2.5.1"
 sqlite = "2.3.1"
 startup-runtime = "1.1.1"
 timber = "5.0.1"
-org-jetbrains-kotlin-jvm = "1.8.21"
 
 
 [libraries]
@@ -110,6 +109,5 @@ dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version =
 com-google-gms-google-services = { id = "com.google.gms.google-services", version = "4.3.15" }
 firebase-crashlytics-gradle = { id = "com.google.firebase.crashlytics", version = "2.9.5" }
 com-google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
 [bundles]
 

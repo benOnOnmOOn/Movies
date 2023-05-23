@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 plugins {
-    kotlin("jvm") version "1.8.21"
+    kotlin("jvm")
 }
 
 java {
