@@ -1,10 +1,10 @@
 package com.bz.network.repository
 
+import com.bz.dto.MovieDto
 import com.bz.network.api.model.Dates
 import com.bz.network.api.model.MovieApiResponse
 import com.bz.network.api.model.PlayingNowMoviesApiResponse
 import com.bz.network.api.service.MovieService
-import com.bz.network.repository.model.MovieDto
 import com.bz.network.utils.InternetConnection
 import io.mockk.coEvery
 import io.mockk.coVerify

@@ -11,7 +11,7 @@ plugins {
     alias(libs.plugins.gradle.versions) apply true
     alias(libs.plugins.detekt)
     alias(libs.plugins.dependency.analysis) apply true
-    alias(libs.plugins.com.google.gms.google.services ) apply false
+    alias(libs.plugins.com.google.gms.google.services) apply false
     alias(libs.plugins.firebase.crashlytics.gradle) apply false
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
     alias(libs.plugins.org.jetbrains.kotlin.jvm) apply false
@@ -88,4 +88,14 @@ tasks.withType<DetektCreateBaselineTask>().configureEach {
 
 dependencyAnalysis {
     issues { all { onAny { severity("fail") } } }
+    project(":data:dto") {
+        issues {
+            all {
+                onUnusedDependencies {
+                    // fix weird issues raised by plugin on kotlin module without any dependency
+                    exclude("() -> java.io.File?")
+                }
+            }
+        }
+    }
 }

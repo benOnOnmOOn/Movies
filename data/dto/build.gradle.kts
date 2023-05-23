@@ -15,7 +15,6 @@ kotlin {
     jvmToolchain(17)
 }
 
-
 tasks.named<KotlinCompilationTask<KotlinJvmCompilerOptions>>("compileKotlin") {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_17)
