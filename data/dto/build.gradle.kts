@@ -1,7 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
-
 plugins {
     kotlin("jvm")
 }
@@ -11,14 +7,11 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-kotlin {
-    jvmToolchain(17)
-}
-
-tasks.named<KotlinCompilationTask<KotlinJvmCompilerOptions>>("compileKotlin") {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-        freeCompilerArgs = listOf("-Xjvm-default=all")
+dependencyAnalysis {
+    issues {
+        onUnusedDependencies {
+            // fix weird issues raised by plugin on kotlin module without any dependency
+            exclude("() -> java.io.File?")
+        }
     }
 }
-
