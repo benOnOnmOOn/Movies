@@ -55,6 +55,7 @@ ksp {
 
 kapt {
     correctErrorTypes = true
+    useBuildCache = true
 }
 
 dependencies {
