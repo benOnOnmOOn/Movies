@@ -3,13 +3,5 @@
   <ManuallySuppressedIssues></ManuallySuppressedIssues>
   <CurrentIssues>
     <ID>MaxLineLength:ApiTest.kt$ApiTest.Companion$overview = "A botched store robbery places Wonder Woman in a global battle against a powerful and mysterious ancient force that puts her powers in jeopardy."</ID>
-    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.bz.movies.ExampleInstrumentedTest.kt</ID>
-    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.bz.network.ExampleInstrumentedTest.kt</ID>
-    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$com.bz.movies.ExampleUnitTest.kt</ID>
-    <ID>NewLineAtEndOfFile:MockWebServerUtils.kt$com.bz.network.utils.MockWebServerUtils.kt</ID>
-    <ID>NewLineAtEndOfFile:MovieRepositoryImplTest.kt$com.bz.network.repository.MovieRepositoryImplTest.kt</ID>
-    <ID>WildcardImport:ApiTest.kt$import org.junit.*</ID>
-    <ID>WildcardImport:ExampleInstrumentedTest.kt$import org.junit.Assert.*</ID>
-    <ID>WildcardImport:MovieRepositoryImplTest.kt$import io.mockk.*</ID>
   </CurrentIssues>
 </SmellBaseline>
