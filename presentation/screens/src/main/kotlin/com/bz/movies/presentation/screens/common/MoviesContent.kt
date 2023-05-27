@@ -1,4 +1,4 @@
-package com.bz.movies.presentation.screens.playingNow
+package com.bz.movies.presentation.screens.common
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,12 +18,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.bz.movies.presentation.components.PopularMoviesItemContent
+import com.bz.movies.presentation.components.MovieContent
 
 @Composable
-fun PlayingNowContent(
-    playingNowState: PlayingNowState,
-    refresh: () -> Unit,
+fun MoviesContent(
+    playingNowState: MoviesState,
+    refresh: () -> Unit = {},
+    onMovieClicked: (MovieItem) -> Unit,
 ) {
 
     var isFromPullUp by remember { mutableStateOf(false) }
@@ -46,17 +47,17 @@ fun PlayingNowContent(
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(9.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             itemsIndexed(playingNowState.playingNowMovies) { index, movieItem ->
-                PopularMoviesItemContent(
-                    movieItem,
-                    index == playingNowState.playingNowMovies.size - 1
+                MovieContent(
+                    movieItem = movieItem,
+                    isLast = index == playingNowState.playingNowMovies.size - 1,
+                    onMovieClicked = onMovieClicked
                 )
             }
         }
-
 
         PullRefreshIndicator(
             isLoadingFromPullUp,

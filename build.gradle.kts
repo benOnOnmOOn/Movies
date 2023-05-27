@@ -69,11 +69,8 @@ allprojects {
     tasks.withType<KotlinCompilationTask<KotlinJvmCompilerOptions>> {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_17)
-            freeCompilerArgs = listOf(
-                "-Xjvm-default=all",
-                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-                "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
-            )
+
+            freeCompilerArgs.add("-Xjvm-default=all")
         }
     }
 }

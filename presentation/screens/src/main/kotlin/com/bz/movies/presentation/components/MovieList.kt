@@ -1,6 +1,7 @@
 package com.bz.movies.presentation.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,17 +18,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.bz.movies.presentation.screens.MovieItem
+import com.bz.movies.presentation.screens.common.MovieItem
 import com.bz.presentation.screens.R
 
 @Composable
-fun PopularMoviesItemContent(movieItem: MovieItem, isLast: Boolean) {
+fun MovieContent(movieItem: MovieItem, isLast: Boolean, onMovieClicked: (MovieItem) -> Unit) {
     Row(
         Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .padding(4.dp),
-    ) {
+            .padding(4.dp)
+            .clickable { onMovieClicked(movieItem) },
+
+        ) {
         AsyncImage(
             modifier = Modifier
                 .height(80.dp)

@@ -1,4 +1,6 @@
-package com.bz.movies.presentation.screens.popular
+@file:JvmName("FavoriteScreenViewModelKt")
+
+package com.bz.movies.presentation.screens.favorite
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
@@ -14,35 +16,34 @@ import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.movies.presentation.theme.MoviesTheme
 
 @Composable
-fun PopularMoviesScreen(
-    playingNowViewModel: PopularMoviesViewModel = hiltViewModel()
+fun FavoriteScreen(
+    favoriteScreenViewModel: FavoriteScreenViewModel = hiltViewModel()
 ) {
-    val playingNow by playingNowViewModel.state.collectAsState()
-    PopularMoviesScreen(playingNow, playingNowViewModel::sendEvent)
+    val playingNow by favoriteScreenViewModel.state.collectAsState()
+    FavoriteScreen(playingNow, favoriteScreenViewModel::sendEvent)
 }
 
 @Composable
-private fun PopularMoviesScreen(
+private fun FavoriteScreen(
     state: MoviesState = MoviesState(),
     sendEvent: (MovieEvent) -> Unit,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Popular now")
+        Text(text = "Your favorite movies")
 
         MoviesContent(playingNowState = state) {
             sendEvent(MovieEvent.OnMovieClicked(it))
         }
-
     }
 
 }
 
 @Preview(showBackground = true)
 @Composable
-private fun PopularMoviesScreen() {
+private fun PlayingNowScreen() {
     MoviesTheme {
-        PopularMoviesScreen()
+        PlayingNowScreen()
     }
 }

@@ -1,4 +1,4 @@
-package com.bz.movies.presentation.screens.playingNow
+package com.bz.movies.presentation.screens.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,7 +12,6 @@ import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.movies.presentation.utils.launch
 import com.bz.network.repository.EmptyBodyException
 import com.bz.network.repository.HttpException
-import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -21,14 +20,14 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class PlayingNowViewModel @Inject constructor(
-    private val movieRepository: MovieRepository,
+class FavoriteScreenViewModel @Inject constructor(
     private val localMovieRepository: LocalMovieRepository,
 ) : ViewModel() {
 
@@ -42,7 +41,7 @@ class PlayingNowViewModel @Inject constructor(
     val effect = _effect.asSharedFlow()
 
     init {
-        fetchPlayingNowMovies()
+        fetchFavoriteScreen()
         handleEvent()
     }
 
@@ -57,34 +56,34 @@ class PlayingNowViewModel @Inject constructor(
     private suspend fun handleEvent(event: MovieEvent) {
         when (event) {
             is MovieEvent.OnMovieClicked ->
-                localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())
+                localMovieRepository.deleteFavoriteMovie(event.movieItem.toDTO())
         }
     }
 
-    private fun fetchPlayingNowMovies() = viewModelScope.launch {
+    private fun fetchFavoriteScreen() = viewModelScope.launch {
 
-        val result = movieRepository.getPlayingNowMovies()
-
-        result.onSuccess { data ->
-            _state.update {
-                MoviesState(
-                    isLoading = false,
-                    playingNowMovies = data.map(MovieDto::toMovieItem)
-                )
+        localMovieRepository.favoritesMovies.collectLatest { result ->
+            result.onSuccess { data ->
+                _state.update {
+                    MoviesState(
+                        isLoading = false,
+                        playingNowMovies = data.map(MovieDto::toMovieItem)
+                    )
+                }
             }
-        }
-        result.onFailure {
-            val error = when (it) {
-                is NoInternetException, is HttpException, is EmptyBodyException ->
-                    MovieEffect.NetworkConnectionError
+            result.onFailure {
+                val error = when (it) {
+                    is NoInternetException, is HttpException, is EmptyBodyException ->
+                        MovieEffect.NetworkConnectionError
 
-                else -> MovieEffect.UnknownError
+                    else -> MovieEffect.UnknownError
+                }
+                _effect.emit(error)
+                Timber.e(it)
+                _state.update { MoviesState(isLoading = false) }
             }
-            _effect.emit(error)
-            Timber.e(it)
-            _state.update { MoviesState(isLoading = false) }
         }
 
     }
-
 }
+

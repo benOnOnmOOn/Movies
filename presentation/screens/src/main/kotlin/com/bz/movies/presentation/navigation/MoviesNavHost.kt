@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.bz.movies.presentation.screens.empty.Greeting
+import com.bz.movies.presentation.screens.favorite.FavoriteScreen
 import com.bz.movies.presentation.screens.playingNow.PlayingNowScreen
 import com.bz.movies.presentation.screens.popular.PopularMoviesScreen
 
@@ -27,7 +28,7 @@ fun MoviesNavHost(
             PopularMoviesScreen()
         }
         composable(RootRoute.Favorite.route) {
-            Greeting(RootRoute.Favorite.route)
+            FavoriteScreen()
         }
         composable(RootRoute.More.route) {
             Greeting(RootRoute.More.route)
