@@ -10,6 +10,9 @@ import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.movies.presentation.utils.launch
+import com.bz.network.repository.EmptyBodyException
+import com.bz.network.repository.HttpException
+import com.bz.network.repository.NoInternetException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -69,6 +72,13 @@ class FavoriteScreenViewModel @Inject constructor(
                 }
             }
             result.onFailure {
+                val error = when (it) {
+                    is NoInternetException, is HttpException, is EmptyBodyException ->
+                        MovieEffect.NetworkConnectionError
+
+                    else -> MovieEffect.UnknownError
+                }
+                _effect.emit(error)
                 Timber.e(it)
                 _state.update { MoviesState(isLoading = false) }
             }

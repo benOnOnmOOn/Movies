@@ -1,3 +1,7 @@
 package com.bz.movies.presentation.screens.common
 
-sealed class MovieEffect
+sealed class MovieEffect {
+    object NetworkConnectionError : MovieEffect()
+
+    object UnknownError : MovieEffect()
+}
