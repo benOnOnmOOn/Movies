@@ -1,6 +1,9 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -43,13 +46,14 @@ val androidTestFiles = "**/androidTest/**"
 detekt {
     buildUponDefaultConfig = true
     allRules = false
-    config = files(configFile)
+    config.setFrom(files(configFile))
     baseline = file(baselineFile)
     parallel = true
     ignoreFailures = false
     autoCorrect = false
     buildUponDefaultConfig = true
 }
+
 
 tasks.withType<Detekt>().configureEach {
     reports {
@@ -58,6 +62,19 @@ tasks.withType<Detekt>().configureEach {
         txt.required.set(true)
         sarif.required.set(true)
         md.required.set(true)
+    }
+}
+
+allprojects {
+    tasks.withType<KotlinCompilationTask<KotlinJvmCompilerOptions>> {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+            freeCompilerArgs = listOf(
+                "-Xjvm-default=all",
+                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+                "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
+            )
+        }
     }
 }
 
@@ -87,14 +104,4 @@ tasks.withType<DetektCreateBaselineTask>().configureEach {
 
 dependencyAnalysis {
     issues { all { onAny { severity("fail") } } }
-    project(":data:dto") {
-        issues {
-            all {
-                onUnusedDependencies {
-                    // fix weird issues raised by plugin on kotlin module without any dependency
-                    exclude("() -> java.io.File?")
-                }
-            }
-        }
-    }
 }
