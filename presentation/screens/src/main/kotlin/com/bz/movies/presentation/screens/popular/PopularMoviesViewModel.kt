@@ -40,21 +40,6 @@ class PopularMoviesViewModel @Inject constructor(
                     playingNowMovies = data.map(MovieDto::toMovieItem)
                 )
             }
-            data
-                .take(3)
-                .forEach {
-
-                    localMovieRepository.insertFavoriteMovie(
-                        MovieDto(
-                            rating = it.rating,
-                            language = it.language,
-                            title = it.title,
-                            publicationDate = it.publicationDate,
-                            id = it.id,
-                            posterUrl = it.posterUrl
-                        )
-                    )
-                }
         }
         result.onFailure {
             _state.update { MoviesState(isLoading = false) }

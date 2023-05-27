@@ -9,5 +9,14 @@ fun MovieDto.toMovieItem() = MovieItem(
     title = title,
     releaseDate = publicationDate,
     rating = rating,
+    language = language,
 )
 
+fun MovieItem.toDTO() = MovieDto(
+    rating = rating,
+    language = language,
+    title = title,
+    publicationDate = releaseDate,
+    id = id,
+    posterUrl = posterUrl
+)

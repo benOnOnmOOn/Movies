@@ -18,12 +18,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.bz.movies.presentation.components.PopularMoviesItemContent
+import com.bz.movies.presentation.components.MovieContent
 
 @Composable
 fun MoviesContent(
     playingNowState: MoviesState,
-    refresh: () -> Unit,
+    refresh: () -> Unit = {},
+    onMovieClicked: (MovieItem) -> Unit,
 ) {
 
     var isFromPullUp by remember { mutableStateOf(false) }
@@ -50,9 +51,10 @@ fun MoviesContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             itemsIndexed(playingNowState.playingNowMovies) { index, movieItem ->
-                PopularMoviesItemContent(
-                    movieItem,
-                    index == playingNowState.playingNowMovies.size - 1
+                MovieContent(
+                    movieItem = movieItem,
+                    isLast = index == playingNowState.playingNowMovies.size - 1,
+                    onMovieClicked = onMovieClicked
                 )
             }
         }
