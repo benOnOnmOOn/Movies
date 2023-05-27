@@ -32,15 +32,12 @@ internal class LocalMovieRepositoryImpl(
         }
 
 
-    override val favoritesMovies2: Flow<Result<List<MovieDto>>>
+    override val favoritesMovies: Flow<Result<List<MovieDto>>>
         get() = runCatching { movieDAO.observeAllMovies().map { it.map(MovieEntity::toMovieDto) } }
             .fold(
                 onSuccess = { it.map(Result.Companion::success) },
                 onFailure = { flowOf(Result.failure(it)) }
             )
-
-    override val favoritesMovies: Flow<List<MovieDto>> =
-        movieDAO.observeAllMovies().map { it.map(MovieEntity::toMovieDto) }
 
     override suspend fun deleteFavoriteMovie(movieDto: MovieDto): Result<Unit> =
         withContext(Dispatchers.IO) {

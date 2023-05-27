@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesContent
 import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.movies.presentation.theme.MoviesTheme
@@ -17,12 +18,13 @@ fun PopularMoviesScreen(
     playingNowViewModel: PopularMoviesViewModel = hiltViewModel()
 ) {
     val playingNow by playingNowViewModel.state.collectAsState()
-    PopularMoviesScreen(playingNow)
+    PopularMoviesScreen(playingNow, playingNowViewModel::sendEvent)
 }
 
 @Composable
 private fun PopularMoviesScreen(
     state: MoviesState = MoviesState(),
+    sendEvent: (MovieEvent) -> Unit,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
@@ -30,7 +32,7 @@ private fun PopularMoviesScreen(
         Text(text = "Popular now")
 
         MoviesContent(playingNowState = state) {
-
+            sendEvent(MovieEvent.OnMovieClicked(it))
         }
 
     }

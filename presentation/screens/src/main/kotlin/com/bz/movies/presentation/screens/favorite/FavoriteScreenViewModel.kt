@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -58,27 +59,20 @@ class FavoriteScreenViewModel @Inject constructor(
 
     private fun fetchFavoriteScreen() = viewModelScope.launch {
 
-        localMovieRepository.favoritesMovies.collectLatest { movieDtoList ->
-            _state.update {
-                MoviesState(
-                    isLoading = false,
-                    playingNowMovies = movieDtoList.map(MovieDto::toMovieItem)
-                )
+        localMovieRepository.favoritesMovies.collectLatest { result ->
+            result.onSuccess { data ->
+                _state.update {
+                    MoviesState(
+                        isLoading = false,
+                        playingNowMovies = data.map(MovieDto::toMovieItem)
+                    )
+                }
+            }
+            result.onFailure {
+                Timber.e(it)
+                _state.update { MoviesState(isLoading = false) }
             }
         }
-
-//        result.onSuccess { data ->
-//            _state.update {
-//                MoviesState(
-//                    isLoading = false,
-//                    playingNowMovies = data.map(MovieDto::toMovieItem)
-//                )
-//            }
-//        }
-//        result.onFailure {
-//            Timber.e(it)
-//            _state.update { MoviesState(isLoading = false) }
-//        }
 
     }
 }
