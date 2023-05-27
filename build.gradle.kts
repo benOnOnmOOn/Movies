@@ -46,7 +46,7 @@ val androidTestFiles = "**/androidTest/**"
 detekt {
     buildUponDefaultConfig = true
     allRules = false
-    config = files(configFile)
+    config.setFrom(files(configFile))
     baseline = file(baselineFile)
     parallel = true
     ignoreFailures = false
