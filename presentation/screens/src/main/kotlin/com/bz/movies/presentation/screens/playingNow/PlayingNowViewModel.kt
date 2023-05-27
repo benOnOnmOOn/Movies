@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bz.dto.MovieDto
 import com.bz.movies.presentation.mappers.toMovieItem
+import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.network.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,8 +20,8 @@ class PlayingNowViewModel @Inject constructor(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(PlayingNowState())
-    val state: StateFlow<PlayingNowState> = _state.asStateFlow()
+    private val _state = MutableStateFlow(MoviesState())
+    val state: StateFlow<MoviesState> = _state.asStateFlow()
 
     init {
         fetchPlayingNowMovies()
@@ -32,7 +33,7 @@ class PlayingNowViewModel @Inject constructor(
 
         result.onSuccess { data ->
             _state.update {
-                PlayingNowState(
+                MoviesState(
                     isLoading = false,
                     playingNowMovies = data.map(MovieDto::toMovieItem)
                 )
@@ -40,7 +41,7 @@ class PlayingNowViewModel @Inject constructor(
         }
         result.onFailure {
             Timber.e(it)
-            _state.update { PlayingNowState(isLoading = false) }
+            _state.update { MoviesState(isLoading = false) }
         }
 
     }

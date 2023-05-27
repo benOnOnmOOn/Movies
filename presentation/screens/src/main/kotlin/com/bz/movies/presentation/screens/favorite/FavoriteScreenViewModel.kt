@@ -1,4 +1,4 @@
-package com.bz.movies.presentation.screens.popular
+package com.bz.movies.presentation.screens.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,18 +6,17 @@ import com.bz.dto.MovieDto
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.movies.presentation.screens.common.MoviesState
-import com.bz.network.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class PopularMoviesViewModel @Inject constructor(
-    private val movieRepository: MovieRepository,
+class FavoriteScreenViewModel @Inject constructor(
     private val localMovieRepository: LocalMovieRepository,
 ) : ViewModel() {
 
@@ -25,13 +24,12 @@ class PopularMoviesViewModel @Inject constructor(
     val state: StateFlow<MoviesState> = _state.asStateFlow()
 
     init {
-        fetchPopularNowMovies()
-
+        fetchFavoriteScreen()
     }
 
-    private fun fetchPopularNowMovies() = viewModelScope.launch {
+    private fun fetchFavoriteScreen() = viewModelScope.launch {
 
-        val result = movieRepository.getPopularMovies(1)
+        val result = localMovieRepository.getFavoritesMovies()
 
         result.onSuccess { data ->
             _state.update {
@@ -40,27 +38,12 @@ class PopularMoviesViewModel @Inject constructor(
                     playingNowMovies = data.map(MovieDto::toMovieItem)
                 )
             }
-            data
-                .take(3)
-                .forEach {
-
-                    localMovieRepository.insertFavoriteMovie(
-                        MovieDto(
-                            rating = it.rating,
-                            language = it.language,
-                            title = it.title,
-                            publicationDate = it.publicationDate,
-                            id = it.id,
-                            posterUrl = it.posterUrl
-                        )
-                    )
-                }
         }
         result.onFailure {
+            Timber.e(it)
             _state.update { MoviesState(isLoading = false) }
         }
 
     }
-
 }
 

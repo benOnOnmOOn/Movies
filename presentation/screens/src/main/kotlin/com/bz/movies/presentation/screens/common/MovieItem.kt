@@ -1,4 +1,4 @@
-package com.bz.movies.presentation.screens
+package com.bz.movies.presentation.screens.common
 
 data class MovieItem(
     val id: Int,

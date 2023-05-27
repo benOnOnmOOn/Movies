@@ -1,4 +1,4 @@
-package com.bz.movies.presentation.screens.playingNow
+package com.bz.movies.presentation.screens.common
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.dp
 import com.bz.movies.presentation.components.PopularMoviesItemContent
 
 @Composable
-fun PlayingNowContent(
-    playingNowState: PlayingNowState,
+fun MoviesContent(
+    playingNowState: MoviesState,
     refresh: () -> Unit,
 ) {
 
@@ -46,7 +46,7 @@ fun PlayingNowContent(
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(9.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             itemsIndexed(playingNowState.playingNowMovies) { index, movieItem ->
@@ -56,7 +56,6 @@ fun PlayingNowContent(
                 )
             }
         }
-
 
         PullRefreshIndicator(
             isLoadingFromPullUp,
