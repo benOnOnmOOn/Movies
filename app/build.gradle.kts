@@ -50,10 +50,6 @@ android {
         warningsAsErrors = true
         checkReleaseBuilds = false
     }
-
-    packagingOptions.resources.excludes += setOf(
-        "META-INF/**"
-    )
 }
 
 kapt {

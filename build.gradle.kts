@@ -20,6 +20,11 @@ plugins {
 }
 
 fun isNonStable(version: String): Boolean {
+    val unStableKeyword = listOf("ALPHA", "BETA").any {
+        version.contains(it, ignoreCase = true)
+    }
+    if (unStableKeyword) return true
+
     val stableKeyword = listOf("RELEASE", "FINAL", "GA").any {
         version.contains(it, ignoreCase = true)
     }
@@ -40,8 +45,6 @@ val baselineFile = file("$rootDir/config/detekt/baseline.xml")
 val kotlinFiles = "**/*.kt"
 val resourceFiles = "**/resources/**"
 val buildFiles = "**/build/**"
-val testFiles = "**/test/**"
-val androidTestFiles = "**/androidTest/**"
 
 detekt {
     buildUponDefaultConfig = true
@@ -83,7 +86,7 @@ tasks.register<Detekt>("detektAll") {
     baseline = file(baselineFile)
     setSource(projectSource)
     include(kotlinFiles)
-    exclude(resourceFiles, buildFiles, testFiles, androidTestFiles)
+    exclude(resourceFiles, buildFiles)
 }
 
 tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
