@@ -6,12 +6,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesContentWithPullToRefresh
 import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.movies.presentation.theme.MoviesTheme
+import com.bz.presentation.screens.R
 
 @Composable
 fun PopularMoviesScreen(
@@ -29,7 +31,7 @@ private fun PopularMoviesScreen(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Popular now")
+        Text(text = stringResource(R.string.popular_now_screen_title))
 
         MoviesContentWithPullToRefresh(
             playingNowState = state,
