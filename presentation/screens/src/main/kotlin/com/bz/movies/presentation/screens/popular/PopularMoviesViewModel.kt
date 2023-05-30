@@ -60,10 +60,21 @@ class PopularMoviesViewModel @Inject constructor(
         when (event) {
             is MovieEvent.OnMovieClicked ->
                 localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())
+
+            MovieEvent.Refresh -> {
+                _state.update {
+                    MoviesState(
+                        isLoading = false,
+                        isRefreshing = true,
+                        playingNowMovies = emptyList()
+                    )
+                }
+                fetchPopularNowMovies()
+            }
         }
     }
 
-    private fun fetchPopularNowMovies() = viewModelScope.launch {
+    private fun fetchPopularNowMovies() = launch {
 
         val result = movieRepository.getPopularMovies(1)
 

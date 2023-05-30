@@ -58,10 +58,21 @@ class PlayingNowViewModel @Inject constructor(
         when (event) {
             is MovieEvent.OnMovieClicked ->
                 localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())
+
+            MovieEvent.Refresh -> {
+                _state.update {
+                    MoviesState(
+                        isLoading = false,
+                        isRefreshing = true,
+                        playingNowMovies = emptyList()
+                    )
+                }
+                fetchPlayingNowMovies()
+            }
         }
     }
 
-    private fun fetchPlayingNowMovies() = viewModelScope.launch {
+    private fun fetchPlayingNowMovies() = launch {
 
         val result = movieRepository.getPlayingNowMovies()
 

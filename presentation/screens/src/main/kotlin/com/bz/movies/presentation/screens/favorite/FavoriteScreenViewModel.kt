@@ -57,6 +57,10 @@ class FavoriteScreenViewModel @Inject constructor(
         when (event) {
             is MovieEvent.OnMovieClicked ->
                 localMovieRepository.deleteFavoriteMovie(event.movieItem.toDTO())
+
+            MovieEvent.Refresh -> {
+                // do nothing
+            }
         }
     }
 
