@@ -9,9 +9,6 @@ import kotlinx.coroutines.flow.Flow
 internal interface MovieDAO : BaseDao<MovieEntity> {
 
     @Query("SELECT * FROM ${MovieEntity.ENTITY_NAME}")
-    suspend fun getAllMovies(): List<MovieEntity>
-
-    @Query("SELECT * FROM ${MovieEntity.ENTITY_NAME}")
     fun observeAllMovies(): Flow<List<MovieEntity>>
 
 }

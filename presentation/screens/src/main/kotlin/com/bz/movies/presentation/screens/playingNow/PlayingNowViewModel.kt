@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -42,7 +43,7 @@ class PlayingNowViewModel @Inject constructor(
     val effect = _effect.asSharedFlow()
 
     init {
-        fetchPlayingNowMovies()
+        collectPlayingNowMovies()
         handleEvent()
     }
 
@@ -73,16 +74,11 @@ class PlayingNowViewModel @Inject constructor(
     }
 
     private fun fetchPlayingNowMovies() = launch {
-
+        localMovieRepository.clearPlayingNowMovies()
         val result = movieRepository.getPlayingNowMovies()
 
         result.onSuccess { data ->
-            _state.update {
-                MoviesState(
-                    isLoading = false,
-                    playingNowMovies = data.map(MovieDto::toMovieItem)
-                )
-            }
+            localMovieRepository.insertPlayingNowMovies(data)
         }
         result.onFailure {
             val error = when (it) {
@@ -93,7 +89,25 @@ class PlayingNowViewModel @Inject constructor(
             }
             _effect.emit(error)
             Timber.e(it)
-            _state.update { MoviesState(isLoading = false) }
+        }
+
+    }
+
+    private fun collectPlayingNowMovies() = launch {
+        localMovieRepository.playingNowMovies.collectLatest { result ->
+            result.onSuccess { data ->
+                _state.update {
+                    MoviesState(
+                        isLoading = false,
+                        playingNowMovies = data.map(MovieDto::toMovieItem)
+                    )
+                }
+            }
+            result.onFailure {
+                _effect.emit(MovieEffect.UnknownError)
+                Timber.e(it)
+                _state.update { MoviesState(isLoading = false) }
+            }
         }
 
     }

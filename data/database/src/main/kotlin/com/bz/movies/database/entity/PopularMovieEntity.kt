@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = MovieEntity.ENTITY_NAME)
-internal data class MovieEntity(
+@Entity(tableName = PopularMovieEntity.ENTITY_NAME)
+internal data class PopularMovieEntity(
     @PrimaryKey @ColumnInfo(name = COLUMN_ID) val id: Long,
     val posterUrl: String,
     val title: String,
@@ -15,7 +15,7 @@ internal data class MovieEntity(
     val rating: Int,
 ) {
     companion object {
-        internal const val ENTITY_NAME = "MOVIE_ENTITY"
+        internal const val ENTITY_NAME = "POPULAR_MOVIE_ENTITY"
         internal const val COLUMN_ID = "ID"
     }
 }
