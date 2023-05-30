@@ -2,14 +2,10 @@ package com.bz.movies.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Index
 import androidx.room.PrimaryKey
 
 
-@Entity(
-    tableName = PlayingNowMovieEntity.ENTITY_NAME,
-    indices = [Index(PlayingNowMovieEntity.COLUMN_ID)]
-)
+@Entity(tableName = PlayingNowMovieEntity.ENTITY_NAME)
 internal data class PlayingNowMovieEntity(
     @PrimaryKey @ColumnInfo(name = COLUMN_ID) val id: Long,
     val posterUrl: String,

@@ -1,6 +1,7 @@
 package com.bz.movies.database
 
 import android.app.Application
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -21,12 +22,17 @@ internal fun createMoviesDatabase(
         context = context,
         klass = MoviesDatabase::class.java,
         name = DATABASE_NAME
-    ).build()
+    ).fallbackToDestructiveMigration()
+        .build()
 
 @Database(
     entities = [MovieEntity::class, PlayingNowMovieEntity::class, PopularMovieEntity::class],
-    version = 1,
-    exportSchema = true
+    version = 2,
+    exportSchema = true,
+    autoMigrations = [
+        AutoMigration(from = 1, to = 2),
+    ]
+
 )
 internal abstract class MoviesDatabase : RoomDatabase() {
     abstract fun movieDAO(): MovieDAO
@@ -35,4 +41,3 @@ internal abstract class MoviesDatabase : RoomDatabase() {
 
     abstract fun popularMovieDAO(): PopularMovieDAO
 }
-
