@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -43,7 +44,7 @@ class PopularMoviesViewModel @Inject constructor(
     val effect = _effect.asSharedFlow()
 
     init {
-        fetchPopularNowMovies()
+        collectPopularMovies()
         handleEvent()
     }
 
@@ -62,13 +63,7 @@ class PopularMoviesViewModel @Inject constructor(
                 localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())
 
             MovieEvent.Refresh -> {
-                _state.update {
-                    MoviesState(
-                        isLoading = false,
-                        isRefreshing = true,
-                        playingNowMovies = emptyList()
-                    )
-                }
+                localMovieRepository.clearPopularMovies()
                 fetchPopularNowMovies()
             }
         }
@@ -96,6 +91,25 @@ class PopularMoviesViewModel @Inject constructor(
             _effect.emit(error)
             Timber.e(it)
             _state.update { MoviesState(isLoading = false) }
+        }
+
+    }
+
+    private fun collectPopularMovies() = launch {
+        localMovieRepository.popularMovies.collectLatest { result ->
+            result.onSuccess { data ->
+                _state.update {
+                    MoviesState(
+                        isLoading = false,
+                        playingNowMovies = data.map(MovieDto::toMovieItem)
+                    )
+                }
+            }
+            result.onFailure {
+                _effect.emit(MovieEffect.UnknownError)
+                Timber.e(it)
+                _state.update { MoviesState(isLoading = false) }
+            }
         }
 
     }
