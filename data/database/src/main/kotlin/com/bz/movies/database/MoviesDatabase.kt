@@ -22,7 +22,7 @@ internal fun createMoviesDatabase(
         context = context,
         klass = MoviesDatabase::class.java,
         name = DATABASE_NAME
-    ).fallbackToDestructiveMigration()
+    ).fallbackToDestructiveMigrationOnDowngrade()
         .build()
 
 @Database(
