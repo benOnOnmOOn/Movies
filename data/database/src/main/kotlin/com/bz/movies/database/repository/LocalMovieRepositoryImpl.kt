@@ -10,12 +10,12 @@ import com.bz.movies.database.entity.PopularMovieEntity
 import com.bz.movies.database.repository.mapper.toMovieDto
 import com.bz.movies.database.repository.mapper.toMovieEntity
 import com.bz.movies.database.repository.mapper.toPlayingNowMovieEntity
+import com.bz.movies.database.repository.mapper.toPopularMovieEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
-
 
 internal class LocalMovieRepositoryImpl(
     private val movieDAO: MovieDAO,
@@ -23,31 +23,26 @@ internal class LocalMovieRepositoryImpl(
     private val popularMovieDAO: PopularMovieDAO,
 ) : LocalMovieRepository {
 
-    override val favoritesMovies: Flow<Result<List<MovieDto>>>
-        get() = runCatching {
+    override val favoritesMovies: Flow<List<MovieDto>>
+        get() =
             movieDAO
                 .observeAllMovies()
+                .flowOn(Dispatchers.IO)
                 .map { it.map(MovieEntity::toMovieDto) }
-        }.fold(
-            onSuccess = { it.map(Result.Companion::success) },
-            onFailure = { flowOf(Result.failure(it)) }
-        )
-    override val playingNowMovies: Flow<Result<List<MovieDto>>>
-        get() = runCatching {
+
+    override val playingNowMovies: Flow<List<MovieDto>>
+        get() =
             playingNowMovieDAO
                 .observeAllMovies()
+                .flowOn(Dispatchers.IO)
                 .map { it.map(PlayingNowMovieEntity::toMovieDto) }
-        }.fold(
-            onSuccess = { it.map(Result.Companion::success) },
-            onFailure = { flowOf(Result.failure(it)) }
-        )
-    override val popularMovies: Flow<Result<List<MovieDto>>>
-        get() = runCatching {
-            popularMovieDAO.observeAllMovies().map { it.map(PopularMovieEntity::toMovieDto) }
-        }.fold(
-            onSuccess = { it.map(Result.Companion::success) },
-            onFailure = { flowOf(Result.failure(it)) }
-        )
+
+    override val popularMovies: Flow<List<MovieDto>>
+        get() =
+            popularMovieDAO
+                .observeAllMovies()
+                .flowOn(Dispatchers.IO)
+                .map { it.map(PopularMovieEntity::toMovieDto) }
 
     override suspend fun insertFavoriteMovie(movieDto: MovieDto): Result<Unit> =
         withContext(Dispatchers.IO) {
@@ -80,7 +75,7 @@ internal class LocalMovieRepositoryImpl(
     override suspend fun insertPopularMovies(movieDto: List<MovieDto>): Result<Unit> =
         withContext(Dispatchers.IO) {
             runCatching {
-                playingNowMovieDAO.insert(movieDto.map { it.toPlayingNowMovieEntity() })
+                popularMovieDAO.insert(movieDto.map { it.toPopularMovieEntity() })
             }
         }
 
