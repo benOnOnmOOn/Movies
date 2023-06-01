@@ -111,7 +111,12 @@ class PlayingNowViewModel @Inject constructor(
             .catch {
                 _effect.emit(MovieEffect.UnknownError)
                 Timber.e(it)
-                _state.update { MoviesState(isLoading = false) }
+                _state.update {
+                    MoviesState(
+                        isLoading = false,
+                        isRefreshing = false,
+                    )
+                }
             }
             .launchIn(viewModelScope)
     }
