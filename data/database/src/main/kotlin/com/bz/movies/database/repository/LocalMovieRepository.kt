@@ -6,11 +6,11 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocalMovieRepository {
 
-    val favoritesMovies: Flow<Result<List<MovieDto>>>
+    val favoritesMovies: Flow<List<MovieDto>>
 
-    val playingNowMovies: Flow<Result<List<MovieDto>>>
+    val playingNowMovies: Flow<List<MovieDto>>
 
-    val popularMovies: Flow<Result<List<MovieDto>>>
+    val popularMovies: Flow<List<MovieDto>>
 
     suspend fun insertFavoriteMovie(movieDto: MovieDto): Result<Unit>
 

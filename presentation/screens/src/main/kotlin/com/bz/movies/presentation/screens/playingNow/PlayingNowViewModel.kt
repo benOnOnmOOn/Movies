@@ -15,13 +15,17 @@ import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -93,9 +97,10 @@ class PlayingNowViewModel @Inject constructor(
 
     }
 
-    private fun collectPlayingNowMovies() = launch {
-        localMovieRepository.playingNowMovies.collectLatest { result ->
-            result.onSuccess { data ->
+    private fun collectPlayingNowMovies() {
+        localMovieRepository.playingNowMovies
+            .flowOn(Dispatchers.Main)
+            .onEach { data ->
                 _state.update {
                     MoviesState(
                         isLoading = false,
@@ -103,13 +108,17 @@ class PlayingNowViewModel @Inject constructor(
                     )
                 }
             }
-            result.onFailure {
+            .catch {
                 _effect.emit(MovieEffect.UnknownError)
                 Timber.e(it)
-                _state.update { MoviesState(isLoading = false) }
+                _state.update {
+                    MoviesState(
+                        isLoading = false,
+                        isRefreshing = false,
+                    )
+                }
             }
-        }
-
+            .launchIn(viewModelScope)
     }
 
 }
