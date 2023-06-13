@@ -7,7 +7,8 @@ plugins {
 
 android {
     namespace = "com.bz.core"
-    compileSdk = 33
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         minSdk = 28
@@ -20,7 +21,6 @@ android {
         release {
             isMinifyEnabled = true
             proguardFiles(
-                @Suppress("UnstableApiUsage")
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
@@ -30,7 +30,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    @Suppress("UnstableApiUsage")
     buildFeatures {
         compose = true
     }

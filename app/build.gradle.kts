@@ -9,12 +9,13 @@ plugins {
 
 android {
     namespace = "com.bz.movies"
-    compileSdk = 33
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         applicationId = "com.bz.movies"
         minSdk = 28
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -30,7 +31,6 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
-                @Suppress("UnstableApiUsage")
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
