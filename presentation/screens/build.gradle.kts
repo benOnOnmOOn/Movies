@@ -7,7 +7,8 @@ plugins {
 
 android {
     namespace = "com.bz.presentation.screens"
-    compileSdk = 33
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         minSdk = 28
@@ -19,7 +20,6 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
-            @Suppress("UnstableApiUsage")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -37,7 +37,6 @@ android {
             "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
         )
     }
-    @Suppress("UnstableApiUsage")
     buildFeatures {
         compose = true
     }

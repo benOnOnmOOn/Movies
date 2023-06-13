@@ -8,7 +8,8 @@ plugins {
 
 android {
     namespace = "com.bz.movies.database"
-    compileSdk = 33
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         minSdk = 28
@@ -20,7 +21,6 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
-            @Suppress("UnstableApiUsage")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
