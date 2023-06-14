@@ -150,7 +150,7 @@ fun <BF : BuildFeatures,
         AR : AndroidResources>
         CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
     compileSdk = 34
-    buildToolsVersion = "34.0.0"
+//    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         minSdk = 28
