@@ -1,4 +1,10 @@
+import com.android.build.api.dsl.AndroidResources
+import com.android.build.api.dsl.BuildFeatures
+import com.android.build.api.dsl.BuildType
+import com.android.build.api.dsl.CommonExtension
+import com.android.build.api.dsl.DefaultConfig
 import com.android.build.api.dsl.LibraryExtension
+import com.android.build.api.dsl.ProductFlavor
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
@@ -125,25 +131,24 @@ fun PluginContainer.applyBaseConfig(project: Project) {
             is AppPlugin -> {
                 project.extensions
                     .getByType<BaseAppModuleExtension>()
-                    .apply {
-                        baseConfig()
-                    }
+                    .apply { baseConfig() }
             }
 
             is LibraryPlugin -> {
-
                 project.extensions
                     .getByType<LibraryExtension>()
-                    .apply {
-                        baseConfig()
-                    }
-
+                    .apply { baseConfig() }
             }
         }
     }
 }
 
-fun LibraryExtension.baseConfig() {
+fun <BF : BuildFeatures,
+        BT : BuildType,
+        DC : DefaultConfig,
+        PF : ProductFlavor,
+        AR : AndroidResources>
+        CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
     compileSdk = 34
     buildToolsVersion = "34.0.0"
 
@@ -178,29 +183,15 @@ fun LibraryExtension.baseConfig() {
     }
 }
 
-fun BaseAppModuleExtension.baseConfig() {
-    compileSdk = 34
-    buildToolsVersion = "34.0.0"
-
+fun LibraryExtension.baseConfig() {
+    defaultBaseConfig()
     defaultConfig {
-        minSdk = 28
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        resourceConfigurations.addAll(listOf("en", "pl"))
+        consumerProguardFiles("consumer-rules.pro")
     }
+}
 
-    lint {
-        baseline = file("lint-baseline.xml")
-        abortOnError = true
-        checkAllWarnings = true
-        warningsAsErrors = true
-        checkReleaseBuilds = false
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
+fun BaseAppModuleExtension.baseConfig() {
+    defaultBaseConfig()
 }
 
 
