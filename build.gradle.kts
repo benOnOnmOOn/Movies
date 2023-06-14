@@ -1,4 +1,3 @@
-import com.android.build.api.dsl.AndroidResources
 import com.android.build.api.dsl.BuildFeatures
 import com.android.build.api.dsl.BuildType
 import com.android.build.api.dsl.CommonExtension
@@ -125,31 +124,24 @@ dependencyAnalysis {
 }
 
 //region Global android configuration
+val COMPILE_AND_TARGET_SDK_VERSION = 33
 fun PluginContainer.applyBaseConfig(project: Project) {
     whenPluginAdded {
         when (this) {
             is AppPlugin -> {
-                project.extensions
-                    .getByType<BaseAppModuleExtension>()
-                    .apply { baseConfig() }
+                project.extensions.getByType<BaseAppModuleExtension>().apply { baseConfig() }
             }
 
             is LibraryPlugin -> {
-                project.extensions
-                    .getByType<LibraryExtension>()
-                    .apply { baseConfig() }
+                project.extensions.getByType<LibraryExtension>().apply { baseConfig() }
             }
         }
     }
 }
 
-fun <BF : BuildFeatures,
-        BT : BuildType,
-        DC : DefaultConfig,
-        PF : ProductFlavor,
-        AR : AndroidResources>
-        CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
-    compileSdk = 34
+fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
+        CommonExtension<BF, BT, DC, PF>.defaultBaseConfig() {
+    compileSdk = COMPILE_AND_TARGET_SDK_VERSION
 //    buildToolsVersion = "34.0.0"
 
     defaultConfig {
@@ -176,8 +168,7 @@ fun <BF : BuildFeatures,
         release {
             isMinifyEnabled = true
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -192,6 +183,9 @@ fun LibraryExtension.baseConfig() {
 
 fun BaseAppModuleExtension.baseConfig() {
     defaultBaseConfig()
+    defaultConfig {
+        targetSdk = COMPILE_AND_TARGET_SDK_VERSION
+    }
 }
 
 

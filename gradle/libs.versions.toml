@@ -1,6 +1,6 @@
 [versions]
 coil-compose = "2.4.0"
-com-android-plugin = "8.2.0-alpha07"
+com-android-plugin = "8.0.2"
 compose = "1.4.3"
 firebase-bom = "32.1.0"
 hilt = "2.46.1"
