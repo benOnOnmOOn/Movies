@@ -23,6 +23,7 @@ plugins {
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
 }
 
+//region Dependency Updates Task
 
 fun isNonStable(version: String): Boolean {
     val unStableKeyword = listOf("ALPHA", "BETA").any {
@@ -44,6 +45,10 @@ tasks.withType<DependencyUpdatesTask> {
     }
 }
 
+//endregion
+
+//region Detekt
+
 val projectSource = file(projectDir)
 val configFile = files("$rootDir/config/detekt/detekt.yml")
 val baselineFile = file("$rootDir/config/detekt/baseline.xml")
@@ -62,7 +67,6 @@ detekt {
     buildUponDefaultConfig = true
 }
 
-
 tasks.withType<Detekt>().configureEach {
     reports {
         html.required.set(true)
@@ -72,17 +76,6 @@ tasks.withType<Detekt>().configureEach {
         md.required.set(true)
     }
 }
-
-allprojects {
-    tasks.withType<KotlinCompilationTask<KotlinJvmCompilerOptions>> {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
-
-            freeCompilerArgs.add("-Xjvm-default=all")
-        }
-    }
-}
-
 tasks.register<Detekt>("detektAll") {
     description = "Runs Detekt for all modules"
     jvmTarget = "17"
@@ -107,10 +100,25 @@ tasks.withType<DetektCreateBaselineTask>().configureEach {
     jvmTarget = "17"
 }
 
+//endregion
+
+//region Global kotlin configuration
+allprojects {
+    tasks.withType<KotlinCompilationTask<KotlinJvmCompilerOptions>> {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+
+            freeCompilerArgs.add("-Xjvm-default=all")
+        }
+    }
+}
+//endregion
+
 dependencyAnalysis {
     issues { all { onAny { severity("fail") } } }
 }
 
+//region Global android configuration
 fun PluginContainer.applyBaseConfig(project: Project) {
     whenPluginAdded {
         when (this) {
@@ -199,3 +207,4 @@ fun BaseAppModuleExtension.baseConfig() {
 subprojects {
     project.plugins.applyBaseConfig(project)
 }
+// endregion
