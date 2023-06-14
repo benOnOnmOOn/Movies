@@ -10,10 +10,6 @@ android {
     namespace = "com.bz.network"
 }
 
-kapt {
-    correctErrorTypes = true
-    useBuildCache = true
-}
 
 dependencies {
     api(project(":data:dto"))

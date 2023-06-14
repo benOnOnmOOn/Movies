@@ -16,10 +16,6 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-    useBuildCache = true
-}
 
 dependencies {
     implementation(project(":presentation:screens"))

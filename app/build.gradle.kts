@@ -31,11 +31,6 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-    useBuildCache = true
-}
-
 dependencyAnalysis {
     issues { onUnusedDependencies { exclude(":presentation:core") } }
 }

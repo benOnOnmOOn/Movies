@@ -22,10 +22,6 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-    useBuildCache = true
-}
 
 dependencies {
     api(project(":data:network"))
