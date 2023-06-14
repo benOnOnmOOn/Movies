@@ -7,44 +7,13 @@ plugins {
 
 android {
     namespace = "com.bz.core"
-    compileSdk = 34
-    buildToolsVersion = "34.0.0"
 
-    defaultConfig {
-        minSdk = 28
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
     buildFeatures {
         compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.7"
     }
-    lint {
-        baseline = file("lint-baseline.xml")
-        abortOnError = true
-        checkAllWarnings = true
-        checkDependencies = true
-        warningsAsErrors = true
-        checkReleaseBuilds = false
-    }
-
 }
 
 kapt {

@@ -8,39 +8,6 @@ plugins {
 
 android {
     namespace = "com.bz.network"
-    compileSdk = 34
-    buildToolsVersion = "34.0.0"
-
-    defaultConfig {
-        minSdk = 28
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    lint {
-        baseline = file("lint-baseline.xml")
-        abortOnError = true
-        checkAllWarnings = true
-        warningsAsErrors = true
-        checkReleaseBuilds = false
-    }
-
 }
 
 kapt {

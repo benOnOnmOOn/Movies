@@ -1,3 +1,7 @@
+import com.android.build.api.dsl.LibraryExtension
+import com.android.build.gradle.AppPlugin
+import com.android.build.gradle.LibraryPlugin
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
@@ -12,12 +16,13 @@ plugins {
     alias(libs.plugins.com.android.library) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.gradle.versions) apply true
-    alias(libs.plugins.detekt)
+    alias(libs.plugins.detekt) apply true
     alias(libs.plugins.dependency.analysis) apply true
     alias(libs.plugins.com.google.gms.google.services) apply false
     alias(libs.plugins.firebase.crashlytics.gradle) apply false
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
 }
+
 
 fun isNonStable(version: String): Boolean {
     val unStableKeyword = listOf("ALPHA", "BETA").any {
@@ -104,4 +109,93 @@ tasks.withType<DetektCreateBaselineTask>().configureEach {
 
 dependencyAnalysis {
     issues { all { onAny { severity("fail") } } }
+}
+
+fun PluginContainer.applyBaseConfig(project: Project) {
+    whenPluginAdded {
+        when (this) {
+            is AppPlugin -> {
+                project.extensions
+                    .getByType<BaseAppModuleExtension>()
+                    .apply {
+                        baseConfig()
+                    }
+            }
+
+            is LibraryPlugin -> {
+
+                project.extensions
+                    .getByType<LibraryExtension>()
+                    .apply {
+                        baseConfig()
+                    }
+
+            }
+        }
+    }
+}
+
+fun LibraryExtension.baseConfig() {
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
+
+    defaultConfig {
+        minSdk = 28
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        resourceConfigurations.addAll(listOf("en", "pl"))
+    }
+
+    lint {
+        baseline = file("lint-baseline.xml")
+        abortOnError = true
+        checkAllWarnings = true
+        warningsAsErrors = true
+        checkReleaseBuilds = false
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+}
+
+fun BaseAppModuleExtension.baseConfig() {
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
+
+    defaultConfig {
+        minSdk = 28
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        resourceConfigurations.addAll(listOf("en", "pl"))
+    }
+
+    lint {
+        baseline = file("lint-baseline.xml")
+        abortOnError = true
+        checkAllWarnings = true
+        warningsAsErrors = true
+        checkReleaseBuilds = false
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+
+subprojects {
+    project.plugins.applyBaseConfig(project)
 }

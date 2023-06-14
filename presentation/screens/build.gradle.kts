@@ -7,30 +7,7 @@ plugins {
 
 android {
     namespace = "com.bz.presentation.screens"
-    compileSdk = 34
-    buildToolsVersion = "34.0.0"
 
-    defaultConfig {
-        minSdk = 28
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
     kotlinOptions {
         freeCompilerArgs += listOf(
             "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
@@ -42,14 +19,6 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.7"
-    }
-
-    lint {
-        baseline = file("lint-baseline.xml")
-        abortOnError = true
-        checkAllWarnings = true
-        warningsAsErrors = true
-        checkReleaseBuilds = false
     }
 }
 
