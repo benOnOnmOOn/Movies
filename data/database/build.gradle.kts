@@ -20,7 +20,9 @@ koverReport {
         html {
             onCheck = true
         }
-        verify { }
+        xml {
+            onCheck = true
+        }
     }
 }
 

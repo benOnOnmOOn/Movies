@@ -34,12 +34,13 @@ android {
 }
 
 koverReport {
-
     androidReports("debug") {
+        html {
+            onCheck = true
+        }
         xml {
             onCheck = true
         }
-        verify { }
     }
 }
 

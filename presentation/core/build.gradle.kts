@@ -18,6 +18,16 @@ android {
     }
 }
 
+koverReport {
+    androidReports("debug") {
+        html {
+            onCheck = true
+        }
+        xml {
+            onCheck = true
+        }
+    }
+}
 
 dependencies {
     implementation(project(":presentation:screens"))
