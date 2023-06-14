@@ -36,6 +36,14 @@ jobs:
       - name: Run dependency analysis android gradle plugin
         run: ./gradlew buildHealth
 
+      - name: Build with Gradle
+        run: ./gradlew check
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v2
+        with:
+          files: build/reports/kover/report.xml
+
       - name: Add build scan URL as PR comment
         uses: actions/github-script@v5
         if: github.event_name == 'pull_request' && failure()
