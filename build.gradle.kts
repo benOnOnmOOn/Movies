@@ -12,6 +12,8 @@ import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
+import org.jetbrains.kotlin.gradle.internal.Kapt3GradleSubplugin
+import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -123,8 +125,7 @@ dependencyAnalysis {
     issues { all { onAny { severity("fail") } } }
 }
 
-//region Global android configuration
-val COMPILE_AND_TARGET_SDK_VERSION = 33
+
 fun PluginContainer.applyBaseConfig(project: Project) {
     whenPluginAdded {
         when (this) {
@@ -135,9 +136,21 @@ fun PluginContainer.applyBaseConfig(project: Project) {
             is LibraryPlugin -> {
                 project.extensions.getByType<LibraryExtension>().apply { baseConfig() }
             }
+
+            is Kapt3GradleSubplugin -> {
+                project.extensions.getByType<KaptExtension>().apply { baseConfig() }
+            }
         }
     }
 }
+
+fun KaptExtension.baseConfig() {
+    correctErrorTypes = true
+    useBuildCache = true
+}
+
+//region Global android configuration
+val COMPILE_AND_TARGET_SDK_VERSION = 33
 
 fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
         CommonExtension<BF, BT, DC, PF>.defaultBaseConfig() {
