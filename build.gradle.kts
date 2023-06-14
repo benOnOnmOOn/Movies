@@ -150,6 +150,7 @@ fun KaptExtension.baseConfig() {
 }
 
 //region Global android configuration
+@Suppress("VariableNaming")
 val COMPILE_AND_TARGET_SDK_VERSION = 33
 
 fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
@@ -181,8 +182,17 @@ fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
         release {
             isMinifyEnabled = true
             proguardFiles(
+                @Suppress("UnstableApiUsage")
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
+        }
+    }
+
+    @Suppress("UnstableApiUsage")
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+        unitTests.all {
+            it.useJUnitPlatform()
         }
     }
 }

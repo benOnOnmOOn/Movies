@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.com.google.gms.google.services) apply false
     alias(libs.plugins.firebase.crashlytics.gradle) apply false
     alias(libs.plugins.com.google.dagger.hilt.android)
+    alias(libs.plugins.org.jetbrains.kotlinx.kover)
     kotlin("kapt")
 }
 
@@ -22,11 +23,23 @@ android {
             apply(plugin = "com.google.firebase.crashlytics")
             isMinifyEnabled = true
             isShrinkResources = true
+            @Suppress("UnstableApiUsage")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
             signingConfig = signingConfigs.getByName("debug")
+        }
+    }
+}
+
+koverReport {
+    androidReports("debug") {
+        html {
+            onCheck = true
+        }
+        xml {
+            onCheck = true
         }
     }
 }
@@ -38,6 +51,11 @@ dependencyAnalysis {
 dependencies {
     //don't warn
     implementation(project(":presentation:core"))
+    kover(project(":presentation:core"))
+    kover(project(":presentation:screens"))
+    kover(project(":data:network"))
+    kover(project(":data:database"))
+    kover(project(":data:dto"))
 
     releaseImplementation(platform(libs.firebase.bom))
 

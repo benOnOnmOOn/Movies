@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
+    alias(libs.plugins.org.jetbrains.kotlinx.kover)
     kotlin("kapt")
 }
 
@@ -14,6 +15,16 @@ ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
 }
 
+koverReport {
+    androidReports("debug") {
+        html {
+            onCheck = true
+        }
+        xml {
+            onCheck = true
+        }
+    }
+}
 
 dependencies {
 
@@ -35,8 +46,11 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
+    testRuntimeOnly(libs.junit.engine)
+
     testImplementation(libs.junit.api)
 
     androidTestImplementation(libs.junit.api)
     androidTestImplementation(libs.androidx.monitor)
+    androidTestImplementation(libs.junit.api)
 }
