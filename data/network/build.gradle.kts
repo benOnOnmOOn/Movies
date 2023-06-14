@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.com.google.dagger.hilt.android)
+    alias(libs.plugins.org.jetbrains.kotlinx.kover)
     kotlin("kapt")
 }
 
@@ -10,6 +11,14 @@ android {
     namespace = "com.bz.network"
 }
 
+koverReport {
+    androidReports("debug") {
+        html {
+            onCheck = true
+        }
+        verify { }
+    }
+}
 
 dependencies {
     api(project(":data:dto"))

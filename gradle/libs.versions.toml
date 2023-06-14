@@ -109,5 +109,6 @@ dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version =
 com-google-gms-google-services = { id = "com.google.gms.google-services", version = "4.3.15" }
 firebase-crashlytics-gradle = { id = "com.google.firebase.crashlytics", version = "2.9.5" }
 com-google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+org_jetbrains_kotlinx_kover = { id = "org.jetbrains.kotlinx.kover", version = "0.7.1" }
 [bundles]
 

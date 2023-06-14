@@ -2,12 +2,14 @@ plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.com.google.dagger.hilt.android)
+    alias(libs.plugins.org.jetbrains.kotlinx.kover)
     kotlin("kapt")
 }
 
 android {
     namespace = "com.bz.core"
 
+    @Suppress("UnstableApiUsage")
     buildFeatures {
         compose = true
     }
