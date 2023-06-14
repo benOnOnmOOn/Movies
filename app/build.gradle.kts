@@ -9,19 +9,11 @@ plugins {
 
 android {
     namespace = "com.bz.movies"
-    compileSdk = 34
-    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         applicationId = "com.bz.movies"
-        minSdk = 28
-        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        resourceConfigurations.addAll(listOf("en", "pl"))
     }
 
     buildTypes {
@@ -36,19 +28,6 @@ android {
             )
             signingConfig = signingConfigs.getByName("debug")
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    lint {
-        baseline = file("lint-baseline.xml")
-        abortOnError = true
-        checkAllWarnings = true
-        checkDependencies = true
-        warningsAsErrors = true
-        checkReleaseBuilds = false
     }
 }
 
