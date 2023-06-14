@@ -36,7 +36,7 @@ android {
 koverReport {
 
     androidReports("debug") {
-        html {
+        xml {
             onCheck = true
         }
         verify { }

@@ -44,7 +44,7 @@ jobs:
         uses: mi-kas/kover-report@v1.6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          path: ${{ github.workspace }}/app/build/reports/kover/htmlDebug/index.html
+          path: ${{ github.workspace }}/app/build/reports/kover/htmlDebug/index.xml
 
       - name: Add build scan URL as PR comment
         uses: actions/github-script@v5
