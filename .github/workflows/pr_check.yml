@@ -40,8 +40,9 @@ jobs:
         run: ./gradlew check
 
       - name: Upload coverage reports
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3.1.4
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: app/build/reports/kover/htmlDebug/index.html
 
       - name: Add build scan URL as PR comment
