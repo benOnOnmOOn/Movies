@@ -29,6 +29,9 @@ room-runtime = "2.5.1"
 sqlite = "2.3.1"
 startup-runtime = "1.1.1"
 timber = "5.0.1"
+kotlin-compose-compiler-extension = "1.4.7"
+android-sdk-target = "33"
+android-min-sdk = "28"
 
 
 [libraries]

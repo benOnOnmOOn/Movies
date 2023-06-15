@@ -150,16 +150,13 @@ fun KaptExtension.baseConfig() {
 }
 
 //region Global android configuration
-@Suppress("VariableNaming")
-val COMPILE_AND_TARGET_SDK_VERSION = 33
-
 fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
         CommonExtension<BF, BT, DC, PF>.defaultBaseConfig() {
-    compileSdk = COMPILE_AND_TARGET_SDK_VERSION
+    compileSdk = libs.versions.android.sdk.target.get().toInt()
 //    buildToolsVersion = "34.0.0"
 
     defaultConfig {
-        minSdk = 28
+        minSdk = libs.versions.android.min.sdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resourceConfigurations.addAll(listOf("en", "pl"))
@@ -188,6 +185,10 @@ fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
         }
     }
 
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.kotlin.compose.compiler.extension.get()
+    }
+
     @Suppress("UnstableApiUsage")
     testOptions {
         unitTests.isReturnDefaultValues = true
@@ -207,10 +208,9 @@ fun LibraryExtension.baseConfig() {
 fun BaseAppModuleExtension.baseConfig() {
     defaultBaseConfig()
     defaultConfig {
-        targetSdk = COMPILE_AND_TARGET_SDK_VERSION
+        targetSdk = libs.versions.android.sdk.target.get().toInt()
     }
 }
-
 
 subprojects {
     project.plugins.applyBaseConfig(project)
