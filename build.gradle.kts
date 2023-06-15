@@ -10,6 +10,8 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import kotlinx.kover.gradle.plugin.KoverGradlePlugin
+import kotlinx.kover.gradle.plugin.dsl.KoverReportExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
 import org.jetbrains.kotlin.gradle.internal.Kapt3GradleSubplugin
@@ -28,6 +30,7 @@ plugins {
     alias(libs.plugins.com.google.gms.google.services) apply false
     alias(libs.plugins.firebase.crashlytics.gradle) apply false
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
+    alias(libs.plugins.org.jetbrains.kotlinx.kover) apply false
 }
 
 //region Dependency Updates Task
@@ -130,15 +133,19 @@ fun PluginContainer.applyBaseConfig(project: Project) {
     whenPluginAdded {
         when (this) {
             is AppPlugin -> {
-                project.extensions.getByType<BaseAppModuleExtension>().apply { baseConfig() }
+                project.extensions.getByType<BaseAppModuleExtension>().baseConfig()
             }
 
             is LibraryPlugin -> {
-                project.extensions.getByType<LibraryExtension>().apply { baseConfig() }
+                project.extensions.getByType<LibraryExtension>().baseConfig()
             }
 
             is Kapt3GradleSubplugin -> {
-                project.extensions.getByType<KaptExtension>().apply { baseConfig() }
+                project.extensions.getByType<KaptExtension>().baseConfig()
+            }
+
+            is KoverGradlePlugin -> {
+                project.extensions.getByType<KoverReportExtension>().baseConfig()
             }
         }
     }
@@ -216,3 +223,14 @@ subprojects {
     project.plugins.applyBaseConfig(project)
 }
 // endregion
+
+fun KoverReportExtension.baseConfig() {
+    androidReports("debug") {
+        html {
+            onCheck = true
+        }
+        xml {
+            onCheck = true
+        }
+    }
+}

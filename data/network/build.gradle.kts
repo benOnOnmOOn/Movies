@@ -11,17 +11,6 @@ android {
     namespace = "com.bz.network"
 }
 
-koverReport {
-    androidReports("debug") {
-        html {
-            onCheck = true
-        }
-        xml {
-            onCheck = true
-        }
-    }
-}
-
 dependencies {
     api(project(":data:dto"))
 

@@ -9,16 +9,6 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-koverReport {
-    androidReports("debug") {
-        html {
-            onCheck = true
-        }
-        xml {
-            onCheck = true
-        }
-    }
-}
 
 dependencyAnalysis {
     issues {
