@@ -33,17 +33,6 @@ android {
     }
 }
 
-koverReport {
-    androidReports("debug") {
-        html {
-            onCheck = true
-        }
-        xml {
-            onCheck = true
-        }
-    }
-}
-
 dependencyAnalysis {
     issues { onUnusedDependencies { exclude(":presentation:core") } }
 }

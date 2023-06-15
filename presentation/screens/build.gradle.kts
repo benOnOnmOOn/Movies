@@ -21,17 +21,6 @@ android {
     }
 }
 
-koverReport {
-    androidReports("debug") {
-        html {
-            onCheck = true
-        }
-        xml {
-            onCheck = true
-        }
-    }
-}
-
 dependencies {
     api(project(":data:network"))
     api(project(":data:database"))
