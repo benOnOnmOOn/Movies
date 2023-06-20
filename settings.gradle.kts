@@ -29,7 +29,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "movies"
+rootProject.name = "Movies"
 
 gradleEnterprise {
     buildScan {
