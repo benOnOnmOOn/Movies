@@ -31,6 +31,7 @@ plugins {
     alias(libs.plugins.firebase.crashlytics.gradle) apply false
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
     alias(libs.plugins.org.jetbrains.kotlinx.kover) apply false
+    alias(libs.plugins.com.osacky.doctor) apply true
 }
 
 //region Dependency Updates Task
