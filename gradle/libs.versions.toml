@@ -113,5 +113,6 @@ com-google-gms-google-services = { id = "com.google.gms.google-services", versio
 firebase-crashlytics-gradle = { id = "com.google.firebase.crashlytics", version = "2.9.5" }
 com-google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 org_jetbrains_kotlinx_kover = { id = "org.jetbrains.kotlinx.kover", version = "0.7.1" }
+com_osacky_doctor = { id = "com.osacky.doctor", version = "0.8.1" }
 [bundles]
 
