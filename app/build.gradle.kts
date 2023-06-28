@@ -28,6 +28,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            @Suppress("UnstableApiUsage")
+            optimization {
+                keepRules {
+                    ignoreAllExternalDependencies(true)
+                }
+            }
             signingConfig = signingConfigs.getByName("debug")
         }
     }
