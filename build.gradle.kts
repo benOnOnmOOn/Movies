@@ -204,6 +204,13 @@ fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
             it.useJUnitPlatform()
         }
     }
+
+    packaging.resources.excludes += setOf(
+        "kotlin/**",
+        "META-INF/**",
+        "**.properties",
+        "kotlin-tooling-metadata.json",
+    )
 }
 
 fun LibraryExtension.baseConfig() {
