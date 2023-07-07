@@ -13,10 +13,10 @@ import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import kotlinx.kover.gradle.plugin.KoverGradlePlugin
 import kotlinx.kover.gradle.plugin.dsl.KoverReportExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
 import org.jetbrains.kotlin.gradle.internal.Kapt3GradleSubplugin
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+import org.jetbrains.kotlin.gradle.tasks.KaptGenerateStubs
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -114,13 +114,25 @@ tasks.withType<DetektCreateBaselineTask>().configureEach {
 //endregion
 
 //region Global kotlin configuration
-allprojects {
-    tasks.withType<KotlinCompilationTask<KotlinJvmCompilerOptions>> {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
+tasks.withType<KotlinJvmCompile>().configureEach {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
 
-            freeCompilerArgs.add("-Xjvm-default=all")
-        }
+        freeCompilerArgs.add("-Xjvm-default=all")
+    }
+}
+
+fun KaptExtension.baseConfig() {
+    correctErrorTypes = true
+    useBuildCache = true
+}
+// Configure kapt
+// https://kotlinlang.org/docs/whatsnew19.html#kapt-doesn-t-cause-eager-task-creation-in-gradle
+tasks.withType<KaptGenerateStubs>().configureEach {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+
+        freeCompilerArgs.add("-Xjvm-default=all")
     }
 }
 //endregion
@@ -152,14 +164,8 @@ fun PluginContainer.applyBaseConfig(project: Project) {
     }
 }
 
-fun KaptExtension.baseConfig() {
-    correctErrorTypes = true
-    useBuildCache = true
-}
-
 //region Global android configuration
-fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
-        CommonExtension<BF, BT, DC, PF>.defaultBaseConfig() {
+fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor> CommonExtension<BF, BT, DC, PF>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
 //    buildToolsVersion = "34.0.0"
 
@@ -187,8 +193,8 @@ fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
         release {
             isMinifyEnabled = true
             proguardFiles(
-                @Suppress("UnstableApiUsage")
-                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+                @Suppress("UnstableApiUsage") getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -197,8 +203,7 @@ fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
         kotlinCompilerExtensionVersion = libs.versions.kotlin.compose.compiler.extension.get()
     }
 
-    @Suppress("UnstableApiUsage")
-    testOptions {
+    @Suppress("UnstableApiUsage") testOptions {
         unitTests.isReturnDefaultValues = true
         unitTests.all {
             it.useJUnitPlatform()
