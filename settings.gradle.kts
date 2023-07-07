@@ -1,3 +1,5 @@
+import java.net.URI
+
 pluginManagement {
     repositories {
         google {
@@ -25,6 +27,9 @@ dependencyResolutionManagement {
                 includeGroupByRegex("androidx.*")
                 includeGroupByRegex("com.google.*")
             }
+        }
+        maven {
+            url = URI.create("https://androidx.dev/storage/compose-compiler/repository/")
         }
         mavenCentral()
     }
