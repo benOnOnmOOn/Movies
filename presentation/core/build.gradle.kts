@@ -35,7 +35,6 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.androidx.material3)
 
-    implementation(libs.androidx.lifecycle.common)
     api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.navigation.common)
     implementation(libs.androidx.navigation.runtime)
@@ -45,7 +44,6 @@ dependencies {
     implementation(libs.androidx.foundation)
     api(libs.androidx.runtime)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.core)
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
