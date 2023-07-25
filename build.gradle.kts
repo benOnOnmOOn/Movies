@@ -238,7 +238,7 @@ subprojects {
 // endregion
 
 fun KoverReportExtension.baseConfig() {
-    androidReports("debug") {
+    defaults {
         html {
             onCheck = true
         }
