@@ -95,7 +95,7 @@ gradle-versions = { id = "com.github.ben-manes.versions", version = "0.47.0" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.0" }
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.20.0" }
 com-google-gms-google-services = { id = "com.google.gms.google-services", version = "4.3.15" }
-firebase-crashlytics-gradle = { id = "com.google.firebase.crashlytics", version = "2.9.6" }
+firebase-crashlytics-gradle = { id = "com.google.firebase.crashlytics", version = "2.9.7" }
 com-google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 org_jetbrains_kotlinx_kover = { id = "org.jetbrains.kotlinx.kover", version = "0.7.1" }
 com_osacky_doctor = { id = "com.osacky.doctor", version = "0.8.1" }
