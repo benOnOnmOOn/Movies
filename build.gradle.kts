@@ -8,6 +8,8 @@ import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import dagger.hilt.android.plugin.HiltExtension
+import dagger.hilt.android.plugin.HiltGradlePlugin
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import kotlinx.kover.gradle.plugin.KoverGradlePlugin
@@ -27,8 +29,6 @@ plugins {
     alias(libs.plugins.gradle.versions) apply true
     alias(libs.plugins.detekt) apply true
     alias(libs.plugins.dependency.analysis) apply true
-    alias(libs.plugins.com.google.gms.google.services) apply false
-    alias(libs.plugins.firebase.crashlytics.gradle) apply false
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
     alias(libs.plugins.org.jetbrains.kotlinx.kover) apply false
     alias(libs.plugins.com.osacky.doctor) apply true
@@ -145,27 +145,27 @@ dependencyAnalysis {
 fun PluginContainer.applyBaseConfig(project: Project) {
     whenPluginAdded {
         when (this) {
-            is AppPlugin -> {
+            is AppPlugin ->
                 project.extensions.getByType<BaseAppModuleExtension>().baseConfig()
-            }
 
-            is LibraryPlugin -> {
+            is LibraryPlugin ->
                 project.extensions.getByType<LibraryExtension>().baseConfig()
-            }
 
-            is Kapt3GradleSubplugin -> {
+            is Kapt3GradleSubplugin ->
                 project.extensions.getByType<KaptExtension>().baseConfig()
-            }
 
-            is KoverGradlePlugin -> {
+            is KoverGradlePlugin ->
                 project.extensions.getByType<KoverReportExtension>().baseConfig()
-            }
+
+            is HiltGradlePlugin ->
+                project.extensions.getByType<HiltExtension>().baseConfig()
         }
     }
 }
 
 //region Global android configuration
-fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor> CommonExtension<BF, BT, DC, PF>.defaultBaseConfig() {
+fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
+        CommonExtension<BF, BT, DC, PF>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
 //    buildToolsVersion = "34.0.0"
 
@@ -238,7 +238,7 @@ subprojects {
 // endregion
 
 fun KoverReportExtension.baseConfig() {
-    androidReports("debug") {
+    defaults {
         html {
             onCheck = true
         }
@@ -246,4 +246,8 @@ fun KoverReportExtension.baseConfig() {
             onCheck = true
         }
     }
+}
+
+fun HiltExtension.baseConfig() {
+    enableAggregatingTask = true
 }
