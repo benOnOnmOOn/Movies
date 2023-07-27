@@ -4,6 +4,7 @@ import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.DefaultConfig
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.dsl.ProductFlavor
+import com.android.build.api.dsl.AndroidResources
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
@@ -164,8 +165,8 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 }
 
 //region Global android configuration
-fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
-        CommonExtension<BF, BT, DC, PF>.defaultBaseConfig() {
+fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor, AR : AndroidResources>
+        CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
 //    buildToolsVersion = "34.0.0"
 
@@ -193,7 +194,7 @@ fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
         release {
             isMinifyEnabled = true
             proguardFiles(
-                @Suppress("UnstableApiUsage") getDefaultProguardFile("proguard-android-optimize.txt"),
+                getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
@@ -203,7 +204,8 @@ fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor>
         kotlinCompilerExtensionVersion = libs.versions.kotlin.compose.compiler.extension.get()
     }
 
-    @Suppress("UnstableApiUsage") testOptions {
+    @Suppress("UnstableApiUsage")
+    testOptions {
         unitTests.isReturnDefaultValues = true
         unitTests.all {
             it.useJUnitPlatform()

@@ -23,7 +23,6 @@ android {
             apply(plugin = "com.google.firebase.crashlytics")
             isMinifyEnabled = true
             isShrinkResources = true
-            @Suppress("UnstableApiUsage")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

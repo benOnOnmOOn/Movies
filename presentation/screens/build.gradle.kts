@@ -15,7 +15,6 @@ android {
             "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
         )
     }
-    @Suppress("UnstableApiUsage")
     buildFeatures {
         compose = true
     }
