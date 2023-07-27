@@ -9,7 +9,6 @@ plugins {
 android {
     namespace = "com.bz.core"
 
-    @Suppress("UnstableApiUsage")
     buildFeatures {
         compose = true
     }
