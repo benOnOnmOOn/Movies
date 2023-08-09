@@ -45,7 +45,7 @@ private fun PlayingNowScreen(
 
 @Preview(showBackground = true)
 @Composable
-private fun PlayingNowScreen() {
+private fun PlayingNowScreenPreview() {
     MoviesTheme {
         PlayingNowScreen()
     }

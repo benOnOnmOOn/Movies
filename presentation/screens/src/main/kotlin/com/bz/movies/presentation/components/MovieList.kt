@@ -22,7 +22,11 @@ import com.bz.movies.presentation.screens.common.MovieItem
 import com.bz.presentation.screens.R
 
 @Composable
-fun MovieContent(movieItem: MovieItem, isLast: Boolean, onMovieClicked: (MovieItem) -> Unit) {
+inline fun MovieContent(
+    movieItem: MovieItem,
+    isLast: Boolean,
+    crossinline onMovieClicked: (MovieItem) -> Unit
+) {
     Row(
         Modifier
             .fillMaxWidth()
