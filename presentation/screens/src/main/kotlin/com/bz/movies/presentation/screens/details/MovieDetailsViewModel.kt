@@ -1,5 +1,6 @@
 package com.bz.movies.presentation.screens.details
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
@@ -10,12 +11,15 @@ import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 import kotlin.random.Random
@@ -30,6 +34,13 @@ class MovieDetailsViewModel @Inject constructor(
 
     private val _effect: MutableSharedFlow<MovieEffect> = MutableSharedFlow()
     val effect = _effect.asSharedFlow()
+
+    init {
+        GlobalScope.launch {
+            delay(1_000_000)
+            Timber.i("asdfas: ")
+        }
+    }
 
     fun fetchMovieDetails(movieId: Int) = launch {
         val result = movieRepository.getMovieDetail(movieId)
