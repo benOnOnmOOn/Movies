@@ -30,8 +30,6 @@ dependencies {
 
     implementation(libs.activity.compose)
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
     implementation(libs.androidx.material3)
 
     api(libs.androidx.lifecycle.viewmodel)
@@ -39,9 +37,6 @@ dependencies {
     implementation(libs.androidx.navigation.runtime)
 
     api(libs.androidx.activity)
-    implementation(libs.androidx.foundation.layout)
-    implementation(libs.androidx.foundation)
-    api(libs.androidx.runtime)
     implementation(libs.androidx.material3)
 
     testImplementation(libs.junit.api)
@@ -54,5 +49,11 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
+
+    api(libs.androidx.runtime.android)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.ui.android)
+    implementation(libs.androidx.ui.graphics.android)
 
 }
