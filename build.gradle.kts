@@ -183,6 +183,7 @@ fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor,
         checkAllWarnings = true
         warningsAsErrors = true
         checkReleaseBuilds = false
+        checkDependencies = true
     }
 
     compileOptions {
