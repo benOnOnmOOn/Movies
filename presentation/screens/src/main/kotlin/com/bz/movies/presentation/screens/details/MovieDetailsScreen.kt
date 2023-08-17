@@ -12,7 +12,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.bz.movies.presentation.screens.common.MovieDetailState
-import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.theme.MoviesTheme
 import com.bz.presentation.screens.R
 

@@ -10,9 +10,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.bz.movies.presentation.navigation.RootRoute
-import com.bz.movies.presentation.navigation.navigateToRootRoute
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesContentWithPullToRefresh
 import com.bz.movies.presentation.screens.common.MoviesState
