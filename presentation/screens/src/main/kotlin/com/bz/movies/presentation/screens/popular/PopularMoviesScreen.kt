@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesContentWithPullToRefresh
 import com.bz.movies.presentation.screens.common.MoviesState
@@ -17,16 +18,20 @@ import com.bz.presentation.screens.R
 
 @Composable
 fun PopularMoviesScreen(
-    playingNowViewModel: PopularMoviesViewModel = hiltViewModel()
+    playingNowViewModel: PopularMoviesViewModel = hiltViewModel(),
+    navController: NavHostController,
 ) {
     val playingNow by playingNowViewModel.state.collectAsState()
-    PopularMoviesScreen(playingNow, playingNowViewModel::sendEvent)
+    PopularMoviesScreen(playingNow, playingNowViewModel::sendEvent) {
+        navController.navigate("details/$it")
+    }
 }
 
 @Composable
 private fun PopularMoviesScreen(
     state: MoviesState = MoviesState(),
-    sendEvent: (MovieEvent) -> Unit,
+    sendEvent: (MovieEvent) -> Unit = {},
+    onMovieClicked: (id: Int) -> Unit = {},
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
@@ -36,7 +41,7 @@ private fun PopularMoviesScreen(
         MoviesContentWithPullToRefresh(
             playingNowState = state,
             refresh = { sendEvent(MovieEvent.Refresh) },
-            onMovieClicked = { sendEvent(MovieEvent.OnMovieClicked(it)) }
+            onMovieClicked = { onMovieClicked(it.id) }
         )
 
     }
@@ -45,7 +50,7 @@ private fun PopularMoviesScreen(
 
 @Preview(showBackground = true)
 @Composable
-private fun PopularMoviesScreen() {
+private fun PopularMoviesScreenPreview() {
     MoviesTheme {
         PopularMoviesScreen()
     }

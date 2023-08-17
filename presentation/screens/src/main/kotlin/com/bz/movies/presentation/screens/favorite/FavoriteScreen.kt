@@ -1,5 +1,3 @@
-@file:JvmName("FavoriteScreenViewModelKt")
-
 package com.bz.movies.presentation.screens.favorite
 
 import androidx.compose.foundation.layout.Column
@@ -44,8 +42,8 @@ private fun FavoriteScreen(
 
 @Preview(showBackground = true)
 @Composable
-private fun PlayingNowScreen() {
+private fun FavoriteScreenPreview() {
     MoviesTheme {
-        PlayingNowScreen()
+        FavoriteScreen()
     }
 }

@@ -40,28 +40,28 @@ dependencies {
     api(libs.javax.inject)
     //
 
-    implementation(libs.androidx.navigation.compose)
-    api(libs.androidx.navigation.common)
+    api(libs.androidx.animation.android)
+    api(libs.androidx.runtime.android)
+    api(libs.androidx.ui.android)
     api(libs.androidx.navigation.runtime)
-
-    api(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
+    api(libs.androidx.navigation.common)
     api(libs.androidx.material3)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.material.android)
+    implementation(libs.androidx.ui.graphics.android)
+    implementation(libs.androidx.ui.text.android)
+    implementation(libs.androidx.ui.tooling.preview.android)
+    implementation(libs.androidx.ui.unit.android)
+    implementation(libs.androidx.navigation.compose)
 
-    implementation(libs.androidx.foundation.layout)
-    implementation(libs.androidx.foundation)
-    api(libs.androidx.runtime)
-    implementation(libs.androidx.material)
-    implementation(libs.androidx.ui.text)
-    implementation(libs.androidx.ui.unit)
+
+    api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.core)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    api(libs.androidx.lifecycle.viewmodel)
-    api(libs.androidx.material3)
-    runtimeOnly(libs.androidx.startup.runtime)
     implementation(libs.coil.compose)
+    runtimeOnly(libs.androidx.startup.runtime)
 
     implementation(libs.kotlinx.coroutines.core)
 
@@ -78,6 +78,5 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestRuntimeOnly(libs.junit.engine)
     androidTestImplementation(libs.junit.api)
-
 
 }
