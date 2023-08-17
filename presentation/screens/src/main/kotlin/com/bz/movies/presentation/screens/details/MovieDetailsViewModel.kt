@@ -35,6 +35,7 @@ class MovieDetailsViewModel @Inject constructor(
     private val _effect: MutableSharedFlow<MovieEffect> = MutableSharedFlow()
     val effect = _effect.asSharedFlow()
 
+    @Suppress("MagicNumber")
     fun fetchMovieDetails(movieId: Int) = launch {
         val result = movieRepository.getMovieDetail(movieId)
 
