@@ -33,7 +33,7 @@ private fun MovieDetailsScreen(state: MovieDetailState = MovieDetailState()) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
     ) {
-        Text(text = stringResource(R.string.popular_now_screen_title))
+        Text(text = stringResource(R.string.details_screen_title))
 
         state.movieDetails?.let {
             Text(text = it.title)
