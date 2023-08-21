@@ -230,6 +230,10 @@ fun LibraryExtension.baseConfig() {
 
 fun BaseAppModuleExtension.baseConfig() {
     defaultBaseConfig()
+    dependenciesInfo.apply {
+        includeInApk = false
+        includeInBundle = false
+    }
     defaultConfig {
         targetSdk = libs.versions.android.sdk.target.get().toInt()
     }
