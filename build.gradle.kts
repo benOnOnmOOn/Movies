@@ -236,7 +236,10 @@ fun BaseAppModuleExtension.baseConfig() {
     }
     defaultConfig {
         targetSdk = libs.versions.android.sdk.target.get().toInt()
+        multiDexEnabled = false
     }
+    compileOptions.isCoreLibraryDesugaringEnabled = false
+    compileOptions.incremental = true
 }
 
 subprojects {
