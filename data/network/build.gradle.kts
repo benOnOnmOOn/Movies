@@ -17,7 +17,7 @@ dependencies {
     ksp(libs.moshi.kotlin.codegen)
 
     // HILT
-    implementation(libs.hilt.android)
+    api(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation(libs.hilt.core)
     kapt(libs.dagger.compiler)
@@ -25,7 +25,7 @@ dependencies {
     api(libs.javax.inject)
     //
 
-    implementation(libs.moshi)
+    api(libs.moshi)
     implementation(libs.converter.moshi)
     api(libs.okhttp)
     api(libs.retrofit)
