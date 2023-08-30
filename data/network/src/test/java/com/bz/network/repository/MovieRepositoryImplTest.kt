@@ -15,7 +15,6 @@ import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-
 import retrofit2.Response
 
 class MovieRepositoryImplTest {
@@ -107,11 +106,11 @@ class MovieRepositoryImplTest {
                     title = "Muminki",
                     video = false,
                     voteAverage = 4.6,
-                    voteCount = 234,
+                    voteCount = 234
                 )
             ),
             totalPages = 23,
-            totalResults = 234,
+            totalResults = 234
         )
 
         val EXPECTED_NOW_PLAYING_MOVIES: List<MovieDto> = listOf(
@@ -125,5 +124,4 @@ class MovieRepositoryImplTest {
             )
         )
     }
-
 }

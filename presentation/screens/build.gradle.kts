@@ -12,7 +12,7 @@ android {
     kotlinOptions {
         freeCompilerArgs += listOf(
             "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-            "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
+            "-opt-in=androidx.compose.material.ExperimentalMaterialApi"
         )
     }
     buildFeatures {
@@ -55,7 +55,6 @@ dependencies {
     implementation(libs.androidx.ui.unit.android)
     implementation(libs.androidx.navigation.compose)
 
-
     api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.core)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
@@ -78,5 +77,4 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestRuntimeOnly(libs.junit.engine)
     androidTestImplementation(libs.junit.api)
-
 }

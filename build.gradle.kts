@@ -1,10 +1,10 @@
+import com.android.build.api.dsl.AndroidResources
 import com.android.build.api.dsl.BuildFeatures
 import com.android.build.api.dsl.BuildType
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.DefaultConfig
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.dsl.ProductFlavor
-import com.android.build.api.dsl.AndroidResources
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
@@ -20,6 +20,8 @@ import org.jetbrains.kotlin.gradle.internal.Kapt3GradleSubplugin
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import org.jetbrains.kotlin.gradle.tasks.KaptGenerateStubs
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+import org.jlleitschuh.gradle.ktlint.KtlintExtension
+import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -33,6 +35,7 @@ plugins {
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
     alias(libs.plugins.org.jetbrains.kotlinx.kover) apply false
     alias(libs.plugins.com.osacky.doctor) apply true
+    alias(libs.plugins.org.jlleitschuh.gradle.ktlint) apply true
 }
 
 //region Dependency Updates Task
@@ -142,7 +145,6 @@ dependencyAnalysis {
     issues { all { onAny { severity("fail") } } }
 }
 
-
 fun PluginContainer.applyBaseConfig(project: Project) {
     whenPluginAdded {
         when (this) {
@@ -160,13 +162,17 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 
             is HiltGradlePlugin ->
                 project.extensions.getByType<HiltExtension>().baseConfig()
+
+            is KtlintPlugin -> {
+                project.extensions.getByType<KtlintExtension>().baseConfig()
+            }
         }
     }
 }
 
 //region Global android configuration
 fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor, AR : AndroidResources>
-        CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
+CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
     buildToolsVersion = "34.0.0"
 
@@ -217,7 +223,7 @@ fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor,
         "kotlin/**",
         "META-INF/**",
         "**.properties",
-        "kotlin-tooling-metadata.json",
+        "kotlin-tooling-metadata.json"
     )
 }
 
@@ -260,4 +266,14 @@ fun KoverReportExtension.baseConfig() {
 
 fun HiltExtension.baseConfig() {
     enableAggregatingTask = true
+}
+
+fun KtlintExtension.baseConfig() {
+    filter {
+        exclude("**/generated/**")
+    }
+}
+
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 }

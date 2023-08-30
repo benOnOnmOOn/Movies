@@ -43,7 +43,7 @@ dependencyAnalysis {
 }
 
 dependencies {
-    //don't warn
+    // don't warn
     implementation(project(":presentation:core"))
     kover(project(":presentation:core"))
     kover(project(":presentation:screens"))
@@ -76,5 +76,4 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
-
 }

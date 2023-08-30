@@ -64,7 +64,6 @@ internal class ApiTest {
         assertTrue(response.isSuccessful)
 
         assertTrue(response.body() is PlayingNowMoviesApiResponse)
-
     }
 
     @Test
@@ -76,7 +75,6 @@ internal class ApiTest {
         assertTrue(response.isSuccessful)
 
         assertTrue(response.body() is PopularMoviesPageApiResponse)
-
     }
 
     companion object {
@@ -87,7 +85,7 @@ internal class ApiTest {
                 id = 468552,
                 name = "Wonder Woman Collection",
                 posterPath = "/8AQRfTuTHeFTddZN4IUAqprN8Od.jpg",
-                backdropPath = "/n9KlvCOBFDmSyw3BgNrkUkxMFva.jpg",
+                backdropPath = "/n9KlvCOBFDmSyw3BgNrkUkxMFva.jpg"
             ),
             budget = 200000000,
             genres = listOf(
@@ -145,7 +143,7 @@ internal class ApiTest {
                 ProductionCountry(
                     iso31661 = "US",
                     name = "United States of America"
-                ),
+                )
             ),
             releaseDate = "2020-12-16",
             revenue = 165160005,

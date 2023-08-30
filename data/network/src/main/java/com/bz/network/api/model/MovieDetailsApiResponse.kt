@@ -1,6 +1,5 @@
 package com.bz.network.api.model
 
-
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

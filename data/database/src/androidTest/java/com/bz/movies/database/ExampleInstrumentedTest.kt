@@ -4,7 +4,6 @@ import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-
 /**
  * Instrumented test, which will execute on an Android device.
  *

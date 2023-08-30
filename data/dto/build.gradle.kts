@@ -9,7 +9,6 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-
 dependencyAnalysis {
     issues {
         onUnusedDependencies {
