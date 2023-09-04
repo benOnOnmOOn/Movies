@@ -1,9 +1,9 @@
 [versions]
 coil-compose = "2.4.0"
-com-android-plugin = "8.1.1"
+com-android-plugin = "8.3.0-alpha01"
 compose = "1.5.0"
 firebase-bom = "32.2.3"
-hilt = "2.47"
+hilt = "2.48"
 hilt-navigation-compose = "1.0.0"
 javax-inject = "1"
 kotlinx-coroutines = "1.7.3"

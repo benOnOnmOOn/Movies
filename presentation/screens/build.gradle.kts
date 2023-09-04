@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.com.google.dagger.hilt.android)
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
-    kotlin("kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -31,8 +31,8 @@ dependencies {
     releaseImplementation(libs.firebase.crashlytics.ktx)
 
     //  HILT
-    kapt(libs.hilt.android.compiler)
-    kapt(libs.dagger.compiler)
+    ksp(libs.hilt.android.compiler)
+    ksp(libs.dagger.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.core)

@@ -16,9 +16,6 @@ import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import kotlinx.kover.gradle.plugin.KoverGradlePlugin
 import kotlinx.kover.gradle.plugin.dsl.KoverReportExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.internal.Kapt3GradleSubplugin
-import org.jetbrains.kotlin.gradle.plugin.KaptExtension
-import org.jetbrains.kotlin.gradle.tasks.KaptGenerateStubs
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
@@ -126,21 +123,6 @@ tasks.withType<KotlinJvmCompile>().configureEach {
     }
 }
 
-fun KaptExtension.baseConfig() {
-    correctErrorTypes = true
-    useBuildCache = true
-}
-// Configure kapt
-// https://kotlinlang.org/docs/whatsnew19.html#kapt-doesn-t-cause-eager-task-creation-in-gradle
-tasks.withType<KaptGenerateStubs>().configureEach {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-
-        freeCompilerArgs.add("-Xjvm-default=all")
-    }
-}
-//endregion
-
 dependencyAnalysis {
     issues { all { onAny { severity("fail") } } }
 }
@@ -153,9 +135,6 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 
             is LibraryPlugin ->
                 project.extensions.getByType<LibraryExtension>().baseConfig()
-
-            is Kapt3GradleSubplugin ->
-                project.extensions.getByType<KaptExtension>().baseConfig()
 
             is KoverGradlePlugin ->
                 project.extensions.getByType<KoverReportExtension>().baseConfig()
