@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.firebase.crashlytics.gradle) apply false
     alias(libs.plugins.com.google.dagger.hilt.android)
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
-    kotlin("kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -43,7 +43,7 @@ dependencyAnalysis {
 }
 
 dependencies {
-    //don't warn
+    // don't warn
     implementation(project(":presentation:core"))
     kover(project(":presentation:core"))
     kover(project(":presentation:screens"))
@@ -57,7 +57,7 @@ dependencies {
     releaseImplementation(libs.firebase.crashlytics.ktx)
 
     //  HILT
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)
     //
@@ -76,5 +76,4 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
-
 }

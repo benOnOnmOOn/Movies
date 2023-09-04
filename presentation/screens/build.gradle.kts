@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.com.google.dagger.hilt.android)
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
-    kotlin("kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -12,7 +12,7 @@ android {
     kotlinOptions {
         freeCompilerArgs += listOf(
             "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-            "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
+            "-opt-in=androidx.compose.material.ExperimentalMaterialApi"
         )
     }
     buildFeatures {
@@ -31,8 +31,8 @@ dependencies {
     releaseImplementation(libs.firebase.crashlytics.ktx)
 
     //  HILT
-    kapt(libs.hilt.android.compiler)
-    kapt(libs.dagger.compiler)
+    ksp(libs.hilt.android.compiler)
+    ksp(libs.dagger.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.core)
@@ -54,7 +54,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview.android)
     implementation(libs.androidx.ui.unit.android)
     implementation(libs.androidx.navigation.compose)
-
 
     api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.core)
@@ -78,5 +77,4 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestRuntimeOnly(libs.junit.engine)
     androidTestImplementation(libs.junit.api)
-
 }

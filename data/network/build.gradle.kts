@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.com.google.dagger.hilt.android)
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
-    kotlin("kapt")
 }
 
 android {
@@ -17,15 +16,15 @@ dependencies {
     ksp(libs.moshi.kotlin.codegen)
 
     // HILT
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    api(libs.hilt.android)
     implementation(libs.hilt.core)
-    kapt(libs.dagger.compiler)
+    ksp(libs.hilt.android.compiler)
+    ksp(libs.dagger.compiler)
     api(libs.dagger)
     api(libs.javax.inject)
     //
 
-    implementation(libs.moshi)
+    api(libs.moshi)
     implementation(libs.converter.moshi)
     api(libs.okhttp)
     api(libs.retrofit)

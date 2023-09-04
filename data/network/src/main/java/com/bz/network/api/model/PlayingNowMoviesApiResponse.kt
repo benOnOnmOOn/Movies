@@ -15,5 +15,5 @@ internal data class PlayingNowMoviesApiResponse(
 @JsonClass(generateAdapter = true)
 internal data class Dates(
     @Json(name = "maximum") val maximum: String,
-    @Json(name = "minimum") val minimum: String,
+    @Json(name = "minimum") val minimum: String
 )
