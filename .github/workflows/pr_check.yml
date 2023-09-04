@@ -12,8 +12,8 @@ jobs:
   gradle:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
+      - uses: actions/checkout@v3.6.0
+      - uses: actions/setup-java@v3.12.0
         with:
           distribution: temurin
           java-version: 17
@@ -41,13 +41,13 @@ jobs:
 
       - name: Upload coverage reports
         id: kover
-        uses: mi-kas/kover-report@v1.6
+        uses: mi-kas/kover-report@v1.7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: ${{ github.workspace }}/app/build/reports/kover/report.xml
 
       - name: Add build scan URL as PR comment
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6.4.1
         if: github.event_name == 'pull_request' && failure()
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
