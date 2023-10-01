@@ -28,10 +28,15 @@ dependencies {
     api(libs.hilt.core)
     //
 
+    api(libs.androidx.runtime)
     api(libs.androidx.runtime.android)
+    implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.android)
+    implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.graphics.android)
     implementation(libs.activity.compose)
     implementation(libs.androidx.navigation.compose)
@@ -54,4 +59,5 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
+
 }
