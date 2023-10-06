@@ -9,4 +9,4 @@
 local.properties
 /.idea/
 /.gradle/
-/data/build/
+/*/build/
