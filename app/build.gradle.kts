@@ -38,7 +38,6 @@ android {
     }
 }
 
-
 dependencyAnalysis {
     issues { onUnusedDependencies { exclude(":presentation:core") } }
 }
