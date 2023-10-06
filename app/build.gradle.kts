@@ -38,16 +38,6 @@ android {
     }
 }
 
-afterEvaluate {
-    // The following operations were slower to pull from the cache than to rerun on CI
-    // so we manually disable
-    listOf("findAndroidLintersRelease", "hiltAggregateDepsRelease")
-        .forEach {
-            tasks.named(it) {
-                outputs.cacheIf { false }
-            }
-        }
-}
 
 dependencyAnalysis {
     issues { onUnusedDependencies { exclude(":presentation:core") } }

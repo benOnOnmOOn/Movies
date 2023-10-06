@@ -256,3 +256,8 @@ fun KtlintExtension.baseConfig() {
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
 }
+
+doctor {
+    daggerThreshold.set(100)
+    negativeAvoidanceThreshold.set(50)
+}
