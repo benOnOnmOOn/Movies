@@ -1,3 +1,4 @@
+import androidx.room.gradle.RoomExtension
 import com.android.build.api.dsl.AndroidResources
 import com.android.build.api.dsl.BuildFeatures
 import com.android.build.api.dsl.BuildType
@@ -35,6 +36,7 @@ plugins {
     alias(libs.plugins.com.osacky.doctor) apply true
     alias(libs.plugins.org.jlleitschuh.gradle.ktlint) apply true
     alias(libs.plugins.org.gradle.android.cache.fix) apply false
+    alias(libs.plugins.androidx.room) apply false
 }
 
 //region Dependency Updates Task
@@ -153,7 +155,7 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 
 //region Global android configuration
 fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor, AR : AndroidResources>
-CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
+        CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
     buildToolsVersion = "34.0.0"
 
@@ -257,8 +259,10 @@ fun KtlintExtension.baseConfig() {
 
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
-    plugins.withType<AndroidBasePlugin> {
-        apply(plugin = "org.gradle.android.cache-fix")
+    if (!project.name.contains("database")) {
+        plugins.withType<AndroidBasePlugin> {
+            apply(plugin = "org.gradle.android.cache-fix")
+        }
     }
 }
 

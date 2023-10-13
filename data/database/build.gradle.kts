@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
+    alias(libs.plugins.androidx.room)
 }
 
 android {
@@ -11,7 +12,11 @@ android {
 }
 
 room {
-    schemaLocationDir.set(file("$projectDir/schemas"))
+    schemaDirectory("$projectDir/schemas/")
+}
+
+ksp {
+    arg("room.generateKotlin", "true")
 }
 
 dependencies {
@@ -30,7 +35,7 @@ dependencies {
     implementation(libs.androidx.sqlite)
     implementation(libs.kotlinx.coroutines.core)
 
-    api(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
