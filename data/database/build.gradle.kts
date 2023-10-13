@@ -10,8 +10,8 @@ android {
     namespace = "com.bz.movies.database"
 }
 
-ksp {
-    arg("room.schemaLocation", "$projectDir/schemas")
+room {
+    schemaLocationDir.set(file("$projectDir/schemas"))
 }
 
 dependencies {
