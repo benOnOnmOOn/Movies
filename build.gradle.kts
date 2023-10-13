@@ -7,6 +7,7 @@ import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.dsl.ProductFlavor
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
+import com.android.build.gradle.api.AndroidBasePlugin
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import dagger.hilt.android.plugin.HiltExtension
@@ -33,6 +34,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlinx.kover) apply false
     alias(libs.plugins.com.osacky.doctor) apply true
     alias(libs.plugins.org.jlleitschuh.gradle.ktlint) apply true
+    alias(libs.plugins.org.gradle.android.cache.fix) apply false
 }
 
 //region Dependency Updates Task
@@ -255,6 +257,9 @@ fun KtlintExtension.baseConfig() {
 
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
+    plugins.withType<AndroidBasePlugin> {
+        apply(plugin = "org.gradle.android.cache-fix")
+    }
 }
 
 doctor {
