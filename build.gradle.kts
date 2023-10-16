@@ -1,3 +1,4 @@
+
 import com.android.build.api.dsl.AndroidResources
 import com.android.build.api.dsl.BuildFeatures
 import com.android.build.api.dsl.BuildType
@@ -35,6 +36,7 @@ plugins {
     alias(libs.plugins.com.osacky.doctor) apply true
     alias(libs.plugins.org.jlleitschuh.gradle.ktlint) apply true
     alias(libs.plugins.org.gradle.android.cache.fix) apply false
+    alias(libs.plugins.androidx.room) apply false
 }
 
 //region Dependency Updates Task
@@ -257,8 +259,10 @@ fun KtlintExtension.baseConfig() {
 
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
-    plugins.withType<AndroidBasePlugin> {
-        apply(plugin = "org.gradle.android.cache-fix")
+    if (!project.name.contains("database")) {
+        plugins.withType<AndroidBasePlugin> {
+            apply(plugin = "org.gradle.android.cache-fix")
+        }
     }
 }
 
