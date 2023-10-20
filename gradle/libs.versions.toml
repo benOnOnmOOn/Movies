@@ -1,8 +1,8 @@
 [versions]
 coil-compose = "2.4.0"
 com-android-plugin = "8.1.2"
-compose = "1.5.3"
-firebase-bom = "32.3.1"
+compose = "1.5.4"
+firebase-bom = "32.4.0"
 hilt = "2.48.1"
 hilt-navigation-compose = "1.0.0"
 javax-inject = "1"
@@ -17,11 +17,11 @@ lifecycle-runtime-ktx = "2.6.2"
 activity-compose = "1.8.0"
 ksp = "1.9.10-1.0.13"
 moshi = "1.15.0"
-okhttp = "4.11.0"
+okhttp = "4.12.0"
 retrofit = "2.9.0"
 mockk = "1.13.8"
-room = "2.6.0-rc01"
-sqlite = "2.3.1"
+room = "2.6.0"
+sqlite = "2.4.0"
 startup-runtime = "1.1.1"
 timber = "5.0.1"
 kotlin-compose-compiler-extension = "1.5.3"
@@ -32,13 +32,10 @@ android-min-sdk = "28"
 [libraries]
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activity-compose" }
 androidx-animation-android = { module = "androidx.compose.animation:animation-android", version.ref = "compose" }
-androidx-animation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
 androidx-core = { module = "androidx.core:core", version.ref = "core-ktx" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 androidx-foundation-layout-android = { module = "androidx.compose.foundation:foundation-layout-android", version.ref = "compose" }
-androidx-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "compose" }
 androidx-foundation-android = { module = "androidx.compose.foundation:foundation-android", version.ref = "compose" }
-androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
 androidx-material-android = { module = "androidx.compose.material:material-android", version.ref = "compose" }
 androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
@@ -54,19 +51,14 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-runtime-android = { module = "androidx.compose.runtime:runtime-android", version.ref = "compose" }
-androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
 androidx-sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startup-runtime" }
 androidx-ui-android = { module = "androidx.compose.ui:ui-android", version.ref = "compose" }
-androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 androidx-ui-graphics-android = { module = "androidx.compose.ui:ui-graphics-android", version.ref = "compose" }
-androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics", version.ref = "compose" }
 androidx-ui-text-android = { module = "androidx.compose.ui:ui-text-android", version.ref = "compose" }
-androidx-ui-text = { module = "androidx.compose.ui:ui-text", version.ref = "compose" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 androidx-ui-unit-android = { module = "androidx.compose.ui:ui-unit-android", version.ref = "compose" }
-androidx-ui-unit = { module = "androidx.compose.ui:ui-unit", version.ref = "compose" }
 androidx-ui-tooling-preview-android = { module = "androidx.compose.ui:ui-tooling-preview-android", version.ref = "compose" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "hilt" }
@@ -105,10 +97,10 @@ dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version =
 com-google-gms-google-services = { id = "com.google.gms.google-services", version = "4.4.0" }
 firebase-crashlytics-gradle = { id = "com.google.firebase.crashlytics", version = "2.9.9" }
 com-google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-org_jetbrains_kotlinx_kover = { id = "org.jetbrains.kotlinx.kover", version = "0.7.3" }
+org_jetbrains_kotlinx_kover = { id = "org.jetbrains.kotlinx.kover", version = "0.7.4" }
 com_osacky_doctor = { id = "com.osacky.doctor", version = "0.8.1" }
-org-jlleitschuh-gradle-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "11.6.0" }
-org-gradle-android-cache-fix = { id = "org.gradle.android.cache-fix", version = "2.8.0" }
+org-jlleitschuh-gradle-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "11.6.1" }
+org-gradle-android-cache-fix = { id = "org.gradle.android.cache-fix", version = "2.8.1" }
 androidx-room = { id= "androidx.room", version.ref = "room" }
 [bundles]
 
