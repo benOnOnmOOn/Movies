@@ -29,7 +29,7 @@ internal data class MovieDetailsApiResponse(
     @Json(name = "title") val title: String?,
     @Json(name = "video") val video: Boolean?,
     @Json(name = "vote_average") val voteAverage: Double?,
-    @Json(name = "vote_count") val voteCount: Int?
+    @Json(name = "vote_count") val voteCount: Int?,
 )
 
 @JsonClass(generateAdapter = true)
@@ -37,13 +37,13 @@ internal data class BelongsToCollection(
     @Json(name = "backdrop_path") val backdropPath: String,
     @Json(name = "id") val id: Int,
     @Json(name = "name") val name: String,
-    @Json(name = "poster_path") val posterPath: String
+    @Json(name = "poster_path") val posterPath: String,
 )
 
 @JsonClass(generateAdapter = true)
 internal data class Genre(
     @Json(name = "id") val id: Int,
-    @Json(name = "name") val name: String
+    @Json(name = "name") val name: String,
 )
 
 @JsonClass(generateAdapter = true)
@@ -51,18 +51,18 @@ internal data class ProductionCompany(
     @Json(name = "id") val id: Int,
     @Json(name = "logo_path") val logoPath: String?,
     @Json(name = "name") val name: String,
-    @Json(name = "origin_country") val originCountry: String
+    @Json(name = "origin_country") val originCountry: String,
 )
 
 @JsonClass(generateAdapter = true)
 internal data class ProductionCountry(
     @Json(name = "iso_3166_1") val iso31661: String,
-    @Json(name = "name") val name: String
+    @Json(name = "name") val name: String,
 )
 
 @JsonClass(generateAdapter = true)
 internal data class SpokenLanguage(
     @Json(name = "english_name") val englishName: String,
     @Json(name = "iso_639_1") val iso6391: String,
-    @Json(name = "name") val name: String
+    @Json(name = "name") val name: String,
 )

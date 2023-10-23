@@ -9,25 +9,24 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 internal interface MovieService {
-
     @GET("movie/popular")
     suspend fun getPopularMoviePage(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
-        @Query("page") page: Int
+        @Query("page") page: Int,
     ): Response<PopularMoviesPageApiResponse>
 
     @GET("movie/now_playing")
     suspend fun getNowPlayingMovies(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
-        @Query("page") page: String
+        @Query("page") page: String,
     ): Response<PlayingNowMoviesApiResponse>
 
     @GET("movie/{movieId}")
     suspend fun getMovieDetails(
         @Path("movieId") movieId: Int,
         @Query("language") language: String,
-        @Query("api_key") apiKey: String
+        @Query("api_key") apiKey: String,
     ): Response<MovieDetailsApiResponse>
 }

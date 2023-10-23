@@ -14,10 +14,10 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 @Module
 @InstallIn(ViewModelComponent::class)
 internal class NetworkModule {
-
     @Provides
-    internal fun provideConnectivityManager(@ApplicationContext context: Context): ConnectivityManager? =
-        context.getSystemService<ConnectivityManager>()
+    internal fun provideConnectivityManager(
+        @ApplicationContext context: Context,
+    ): ConnectivityManager? = context.getSystemService<ConnectivityManager>()
 
     @Provides
     internal fun provideInternetConnection(connectivityManager: ConnectivityManager?): InternetConnection =

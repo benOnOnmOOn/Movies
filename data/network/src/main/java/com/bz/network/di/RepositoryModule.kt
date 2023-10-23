@@ -12,10 +12,9 @@ import dagger.hilt.android.components.ViewModelComponent
 @Module
 @InstallIn(ViewModelComponent::class)
 internal class RepositoryModule {
-
     @Provides
     internal fun provideMovieRepository(
         apiService: MovieService,
-        internetConnection: InternetConnection
+        internetConnection: InternetConnection,
     ): MovieRepository = MovieRepositoryImpl(apiService, internetConnection)
 }
