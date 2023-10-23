@@ -252,6 +252,7 @@ fun HiltExtension.baseConfig() {
 }
 
 fun KtlintExtension.baseConfig() {
+    version.set("1.0.1")
     filter {
         exclude("**/generated/**")
     }
