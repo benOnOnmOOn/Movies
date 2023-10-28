@@ -1,4 +1,3 @@
-
 import com.android.build.api.dsl.AndroidResources
 import com.android.build.api.dsl.BuildFeatures
 import com.android.build.api.dsl.BuildType
@@ -8,7 +7,6 @@ import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.dsl.ProductFlavor
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
-import com.android.build.gradle.api.AndroidBasePlugin
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import dagger.hilt.android.plugin.HiltExtension
@@ -42,14 +40,16 @@ plugins {
 //region Dependency Updates Task
 
 fun isNonStable(version: String): Boolean {
-    val unStableKeyword = listOf("ALPHA", "BETA").any {
-        version.contains(it, ignoreCase = true)
-    }
+    val unStableKeyword =
+        listOf("ALPHA", "BETA").any {
+            version.contains(it, ignoreCase = true)
+        }
     if (unStableKeyword) return true
 
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any {
-        version.contains(it, ignoreCase = true)
-    }
+    val stableKeyword =
+        listOf("RELEASE", "FINAL", "GA").any {
+            version.contains(it, ignoreCase = true)
+        }
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
     return isStable.not()
@@ -154,8 +154,13 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 }
 
 //region Global android configuration
-fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor, AR : AndroidResources>
-CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
+fun <
+    BF : BuildFeatures,
+    BT : BuildType,
+    DC : DefaultConfig,
+    PF : ProductFlavor,
+    AR : AndroidResources,
+    > CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
     buildToolsVersion = "34.0.0"
 
@@ -185,7 +190,7 @@ CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -202,12 +207,13 @@ CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
         }
     }
 
-    packaging.resources.excludes += setOf(
-        "kotlin/**",
-        "META-INF/**",
-        "**.properties",
-        "kotlin-tooling-metadata.json"
-    )
+    packaging.resources.excludes +=
+        setOf(
+            "kotlin/**",
+            "META-INF/**",
+            "**.properties",
+            "kotlin-tooling-metadata.json",
+        )
 }
 
 fun LibraryExtension.baseConfig() {
@@ -251,6 +257,10 @@ fun HiltExtension.baseConfig() {
     enableAggregatingTask = true
 }
 
+ktlint {
+    version.set("1.0.1")
+}
+
 fun KtlintExtension.baseConfig() {
     version.set("1.0.1")
     filter {
@@ -260,11 +270,7 @@ fun KtlintExtension.baseConfig() {
 
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
-    if (!project.name.contains("database")) {
-        plugins.withType<AndroidBasePlugin> {
-            apply(plugin = "org.gradle.android.cache-fix")
-        }
-    }
+    apply(plugin = "org.gradle.android.cache-fix")
 }
 
 doctor {
