@@ -17,6 +17,7 @@ android {
         versionName = "1.0"
     }
 
+    @Suppress("UnstableApiUsage")
     buildTypes {
         release {
             apply(plugin = "com.google.gms.google-services")
@@ -27,7 +28,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            @Suppress("UnstableApiUsage")
+
             optimization {
                 keepRules {
                     ignoreAllExternalDependencies(true)
@@ -50,6 +51,8 @@ dependencies {
     kover(project(":data:network"))
     kover(project(":data:database"))
     kover(project(":data:dto"))
+
+    implementation(libs.kotlin.stdlib)
 
     releaseImplementation(platform(libs.firebase.bom))
 

@@ -62,7 +62,7 @@ internal class ApiTest {
             mockWebServer.enqueueFromFile("now_playing_movies.json")
 
             val response =
-                movieService.getNowPlayingMovies(language = "en-US", apiKey = "api-key", page = "1")
+                movieService.getNowPlayingMovies(language = "en-US", apiKey = "api-key", page = 1)
             assertTrue(response.isSuccessful)
 
             assertTrue(response.body() is PlayingNowMoviesApiResponse)
