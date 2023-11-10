@@ -35,6 +35,7 @@ plugins {
     alias(libs.plugins.org.jlleitschuh.gradle.ktlint) apply true
     alias(libs.plugins.org.gradle.android.cache.fix) apply false
     alias(libs.plugins.androidx.room) apply false
+    alias(libs.plugins.org.jetbrains.kotlin.jvm) apply false
 }
 
 //region Dependency Updates Task

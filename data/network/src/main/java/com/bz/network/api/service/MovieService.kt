@@ -20,7 +20,7 @@ internal interface MovieService {
     suspend fun getNowPlayingMovies(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
-        @Query("page") page: String,
+        @Query("page") page: Int,
     ): Response<PlayingNowMoviesApiResponse>
 
     @GET("movie/{movieId}")

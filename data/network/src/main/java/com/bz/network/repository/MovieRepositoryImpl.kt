@@ -28,7 +28,7 @@ internal class MovieRepositoryImpl(
             movieService.getNowPlayingMovies(
                 apiKey = AUTH_KEY,
                 language = LANGUAGE,
-                page = "undefine",
+                page = 1,
             )
         }
 
