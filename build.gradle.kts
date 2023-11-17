@@ -15,15 +15,14 @@ import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import kotlinx.kover.gradle.plugin.KoverGradlePlugin
 import kotlinx.kover.gradle.plugin.dsl.KoverReportExtension
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
+    embeddedKotlin("android") apply false
+    embeddedKotlin("jvm") apply true
     alias(libs.plugins.com.android.application) apply false
-    alias(libs.plugins.org.jetbrains.kotlin.android) apply false
     alias(libs.plugins.com.android.library) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.gradle.versions) apply true
@@ -35,7 +34,6 @@ plugins {
     alias(libs.plugins.org.jlleitschuh.gradle.ktlint) apply true
     alias(libs.plugins.org.gradle.android.cache.fix) apply false
     alias(libs.plugins.androidx.room) apply false
-    alias(libs.plugins.org.jetbrains.kotlin.jvm) apply false
 }
 
 //region Dependency Updates Task
@@ -93,9 +91,9 @@ tasks.withType<Detekt>().configureEach {
         md.required.set(true)
     }
 }
+
 tasks.register<Detekt>("detektAll") {
     description = "Runs Detekt for all modules"
-    jvmTarget = "17"
     allRules = false
     config = files(configFile)
     baseline = file(baselineFile)
@@ -113,23 +111,33 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
     exclude(resourceFiles, buildFiles)
 }
 
-tasks.withType<DetektCreateBaselineTask>().configureEach {
-    jvmTarget = "17"
+//endregion
+
+//region Global kotlin and java configuration
+
+kotlin {
+    jvmToolchain(17)
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
 
 //endregion
 
-//region Global kotlin configuration
-tasks.withType<KotlinJvmCompile>().configureEach {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-
-        freeCompilerArgs.add("-Xjvm-default=all")
-    }
-}
-
 dependencyAnalysis {
-    issues { all { onAny { severity("fail") } } }
+    issues {
+        all { onAny { severity("fail") } }
+        all { onUnusedDependencies { exclude("org.jetbrains.kotlin:kotlin-stdlib") } }
+    }
+
+    structure {
+        bundle("kotlin-stdlib") {
+            includeGroup("org.jetbrains.kotlin")
+        }
+    }
 }
 
 fun PluginContainer.applyBaseConfig(project: Project) {
@@ -155,6 +163,7 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 }
 
 //region Global android configuration
+@Suppress("UnstableApiUsage")
 fun <
     BF : BuildFeatures,
     BT : BuildType,
@@ -200,7 +209,6 @@ fun <
         kotlinCompilerExtensionVersion = libs.versions.kotlin.compose.compiler.extension.get()
     }
 
-    @Suppress("UnstableApiUsage")
     testOptions {
         unitTests.isReturnDefaultValues = true
         unitTests.all {
