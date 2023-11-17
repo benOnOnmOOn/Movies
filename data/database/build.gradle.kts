@@ -1,6 +1,6 @@
 plugins {
+    embeddedKotlin("android")
     alias(libs.plugins.com.android.library)
-    alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
