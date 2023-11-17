@@ -115,7 +115,7 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
 
 //region Global kotlin and java configuration
 
-kotlin{
+kotlin {
     jvmToolchain(17)
 }
 
@@ -130,7 +130,7 @@ java {
 dependencyAnalysis {
     issues {
         all { onAny { severity("fail") } }
-        all{ onUnusedDependencies { exclude("org.jetbrains.kotlin:kotlin-stdlib") }}
+        all { onUnusedDependencies { exclude("org.jetbrains.kotlin:kotlin-stdlib") } }
     }
 
     structure {
@@ -142,7 +142,6 @@ dependencyAnalysis {
 
 fun PluginContainer.applyBaseConfig(project: Project) {
     whenPluginAdded {
-
         when (this) {
             is AppPlugin ->
                 project.extensions.getByType<BaseAppModuleExtension>().baseConfig()
@@ -166,12 +165,12 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 //region Global android configuration
 @Suppress("UnstableApiUsage")
 fun <
-        BF : BuildFeatures,
-        BT : BuildType,
-        DC : DefaultConfig,
-        PF : ProductFlavor,
-        AR : AndroidResources,
-        > CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
+    BF : BuildFeatures,
+    BT : BuildType,
+    DC : DefaultConfig,
+    PF : ProductFlavor,
+    AR : AndroidResources,
+    > CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
     buildToolsVersion = "34.0.0"
 
