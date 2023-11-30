@@ -24,6 +24,13 @@ dependencies {
     api(libs.javax.inject)
     //
 
+    // CRONET
+    releaseApi(libs.cronet.okhttp)
+    releaseApi(libs.cronet.api)
+    releaseRuntimeOnly(libs.cronet.embedded)
+    releaseImplementation(libs.play.services.cronet)
+    //
+
     implementation(libs.moshi)
     implementation(libs.converter.moshi)
     api(libs.okhttp)

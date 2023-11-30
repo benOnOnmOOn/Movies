@@ -17,7 +17,6 @@ android {
         versionName = "1.0"
     }
 
-    @Suppress("UnstableApiUsage")
     buildTypes {
         release {
             apply(plugin = "com.google.gms.google-services")
@@ -29,11 +28,11 @@ android {
                 "proguard-rules.pro",
             )
 
-            optimization {
-                keepRules {
-                    ignoreAllExternalDependencies(true)
-                }
-            }
+//            optimization {
+//                keepRules {
+//                    ignoreAllExternalDependencies(true)
+//                }
+//            }
             signingConfig = signingConfigs.getByName("debug")
         }
     }
