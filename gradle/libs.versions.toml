@@ -1,6 +1,6 @@
 [versions]
 coil-compose = "2.5.0"
-com-android-plugin = "8.1.4"
+com-android-plugin = "8.2.0"
 compose = "1.5.4"
 cronet = "113.5672.61"
 play-services-cronet = "18.0.1"
