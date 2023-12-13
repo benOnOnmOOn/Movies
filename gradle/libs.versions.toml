@@ -1,11 +1,12 @@
 [versions]
+annotation = "1.7.0"
 coil-compose = "2.5.0"
 com-android-plugin = "8.2.0"
 compose = "1.5.4"
 cronet = "113.5672.61"
 play-services-cronet = "18.0.1"
-firebase-bom = "32.6.0"
-hilt = "2.48.1"
+firebase-bom = "32.7.0"
+hilt = "2.49"
 hilt-navigation-compose = "1.1.0"
 javax-inject = "1"
 kotlinx-coroutines = "1.7.3"
@@ -34,6 +35,7 @@ android-min-sdk = "28"
 [libraries]
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activity-compose" }
 androidx-animation-android = { module = "androidx.compose.animation:animation-android", version.ref = "compose" }
+androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 androidx-core = { module = "androidx.core:core", version.ref = "core-ktx" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 androidx-foundation-layout-android = { module = "androidx.compose.foundation:foundation-layout-android", version.ref = "compose" }
@@ -99,13 +101,13 @@ com-android-library = { id = "com.android.library", version.ref = "com-android-p
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.50.0" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.4" }
-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.26.0" }
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.28.0" }
 com-google-gms-google-services = { id = "com.google.gms.google-services", version = "4.4.0" }
 firebase-crashlytics-gradle = { id = "com.google.firebase.crashlytics", version = "2.9.9" }
 com-google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-org_jetbrains_kotlinx_kover = { id = "org.jetbrains.kotlinx.kover", version = "0.7.4" }
+org_jetbrains_kotlinx_kover = { id = "org.jetbrains.kotlinx.kover", version = "0.7.5" }
 com_osacky_doctor = { id = "com.osacky.doctor", version = "0.9.1" }
-org-jlleitschuh-gradle-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "11.6.1" }
+org-jlleitschuh-gradle-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "12.0.3" }
 org-gradle-android-cache-fix = { id = "org.gradle.android.cache-fix", version = "3.0" }
 androidx-room = { id = "androidx.room", version.ref = "room" }
 [bundles]
