@@ -36,6 +36,7 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.annotation)
 
     api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.navigation.common)
