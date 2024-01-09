@@ -271,7 +271,7 @@ ktlint {
 }
 
 fun KtlintExtension.baseConfig() {
-    version.set("1.0.1")
+    version.set("1.1.1")
     filter {
         exclude("**/generated/**")
     }
