@@ -38,5 +38,4 @@ internal class ApiModule {
 
     @Provides
     internal fun provideApiService(retrofit: Retrofit): MovieService = retrofit.create()
-
 }

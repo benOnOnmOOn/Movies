@@ -12,16 +12,13 @@ import com.bz.movies.database.entity.MovieEntity
 import com.bz.movies.database.entity.PlayingNowMovieEntity
 import com.bz.movies.database.entity.PopularMovieEntity
 
-
 private const val DATABASE_NAME = "MoviesDB"
 
-internal fun createMoviesDatabase(
-    context: Application
-): MoviesDatabase =
+internal fun createMoviesDatabase(context: Application): MoviesDatabase =
     Room.databaseBuilder(
         context = context,
         klass = MoviesDatabase::class.java,
-        name = DATABASE_NAME
+        name = DATABASE_NAME,
     ).fallbackToDestructiveMigrationOnDowngrade()
         .build()
 
@@ -31,8 +28,7 @@ internal fun createMoviesDatabase(
     exportSchema = true,
     autoMigrations = [
         AutoMigration(from = 1, to = 2),
-    ]
-
+    ],
 )
 internal abstract class MoviesDatabase : RoomDatabase() {
     abstract fun movieDAO(): MovieDAO

@@ -22,7 +22,6 @@ internal class LocalMovieRepositoryImpl(
     private val playingNowMovieDAO: PlayingNowMovieDAO,
     private val popularMovieDAO: PopularMovieDAO,
 ) : LocalMovieRepository {
-
     override val favoritesMovies: Flow<List<MovieDto>>
         get() =
             movieDAO

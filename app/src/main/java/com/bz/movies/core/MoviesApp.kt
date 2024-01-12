@@ -12,7 +12,7 @@ class MoviesApp : Application() {
             StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .penaltyDeath()
-                .build()
+                .build(),
         )
     }
 }

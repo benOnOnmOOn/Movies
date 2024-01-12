@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 @Entity(tableName = MovieEntity.ENTITY_NAME)
 internal data class MovieEntity(
     @PrimaryKey @ColumnInfo(name = COLUMN_ID) val id: Long,

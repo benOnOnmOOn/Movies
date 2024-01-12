@@ -38,12 +38,9 @@ fun MoviesNavHost(
         }
         composable(
             route = RootRoute.Details.route,
-            arguments = listOf(navArgument("id") { type = NavType.IntType })
+            arguments = listOf(navArgument("id") { type = NavType.IntType }),
         ) { backStackEntry ->
             MovieDetailsScreen(backStackEntry.arguments?.getInt("id"))
         }
     }
 }
-
-
-

@@ -3,9 +3,7 @@ package com.bz.movies.database.repository
 import com.bz.dto.MovieDto
 import kotlinx.coroutines.flow.Flow
 
-
 interface LocalMovieRepository {
-
     val favoritesMovies: Flow<List<MovieDto>>
 
     val playingNowMovies: Flow<List<MovieDto>>
@@ -23,5 +21,4 @@ interface LocalMovieRepository {
     suspend fun insertPopularMovies(movieDto: List<MovieDto>): Result<Unit>
 
     suspend fun clearPopularMovies(): Result<Unit>
-
 }

@@ -7,11 +7,9 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 internal interface PopularMovieDAO : BaseDao<PopularMovieEntity> {
-
     @Query("SELECT * FROM ${PopularMovieEntity.ENTITY_NAME}")
     fun observeAllMovies(): Flow<List<PopularMovieEntity>>
 
     @Query("DELETE FROM ${PopularMovieEntity.ENTITY_NAME}")
     fun clearTable()
-
 }
