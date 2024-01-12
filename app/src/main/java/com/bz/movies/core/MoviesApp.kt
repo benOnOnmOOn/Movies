@@ -11,7 +11,7 @@ class MoviesApp : Application() {
         StrictMode.setThreadPolicy(
             StrictMode.ThreadPolicy.Builder()
                 .detectAll()
-                .penaltyDeath()
+                .penaltyDialog()
                 .build(),
         )
     }
