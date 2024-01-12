@@ -28,65 +28,67 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class FavoriteScreenViewModel @Inject constructor(
-    private val localMovieRepository: LocalMovieRepository,
-) : ViewModel() {
+class FavoriteScreenViewModel
+    @Inject
+    constructor(
+        private val localMovieRepository: LocalMovieRepository,
+    ) : ViewModel() {
+        private val _state = MutableStateFlow(MoviesState())
+        val state: StateFlow<MoviesState> = _state.asStateFlow()
 
-    private val _state = MutableStateFlow(MoviesState())
-    val state: StateFlow<MoviesState> = _state.asStateFlow()
+        private val _event: MutableSharedFlow<MovieEvent> = MutableSharedFlow()
+        private val event: SharedFlow<MovieEvent> = _event.asSharedFlow()
 
-    private val _event: MutableSharedFlow<MovieEvent> = MutableSharedFlow()
-    private val event: SharedFlow<MovieEvent> = _event.asSharedFlow()
+        private val _effect: MutableSharedFlow<MovieEffect> = MutableSharedFlow()
+        val effect = _effect.asSharedFlow()
 
-    private val _effect: MutableSharedFlow<MovieEffect> = MutableSharedFlow()
-    val effect = _effect.asSharedFlow()
+        init {
+            collectFavoriteMovies()
+            handleEvent()
+        }
 
-    init {
-        collectFavoriteMovies()
-        handleEvent()
-    }
+        fun sendEvent(event: MovieEvent) =
+            launch {
+                _event.emit(event)
+            }
 
-    fun sendEvent(event: MovieEvent) = launch {
-        _event.emit(event)
-    }
+        private fun handleEvent() =
+            viewModelScope.launch {
+                event.collect { handleEvent(it) }
+            }
 
-    private fun handleEvent() = viewModelScope.launch {
-        event.collect { handleEvent(it) }
-    }
+        private suspend fun handleEvent(event: MovieEvent) {
+            when (event) {
+                is MovieEvent.OnMovieClicked ->
+                    localMovieRepository.deleteFavoriteMovie(event.movieItem.toDTO())
 
-    private suspend fun handleEvent(event: MovieEvent) {
-        when (event) {
-            is MovieEvent.OnMovieClicked ->
-                localMovieRepository.deleteFavoriteMovie(event.movieItem.toDTO())
-
-            MovieEvent.Refresh -> {
-                // do nothing
+                MovieEvent.Refresh -> {
+                    // do nothing
+                }
             }
         }
-    }
 
-    private fun collectFavoriteMovies() {
-        localMovieRepository.favoritesMovies
-            .flowOn(Dispatchers.Main)
-            .onEach { data ->
-                _state.update {
-                    MoviesState(
-                        isLoading = false,
-                        playingNowMovies = data.map(MovieDto::toMovieItem)
-                    )
+        private fun collectFavoriteMovies() {
+            localMovieRepository.favoritesMovies
+                .flowOn(Dispatchers.Main)
+                .onEach { data ->
+                    _state.update {
+                        MoviesState(
+                            isLoading = false,
+                            playingNowMovies = data.map(MovieDto::toMovieItem),
+                        )
+                    }
                 }
-            }
-            .catch {
-                _effect.emit(MovieEffect.UnknownError)
-                Timber.e(it)
-                _state.update {
-                    MoviesState(
-                        isLoading = false,
-                        isRefreshing = false,
-                    )
+                .catch {
+                    _effect.emit(MovieEffect.UnknownError)
+                    Timber.e(it)
+                    _state.update {
+                        MoviesState(
+                            isLoading = false,
+                            isRefreshing = false,
+                        )
+                    }
                 }
-            }
-            .launchIn(viewModelScope)
+                .launchIn(viewModelScope)
+        }
     }
-}
-

@@ -7,8 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 internal interface MovieDAO : BaseDao<MovieEntity> {
-
     @Query("SELECT * FROM ${MovieEntity.ENTITY_NAME}")
     fun observeAllMovies(): Flow<List<MovieEntity>>
-
 }

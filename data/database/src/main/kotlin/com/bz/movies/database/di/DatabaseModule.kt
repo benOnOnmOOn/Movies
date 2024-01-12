@@ -12,32 +12,22 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 internal class DatabaseModule {
+    @Singleton
+    @Provides
+    internal fun provideDb(app: Application): MoviesDatabase = createMoviesDatabase(app)
 
     @Singleton
     @Provides
-    internal fun provideDb(
-        app: Application
-    ): MoviesDatabase = createMoviesDatabase(app)
+    internal fun provideMovieDao(db: MoviesDatabase): MovieDAO = db.movieDAO()
 
     @Singleton
     @Provides
-    internal fun provideMovieDao(
-        db: MoviesDatabase
-    ): MovieDAO = db.movieDAO()
+    internal fun providePlayingNowMovieDao(db: MoviesDatabase): PlayingNowMovieDAO = db.playingNowMovieDAO()
 
     @Singleton
     @Provides
-    internal fun providePlayingNowMovieDao(
-        db: MoviesDatabase
-    ): PlayingNowMovieDAO = db.playingNowMovieDAO()
-
-    @Singleton
-    @Provides
-    internal fun providePopularMovieDao(
-        db: MoviesDatabase
-    ): PopularMovieDAO = db.popularMovieDAO()
+    internal fun providePopularMovieDao(db: MoviesDatabase): PopularMovieDAO = db.popularMovieDAO()
 }

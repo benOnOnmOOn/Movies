@@ -16,9 +16,7 @@ import com.bz.movies.presentation.theme.MoviesTheme
 import com.bz.presentation.screens.R
 
 @Composable
-fun FavoriteScreen(
-    favoriteScreenViewModel: FavoriteScreenViewModel = hiltViewModel()
-) {
+fun FavoriteScreen(favoriteScreenViewModel: FavoriteScreenViewModel = hiltViewModel()) {
     val playingNow by favoriteScreenViewModel.state.collectAsState()
     FavoriteScreen(playingNow, favoriteScreenViewModel::sendEvent)
 }
@@ -29,7 +27,7 @@ private fun FavoriteScreen(
     sendEvent: (MovieEvent) -> Unit,
 ) {
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(text = stringResource(R.string.your_favorite_movies))
 
@@ -37,7 +35,6 @@ private fun FavoriteScreen(
             sendEvent(MovieEvent.OnMovieClicked(it))
         }
     }
-
 }
 
 @Preview(showBackground = true)

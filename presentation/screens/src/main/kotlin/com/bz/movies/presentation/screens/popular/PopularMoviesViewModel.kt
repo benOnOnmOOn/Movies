@@ -33,97 +33,97 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class PopularMoviesViewModel @Inject constructor(
-    private val movieRepository: MovieRepository,
-    private val localMovieRepository: LocalMovieRepository,
-) : ViewModel() {
+class PopularMoviesViewModel
+    @Inject
+    constructor(
+        private val movieRepository: MovieRepository,
+        private val localMovieRepository: LocalMovieRepository,
+    ) : ViewModel() {
+        private val _state = MutableStateFlow(MoviesState())
+        val state: StateFlow<MoviesState> = _state.asStateFlow()
 
-    private val _state = MutableStateFlow(MoviesState())
-    val state: StateFlow<MoviesState> = _state.asStateFlow()
+        private val _event: MutableSharedFlow<MovieEvent> = MutableSharedFlow()
+        private val event: SharedFlow<MovieEvent> = _event.asSharedFlow()
 
-    private val _event: MutableSharedFlow<MovieEvent> = MutableSharedFlow()
-    private val event: SharedFlow<MovieEvent> = _event.asSharedFlow()
+        private val _effect: MutableSharedFlow<MovieEffect> = MutableSharedFlow()
+        val effect = _effect.asSharedFlow()
 
-    private val _effect: MutableSharedFlow<MovieEffect> = MutableSharedFlow()
-    val effect = _effect.asSharedFlow()
-
-    init {
-        collectPopularMovies()
-        handleEvent()
-    }
-
-    fun sendEvent(event: MovieEvent) = launch {
-        _event.emit(event)
-    }
-
-    private fun handleEvent() = viewModelScope.launch {
-        event.collect { handleEvent(it) }
-    }
-
-    private suspend fun handleEvent(event: MovieEvent) {
-        when (event) {
-            is MovieEvent.OnMovieClicked ->
-                localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())
-
-            MovieEvent.Refresh -> {
-                localMovieRepository.clearPopularMovies()
-                fetchPopularNowMovies()
-            }
-        }
-    }
-
-    private fun fetchPopularNowMovies() = launch {
-
-        val result = movieRepository.getPopularMovies(1)
-
-        result.onSuccess { data ->
-            _state.update {
-                MoviesState(
-                    isLoading = false,
-                    playingNowMovies = data.map(MovieDto::toMovieItem)
-                )
-            }
-            localMovieRepository.insertPopularMovies(data)
-        }
-        result.onFailure {
-            val error = when (it) {
-                is NoInternetException, is HttpException, is EmptyBodyException ->
-                    MovieEffect.NetworkConnectionError
-
-                else -> MovieEffect.UnknownError
-            }
-            _effect.emit(error)
-            Timber.e(it)
-            _state.update { MoviesState(isLoading = false) }
+        init {
+            collectPopularMovies()
+            handleEvent()
         }
 
-    }
+        fun sendEvent(event: MovieEvent) =
+            launch {
+                _event.emit(event)
+            }
 
-    private fun collectPopularMovies() {
-        localMovieRepository.popularMovies
-            .flowOn(Dispatchers.Main)
-            .onEmpty { fetchPopularNowMovies() }
-            .onEach { data ->
-                _state.update {
-                    MoviesState(
-                        isLoading = false,
-                        playingNowMovies = data.map(MovieDto::toMovieItem)
-                    )
+        private fun handleEvent() =
+            viewModelScope.launch {
+                event.collect { handleEvent(it) }
+            }
+
+        private suspend fun handleEvent(event: MovieEvent) {
+            when (event) {
+                is MovieEvent.OnMovieClicked ->
+                    localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())
+
+                MovieEvent.Refresh -> {
+                    localMovieRepository.clearPopularMovies()
+                    fetchPopularNowMovies()
                 }
             }
-            .catch {
-                _effect.emit(MovieEffect.UnknownError)
-                Timber.e(it)
-                _state.update {
-                    MoviesState(
-                        isLoading = false,
-                        isRefreshing = false,
-                    )
+        }
+
+        private fun fetchPopularNowMovies() =
+            launch {
+                val result = movieRepository.getPopularMovies(1)
+
+                result.onSuccess { data ->
+                    _state.update {
+                        MoviesState(
+                            isLoading = false,
+                            playingNowMovies = data.map(MovieDto::toMovieItem),
+                        )
+                    }
+                    localMovieRepository.insertPopularMovies(data)
+                }
+                result.onFailure {
+                    val error =
+                        when (it) {
+                            is NoInternetException, is HttpException, is EmptyBodyException ->
+                                MovieEffect.NetworkConnectionError
+
+                            else -> MovieEffect.UnknownError
+                        }
+                    _effect.emit(error)
+                    Timber.e(it)
+                    _state.update { MoviesState(isLoading = false) }
                 }
             }
-            .launchIn(viewModelScope)
 
+        private fun collectPopularMovies() {
+            localMovieRepository.popularMovies
+                .flowOn(Dispatchers.Main)
+                .onEmpty { fetchPopularNowMovies() }
+                .onEach { data ->
+                    _state.update {
+                        MoviesState(
+                            isLoading = false,
+                            playingNowMovies = data.map(MovieDto::toMovieItem),
+                        )
+                    }
+                }
+                .catch {
+                    _effect.emit(MovieEffect.UnknownError)
+                    Timber.e(it)
+                    _state.update {
+                        MoviesState(
+                            isLoading = false,
+                            isRefreshing = false,
+                        )
+                    }
+                }
+                .launchIn(viewModelScope)
+        }
     }
-
-}
-

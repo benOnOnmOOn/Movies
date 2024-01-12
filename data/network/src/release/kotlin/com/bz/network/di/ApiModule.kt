@@ -26,28 +26,25 @@ const val NETWORK_CONNECTION_TIMEOUT = 30L
 @Module
 @InstallIn(SingletonComponent::class)
 internal class ApiModule {
-
     @Provides
     internal fun provideCronetEngine(
         @ApplicationContext context: Context,
-    ): CronetEngine {
+    ): CronetEngine =
         runBlocking {
             withContext(Dispatchers.IO) {
                 Tasks.await(CronetProviderInstaller.installProvider(context))
+
+                CronetEngine.Builder(context)
+                    .enableBrotli(true)
+                    .enableQuic(true)
+                    .build()
             }
         }
 
-        return CronetEngine.Builder(context)
-            .enableBrotli(true)
-            .enableQuic(true)
-            .build()
-    }
-
     @Provides
-    internal fun provideCronetCallFactory(
-        engine: CronetEngine
-    ): CronetCallFactory =
-        CronetCallFactory.newBuilder(engine).build()
+    internal fun provideCronetCallFactory(engine: CronetEngine): CronetCallFactory {
+        return CronetCallFactory.newBuilder(engine).build()
+    }
 
     @Provides
     fun provideOkHttpClient(): OkHttpClient =
@@ -60,7 +57,7 @@ internal class ApiModule {
     @Provides
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
-        cornetCallFactory: CronetCallFactory
+        cornetCallFactory: CronetCallFactory,
     ): Retrofit =
         Retrofit.Builder()
             .client(okHttpClient)
@@ -71,5 +68,4 @@ internal class ApiModule {
 
     @Provides
     fun provideApiService(retrofit: Retrofit): MovieService = retrofit.create()
-
 }

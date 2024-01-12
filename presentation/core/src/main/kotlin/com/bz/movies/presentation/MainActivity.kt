@@ -22,8 +22,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -39,14 +37,14 @@ class MainActivity : ComponentActivity() {
                                 navController.navigateToRootRoute(it.rootRoute)
                             },
                         )
-                    }
-
+                    },
                 ) {
                     Surface(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(it),
-                        color = MaterialTheme.colorScheme.background
+                        modifier =
+                            Modifier
+                                .fillMaxSize()
+                                .padding(it),
+                        color = MaterialTheme.colorScheme.background,
                     ) {
                         MoviesNavHost(
                             navController = navController,
@@ -58,5 +56,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-

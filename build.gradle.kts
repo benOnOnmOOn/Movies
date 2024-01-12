@@ -170,7 +170,7 @@ fun <
     DC : DefaultConfig,
     PF : ProductFlavor,
     AR : AndroidResources,
-    > CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
+> CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
     buildToolsVersion = "34.0.0"
 
@@ -267,7 +267,7 @@ fun HiltExtension.baseConfig() {
 }
 
 ktlint {
-    version.set("1.0.1")
+    version.set("1.1.1")
 }
 
 fun KtlintExtension.baseConfig() {

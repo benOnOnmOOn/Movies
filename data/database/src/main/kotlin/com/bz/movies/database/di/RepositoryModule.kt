@@ -13,12 +13,10 @@ import dagger.hilt.android.components.ViewModelComponent
 @Module
 @InstallIn(ViewModelComponent::class)
 internal class RepositoryModule {
-
     @Provides
     internal fun provideMovieRepository(
         movieDAO: MovieDAO,
         playingNowMovieDAO: PlayingNowMovieDAO,
         popularMovieDAO: PopularMovieDAO,
-    ): LocalMovieRepository =
-        LocalMovieRepositoryImpl(movieDAO, playingNowMovieDAO, popularMovieDAO)
+    ): LocalMovieRepository = LocalMovieRepositoryImpl(movieDAO, playingNowMovieDAO, popularMovieDAO)
 }
