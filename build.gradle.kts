@@ -267,7 +267,7 @@ fun HiltExtension.baseConfig() {
 }
 
 ktlint {
-    version.set("1.0.1")
+    version.set("1.1.1")
 }
 
 fun KtlintExtension.baseConfig() {
