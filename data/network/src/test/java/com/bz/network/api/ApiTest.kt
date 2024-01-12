@@ -104,10 +104,7 @@ internal class ApiTest {
                 imdbId = "tt7126948",
                 originalLanguage = "en",
                 originalTitle = "Wonder Woman 1984",
-                overview =
-                    """A botched store robbery places Wonder Woman in a global battle against
-                    | a powerful and mysterious ancient force that puts her powers in jeopardy."""
-                        .trimMargin(),
+                overview = """A botched store robbery places Wonder Woman in a global battle against a powerful and mysterious ancient force that puts her powers in jeopardy.""",
                 popularity = 728.44,
                 posterPath = "/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
                 productionCompanies =
