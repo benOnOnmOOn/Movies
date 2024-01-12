@@ -30,17 +30,15 @@ internal class ApiModule {
     @Provides
     internal fun provideCronetEngine(
         @ApplicationContext context: Context,
-    ): CronetEngine {
-        runBlocking {
-            withContext(Dispatchers.IO) {
-                Tasks.await(CronetProviderInstaller.installProvider(context))
-            }
-        }
+    ): CronetEngine = runBlocking {
+        withContext(Dispatchers.IO) {
+            Tasks.await(CronetProviderInstaller.installProvider(context))
 
-        return CronetEngine.Builder(context)
-            .enableBrotli(true)
-            .enableQuic(true)
-            .build()
+            CronetEngine.Builder(context)
+                .enableBrotli(true)
+                .enableQuic(true)
+                .build()
+        }
     }
 
     @Provides
