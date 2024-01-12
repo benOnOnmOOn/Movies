@@ -42,7 +42,9 @@ internal class ApiModule {
         }
 
     @Provides
-    internal fun provideCronetCallFactory(engine: CronetEngine): CronetCallFactory = CronetCallFactory.newBuilder(engine).build()
+    internal fun provideCronetCallFactory(engine: CronetEngine): CronetCallFactory {
+        return CronetCallFactory.newBuilder(engine).build()
+    }
 
     @Provides
     fun provideOkHttpClient(): OkHttpClient =
