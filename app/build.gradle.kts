@@ -45,7 +45,10 @@ android {
 }
 
 dependencyAnalysis {
-    issues { onUnusedDependencies { exclude(":presentation:core") } }
+    issues {
+        onUnusedDependencies { exclude(":presentation:core") }
+        onIncorrectConfiguration { exclude("org.jetbrains.kotlin:kotlin-stdlib") }
+    }
 }
 
 dependencies {
@@ -56,8 +59,6 @@ dependencies {
     kover(project(":data:network"))
     kover(project(":data:database"))
     kover(project(":data:dto"))
-
-    implementation(libs.kotlin.stdlib)
 
     releaseImplementation(libs.firebase.analytics.ktx)
     releaseImplementation(libs.firebase.crashlytics.ktx)
