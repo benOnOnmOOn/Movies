@@ -26,8 +26,6 @@ dependencies {
     api(project(":data:database"))
     api(project(":data:dto"))
 
-    releaseImplementation(platform(libs.firebase.bom))
-
     releaseImplementation(libs.firebase.analytics.ktx)
     releaseImplementation(libs.firebase.crashlytics.ktx)
 
@@ -55,6 +53,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview.android)
     implementation(libs.androidx.ui.unit.android)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.appcompat)
 
     api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.core)

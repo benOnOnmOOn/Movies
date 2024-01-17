@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     embeddedKotlin("android")
     alias(libs.plugins.com.android.application)
@@ -17,6 +19,8 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+
+    androidResources.generateLocaleConfig = true
 
     buildTypes {
         release {
@@ -55,11 +59,9 @@ dependencies {
 
     implementation(libs.kotlin.stdlib)
 
-    releaseImplementation(platform(libs.firebase.bom))
-
     releaseImplementation(libs.firebase.analytics.ktx)
     releaseImplementation(libs.firebase.crashlytics.ktx)
-    releaseImplementation(libs.firebase.perf)
+    implementation(libs.firebase.perf)
 
     //  HILT
     ksp(libs.hilt.android.compiler)
