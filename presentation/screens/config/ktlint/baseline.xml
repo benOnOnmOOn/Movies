@@ -20,6 +20,11 @@
         <error line="31" column="13" source="standard:function-naming" />
         <error line="48" column="13" source="standard:function-naming" />
     </file>
+    <file name="src/main/kotlin/com/bz/movies/presentation/screens/details/MovieDetailsViewModel.kt">
+        <error line="24" column="28" source="standard:annotation" />
+        <error line="24" column="36" source="standard:annotation" />
+        <error line="42" column="40" source="standard:multiline-expression-wrapping" />
+    </file>
     <file name="src/main/kotlin/com/bz/movies/presentation/screens/empty/Greeting.kt">
         <error line="11" column="5" source="standard:function-naming" />
         <error line="25" column="5" source="standard:function-naming" />
@@ -30,7 +35,9 @@
         <error line="42" column="13" source="standard:function-naming" />
     </file>
     <file name="src/main/kotlin/com/bz/movies/presentation/screens/favorite/FavoriteScreenViewModel.kt">
-        <error line="39" column="21" source="standard:property-naming" />
+        <error line="31" column="30" source="standard:annotation" />
+        <error line="31" column="38" source="standard:annotation" />
+        <error line="37" column="17" source="standard:property-naming" />
     </file>
     <file name="src/main/kotlin/com/bz/movies/presentation/screens/more/MoreScreen.kt">
         <error line="11" column="5" source="standard:function-naming" />
@@ -42,7 +49,9 @@
         <error line="44" column="13" source="standard:function-naming" />
     </file>
     <file name="src/main/kotlin/com/bz/movies/presentation/screens/playingNow/PlayingNowViewModel.kt">
-        <error line="45" column="21" source="standard:property-naming" />
+        <error line="36" column="26" source="standard:annotation" />
+        <error line="36" column="34" source="standard:annotation" />
+        <error line="43" column="17" source="standard:property-naming" />
     </file>
     <file name="src/main/kotlin/com/bz/movies/presentation/screens/popular/PopularMoviesScreen.kt">
         <error line="20" column="5" source="standard:function-naming" />
