@@ -17,8 +17,6 @@ android {
 dependencies {
     implementation(project(":presentation:screens"))
 
-    releaseImplementation(platform(libs.firebase.bom))
-
     releaseImplementation(libs.firebase.analytics.ktx)
     releaseImplementation(libs.firebase.crashlytics.ktx)
 
@@ -37,12 +35,13 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.annotation)
+    api(libs.androidx.appcompat)
 
     api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.navigation.common)
     implementation(libs.androidx.navigation.runtime)
 
-    api(libs.androidx.activity)
+    implementation(libs.androidx.activity)
     implementation(libs.androidx.material3)
 
     testImplementation(libs.junit.api)

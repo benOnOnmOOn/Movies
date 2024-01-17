@@ -178,7 +178,6 @@ fun <
         minSdk = libs.versions.android.min.sdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        resourceConfigurations.addAll(listOf("en", "pl"))
     }
 
     lint {

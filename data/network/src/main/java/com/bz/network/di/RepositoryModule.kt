@@ -4,6 +4,7 @@ import com.bz.network.api.service.MovieService
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.MovieRepositoryImpl
 import com.bz.network.utils.InternetConnection
+import dagger.Lazy
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +15,7 @@ import dagger.hilt.android.components.ViewModelComponent
 internal class RepositoryModule {
     @Provides
     internal fun provideMovieRepository(
-        apiService: MovieService,
+        apiService: Lazy<MovieService>,
         internetConnection: InternetConnection,
     ): MovieRepository = MovieRepositoryImpl(apiService, internetConnection)
 }
