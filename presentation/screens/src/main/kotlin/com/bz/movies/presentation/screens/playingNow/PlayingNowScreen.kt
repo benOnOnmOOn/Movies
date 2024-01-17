@@ -22,19 +22,16 @@ fun PlayingNowScreen(playingNowViewModel: PlayingNowViewModel = hiltViewModel())
 }
 
 @Composable
-private fun PlayingNowScreen(
-    state: MoviesState = MoviesState(),
-    sendEvent: (MovieEvent) -> Unit,
-) {
+private fun PlayingNowScreen(state: MoviesState = MoviesState(), sendEvent: (MovieEvent) -> Unit) {
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = stringResource(R.string.playing_now_screen_title))
 
         MoviesContentWithPullToRefresh(
             playingNowState = state,
             refresh = { sendEvent(MovieEvent.Refresh) },
-            onMovieClicked = { sendEvent(MovieEvent.OnMovieClicked(it)) },
+            onMovieClicked = { sendEvent(MovieEvent.OnMovieClicked(it)) }
         )
     }
 }

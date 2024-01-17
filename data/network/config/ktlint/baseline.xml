@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <baseline version="1.0">
     <file name="src/test/java/com/bz/network/api/ApiTest.kt">
-        <error line="107" column="141" source="standard:max-line-length" />
+        <error line="104" column="101" source="standard:max-line-length" />
+    </file>
+    <file name="src/test/java/com/bz/network/repository/MovieRepositoryImplTest.kt">
+        <error line="74" column="101" source="standard:max-line-length" />
     </file>
 </baseline>

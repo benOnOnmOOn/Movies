@@ -14,7 +14,7 @@ class MoviesApp : Application() {
             StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .penaltyListener(Executors.newSingleThreadScheduledExecutor(), Timber::e)
-                .build(),
+                .build()
         )
     }
 }

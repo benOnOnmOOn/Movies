@@ -35,7 +35,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PopularMoviesViewModel @Inject constructor(
     private val movieRepository: MovieRepository,
-    private val localMovieRepository: LocalMovieRepository,
+    private val localMovieRepository: LocalMovieRepository
 ) : ViewModel() {
     private val _state = MutableStateFlow(MoviesState())
     val state: StateFlow<MoviesState> = _state.asStateFlow()
@@ -51,15 +51,13 @@ class PopularMoviesViewModel @Inject constructor(
         handleEvent()
     }
 
-    fun sendEvent(event: MovieEvent) =
-        launch {
-            _event.emit(event)
-        }
+    fun sendEvent(event: MovieEvent) = launch {
+        _event.emit(event)
+    }
 
-    private fun handleEvent() =
-        viewModelScope.launch {
-            event.collect { handleEvent(it) }
-        }
+    private fun handleEvent() = viewModelScope.launch {
+        event.collect { handleEvent(it) }
+    }
 
     private suspend fun handleEvent(event: MovieEvent) {
         when (event) {
@@ -73,32 +71,31 @@ class PopularMoviesViewModel @Inject constructor(
         }
     }
 
-    private fun fetchPopularNowMovies() =
-        launch {
-            val result = movieRepository.getPopularMovies(1)
+    private fun fetchPopularNowMovies() = launch {
+        val result = movieRepository.getPopularMovies(1)
 
-            result.onSuccess { data ->
-                _state.update {
-                    MoviesState(
-                        isLoading = false,
-                        playingNowMovies = data.map(MovieDto::toMovieItem),
-                    )
-                }
-                localMovieRepository.insertPopularMovies(data)
+        result.onSuccess { data ->
+            _state.update {
+                MoviesState(
+                    isLoading = false,
+                    playingNowMovies = data.map(MovieDto::toMovieItem)
+                )
             }
-            result.onFailure {
-                val error =
-                    when (it) {
-                        is NoInternetException, is HttpException, is EmptyBodyException ->
-                            MovieEffect.NetworkConnectionError
-
-                        else -> MovieEffect.UnknownError
-                    }
-                _effect.emit(error)
-                Timber.e(it)
-                _state.update { MoviesState(isLoading = false) }
-            }
+            localMovieRepository.insertPopularMovies(data)
         }
+        result.onFailure {
+            val error =
+                when (it) {
+                    is NoInternetException, is HttpException, is EmptyBodyException ->
+                        MovieEffect.NetworkConnectionError
+
+                    else -> MovieEffect.UnknownError
+                }
+            _effect.emit(error)
+            Timber.e(it)
+            _state.update { MoviesState(isLoading = false) }
+        }
+    }
 
     private fun collectPopularMovies() {
         localMovieRepository.popularMovies
@@ -108,7 +105,7 @@ class PopularMoviesViewModel @Inject constructor(
                 _state.update {
                     MoviesState(
                         isLoading = false,
-                        playingNowMovies = data.map(MovieDto::toMovieItem),
+                        playingNowMovies = data.map(MovieDto::toMovieItem)
                     )
                 }
             }
@@ -118,7 +115,7 @@ class PopularMoviesViewModel @Inject constructor(
                 _state.update {
                     MoviesState(
                         isLoading = false,
-                        isRefreshing = false,
+                        isRefreshing = false
                     )
                 }
             }

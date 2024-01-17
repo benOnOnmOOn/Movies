@@ -25,29 +25,29 @@ import com.bz.presentation.screens.R
 inline fun MovieContent(
     movieItem: MovieItem,
     isLast: Boolean,
-    crossinline onMovieClicked: (MovieItem) -> Unit,
+    crossinline onMovieClicked: (MovieItem) -> Unit
 ) {
     Row(
         Modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(4.dp)
-            .clickable { onMovieClicked(movieItem) },
+            .clickable { onMovieClicked(movieItem) }
     ) {
         AsyncImage(
             modifier =
-                Modifier
-                    .height(80.dp)
-                    .width(80.dp)
-                    .padding(4.dp),
+            Modifier
+                .height(80.dp)
+                .width(80.dp)
+                .padding(4.dp),
             model = movieItem.posterUrl,
-            contentDescription = movieItem.title,
+            contentDescription = movieItem.title
         )
         Column(
             Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
-                .weight(1f),
+                .weight(1f)
         ) {
             Text(text = movieItem.title)
             Text(text = movieItem.releaseDate)
@@ -57,12 +57,12 @@ inline fun MovieContent(
         Image(
             painterResource(R.drawable.ic_star),
             modifier =
-                Modifier
-                    .height(40.dp)
-                    .width(40.dp)
-                    .padding(4.dp),
+            Modifier
+                .height(40.dp)
+                .width(40.dp)
+                .padding(4.dp),
             contentDescription = "",
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.Crop
         )
     }
 
@@ -71,9 +71,9 @@ inline fun MovieContent(
     if (!isLast) {
         Divider(
             modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .height(2.dp),
+            Modifier
+                .fillMaxWidth()
+                .height(2.dp)
         )
     }
 }

@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MoreScreenViewModel @Inject constructor() : ViewModel() {
-
     private val _state = MutableStateFlow(MoreState())
     val state: StateFlow<MoreState> = _state.asStateFlow()
 
@@ -36,15 +35,13 @@ class MoreScreenViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    fun sendEvent(event: MoreEvent) =
-        launch {
-            _event.emit(event)
-        }
+    fun sendEvent(event: MoreEvent) = launch {
+        _event.emit(event)
+    }
 
-    private fun handleEvent() =
-        viewModelScope.launch {
-            event.collect { handleEvent(it) }
-        }
+    private fun handleEvent() = viewModelScope.launch {
+        event.collect { handleEvent(it) }
+    }
 
     private suspend fun handleEvent(event: MoreEvent) {
         when (event) {

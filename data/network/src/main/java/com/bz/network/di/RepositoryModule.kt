@@ -16,6 +16,6 @@ internal class RepositoryModule {
     @Provides
     internal fun provideMovieRepository(
         apiService: Lazy<MovieService>,
-        internetConnection: InternetConnection,
+        internetConnection: InternetConnection
     ): MovieRepository = MovieRepositoryImpl(apiService, internetConnection)
 }

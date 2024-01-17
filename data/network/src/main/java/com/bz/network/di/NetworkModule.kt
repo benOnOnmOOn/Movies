@@ -16,10 +16,11 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 internal class NetworkModule {
     @Provides
     internal fun provideConnectivityManager(
-        @ApplicationContext context: Context,
+        @ApplicationContext context: Context
     ): ConnectivityManager? = context.getSystemService<ConnectivityManager>()
 
     @Provides
-    internal fun provideInternetConnection(connectivityManager: ConnectivityManager?): InternetConnection =
-        InternetConnectionImpl(connectivityManager)
+    internal fun provideInternetConnection(
+        connectivityManager: ConnectivityManager?
+    ): InternetConnection = InternetConnectionImpl(connectivityManager)
 }

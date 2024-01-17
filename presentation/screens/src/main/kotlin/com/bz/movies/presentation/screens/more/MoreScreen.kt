@@ -19,26 +19,21 @@ fun MoreScreen(moreScreenViewModel: MoreScreenViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun MoreScreen(
-    state: MoreState = MoreState(),
-    sendEvent: (MoreEvent) -> Unit = {},
-) {
+fun MoreScreen(state: MoreState = MoreState(), sendEvent: (MoreEvent) -> Unit = {}) {
     Column {
         Text(text = stringResource(R.string.more_screen_title))
 
         Text(stringResource(R.string.more_screen_english_label))
         RadioButton(
             selected = state.language == Language.ENG,
-            onClick = { sendEvent(MoreEvent.OnLanguageClick(Language.ENG)) },
+            onClick = { sendEvent(MoreEvent.OnLanguageClick(Language.ENG)) }
         )
-
 
         Text(stringResource(R.string.more_menu_polish_label))
         RadioButton(
             selected = state.language == Language.POL,
-            onClick = { sendEvent(MoreEvent.OnLanguageClick(Language.POL)) },
+            onClick = { sendEvent(MoreEvent.OnLanguageClick(Language.POL)) }
         )
-
     }
 }
 
@@ -49,4 +44,3 @@ fun MoreScreenPreview() {
         MoreScreen()
     }
 }
-

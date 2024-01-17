@@ -29,12 +29,11 @@ internal class ApiModule {
             .build()
 
     @Provides
-    internal fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
-        Retrofit.Builder()
-            .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create())
-            .baseUrl(BASE_URL)
-            .build()
+    internal fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .client(okHttpClient)
+        .addConverterFactory(MoshiConverterFactory.create())
+        .baseUrl(BASE_URL)
+        .build()
 
     @Provides
     internal fun provideApiService(retrofit: Retrofit): MovieService = retrofit.create()

@@ -25,7 +25,8 @@ internal class DatabaseModule {
 
     @Singleton
     @Provides
-    internal fun providePlayingNowMovieDao(db: MoviesDatabase): PlayingNowMovieDAO = db.playingNowMovieDAO()
+    internal fun providePlayingNowMovieDao(db: MoviesDatabase): PlayingNowMovieDAO =
+        db.playingNowMovieDAO()
 
     @Singleton
     @Provides

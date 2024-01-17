@@ -16,10 +16,7 @@ import com.bz.movies.presentation.theme.MoviesTheme
 import com.bz.presentation.screens.R
 
 @Composable
-fun MovieDetailsScreen(
-    id: Int?,
-    movieDetailsViewModel: MovieDetailsViewModel = hiltViewModel(),
-) {
+fun MovieDetailsScreen(id: Int?, movieDetailsViewModel: MovieDetailsViewModel = hiltViewModel()) {
     val playingNow by movieDetailsViewModel.state.collectAsState()
     if (id != null) {
         movieDetailsViewModel.fetchMovieDetails(id)
@@ -31,7 +28,7 @@ fun MovieDetailsScreen(
 private fun MovieDetailsScreen(state: MovieDetailState = MovieDetailState()) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize()
     ) {
         Text(text = stringResource(R.string.details_screen_title))
 

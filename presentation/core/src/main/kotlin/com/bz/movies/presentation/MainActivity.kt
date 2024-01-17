@@ -35,20 +35,20 @@ class MainActivity : AppCompatActivity() {
                             currentRootRoute = currentRootRoute,
                             navigateToTopLevelDestination = {
                                 navController.navigateToRootRoute(it.rootRoute)
-                            },
+                            }
                         )
-                    },
+                    }
                 ) {
                     Surface(
                         modifier =
-                            Modifier
-                                .fillMaxSize()
-                                .padding(it),
-                        color = MaterialTheme.colorScheme.background,
+                        Modifier
+                            .fillMaxSize()
+                            .padding(it),
+                        color = MaterialTheme.colorScheme.background
                     ) {
                         MoviesNavHost(
                             navController = navController,
-                            modifier = Modifier.fillMaxSize(),
+                            modifier = Modifier.fillMaxSize()
                         )
                     }
                 }
