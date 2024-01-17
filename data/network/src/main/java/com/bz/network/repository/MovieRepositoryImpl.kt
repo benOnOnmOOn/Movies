@@ -12,6 +12,7 @@ import com.bz.network.repository.mapper.toPopularMoviePageDto
 import com.bz.network.repository.model.MoveDetailDto
 import com.bz.network.repository.model.PopularMoviePageDto
 import com.bz.network.utils.InternetConnection
+import dagger.Lazy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -20,12 +21,12 @@ private const val AUTH_KEY = "55957fcf3ba81b137f8fc01ac5a31fb5"
 private const val LANGUAGE = "en-US"
 
 internal class MovieRepositoryImpl(
-    private val movieService: MovieService,
+    private val movieService: Lazy<MovieService>,
     private val internetConnectionChecker: InternetConnection,
 ) : MovieRepository {
     override suspend fun getPlayingNowMovies(): Result<List<MovieDto>> =
         executeApiCall(PlayingNowMoviesApiResponse::toMovieDto) {
-            movieService.getNowPlayingMovies(
+            movieService.get().getNowPlayingMovies(
                 apiKey = AUTH_KEY,
                 language = LANGUAGE,
                 page = 1,
@@ -34,7 +35,7 @@ internal class MovieRepositoryImpl(
 
     override suspend fun getPopularMovies(page: Int): Result<List<MovieDto>> =
         executeApiCall(PopularMoviesPageApiResponse::toPopularMovieDto) {
-            movieService.getPopularMoviePage(
+            movieService.get().getPopularMoviePage(
                 apiKey = AUTH_KEY,
                 language = LANGUAGE,
                 page = page,
@@ -43,7 +44,7 @@ internal class MovieRepositoryImpl(
 
     override suspend fun getMovieDetail(movieId: Int): Result<MoveDetailDto> =
         executeApiCall(MovieDetailsApiResponse::toMovieDetailDto) {
-            movieService.getMovieDetails(
+            movieService.get().getMovieDetails(
                 apiKey = AUTH_KEY,
                 language = LANGUAGE,
                 movieId = movieId,
@@ -52,7 +53,7 @@ internal class MovieRepositoryImpl(
 
     override suspend fun getPopularMoviesPage(page: Int): Result<PopularMoviePageDto> =
         executeApiCall(PopularMoviesPageApiResponse::toPopularMoviePageDto) {
-            movieService.getPopularMoviePage(
+            movieService.get().getPopularMoviePage(
                 apiKey = AUTH_KEY,
                 language = LANGUAGE,
                 page = page,
