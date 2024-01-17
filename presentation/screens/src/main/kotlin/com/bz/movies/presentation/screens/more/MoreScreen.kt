@@ -1,38 +1,52 @@
 package com.bz.movies.presentation.screens.more
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.bz.movies.presentation.theme.MoviesTheme
+import com.bz.presentation.screens.R
 
 @Composable
-fun More(modifier: Modifier = Modifier) {
+fun MoreScreen(moreScreenViewModel: MoreScreenViewModel = hiltViewModel()) {
+    val moreState by moreScreenViewModel.state.collectAsState()
+    MoreScreen(moreState, moreScreenViewModel::sendEvent)
+}
+
+@Composable
+fun MoreScreen(
+    state: MoreState = MoreState(),
+    sendEvent: (MoreEvent) -> Unit = {},
+) {
     Column {
-        Text(
-            text = "More",
-            modifier = modifier,
+        Text(text = stringResource(R.string.more_screen_title))
+
+        Text(stringResource(R.string.more_screen_english_label))
+        RadioButton(
+            selected = state.language == Language.ENG,
+            onClick = { sendEvent(MoreEvent.OnLanguageClick(Language.ENG)) },
         )
 
-//        RadioButton(
-//            selected = selectedOption.value == "Option1",
-//            onClick = { selectedOption.value = "Option1" },
-//        )
-//        Text("Option 1")
-//
-//        RadioButton(
-//            selected = selectedOption.value == "Option2",
-//            onClick = { selectedOption.value = "Option2" },
-//        )
-//        Text("Option 2")
+
+        Text(stringResource(R.string.more_menu_polish_label))
+        RadioButton(
+            selected = state.language == Language.POL,
+            onClick = { sendEvent(MoreEvent.OnLanguageClick(Language.POL)) },
+        )
+
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun MorePreview() {
+fun MoreScreenPreview() {
     MoviesTheme {
-        More()
+        MoreScreen()
     }
 }
+

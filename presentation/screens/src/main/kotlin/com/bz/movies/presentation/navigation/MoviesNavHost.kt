@@ -9,8 +9,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.bz.movies.presentation.screens.details.MovieDetailsScreen
-import com.bz.movies.presentation.screens.empty.Greeting
 import com.bz.movies.presentation.screens.favorite.FavoriteScreen
+import com.bz.movies.presentation.screens.more.MoreScreen
 import com.bz.movies.presentation.screens.playingNow.PlayingNowScreen
 import com.bz.movies.presentation.screens.popular.PopularMoviesScreen
 
@@ -34,7 +34,7 @@ fun MoviesNavHost(
             FavoriteScreen()
         }
         composable(RootRoute.More.route) {
-            Greeting(RootRoute.More.route)
+            MoreScreen(hiltViewModel())
         }
         composable(
             route = RootRoute.Details.route,
