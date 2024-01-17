@@ -24,7 +24,7 @@ class MovieRepositoryImplTest {
             every { isConnected } returns true
         }
     private val movieRepository: MovieRepository =
-        MovieRepositoryImpl(movieService, internetConnection)
+        MovieRepositoryImpl({ movieService }, internetConnection)
 
     @Test
     fun `getPlayingNowMovies return error if response is null`() =
@@ -96,24 +96,24 @@ class MovieRepositoryImplTest {
                 dates = Dates(maximum = "1", minimum = "4"),
                 page = 1,
                 movies =
-                    listOf(
-                        MovieApiResponse(
-                            adult = true,
-                            backdropPath = "path/",
-                            genreIds = listOf(1, 2, 3, 4, 5),
-                            id = 1,
-                            originalLanguage = "Polish",
-                            originalTitle = "Muminki",
-                            overview = "Short and boaring",
-                            popularity = 23.6,
-                            posterPath = "poster/path",
-                            releaseDate = "24-90-2567",
-                            title = "Muminki",
-                            video = false,
-                            voteAverage = 4.6,
-                            voteCount = 234,
-                        ),
+                listOf(
+                    MovieApiResponse(
+                        adult = true,
+                        backdropPath = "path/",
+                        genreIds = listOf(1, 2, 3, 4, 5),
+                        id = 1,
+                        originalLanguage = "Polish",
+                        originalTitle = "Muminki",
+                        overview = "Short and boaring",
+                        popularity = 23.6,
+                        posterPath = "poster/path",
+                        releaseDate = "24-90-2567",
+                        title = "Muminki",
+                        video = false,
+                        voteAverage = 4.6,
+                        voteCount = 234,
                     ),
+                ),
                 totalPages = 23,
                 totalResults = 234,
             )
