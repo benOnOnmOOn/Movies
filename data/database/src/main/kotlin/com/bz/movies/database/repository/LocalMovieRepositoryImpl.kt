@@ -20,7 +20,7 @@ import kotlinx.coroutines.withContext
 internal class LocalMovieRepositoryImpl(
     private val movieDAO: MovieDAO,
     private val playingNowMovieDAO: PlayingNowMovieDAO,
-    private val popularMovieDAO: PopularMovieDAO,
+    private val popularMovieDAO: PopularMovieDAO
 ) : LocalMovieRepository {
     override val favoritesMovies: Flow<List<MovieDto>>
         get() =
@@ -64,12 +64,11 @@ internal class LocalMovieRepositoryImpl(
             }
         }
 
-    override suspend fun clearPlayingNowMovies(): Result<Unit> =
-        withContext(Dispatchers.IO) {
-            runCatching {
-                playingNowMovieDAO.clearTable()
-            }
+    override suspend fun clearPlayingNowMovies(): Result<Unit> = withContext(Dispatchers.IO) {
+        runCatching {
+            playingNowMovieDAO.clearTable()
         }
+    }
 
     override suspend fun insertPopularMovies(movieDto: List<MovieDto>): Result<Unit> =
         withContext(Dispatchers.IO) {
@@ -78,10 +77,9 @@ internal class LocalMovieRepositoryImpl(
             }
         }
 
-    override suspend fun clearPopularMovies(): Result<Unit> =
-        withContext(Dispatchers.IO) {
-            runCatching {
-                popularMovieDAO.clearTable()
-            }
+    override suspend fun clearPopularMovies(): Result<Unit> = withContext(Dispatchers.IO) {
+        runCatching {
+            popularMovieDAO.clearTable()
         }
+    }
 }

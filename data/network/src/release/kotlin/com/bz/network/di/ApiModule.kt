@@ -11,12 +11,12 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 import org.chromium.net.CronetEngine
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
-import java.util.concurrent.TimeUnit
 
 const val BASE_URL = "https://api.themoviedb.org/3/"
 const val NETWORK_CONNECTION_TIMEOUT = 30L
@@ -25,9 +25,7 @@ const val NETWORK_CONNECTION_TIMEOUT = 30L
 @InstallIn(SingletonComponent::class)
 internal class ApiModule {
     @Provides
-    internal fun provideCronetEngine(
-        @ApplicationContext context: Context,
-    ): CronetEngine {
+    internal fun provideCronetEngine(@ApplicationContext context: Context): CronetEngine {
         Tasks.await(CronetProviderInstaller.installProvider(context))
 
         return CronetEngine.Builder(context)
@@ -42,24 +40,22 @@ internal class ApiModule {
     }
 
     @Provides
-    fun provideOkHttpClient(): OkHttpClient =
-        OkHttpClient.Builder()
-            .connectTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
-            .writeTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
-            .build()
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
+        .connectTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+        .writeTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+        .readTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+        .build()
 
     @Provides
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
-        cornetCallFactory: Lazy<CronetCallFactory>,
-    ): Retrofit =
-        Retrofit.Builder()
-            .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create())
-            .callFactory(cornetCallFactory.get())
-            .baseUrl(BASE_URL)
-            .build()
+        cornetCallFactory: Lazy<CronetCallFactory>
+    ): Retrofit = Retrofit.Builder()
+        .client(okHttpClient)
+        .addConverterFactory(MoshiConverterFactory.create())
+        .callFactory(cornetCallFactory.get())
+        .baseUrl(BASE_URL)
+        .build()
 
     @Provides
     fun provideApiService(retrofit: Lazy<Retrofit>): MovieService = retrofit.get().create()

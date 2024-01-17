@@ -19,7 +19,7 @@ import com.bz.presentation.screens.R
 @Composable
 fun PopularMoviesScreen(
     playingNowViewModel: PopularMoviesViewModel = hiltViewModel(),
-    navController: NavHostController,
+    navController: NavHostController
 ) {
     val playingNow by playingNowViewModel.state.collectAsState()
     PopularMoviesScreen(playingNow, playingNowViewModel::sendEvent) {
@@ -31,17 +31,17 @@ fun PopularMoviesScreen(
 private fun PopularMoviesScreen(
     state: MoviesState = MoviesState(),
     sendEvent: (MovieEvent) -> Unit = {},
-    onMovieClicked: (id: Int) -> Unit = {},
+    onMovieClicked: (id: Int) -> Unit = {}
 ) {
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = stringResource(R.string.popular_now_screen_title))
 
         MoviesContentWithPullToRefresh(
             playingNowState = state,
             refresh = { sendEvent(MovieEvent.Refresh) },
-            onMovieClicked = { onMovieClicked(it.id) },
+            onMovieClicked = { onMovieClicked(it.id) }
         )
     }
 }

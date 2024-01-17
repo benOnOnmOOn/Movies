@@ -3,8 +3,8 @@ package com.bz.movies.core
 import android.app.Application
 import android.os.StrictMode
 import dagger.hilt.android.HiltAndroidApp
-import timber.log.Timber
 import java.util.concurrent.Executors
+import timber.log.Timber
 
 @HiltAndroidApp
 class MoviesApp : Application() {
@@ -13,9 +13,8 @@ class MoviesApp : Application() {
         StrictMode.setThreadPolicy(
             StrictMode.ThreadPolicy.Builder()
                 .detectAll()
-                .penaltyDialog()
                 .penaltyListener(Executors.newSingleThreadScheduledExecutor(), Timber::e)
-                .build(),
+                .build()
         )
     }
 }

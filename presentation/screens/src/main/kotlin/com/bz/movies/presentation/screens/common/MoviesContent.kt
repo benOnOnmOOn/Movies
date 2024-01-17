@@ -19,31 +19,28 @@ import com.bz.movies.presentation.components.MovieContent
 fun MoviesContentWithPullToRefresh(
     playingNowState: MoviesState,
     refresh: () -> Unit = {},
-    onMovieClicked: (MovieItem) -> Unit,
+    onMovieClicked: (MovieItem) -> Unit
 ) {
     val pullRefreshState = rememberPullRefreshState(playingNowState.isRefreshing, refresh)
 
     Box(
         modifier =
-            Modifier
-                .fillMaxSize()
-                .pullRefresh(pullRefreshState),
+        Modifier
+            .fillMaxSize()
+            .pullRefresh(pullRefreshState)
     ) {
         MoviesContentLazyColumn(playingNowState, onMovieClicked)
 
         PullRefreshIndicator(
             playingNowState.isRefreshing,
             pullRefreshState,
-            Modifier.align(Alignment.TopCenter),
+            Modifier.align(Alignment.TopCenter)
         )
     }
 }
 
 @Composable
-fun MoviesContent(
-    playingNowState: MoviesState,
-    onMovieClicked: (MovieItem) -> Unit,
-) {
+fun MoviesContent(playingNowState: MoviesState, onMovieClicked: (MovieItem) -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
         MoviesContentLazyColumn(playingNowState, onMovieClicked)
     }
@@ -52,19 +49,19 @@ fun MoviesContent(
 @Composable
 private fun MoviesContentLazyColumn(
     playingNowState: MoviesState,
-    onMovieClicked: (MovieItem) -> Unit,
+    onMovieClicked: (MovieItem) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         itemsIndexed(playingNowState.playingNowMovies) { index, movieItem ->
             MovieContent(
                 movieItem = movieItem,
                 isLast = index == playingNowState.playingNowMovies.size - 1,
-                onMovieClicked = onMovieClicked,
+                onMovieClicked = onMovieClicked
             )
         }
     }

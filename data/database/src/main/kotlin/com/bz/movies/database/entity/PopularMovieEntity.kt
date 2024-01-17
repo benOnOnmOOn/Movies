@@ -11,7 +11,7 @@ internal data class PopularMovieEntity(
     val title: String,
     val publicationDate: String,
     val language: String,
-    val rating: Int,
+    val rating: Int
 ) {
     companion object {
         internal const val ENTITY_NAME = "POPULAR_MOVIE_ENTITY"

@@ -16,12 +16,12 @@ import androidx.compose.ui.res.stringResource
 @Composable
 fun BottomNavigationBar(
     currentRootRoute: RootRoute,
-    navigateToTopLevelDestination: (TopLevelDestination) -> Unit,
+    navigateToTopLevelDestination: (TopLevelDestination) -> Unit
 ) {
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
         containerColor = MaterialTheme.colorScheme.surface,
-        contentColor = MaterialTheme.colorScheme.surface,
+        contentColor = MaterialTheme.colorScheme.surface
     ) {
         TOP_LEVEL_DESTINATIONS.forEach { destination ->
             val isItemSelected = destination.rootRoute == currentRootRoute
@@ -33,34 +33,32 @@ fun BottomNavigationBar(
                 label = {
                     Text(
                         text = stringResource(id = destination.iconTextId),
-                        color = getNavTextColor(isItemSelected),
+                        color = getNavTextColor(isItemSelected)
                     )
                 },
                 colors =
-                    NavigationBarItemDefaults.colors(
-                        indicatorColor = MaterialTheme.colorScheme.surface,
-                    ),
+                NavigationBarItemDefaults.colors(
+                    indicatorColor = MaterialTheme.colorScheme.surface
+                )
             )
         }
     }
 }
 
 @Composable
-private fun getNavTextColor(isItemSelected: Boolean): Color =
-    if (isItemSelected) {
-        Color.Red
-    } else {
-        MaterialTheme.colorScheme.onBackground
-    }
+private fun getNavTextColor(isItemSelected: Boolean): Color = if (isItemSelected) {
+    Color.Red
+} else {
+    MaterialTheme.colorScheme.onBackground
+}
 
 @Composable
-private fun NavIcon(
-    destination: TopLevelDestination,
-    isItemSelected: Boolean,
-) {
+private fun NavIcon(destination: TopLevelDestination, isItemSelected: Boolean) {
     return Icon(
-        painter = painterResource(id = if (isItemSelected) destination.selectedIcon else destination.unselectedIcon),
+        painter = painterResource(
+            id = if (isItemSelected) destination.selectedIcon else destination.unselectedIcon
+        ),
         contentDescription = stringResource(id = destination.iconTextId),
-        tint = if (isItemSelected) Color.Unspecified else MaterialTheme.colorScheme.onSurfaceVariant,
+        tint = if (isItemSelected) Color.Unspecified else MaterialTheme.colorScheme.onSurfaceVariant
     )
 }

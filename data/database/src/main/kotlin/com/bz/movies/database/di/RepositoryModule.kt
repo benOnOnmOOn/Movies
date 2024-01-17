@@ -17,6 +17,10 @@ internal class RepositoryModule {
     internal fun provideMovieRepository(
         movieDAO: MovieDAO,
         playingNowMovieDAO: PlayingNowMovieDAO,
-        popularMovieDAO: PopularMovieDAO,
-    ): LocalMovieRepository = LocalMovieRepositoryImpl(movieDAO, playingNowMovieDAO, popularMovieDAO)
+        popularMovieDAO: PopularMovieDAO
+    ): LocalMovieRepository = LocalMovieRepositoryImpl(
+        movieDAO,
+        playingNowMovieDAO,
+        popularMovieDAO
+    )
 }

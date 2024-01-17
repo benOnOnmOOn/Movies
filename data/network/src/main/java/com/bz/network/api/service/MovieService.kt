@@ -13,20 +13,20 @@ internal interface MovieService {
     suspend fun getPopularMoviePage(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
-        @Query("page") page: Int,
+        @Query("page") page: Int
     ): Response<PopularMoviesPageApiResponse>
 
     @GET("movie/now_playing")
     suspend fun getNowPlayingMovies(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
-        @Query("page") page: Int,
+        @Query("page") page: Int
     ): Response<PlayingNowMoviesApiResponse>
 
     @GET("movie/{movieId}")
     suspend fun getMovieDetails(
         @Path("movieId") movieId: Int,
         @Query("language") language: String,
-        @Query("api_key") apiKey: String,
+        @Query("api_key") apiKey: String
     ): Response<MovieDetailsApiResponse>
 }
