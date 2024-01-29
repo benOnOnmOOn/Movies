@@ -25,6 +25,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 @HiltViewModel
@@ -65,26 +66,30 @@ class FavoriteScreenViewModel @Inject constructor(
     }
 
     private fun collectFavoriteMovies() {
-        localMovieRepository.favoritesMovies
-            .flowOn(Dispatchers.Main)
-            .onEach { data ->
-                _state.update {
-                    MoviesState(
-                        isLoading = false,
-                        playingNowMovies = data.map(MovieDto::toMovieItem)
-                    )
-                }
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                localMovieRepository.favoritesMovies
+                    .flowOn(Dispatchers.Main)
+                    .onEach { data ->
+                        _state.update {
+                            MoviesState(
+                                isLoading = false,
+                                playingNowMovies = data.map(MovieDto::toMovieItem)
+                            )
+                        }
+                    }
+                    .catch {
+                        _effect.emit(MovieEffect.UnknownError)
+                        Timber.e(it)
+                        _state.update {
+                            MoviesState(
+                                isLoading = false,
+                                isRefreshing = false
+                            )
+                        }
+                    }
+                    .launchIn(viewModelScope)
             }
-            .catch {
-                _effect.emit(MovieEffect.UnknownError)
-                Timber.e(it)
-                _state.update {
-                    MoviesState(
-                        isLoading = false,
-                        isRefreshing = false
-                    )
-                }
-            }
-            .launchIn(viewModelScope)
+        }
     }
 }

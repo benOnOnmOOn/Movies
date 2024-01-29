@@ -1,9 +1,9 @@
 [versions]
 annotation = "1.7.1"
 coil-compose = "2.5.0"
-com-android-plugin = "8.2.1"
-compose = "1.5.4"
-cronet = "113.5672.61"
+com-android-plugin = "8.2.2"
+compose = "1.6.0"
+cronet = "119.6045.31"
 firebase-perf = "20.5.1"
 play-services-cronet = "18.0.1"
 hilt = "2.50"
@@ -68,7 +68,7 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose
 dagger = { module = "com.google.dagger:dagger", version.ref = "hilt" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "hilt" }
 firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx", version = "21.5.0" }
-firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx", version = "18.6.0" }
+firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx", version = "18.6.1" }
 firebase-perf = { module = "com.google.firebase:firebase-perf", version.ref = "firebase-perf" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
@@ -99,7 +99,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 com-android-application = { id = "com.android.application", version.ref = "com-android-plugin" }
 com-android-library = { id = "com.android.library", version.ref = "com-android-plugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-gradle-versions = { id = "com.github.ben-manes.versions", version = "0.50.0" }
+gradle-versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.4" }
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.28.0" }
 com-google-gms-google-services = { id = "com.google.gms.google-services", version = "4.4.0" }
