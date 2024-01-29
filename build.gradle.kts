@@ -162,12 +162,12 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 //region Global android configuration
 @Suppress("UnstableApiUsage")
 fun <
-        BF : BuildFeatures,
-        BT : BuildType,
-        DC : DefaultConfig,
-        PF : ProductFlavor,
-        AR : AndroidResources
-        > CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
+    BF : BuildFeatures,
+    BT : BuildType,
+    DC : DefaultConfig,
+    PF : ProductFlavor,
+    AR : AndroidResources
+    > CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
     buildToolsVersion = "34.0.0"
 
