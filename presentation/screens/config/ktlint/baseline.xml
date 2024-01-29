@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <baseline version="1.0">
     <file name="src/main/kotlin/com/bz/movies/presentation/screens/favorite/FavoriteScreenViewModel.kt">
-        <error line="37" column="17" source="standard:property-naming" />
+        <error line="38" column="17" source="standard:property-naming" />
     </file>
     <file name="src/main/kotlin/com/bz/movies/presentation/screens/more/MoreScreenViewModel.kt">
         <error line="21" column="17" source="standard:property-naming" />
     </file>
     <file name="src/main/kotlin/com/bz/movies/presentation/screens/playingNow/PlayingNowViewModel.kt">
-        <error line="43" column="17" source="standard:property-naming" />
+        <error line="44" column="17" source="standard:property-naming" />
     </file>
     <file name="src/main/kotlin/com/bz/movies/presentation/screens/popular/PopularMoviesViewModel.kt">
-        <error line="43" column="17" source="standard:property-naming" />
+        <error line="44" column="17" source="standard:property-naming" />
     </file>
 </baseline>
