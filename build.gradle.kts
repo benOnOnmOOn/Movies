@@ -15,6 +15,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import kotlinx.kover.gradle.plugin.KoverGradlePlugin
 import kotlinx.kover.gradle.plugin.dsl.KoverReportExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
@@ -114,15 +115,11 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
 //endregion
 
 //region Global kotlin and java configuration
-
+allprojects {
+    tasks.withType<KotlinCompile>().configureEach { kotlinOptions.jvmTarget = "17" }
+}
 kotlin {
     jvmToolchain(17)
-}
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
 }
 
 //endregion
