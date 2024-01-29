@@ -22,7 +22,7 @@ private const val LANGUAGE = "en-US"
 
 internal class MovieRepositoryImpl(
     private val movieService: Lazy<MovieService>,
-    private val internetConnectionChecker: InternetConnection
+    private val internetConnectionChecker: Lazy<InternetConnection>
 ) : MovieRepository {
     override suspend fun getPlayingNowMovies(): Result<List<MovieDto>> =
         executeApiCall(PlayingNowMoviesApiResponse::toMovieDto) {
@@ -64,7 +64,7 @@ internal class MovieRepositoryImpl(
         crossinline mapper: (T) -> R,
         crossinline apiCall: suspend () -> Response<T>
     ): Result<R> {
-        if (!internetConnectionChecker.isConnected) {
+        if (!internetConnectionChecker.get().isConnected) {
             return Result.failure(NoInternetException())
         }
 

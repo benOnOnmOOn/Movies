@@ -1,6 +1,7 @@
 package com.bz.movies.database.di
 
 import android.app.Application
+import android.os.Looper
 import com.bz.movies.database.MoviesDatabase
 import com.bz.movies.database.createMoviesDatabase
 import com.bz.movies.database.dao.MovieDAO
@@ -17,18 +18,35 @@ import javax.inject.Singleton
 internal class DatabaseModule {
     @Singleton
     @Provides
-    internal fun provideDb(app: Application): MoviesDatabase = createMoviesDatabase(app)
+    internal fun provideDb(app: Application): MoviesDatabase {
+        throwOnMainThread("provideDb")
+        return createMoviesDatabase(app)
+    }
 
     @Singleton
     @Provides
-    internal fun provideMovieDao(db: MoviesDatabase): MovieDAO = db.movieDAO()
+    internal fun provideMovieDao(db: MoviesDatabase): MovieDAO {
+        throwOnMainThread("provideMovieDao")
+        return db.movieDAO()
+    }
 
     @Singleton
     @Provides
-    internal fun providePlayingNowMovieDao(db: MoviesDatabase): PlayingNowMovieDAO =
-        db.playingNowMovieDAO()
+    internal fun providePlayingNowMovieDao(db: MoviesDatabase): PlayingNowMovieDAO {
+        throwOnMainThread("providePlayingNowMovieDao")
+        return db.playingNowMovieDAO()
+    }
 
     @Singleton
     @Provides
-    internal fun providePopularMovieDao(db: MoviesDatabase): PopularMovieDAO = db.popularMovieDAO()
+    internal fun providePopularMovieDao(db: MoviesDatabase): PopularMovieDAO {
+        throwOnMainThread("providePopularMovieDao")
+        return db.popularMovieDAO()
+    }
+
+    private fun throwOnMainThread(methodName: String) {
+        check(Looper.myLooper() != Looper.getMainLooper()) {
+            "method: $methodName may not be called from main thread."
+        }
+    }
 }

@@ -2,6 +2,7 @@ package com.bz.network.di
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.os.Looper
 import androidx.core.content.getSystemService
 import com.bz.network.utils.InternetConnection
 import com.bz.network.utils.InternetConnectionImpl
@@ -17,10 +18,22 @@ internal class NetworkModule {
     @Provides
     internal fun provideConnectivityManager(
         @ApplicationContext context: Context
-    ): ConnectivityManager? = context.getSystemService<ConnectivityManager>()
+    ): ConnectivityManager? {
+        throwOnMainThread("provideInternetConnection")
+        return context.getSystemService<ConnectivityManager>()
+    }
 
     @Provides
     internal fun provideInternetConnection(
         connectivityManager: ConnectivityManager?
-    ): InternetConnection = InternetConnectionImpl(connectivityManager)
+    ): InternetConnection {
+        throwOnMainThread("provideInternetConnection")
+        return InternetConnectionImpl(connectivityManager)
+    }
+
+    private fun throwOnMainThread(methodName: String) {
+        check(Looper.myLooper() != Looper.getMainLooper()) {
+            "method: $methodName may not be called from main thread."
+        }
+    }
 }
