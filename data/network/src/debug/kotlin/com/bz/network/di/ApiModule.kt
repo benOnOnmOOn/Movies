@@ -50,6 +50,8 @@ internal class ApiModule {
     }
 
     private fun throwOnMainThread(methodName: String) {
-        check(Looper.myLooper() != Looper.getMainLooper()) { "method: $methodName may not be called from main thread." }
+        check(Looper.myLooper() != Looper.getMainLooper()) {
+            "method: $methodName may not be called from main thread."
+        }
     }
 }
