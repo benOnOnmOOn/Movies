@@ -1,7 +1,6 @@
 package com.bz.movies.database.di
 
 import android.app.Application
-import android.os.Looper
 import com.bz.movies.database.MoviesDatabase
 import com.bz.movies.database.createMoviesDatabase
 import com.bz.movies.database.dao.MovieDAO
@@ -12,6 +11,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+import throwOnMainThread
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -42,11 +42,5 @@ internal class DatabaseModule {
     internal fun providePopularMovieDao(db: MoviesDatabase): PopularMovieDAO {
         throwOnMainThread("providePopularMovieDao")
         return db.popularMovieDAO()
-    }
-
-    private fun throwOnMainThread(methodName: String) {
-        check(Looper.myLooper() != Looper.getMainLooper()) {
-            "method: $methodName may not be called from main thread."
-        }
     }
 }

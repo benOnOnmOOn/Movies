@@ -22,6 +22,8 @@ ksp {
 dependencies {
 
     api(project(":data:dto"))
+
+    implementation(project(":utlis:android"))
     // HILT
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)

@@ -1,6 +1,5 @@
 package com.bz.network.di
 
-import android.os.Looper
 import com.bz.network.api.service.MovieService
 import dagger.Module
 import dagger.Provides
@@ -11,6 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
+import throwOnMainThread
 
 const val BASE_URL = "https://api.themoviedb.org/3/"
 
@@ -47,11 +47,5 @@ internal class ApiModule {
     internal fun provideApiService(retrofit: Retrofit): MovieService {
         throwOnMainThread("provideApiService")
         return retrofit.create()
-    }
-
-    private fun throwOnMainThread(methodName: String) {
-        check(Looper.myLooper() != Looper.getMainLooper()) {
-            "method: $methodName may not be called from main thread."
-        }
     }
 }
