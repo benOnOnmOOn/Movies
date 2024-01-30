@@ -2,7 +2,6 @@ package com.bz.network.di
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.os.Looper
 import androidx.core.content.getSystemService
 import com.bz.network.utils.InternetConnection
 import com.bz.network.utils.InternetConnectionImpl
@@ -11,6 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import throwOnMainThread
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -29,11 +29,5 @@ internal class NetworkModule {
     ): InternetConnection {
         throwOnMainThread("provideInternetConnection")
         return InternetConnectionImpl(connectivityManager)
-    }
-
-    private fun throwOnMainThread(methodName: String) {
-        check(Looper.myLooper() != Looper.getMainLooper()) {
-            "method: $methodName may not be called from main thread."
-        }
     }
 }

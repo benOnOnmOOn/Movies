@@ -12,6 +12,7 @@ android {
 
 dependencies {
     api(project(":data:dto"))
+    implementation(project(":utlis:android"))
 
     ksp(libs.moshi.kotlin.codegen)
 
