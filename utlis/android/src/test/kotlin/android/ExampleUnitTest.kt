@@ -1,4 +1,4 @@
-package com.bz.utils.android
+package android
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
