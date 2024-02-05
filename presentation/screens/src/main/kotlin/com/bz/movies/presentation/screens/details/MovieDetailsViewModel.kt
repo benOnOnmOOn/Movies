@@ -1,10 +1,10 @@
 package com.bz.movies.presentation.screens.details
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
-import com.bz.movies.presentation.utils.launch
 import com.bz.network.repository.EmptyBodyException
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @HiltViewModel
@@ -31,9 +32,8 @@ class MovieDetailsViewModel @Inject constructor(
     val effect = _effect.asSharedFlow()
 
     @Suppress("MagicNumber")
-    fun fetchMovieDetails(movieId: Int) = launch {
+    fun fetchMovieDetails(movieId: Int) = viewModelScope.launch {
         val result = movieRepository.getMovieDetail(movieId)
-
         result.onSuccess { data ->
             _state.update {
                 MovieDetailState(

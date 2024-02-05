@@ -63,23 +63,21 @@ internal class MovieRepositoryImpl(
     private suspend inline fun <T, R> executeApiCall(
         crossinline mapper: (T) -> R,
         crossinline apiCall: suspend () -> Response<T>
-    ): Result<R> {
+    ): Result<R> = withContext(Dispatchers.IO) {
         if (!internetConnectionChecker.get().isConnected) {
-            return Result.failure(NoInternetException())
+            return@withContext Result.failure(NoInternetException())
         }
 
-        return withContext(Dispatchers.IO) {
-            runCatching {
-                val response = apiCall()
+        runCatching {
+            val response = apiCall()
 
-                if (response.isSuccessful) {
-                    response
-                        .body()
-                        ?.let { apiResponse -> mapper(apiResponse) }
-                        ?: throw EmptyBodyException()
-                } else {
-                    throw HttpException(response.message())
-                }
+            if (response.isSuccessful) {
+                response
+                    .body()
+                    ?.let { apiResponse -> mapper(apiResponse) }
+                    ?: throw EmptyBodyException()
+            } else {
+                throw HttpException(response.message())
             }
         }
     }

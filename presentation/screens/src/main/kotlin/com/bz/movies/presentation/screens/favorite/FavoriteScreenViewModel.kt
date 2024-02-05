@@ -9,7 +9,6 @@ import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesState
-import com.bz.movies.presentation.utils.launch
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -46,7 +45,7 @@ class FavoriteScreenViewModel @Inject constructor(
         handleEvent()
     }
 
-    fun sendEvent(event: MovieEvent) = launch {
+    fun sendEvent(event: MovieEvent) = viewModelScope.launch {
         _event.emit(event)
     }
 
