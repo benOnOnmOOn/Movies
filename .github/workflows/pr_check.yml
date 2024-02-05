@@ -19,7 +19,7 @@ jobs:
           java-version: 17
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2.11.0
+        uses: gradle/gradle-build-action@v3.0.0
 
       - name: Build apk
         run: ./gradlew app:assembleDebug
@@ -44,7 +44,7 @@ jobs:
 
       - name: Upload coverage reports
         id: kover
-        uses: mi-kas/kover-report@v1.7
+        uses: mi-kas/kover-report@v1.8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: ${{ github.workspace }}/app/build/reports/kover/report.xml

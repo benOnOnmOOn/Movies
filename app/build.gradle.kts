@@ -58,7 +58,6 @@ dependencies {
     kover(project(":presentation:screens"))
     kover(project(":data:network"))
     kover(project(":data:database"))
-    kover(project(":data:dto"))
 
     releaseImplementation(libs.firebase.analytics.ktx)
     releaseImplementation(libs.firebase.crashlytics.ktx)
