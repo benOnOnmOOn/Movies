@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bz.movies.presentation.utils.launch
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,7 +25,7 @@ class MoreScreenViewModel @Inject constructor() : ViewModel() {
         handleEvent()
     }
 
-    private fun collectCurrentLanguage() = launch {
+    private fun collectCurrentLanguage() = viewModelScope.launch {
         val currentLang = AppCompatDelegate.getApplicationLocales()[0]?.language
         if (currentLang == Language.POL.code) {
             _state.emit(MoreState(Language.POL))
@@ -35,7 +34,7 @@ class MoreScreenViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    fun sendEvent(event: MoreEvent) = launch {
+    fun sendEvent(event: MoreEvent) = viewModelScope.launch {
         _event.emit(event)
     }
 

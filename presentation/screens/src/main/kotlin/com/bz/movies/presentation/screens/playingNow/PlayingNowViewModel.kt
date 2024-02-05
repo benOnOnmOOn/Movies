@@ -9,7 +9,6 @@ import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesState
-import com.bz.movies.presentation.utils.launch
 import com.bz.network.repository.EmptyBodyException
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
@@ -52,7 +51,7 @@ class PlayingNowViewModel @Inject constructor(
         handleEvent()
     }
 
-    fun sendEvent(event: MovieEvent) = launch {
+    fun sendEvent(event: MovieEvent) = viewModelScope.launch {
         _event.emit(event)
     }
 
@@ -78,10 +77,9 @@ class PlayingNowViewModel @Inject constructor(
         }
     }
 
-    private fun fetchPlayingNowMovies() = launch {
+    private fun fetchPlayingNowMovies() = viewModelScope.launch {
         localMovieRepository.clearPlayingNowMovies()
         val result = movieRepository.getPlayingNowMovies()
-
         result.onSuccess { data ->
             localMovieRepository.insertPlayingNowMovies(data)
         }

@@ -9,7 +9,6 @@ import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesState
-import com.bz.movies.presentation.utils.launch
 import com.bz.network.repository.EmptyBodyException
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
@@ -52,7 +51,7 @@ class PopularMoviesViewModel @Inject constructor(
         handleEvent()
     }
 
-    fun sendEvent(event: MovieEvent) = launch {
+    fun sendEvent(event: MovieEvent) = viewModelScope.launch {
         _event.emit(event)
     }
 
@@ -72,9 +71,8 @@ class PopularMoviesViewModel @Inject constructor(
         }
     }
 
-    private fun fetchPopularNowMovies() = launch {
+    private fun fetchPopularNowMovies() = viewModelScope.launch {
         val result = movieRepository.getPopularMovies(1)
-
         result.onSuccess { data ->
             _state.update {
                 MoviesState(

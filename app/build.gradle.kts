@@ -61,7 +61,7 @@ dependencies {
 
     releaseImplementation(libs.firebase.analytics.ktx)
     releaseImplementation(libs.firebase.crashlytics.ktx)
-    releaseImplementation(libs.firebase.perf)
+    implementation(libs.firebase.perf)
 
     //  HILT
     ksp(libs.hilt.android.compiler)
