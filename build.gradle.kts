@@ -147,7 +147,7 @@ fun PluginContainer.applyBaseConfig(project: Project) {
                 project.extensions.getByType<LibraryExtension>().baseConfig()
 
             is KoverGradlePlugin ->
-                project.extensions.getByType<KoverReportExtension>().baseConfig()
+                project.extensions.getByType<KoverReportExtension>().baseConfig(project)
 
             is HiltGradlePlugin ->
                 project.extensions.getByType<HiltExtension>().baseConfig()
@@ -247,13 +247,18 @@ subprojects {
 }
 // endregion
 
-fun KoverReportExtension.baseConfig() {
+fun KoverReportExtension.baseConfig(project: Project) {
     defaults {
         html {
             onCheck = true
         }
         xml {
             onCheck = true
+        }
+        project.configurations.forEach {
+            if (it.description?.contains("debug") == true) {
+                mergeWith("debug")
+            }
         }
     }
 }

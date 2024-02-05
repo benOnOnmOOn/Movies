@@ -100,7 +100,7 @@ com-android-application = { id = "com.android.application", version.ref = "com-a
 com-android-library = { id = "com.android.library", version.ref = "com-android-plugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.4" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.5" }
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.28.0" }
 com-google-gms-google-services = { id = "com.google.gms.google-services", version = "4.4.0" }
 firebase-crashlytics-gradle = { id = "com.google.firebase.crashlytics", version = "2.9.9" }
