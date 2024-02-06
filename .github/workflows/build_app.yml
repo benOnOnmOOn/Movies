@@ -24,14 +24,33 @@ jobs:
           gradle-home-cache-cleanup: true
 
       # Build debug app to improve pr check build speed by storing debug cache
-      - name: Build debug and release apk
-        run: ./gradlew app:assemble
+      - name: Build apk
+        run: ./gradlew app:assembleDebug
+
+      - name: Build apk
+        run: ./gradlew app:assembleRelease
 
       - name: Run detket plugin
         run: ./gradlew detektAll
+
+      - name: Run android lint
+        run: ./gradlew lint
+
+      - name: Run ktlint format check
+        run: ./gradlew ktlintCheck
 
       - name: Run unit test
         run: ./gradlew testDebugUnitTest
 
       - name: Run dependency analysis android gradle plugin
         run: ./gradlew buildHealth
+
+      - name: Run gradle check
+        run: ./gradlew check
+
+      - name: Upload coverage reports
+        id: kover
+        uses: mi-kas/kover-report@v1.8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ github.workspace }}/app/build/reports/kover/report.xml
