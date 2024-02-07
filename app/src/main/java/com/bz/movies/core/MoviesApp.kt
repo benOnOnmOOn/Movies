@@ -16,5 +16,12 @@ class MoviesApp : Application() {
                 .penaltyListener(Executors.newSingleThreadScheduledExecutor(), Timber::e)
                 .build()
         )
+
+        StrictMode.setVmPolicy(
+            StrictMode.VmPolicy.Builder()
+                .detectAll()
+                .penaltyListener(Executors.newSingleThreadScheduledExecutor(), Timber::e)
+                .build()
+        )
     }
 }
