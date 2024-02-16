@@ -70,8 +70,15 @@ dependencies {
     //
 
     implementation(libs.androidx.startup.runtime)
-
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.lifecycle.viewmodel.savedstate)
+    implementation(libs.androidx.annotation)
+    implementation(libs.dagger)
+    implementation(libs.javax.inject)
+    implementation(libs.okhttp)
     implementation(libs.timber)
+
+    releaseImplementation(libs.guava)
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
