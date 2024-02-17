@@ -13,7 +13,8 @@ android {
         freeCompilerArgs +=
             listOf(
                 "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-                "-opt-in=androidx.compose.material.ExperimentalMaterialApi"
+                "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
+                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
             )
     }
     buildFeatures {
@@ -68,7 +69,9 @@ dependencies {
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
+    testImplementation(libs.mockk.dsl)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
     testRuntimeOnly(libs.junit.engine)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)

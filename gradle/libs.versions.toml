@@ -32,6 +32,7 @@ appcompat = "1.6.1"
 kotlin-compose-compiler-extension = "1.5.4"
 android-sdk-target = "34"
 android-min-sdk = "28"
+turbine = "1.0.0"
 
 
 [libraries]
@@ -100,6 +101,7 @@ cronet-embedded = { module = "org.chromium.net:cronet-embedded", version.ref = "
 cronet-okhttp = { group = "com.google.net.cronet", name = "cronet-okhttp", version = "0.1.0" }
 play-services-cronet = { module = "com.google.android.gms:play-services-cronet", version.ref = "play-services-cronet" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "com-android-plugin" }
 com-android-library = { id = "com.android.library", version.ref = "com-android-plugin" }

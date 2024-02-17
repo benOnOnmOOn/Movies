@@ -255,6 +255,25 @@ fun KoverReportExtension.baseConfig(project: Project) {
         xml {
             onCheck = true
         }
+        filters {
+            excludes {
+                classes(
+                    // moshi json adapter
+                    "com.bz.network.api.model.*JsonAdapter",
+                    "*ComposableSingletons*",
+                    "*_Factor*y",
+                    "*_HiltModules*",
+                    "*Hilt_*",
+                    "*_Impl*"
+                )
+                packages(
+                    "hilt_aggregated_deps",
+                    "dagger.hilt.internal.aggregatedroot.codegen",
+                    "com.bz.movies.database.dao"
+                )
+                annotatedBy("*Generated*", "*Composable*")
+            }
+        }
         project.configurations.forEach {
             if (it.description?.contains("debug") == true) {
                 mergeWith("debug")
