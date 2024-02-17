@@ -10,6 +10,7 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
+import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -20,7 +21,6 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import kotlin.random.Random
 
 class MovieDetailsViewModelTest {
 
@@ -64,7 +64,8 @@ class MovieDetailsViewModelTest {
     companion object {
 
         val EXPECTED_DETAILS_STATE = MovieDetailState(
-            isLoading = false, MovieItem(
+            isLoading = false,
+            MovieItem(
                 id = 1234,
                 posterUrl = "poster_url",
                 rating = 69,
