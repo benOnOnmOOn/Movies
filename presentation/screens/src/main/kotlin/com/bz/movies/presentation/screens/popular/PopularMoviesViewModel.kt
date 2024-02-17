@@ -26,7 +26,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.onEmpty
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -101,7 +101,7 @@ class PopularMoviesViewModel @Inject constructor(
             withContext(Dispatchers.IO) {
                 localMovieRepository.popularMovies
                     .flowOn(Dispatchers.Main)
-                    .onEmpty { fetchPopularNowMovies() }
+                    .onStart { fetchPopularNowMovies() }
                     .onEach { data ->
                         _state.update {
                             MoviesState(
