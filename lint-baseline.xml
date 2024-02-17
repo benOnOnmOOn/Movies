@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.2.2" type="baseline" client="gradle" dependencies="true" name="AGP (8.2.2)" variant="all" version="8.2.2">
+<issues format="5" by="lint 8.2.2" client="gradle" dependencies="true" name="AGP (8.2.2)" type="baseline" variant="all" version="8.2.2">
 
     <issue
         id="ObsoleteLintCustomCheck"
         message="Library lint checks reference invalid APIs; these checks **will be skipped**!&#xA;&#xA;Lint found an issue registry (`androidx.compose.runtime.lint.RuntimeIssueRegistry`)&#xA;which contains some references to invalid API:&#xA;org.jetbrains.kotlin.analysis.api.session.KtAnalysisSessionProvider: org.jetbrains.kotlin.analysis.api.lifetime.KtLifetimeTokenFactory getTokenFactory()&#xA;(Referenced from androidx/compose/runtime/lint/AutoboxingStateCreationDetector.class)&#xA;&#xA;Therefore, this lint check library is **not** included&#xA;in analysis. This affects the following lint checks:&#xA;`AutoboxingStateValueProperty`&#xA;`AutoboxingStateCreation`&#xA;`CoroutineCreationDuringComposition`&#xA;`FlowOperatorInvokedInComposition`&#xA;`ComposableLambdaParameterNaming`&#xA;`ComposableLambdaParameterPosition`&#xA;`ComposableNaming`&#xA;`StateFlowValueCalledInComposition`&#xA;`CompositionLocalNaming`&#xA;`MutableCollectionMutableState`&#xA;`ProduceStateDoesNotAssignValue`&#xA;`RememberReturnType`&#xA;`OpaqueUnitKey`&#xA;`UnrememberedMutableState`&#xA;&#xA;To use this lint check, upgrade to a more recent version&#xA;of the library.">
         <location
-            file="../../../../.gradle/caches/transforms-4/aa9f2ba14a4e437e8fe82eee263643ce/transformed/runtime-release/jars/lint.jar"/>
+            file="../../../.gradle/caches/transforms-4/aa9f2ba14a4e437e8fe82eee263643ce/transformed/runtime-release/jars/lint.jar"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.guava:guava than 33.0.0-android is available: 33.0.0-jre">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="9"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.devtools.ksp than 1.9.20-1.0.14 is available: 1.9.22-1.0.17">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="22"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jetbrains.kotlinx.kover than 0.7.5 is available: 0.7.6">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="116"/>
     </issue>
 
 </issues>
