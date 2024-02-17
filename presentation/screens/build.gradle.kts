@@ -69,6 +69,7 @@ dependencies {
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
+    testImplementation(libs.mockk.dsl)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.turbine)
     testRuntimeOnly(libs.junit.engine)
