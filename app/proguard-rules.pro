@@ -185,3 +185,6 @@
 -dontwarn org.checkerframework.**
 -dontwarn com.google.auto.value.**
 -dontwarn org.codehaus.mojo.**
+
+-dontwarn com.google.android.apps.common.proguard.UsedByReflection
+-dontwarn javax.annotation.**
