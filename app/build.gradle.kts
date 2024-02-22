@@ -95,8 +95,6 @@ dependencies {
 
 configurations {
     implementation {
-        exclude("com.google.guava", "failureaccess")
-        exclude("com.google.guava", "guava")
         exclude("com.google.code.findbugs", "jsr305")
         exclude("androidx.legacy", "legacy-support-core-utils")
         exclude("androidx.loader", "loader")
