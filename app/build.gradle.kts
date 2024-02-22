@@ -102,6 +102,10 @@ configurations {
         exclude("androidx.loader", "loader")
         exclude("androidx.privacysandbox.ads", "ads-adservices-java")
         exclude("androidx.privacysandbox.ads", "ads-adservices")
+        exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
+        exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
+        exclude("androidx.cursoradapter", "cursoradapter")
+        exclude("androidx.customview", "customview")
     }
 }
 
