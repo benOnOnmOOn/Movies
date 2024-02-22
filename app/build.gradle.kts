@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.com.google.dagger.hilt.android)
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.dependency.guard)
 }
 
 android {
@@ -90,4 +91,27 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
+}
+
+configurations {
+    implementation {
+        exclude("com.google.guava", "failureaccess")
+        exclude("com.google.guava", "guava")
+        exclude("com.google.code.findbugs", "jsr305")
+        exclude("androidx.legacy", "legacy-support-core-utils")
+        exclude("androidx.loader", "loader")
+        exclude("androidx.privacysandbox.ads", "ads-adservices-java")
+        exclude("androidx.privacysandbox.ads", "ads-adservices")
+        exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
+        exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
+        exclude("androidx.cursoradapter", "cursoradapter")
+        exclude("androidx.customview", "customview")
+    }
+}
+
+dependencyGuard {
+    // All dependencies included in Production Release APK
+    configuration("releaseRuntimeClasspath") {
+        tree = true
+    }
 }
