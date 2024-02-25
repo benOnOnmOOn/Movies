@@ -27,9 +27,6 @@ dependencies {
     api(project(":data:database"))
     api(project(":data:dto"))
 
-    releaseImplementation(libs.firebase.analytics.ktx)
-    releaseImplementation(libs.firebase.crashlytics.ktx)
-
     //  HILT
     ksp(libs.hilt.android.compiler)
     ksp(libs.dagger.compiler)
