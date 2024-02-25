@@ -10,9 +10,7 @@ android {
 }
 
 dependencies {
-    api(project(":data:dto"))
     implementation(project(":utlis:android"))
-    implementation(project(":data:network"))
 
     ksp(libs.moshi.kotlin.codegen)
 
@@ -32,13 +30,9 @@ dependencies {
     releaseImplementation(libs.play.services.cronet)
     //
 
-    implementation(libs.moshi)
     implementation(libs.converter.moshi)
     api(libs.okhttp)
     api(libs.retrofit)
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.androidx.core)
-    implementation(libs.androidx.core.ktx)
 
     // use debug impl to prevent from adding this deps to release version
     debugApi(libs.logging.interceptor)

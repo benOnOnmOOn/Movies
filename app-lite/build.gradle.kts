@@ -80,6 +80,8 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
+    implementation(libs.retrofit)
+    debugImplementation(libs.logging.interceptor)
 }
 
 configurations {
