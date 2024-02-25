@@ -3,7 +3,7 @@ package com.bz.network.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ViewModelComponent
 import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -14,7 +14,7 @@ const val BASE_URL = "https://api.themoviedb.org/3/"
 const val NETWORK_CONNECTION_TIMEOUT = 30L
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 internal class ApiModule {
 
     @Provides

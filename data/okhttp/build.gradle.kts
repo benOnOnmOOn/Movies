@@ -23,7 +23,6 @@ dependencies {
     api(libs.javax.inject)
     //
 
-    implementation(libs.moshi)
     implementation(libs.converter.moshi)
     api(libs.okhttp)
     api(libs.retrofit)

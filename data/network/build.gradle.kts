@@ -10,6 +10,12 @@ android {
     namespace = "com.bz.network"
 }
 
+dependencyAnalysis {
+    issues {
+        onUsedTransitiveDependencies { exclude(libs.okhttp) }
+    }
+}
+
 dependencies {
     api(project(":data:dto"))
     implementation(project(":utlis:android"))
@@ -34,7 +40,6 @@ dependencies {
 
     testRuntimeOnly(libs.junit.engine)
 
-    testImplementation(libs.okhttp)
     testImplementation(libs.converter.moshi)
     testImplementation(libs.mockk.dsl)
     testImplementation(libs.kotlinx.coroutines.test)
