@@ -184,12 +184,11 @@
 |    |    |    |    \--- org.jetbrains.kotlin:kotlin-stdlib:1.9.20 -> 1.9.21 (*)
 |    |    |    +--- com.google.dagger:dagger:2.50 (*)
 |    |    |    +--- javax.inject:javax.inject:1
-|    |    |    +--- com.squareup.okhttp3:okhttp:4.12.0
-|    |    |    |    \--- com.squareup.okio:okio:3.6.0 -> 3.7.0
-|    |    |    |         \--- com.squareup.okio:okio-jvm:3.7.0
-|    |    |    |              \--- org.jetbrains.kotlin:kotlin-stdlib:1.9.21 (*)
 |    |    |    +--- com.squareup.retrofit2:retrofit:2.9.0
-|    |    |    |    \--- com.squareup.okhttp3:okhttp:3.14.9 -> 4.12.0 (*)
+|    |    |    |    \--- com.squareup.okhttp3:okhttp:3.14.9 -> 4.12.0
+|    |    |    |         \--- com.squareup.okio:okio:3.6.0 -> 3.7.0
+|    |    |    |              \--- com.squareup.okio:okio-jvm:3.7.0
+|    |    |    |                   \--- org.jetbrains.kotlin:kotlin-stdlib:1.9.21 (*)
 |    |    |    +--- org.jetbrains.kotlin:kotlin-stdlib:1.9.20 -> 1.9.21 (*)
 |    |    |    +--- project :utlis:android
 |    |    |    |    \--- org.jetbrains.kotlin:kotlin-stdlib:1.9.20 -> 1.9.21 (*)
@@ -197,9 +196,6 @@
 |    |    |    +--- com.google.dagger:hilt-core:2.50 (*)
 |    |    |    +--- com.squareup.moshi:moshi:1.15.1
 |    |    |    |    \--- com.squareup.okio:okio:3.7.0 (*)
-|    |    |    +--- com.squareup.retrofit2:converter-moshi:2.9.0
-|    |    |    |    +--- com.squareup.retrofit2:retrofit:2.9.0 (*)
-|    |    |    |    \--- com.squareup.moshi:moshi:1.8.0 -> 1.15.1 (*)
 |    |    |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0 (*)
 |    |    |    +--- androidx.core:core:1.12.0 (*)
 |    |    |    +--- androidx.core:core-ktx:1.12.0 (*)
@@ -686,6 +682,48 @@
 |    +--- androidx.annotation:annotation:1.7.1 (*)
 |    +--- androidx.navigation:navigation-common:2.7.7 (*)
 |    \--- androidx.navigation:navigation-runtime:2.7.7 (*)
++--- project :data:cronet
+|    +--- com.google.dagger:dagger:2.50 (*)
+|    +--- javax.inject:javax.inject:1
+|    +--- com.squareup.okhttp3:okhttp:4.12.0 (*)
+|    +--- com.squareup.retrofit2:retrofit:2.9.0 (*)
+|    +--- org.jetbrains.kotlin:kotlin-stdlib:1.9.20 -> 1.9.21 (*)
+|    +--- project :utlis:android (*)
+|    +--- com.google.dagger:hilt-android:2.50 (*)
+|    +--- com.google.dagger:hilt-core:2.50 (*)
+|    +--- com.squareup.retrofit2:converter-moshi:2.9.0
+|    |    +--- com.squareup.retrofit2:retrofit:2.9.0 (*)
+|    |    \--- com.squareup.moshi:moshi:1.8.0 -> 1.15.1 (*)
+|    +--- com.google.net.cronet:cronet-okhttp:0.1.0
+|    |    +--- com.squareup.okhttp3:okhttp:3.12.13 -> 4.12.0 (*)
+|    |    +--- com.squareup.okio:okio:2.10.0 -> 3.7.0 (*)
+|    |    +--- com.google.guava:guava:31.1-android -> 33.0.0-android
+|    |    |    +--- com.google.guava:failureaccess:1.0.2
+|    |    |    +--- com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava
+|    |    |    +--- org.checkerframework:checker-qual:3.41.0
+|    |    |    \--- com.google.errorprone:error_prone_annotations:2.23.0
+|    |    \--- org.chromium.net:cronet-api:98.4758.101 -> 119.6045.31
+|    +--- org.chromium.net:cronet-api:119.6045.31
+|    +--- com.google.android.gms:play-services-cronet:18.0.1
+|    |    +--- com.google.android.gms:play-services-base:18.0.1
+|    |    |    +--- androidx.collection:collection:1.0.0 -> 1.4.0 (*)
+|    |    |    +--- androidx.core:core:1.2.0 -> 1.12.0 (*)
+|    |    |    +--- androidx.fragment:fragment:1.0.0 -> 1.6.2 (*)
+|    |    |    +--- com.google.android.gms:play-services-basement:18.0.0 -> 18.1.0
+|    |    |    |    +--- androidx.collection:collection:1.0.0 -> 1.4.0 (*)
+|    |    |    |    +--- androidx.core:core:1.2.0 -> 1.12.0 (*)
+|    |    |    |    \--- androidx.fragment:fragment:1.0.0 -> 1.6.2 (*)
+|    |    |    \--- com.google.android.gms:play-services-tasks:18.0.1 -> 18.0.2
+|    |    |         \--- com.google.android.gms:play-services-basement:18.1.0 (*)
+|    |    +--- com.google.android.gms:play-services-basement:18.0.0 -> 18.1.0 (*)
+|    |    +--- com.google.android.gms:play-services-tasks:18.0.1 -> 18.0.2 (*)
+|    |    \--- org.chromium.net:cronet-api:72.3626.96 -> 119.6045.31
+|    +--- org.chromium.net:cronet-embedded:119.6045.31
+|    |    +--- org.chromium.net:cronet-common:119.6045.31
+|    |    |    \--- org.chromium.net:cronet-api:119.6045.31
+|    |    +--- com.google.protobuf:protobuf-javalite:3.22.3
+|    |    \--- androidx.core:core:1.10.1 -> 1.12.0 (*)
+|    \--- org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0 (*)
 +--- com.google.firebase:firebase-perf:20.5.2
 |    +--- com.google.firebase:firebase-datatransport:18.1.8
 |    |    +--- com.google.android.datatransport:transport-api:3.0.0
@@ -710,12 +748,8 @@
 |    |    \--- androidx.annotation:annotation:1.1.0 -> 1.7.1 (*)
 |    +--- androidx.annotation:annotation:1.1.0 -> 1.7.1 (*)
 |    +--- androidx.lifecycle:lifecycle-process:2.3.1 -> 2.7.0 (*)
-|    +--- com.google.android.gms:play-services-tasks:18.0.1 -> 18.0.2
-|    |    \--- com.google.android.gms:play-services-basement:18.1.0
-|    |         +--- androidx.collection:collection:1.0.0 -> 1.4.0 (*)
-|    |         +--- androidx.core:core:1.2.0 -> 1.12.0 (*)
-|    |         \--- androidx.fragment:fragment:1.0.0 -> 1.6.2 (*)
-|    +--- com.google.protobuf:protobuf-javalite:3.21.11
+|    +--- com.google.android.gms:play-services-tasks:18.0.1 -> 18.0.2 (*)
+|    +--- com.google.protobuf:protobuf-javalite:3.21.11 -> 3.22.3
 |    +--- org.jetbrains.kotlin:kotlin-stdlib:1.7.10 -> 1.9.21 (*)
 |    +--- androidx.appcompat:appcompat:1.2.0 -> 1.6.1 (*)
 |    +--- com.google.android.datatransport:transport-api:3.0.0 (*)
@@ -726,7 +760,7 @@
 |    |    +--- com.google.android.gms:play-services-tasks:18.0.1 -> 18.0.2 (*)
 |    |    \--- com.google.firebase:firebase-annotations:16.2.0 (*)
 |    +--- com.google.firebase:protolite-well-known-types:18.0.0
-|    |    \--- com.google.protobuf:protobuf-javalite:3.14.0 -> 3.21.11
+|    |    \--- com.google.protobuf:protobuf-javalite:3.14.0 -> 3.22.3
 |    +--- com.squareup.okhttp3:okhttp:3.12.1 -> 4.12.0 (*)
 |    +--- com.google.firebase:firebase-common:20.4.2
 |    |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4 -> 1.8.0
@@ -806,6 +840,7 @@
 +--- javax.inject:javax.inject:1
 +--- com.squareup.okhttp3:okhttp:4.12.0 (*)
 +--- com.jakewharton.timber:timber:5.0.1 (*)
++--- com.squareup.retrofit2:retrofit:2.9.0 (*)
 +--- com.google.firebase:firebase-analytics-ktx:21.5.1
 |    +--- com.google.firebase:firebase-analytics:21.5.1
 |    |    +--- com.google.android.gms:play-services-measurement:21.5.1
@@ -823,11 +858,7 @@
 |    |    |    |    +--- com.google.android.gms:play-services-measurement-base:21.5.1 (*)
 |    |    |    |    +--- com.google.android.gms:play-services-stats:17.0.2
 |    |    |    |    |    \--- com.google.android.gms:play-services-basement:18.0.0 -> 18.1.0 (*)
-|    |    |    |    \--- com.google.guava:guava:31.1-android -> 33.0.0-android
-|    |    |    |         +--- com.google.guava:failureaccess:1.0.2
-|    |    |    |         +--- com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava
-|    |    |    |         +--- org.checkerframework:checker-qual:3.41.0
-|    |    |    |         \--- com.google.errorprone:error_prone_annotations:2.23.0
+|    |    |    |    \--- com.google.guava:guava:31.1-android -> 33.0.0-android (*)
 |    |    |    \--- com.google.android.gms:play-services-stats:17.0.2 (*)
 |    |    +--- com.google.android.gms:play-services-measurement-api:21.5.1
 |    |    |    +--- com.google.android.gms:play-services-ads-identifier:18.0.0 (*)
@@ -877,4 +908,6 @@
 |    |    +--- com.google.firebase:firebase-installations:17.2.0 (*)
 |    |    \--- com.google.firebase:firebase-sessions:1.2.1 -> 1.2.2 (*)
 |    \--- com.google.firebase:firebase-components:17.1.5 (*)
-\--- com.google.guava:guava:33.0.0-android (*)
++--- com.google.guava:guava:33.0.0-android (*)
++--- org.chromium.net:cronet-api:119.6045.31
+\--- com.google.net.cronet:cronet-okhttp:0.1.0 (*)

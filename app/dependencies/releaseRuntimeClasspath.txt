@@ -95,7 +95,9 @@ com.google.android.datatransport:transport-api:3.0.0
 com.google.android.datatransport:transport-backend-cct:3.1.9
 com.google.android.datatransport:transport-runtime:3.1.9
 com.google.android.gms:play-services-ads-identifier:18.0.0
+com.google.android.gms:play-services-base:18.0.1
 com.google.android.gms:play-services-basement:18.1.0
+com.google.android.gms:play-services-cronet:18.0.1
 com.google.android.gms:play-services-measurement-api:21.5.1
 com.google.android.gms:play-services-measurement-base:21.5.1
 com.google.android.gms:play-services-measurement-impl:21.5.1
@@ -133,7 +135,8 @@ com.google.firebase:protolite-well-known-types:18.0.0
 com.google.guava:failureaccess:1.0.2
 com.google.guava:guava:33.0.0-android
 com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava
-com.google.protobuf:protobuf-javalite:3.21.11
+com.google.net.cronet:cronet-okhttp:0.1.0
+com.google.protobuf:protobuf-javalite:3.22.3
 com.jakewharton.timber:timber:5.0.1
 com.squareup.moshi:moshi:1.15.1
 com.squareup.okhttp3:okhttp:4.12.0
@@ -147,6 +150,9 @@ io.coil-kt:coil-compose:2.5.0
 io.coil-kt:coil:2.5.0
 javax.inject:javax.inject:1
 org.checkerframework:checker-qual:3.41.0
+org.chromium.net:cronet-api:119.6045.31
+org.chromium.net:cronet-common:119.6045.31
+org.chromium.net:cronet-embedded:119.6045.31
 org.jetbrains.kotlin:kotlin-stdlib-common:1.9.21
 org.jetbrains.kotlin:kotlin-stdlib:1.9.21
 org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0
