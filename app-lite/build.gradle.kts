@@ -84,12 +84,9 @@ dependencies {
 configurations {
     implementation {
         exclude("com.google.code.findbugs", "jsr305")
-        exclude("androidx.legacy", "legacy-support-core-utils")
-        exclude("androidx.loader", "loader")
-        exclude("androidx.privacysandbox.ads", "ads-adservices-java")
-        exclude("androidx.privacysandbox.ads", "ads-adservices")
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
+        exclude("androidx.loader", "loader")
         exclude("androidx.cursoradapter", "cursoradapter")
         exclude("androidx.customview", "customview")
     }
