@@ -40,6 +40,7 @@ android {
 dependencyAnalysis {
     issues {
         onUnusedDependencies { exclude(":presentation:core") }
+        onUnusedDependencies { exclude(libs.androidx.appcompat) }
         onIncorrectConfiguration { exclude("org.jetbrains.kotlin:kotlin-stdlib") }
     }
 }
@@ -67,6 +68,7 @@ dependencies {
     implementation(libs.javax.inject)
     implementation(libs.okhttp)
     implementation(libs.timber)
+    implementation(libs.androidx.appcompat)
 
     releaseImplementation(libs.guava)
 
