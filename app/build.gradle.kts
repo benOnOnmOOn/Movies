@@ -47,6 +47,7 @@ dependencyAnalysis {
 dependencies {
     // don't warn
     implementation(project(":presentation:core"))
+    implementation(project(":data:cronet"))
     kover(project(":presentation:core"))
     kover(project(":presentation:screens"))
     kover(project(":data:network"))

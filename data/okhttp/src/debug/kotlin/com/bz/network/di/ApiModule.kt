@@ -1,6 +1,5 @@
 package com.bz.network.di
 
-import com.bz.network.api.service.MovieService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,7 +8,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
 import throwOnMainThread
 
 const val BASE_URL = "https://api.themoviedb.org/3/"
@@ -41,11 +39,5 @@ internal class ApiModule {
             .addConverterFactory(MoshiConverterFactory.create())
             .baseUrl(BASE_URL)
             .build()
-    }
-
-    @Provides
-    internal fun provideApiService(retrofit: Retrofit): MovieService {
-        throwOnMainThread("provideApiService")
-        return retrofit.create()
     }
 }
