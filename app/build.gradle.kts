@@ -3,11 +3,14 @@
 plugins {
     embeddedKotlin("android")
     alias(libs.plugins.com.android.application)
+    alias(libs.plugins.com.google.gms.google.services) apply false
+    alias(libs.plugins.firebase.crashlytics.gradle) apply false
+    alias(libs.plugins.firebase.perf.gradle) apply false
     alias(libs.plugins.com.google.dagger.hilt.android)
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
     alias(libs.plugins.ksp)
     alias(libs.plugins.dependency.guard)
-    id("com.getkeepsafe.dexcount") version ("4.0.0")
+    alias(libs.plugins.dexcount)
 }
 
 android {
@@ -23,15 +26,12 @@ android {
 
     buildTypes {
         release {
+            apply(plugin = "com.google.gms.google-services")
+            apply(plugin = "com.google.firebase.crashlytics")
+            apply(plugin = "com.google.firebase.firebase-perf")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles("proguard-rules.pro")
-
-//            optimization {
-//                keepRules {
-//                    ignoreAllExternalDependencies(true)
-//                }
-//            }
             signingConfig = signingConfigs.getByName("debug")
         }
     }
@@ -51,6 +51,10 @@ dependencies {
     kover(project(":presentation:screens"))
     kover(project(":data:network"))
     kover(project(":data:database"))
+
+    releaseImplementation(libs.firebase.analytics.ktx)
+    releaseImplementation(libs.firebase.crashlytics.ktx)
+    implementation(libs.firebase.perf)
 
     //  HILT
     ksp(libs.hilt.android.compiler)

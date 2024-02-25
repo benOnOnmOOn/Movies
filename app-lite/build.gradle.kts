@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
     alias(libs.plugins.ksp)
     alias(libs.plugins.dependency.guard)
-    id("com.getkeepsafe.dexcount") version ("4.0.0")
+    alias(libs.plugins.dexcount)
 }
 
 android {
