@@ -269,9 +269,16 @@ fun KoverReportExtension.baseConfig(project: Project) {
                 packages(
                     "hilt_aggregated_deps",
                     "dagger.hilt.internal.aggregatedroot.codegen",
-                    "com.bz.movies.database.dao"
+                    "com.bz.movies.database.dao",
+                    "com.bz.movies.presentation.theme"
                 )
-                annotatedBy("*Generated*", "*Composable*")
+                annotatedBy(
+                    "*Generated*",
+                    "*Composable*",
+                    "*Module*",
+                    "*HiltAndroidApp*",
+                    "*AndroidEntryPoint*"
+                )
             }
         }
         project.configurations.forEach {
