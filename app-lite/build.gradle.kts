@@ -70,8 +70,6 @@ dependencies {
     implementation(libs.timber)
     implementation(libs.androidx.appcompat)
 
-    releaseImplementation(libs.guava)
-
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
@@ -89,11 +87,18 @@ dependencies {
 configurations {
     implementation {
         exclude("com.google.code.findbugs", "jsr305")
+        exclude("com.google.errorprone", "error_prone_annotations")
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
         exclude("androidx.loader", "loader")
         exclude("androidx.cursoradapter", "cursoradapter")
         exclude("androidx.customview", "customview")
+        exclude("androidx.viewpager", "viewpager")
+        exclude("androidx.versionedparcelable", "versionedparcelable")
+        exclude("androidx.vectordrawable", "vectordrawable-animated")
+        exclude("androidx.vectordrawable", "vectordrawable")
+        exclude("androidx.drawerlayout", "drawerlayout")
+        exclude("org.checkerframework", "checker-qual")
     }
 }
 
