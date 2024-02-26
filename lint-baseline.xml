@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.2.2" type="baseline" client="gradle" dependencies="true" name="AGP (8.2.2)" variant="all" version="8.2.2">
+<issues format="5" by="lint 8.2.2">
 
     <issue
         id="ObsoleteLintCustomCheck"
@@ -10,24 +10,18 @@
 
     <issue
         id="GradleDependency"
-        message="A newer version of com.google.guava:guava than 33.0.0-android is available: 33.0.0-jre"
-        errorLine1="guava = &quot;33.0.0-android&quot;"
-        errorLine2="        ~~~~~~~~~~~~~~~~">
+        message="A newer version of com.google.guava:guava than 33.0.0-android is available: 33.0.0-jre">
         <location
             file="../gradle/libs.versions.toml"
-            line="9"
-            column="9"/>
+            line="9"/>
     </issue>
 
     <issue
         id="NewerVersionAvailable"
-        message="A newer version of io.coil-kt:coil-compose than 2.5.0 is available: 2.6.0"
-        errorLine1="coil-compose = &quot;2.5.0&quot;"
-        errorLine2="               ~~~~~~~">
+        message="A newer version of io.coil-kt:coil-compose than 2.5.0 is available: 2.6.0">
         <location
             file="../gradle/libs.versions.toml"
-            line="3"
-            column="16"/>
+            line="3"/>
     </issue>
 
 </issues>
