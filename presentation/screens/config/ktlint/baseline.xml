@@ -13,8 +13,9 @@
         <error line="43" column="17" source="standard:property-naming" />
     </file>
     <file name="src/test/java/com/bz/movies/presentation/screens/popular/PopularMoviesViewModelTest.kt">
-        <error line="56" column="101" source="standard:max-line-length" />
-        <error line="72" column="101" source="standard:max-line-length" />
-        <error line="99" column="101" source="standard:max-line-length" />
+        <error line="63" column="101" source="standard:max-line-length" />
+        <error line="86" column="101" source="standard:max-line-length" />
+        <error line="102" column="101" source="standard:max-line-length" />
+        <error line="129" column="101" source="standard:max-line-length" />
     </file>
 </baseline>
