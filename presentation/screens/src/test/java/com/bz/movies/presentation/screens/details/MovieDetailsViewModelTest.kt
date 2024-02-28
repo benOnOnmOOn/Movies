@@ -12,8 +12,7 @@ import io.mockk.mockk
 import io.mockk.mockkObject
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
@@ -53,9 +52,9 @@ class MovieDetailsViewModelTest {
         every { Random.nextInt(any(), any()) } returns 69
 
         val viewModel = MovieDetailsViewModel(movieRepository)
-        advanceUntilIdle()
         viewModel.fetchMovieDetails(1234)
         viewModel.state.test {
+            awaitItem()
             val actualItem = awaitItem()
             assertEquals(EXPECTED_DETAILS_STATE, actualItem)
         }
@@ -88,7 +87,7 @@ class MovieDetailsViewModelTest {
         @BeforeAll
         @JvmStatic
         fun setUp() {
-            Dispatchers.setMain(UnconfinedTestDispatcher())
+            Dispatchers.setMain(StandardTestDispatcher())
         }
 
         @AfterAll
