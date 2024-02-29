@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.coil.compose)
+    implementation(libs.coil.compose.base)
     runtimeOnly(libs.androidx.startup.runtime)
 
     implementation(libs.kotlinx.coroutines.core)

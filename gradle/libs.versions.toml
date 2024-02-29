@@ -70,6 +70,7 @@ androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", v
 androidx-ui-unit-android = { module = "androidx.compose.ui:ui-unit-android", version.ref = "compose" }
 androidx-ui-tooling-preview-android = { module = "androidx.compose.ui:ui-tooling-preview-android", version.ref = "compose" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
+coil-compose-base = { module = "io.coil-kt:coil-compose-base", version.ref = "coil-compose" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "hilt" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "hilt" }
 firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx", version = "21.5.1" }
