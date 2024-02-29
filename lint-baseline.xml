@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="5" by="lint 8.2.2">
+<issues format="6" by="lint 8.2.2" type="baseline" client="gradle" dependencies="true" name="AGP (8.2.2)" variant="all" version="8.2.2">
 
     <issue
         id="ObsoleteLintCustomCheck"
         message="Library lint checks reference invalid APIs; these checks **will be skipped**!&#xA;&#xA;Lint found an issue registry (`androidx.compose.runtime.lint.RuntimeIssueRegistry`)&#xA;which contains some references to invalid API:&#xA;org.jetbrains.kotlin.analysis.api.session.KtAnalysisSessionProvider: org.jetbrains.kotlin.analysis.api.lifetime.KtLifetimeTokenFactory getTokenFactory()&#xA;(Referenced from androidx/compose/runtime/lint/AutoboxingStateCreationDetector.class)&#xA;&#xA;Therefore, this lint check library is **not** included&#xA;in analysis. This affects the following lint checks:&#xA;`AutoboxingStateValueProperty`&#xA;`AutoboxingStateCreation`&#xA;`CoroutineCreationDuringComposition`&#xA;`FlowOperatorInvokedInComposition`&#xA;`ComposableLambdaParameterNaming`&#xA;`ComposableLambdaParameterPosition`&#xA;`ComposableNaming`&#xA;`StateFlowValueCalledInComposition`&#xA;`CompositionLocalNaming`&#xA;`MutableCollectionMutableState`&#xA;`ProduceStateDoesNotAssignValue`&#xA;`RememberReturnType`&#xA;`OpaqueUnitKey`&#xA;`UnrememberedMutableState`&#xA;&#xA;To use this lint check, upgrade to a more recent version&#xA;of the library.">
         <location
-            file="../../../.gradle/caches/transforms-4/e81dc66b969c1d211ac8ee8bb29a43df/transformed/runtime-release/jars/lint.jar"/>
+            file="../../../.gradle/caches/transforms-4/222979676c7cbabf410c4533ab4cf4d3/transformed/runtime-release/jars/lint.jar"/>
     </issue>
 
     <issue
         id="GradleDependency"
-        message="A newer version of com.google.guava:guava than 33.0.0-android is available: 33.0.0-jre">
+        message="A newer version of com.google.guava:guava than 33.0.0-android is available: 33.0.0-jre"
+        errorLine1="guava = &quot;33.0.0-android&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~">
         <location
             file="../gradle/libs.versions.toml"
-            line="9"/>
+            line="9"
+            column="9"/>
     </issue>
 
     <issue
         id="NewerVersionAvailable"
-        message="A newer version of io.coil-kt:coil-compose than 2.5.0 is available: 2.6.0">
+        message="A newer version of com.osacky.doctor than 0.9.1 is available: 0.9.2"
+        errorLine1="com_osacky_doctor = { id = &quot;com.osacky.doctor&quot;, version = &quot;0.9.1&quot; }"
+        errorLine2="                                                          ~~~~~~~">
         <location
             file="../gradle/libs.versions.toml"
-            line="3"/>
+            line="117"
+            column="59"/>
     </issue>
 
 </issues>
