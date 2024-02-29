@@ -2,7 +2,9 @@ package com.bz.movies.presentation.screens.details
 
 import app.cash.turbine.test
 import com.bz.movies.presentation.screens.common.MovieDetailState
+import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
+import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.model.MoveDetailDto
 import io.mockk.coEvery
@@ -10,6 +12,8 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
+import io.mockk.unmockkAll
+import io.mockk.verify
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -20,6 +24,7 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
+import timber.log.Timber
 
 class MovieDetailsViewModelTest {
 
@@ -60,6 +65,55 @@ class MovieDetailsViewModelTest {
         }
     }
 
+    @Test
+    fun `when we get network error then we viewmodel should emit NetworkConnectionError`() =
+        runTest {
+            coEvery {
+                movieRepository.getMovieDetail(
+                    any()
+                )
+            } returns Result.failure(HttpException(""))
+
+            val timberPlantTree: Timber.Tree = mockk(relaxed = true)
+            Timber.plant(timberPlantTree)
+            verify(exactly = 0) { timberPlantTree.e(any<Throwable>()) }
+
+            val viewModel = MovieDetailsViewModel(movieRepository)
+            viewModel.fetchMovieDetails(1234)
+            viewModel.effect.test {
+                assertEquals(MovieEffect.NetworkConnectionError, awaitItem())
+                expectNoEvents()
+            }
+
+            coVerify(exactly = 1) { movieRepository.getMovieDetail(any()) }
+            verify(exactly = 1) { timberPlantTree.e(any<Throwable>()) }
+
+            Timber.uproot(timberPlantTree)
+        }
+
+    @Test
+    fun `when we get unhandled error then we viewmodel should emit UnknownError`() = runTest {
+        coEvery {
+            movieRepository.getMovieDetail(any())
+        } returns Result.failure(IllegalStateException())
+
+        val timberPlantTree: Timber.Tree = mockk(relaxed = true)
+        Timber.plant(timberPlantTree)
+        verify(exactly = 0) { timberPlantTree.e(any<Throwable>()) }
+
+        val viewModel = MovieDetailsViewModel(movieRepository)
+        viewModel.fetchMovieDetails(1234)
+        viewModel.effect.test {
+            assertEquals(MovieEffect.UnknownError, awaitItem())
+            expectNoEvents()
+        }
+
+        coVerify(exactly = 1) { movieRepository.getMovieDetail(any()) }
+        verify(exactly = 1) { timberPlantTree.e(any<Throwable>()) }
+
+        Timber.uproot(timberPlantTree)
+    }
+
     companion object {
 
         val EXPECTED_DETAILS_STATE = MovieDetailState(
@@ -94,6 +148,7 @@ class MovieDetailsViewModelTest {
         @JvmStatic
         fun tearDown() {
             Dispatchers.resetMain()
+            unmockkAll()
         }
     }
 }

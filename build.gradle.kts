@@ -270,7 +270,8 @@ fun KoverReportExtension.baseConfig(project: Project) {
                     "hilt_aggregated_deps",
                     "dagger.hilt.internal.aggregatedroot.codegen",
                     "com.bz.movies.database.dao",
-                    "com.bz.movies.presentation.theme"
+                    "com.bz.movies.presentation.theme",
+                    "com.bz.movies.presentation.navigation"
                 )
                 annotatedBy(
                     "*Generated*",
