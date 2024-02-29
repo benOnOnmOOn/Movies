@@ -16,6 +16,7 @@ android {
 
 dependencies {
     implementation(project(":presentation:screens"))
+    testImplementation(project(":data:dto"))
 
     //  HILT
     ksp(libs.hilt.android.compiler)
