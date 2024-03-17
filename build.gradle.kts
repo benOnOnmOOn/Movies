@@ -3,6 +3,7 @@ import com.android.build.api.dsl.BuildFeatures
 import com.android.build.api.dsl.BuildType
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.DefaultConfig
+import com.android.build.api.dsl.Installation
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.dsl.ProductFlavor
 import com.android.build.gradle.AppPlugin
@@ -166,8 +167,9 @@ fun <
     BT : BuildType,
     DC : DefaultConfig,
     PF : ProductFlavor,
-    AR : AndroidResources
-    > CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
+    AR : AndroidResources,
+    IN : Installation
+    > CommonExtension<BF, BT, DC, PF, AR, IN>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
     buildToolsVersion = "34.0.0"
 
@@ -216,8 +218,10 @@ fun <
         setOf(
             "kotlin/**",
             "META-INF/**",
+            "META-INF/services/**",
             "**.properties",
-            "kotlin-tooling-metadata.json"
+            "kotlin-tooling-metadata.json",
+            "DebugProbesKt.bin"
         )
 }
 
