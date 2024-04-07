@@ -12,6 +12,9 @@ import com.bz.network.repository.NoInternetException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.random.Random
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -19,6 +22,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import leakcanary.AppWatcher
 import timber.log.Timber
 
 @HiltViewModel
@@ -30,6 +34,22 @@ class MovieDetailsViewModel @Inject constructor(
 
     private val _effect: MutableSharedFlow<MovieEffect> = MutableSharedFlow()
     val effect = _effect.asSharedFlow()
+
+    init {
+        MainScope().launch(Dispatchers.IO) {
+            delay(1_000_000)
+            _effect.emit(MovieEffect.UnknownError)
+        }
+    }
+
+    override fun onCleared() {
+        Timber.i("MovieDetailsViewModel cleared")
+        AppWatcher.objectWatcher.watch(
+            watchedObject = this,
+            description = "MovieDetailsViewModel received ViewModel#onCleared() callback"
+        )
+        super.onCleared()
+    }
 
     @Suppress("MagicNumber")
     fun fetchMovieDetails(movieId: Int) = viewModelScope.launch {

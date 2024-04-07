@@ -36,34 +36,34 @@
 
     <issue
         id="GradleDependency"
-        message="A newer version of com.google.devtools.ksp than 1.9.22-1.0.17 is available: 1.9.23-1.0.19"
+        message="A newer version of com.google.devtools.ksp than 1.9.22-1.0.17 is available: 1.9.23-1.0.20"
         errorLine1="ksp = &quot;1.9.22-1.0.17&quot;"
         errorLine2="      ~~~~~~~~~~~~~~~">
         <location
             file="../gradle/libs.versions.toml"
-            line="22"
+            line="23"
             column="7"/>
     </issue>
 
     <issue
         id="GradleDependency"
-        message="A newer version of com.google.devtools.ksp than 1.9.22-1.0.17 is available: 1.9.23-1.0.19"
+        message="A newer version of com.google.devtools.ksp than 1.9.22-1.0.17 is available: 1.9.23-1.0.20"
         errorLine1="ksp = &quot;1.9.22-1.0.17&quot;"
         errorLine2="      ~~~~~~~~~~~~~~~">
         <location
             file="../gradle/libs.versions.toml"
-            line="22"
+            line="23"
             column="7"/>
     </issue>
 
     <issue
         id="GradleDependency"
-        message="A newer version of com.google.devtools.ksp than 1.9.22-1.0.17 is available: 1.9.23-1.0.19"
+        message="A newer version of com.google.devtools.ksp than 1.9.22-1.0.17 is available: 1.9.23-1.0.20"
         errorLine1="ksp = &quot;1.9.22-1.0.17&quot;"
         errorLine2="      ~~~~~~~~~~~~~~~">
         <location
             file="../gradle/libs.versions.toml"
-            line="22"
+            line="23"
             column="7"/>
     </issue>
 

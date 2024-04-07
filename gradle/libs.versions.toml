@@ -2,13 +2,14 @@
 annotation = "1.7.1"
 coil-compose = "2.6.0"
 com-android-plugin = "8.3.1"
-compose = "1.6.4"
+compose = "1.6.5"
 cronet = "119.6045.31"
 firebase-perf = "20.5.2"
 fragment = "1.6.2"
 guava = "33.1.0-android"
+leakcanary-android = "3.0-alpha-1"
 play-services-cronet = "18.0.1"
-hilt = "2.51"
+hilt = "2.51.1"
 hilt-navigation-compose = "1.2.0"
 javax-inject = "1"
 kotlinx-coroutines = "1.8.0"
@@ -22,7 +23,7 @@ activity-compose = "1.8.2"
 ksp = "1.9.22-1.0.17"
 moshi = "1.15.1"
 okhttp = "4.12.0"
-retrofit = "2.10.0"
+retrofit = "2.11.0"
 mockk = "1.13.10"
 room = "2.6.1"
 sqlite = "2.4.0"
@@ -85,6 +86,9 @@ junit-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.r
 junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary-android" }
+leakcanary-watcher = { module = "com.squareup.leakcanary:leakcanary-object-watcher", version.ref = "leakcanary-android" }
+leakcanary-watcher-android-core = { module = "com.squareup.leakcanary:leakcanary-object-watcher-android-core", version.ref = "leakcanary-android" }
 mockk-dsl = { module = "io.mockk:mockk-dsl", version.ref = "mockk" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
@@ -108,8 +112,8 @@ com-android-application = { id = "com.android.application", version.ref = "com-a
 com-android-library = { id = "com.android.library", version.ref = "com-android-plugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.5" }
-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.30.0" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.6" }
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.31.0" }
 com-google-gms-google-services = { id = "com.google.gms.google-services", version = "4.4.1" }
 firebase-crashlytics-gradle = { id = "com.google.firebase.crashlytics", version = "2.9.9" }
 firebase-perf-gradle = { id = "com.google.firebase.firebase-perf", version = "1.4.2" }

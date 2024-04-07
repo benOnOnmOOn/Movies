@@ -40,6 +40,7 @@ android {
 dependencyAnalysis {
     issues {
         onUnusedDependencies { exclude(":presentation:core") }
+        onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
         onIncorrectConfiguration { exclude("org.jetbrains.kotlin:kotlin-stdlib") }
     }
 }
@@ -88,6 +89,8 @@ dependencies {
     releaseImplementation(libs.cronet.okhttp)
     implementation(libs.retrofit)
     debugImplementation(libs.logging.interceptor)
+
+    implementation(libs.leakcanary.android)
 }
 
 configurations {
