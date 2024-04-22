@@ -1,8 +1,8 @@
 [versions]
 annotation = "1.7.1"
 coil-compose = "2.6.0"
-com-android-plugin = "8.3.1"
-compose = "1.6.5"
+com-android-plugin = "8.3.2"
+compose = "1.6.6"
 cronet = "119.6045.31"
 firebase-perf = "20.5.2"
 fragment = "1.6.2"
@@ -16,10 +16,10 @@ kotlinx-coroutines = "1.8.0"
 material3 = "1.2.1"
 monitor = "1.6.1"
 navigation-compose = "2.7.7"
-core-ktx = "1.12.0"
+core-ktx = "1.13.0"
 junit = "5.10.2"
 lifecycle-runtime-ktx = "2.7.0"
-activity-compose = "1.8.2"
+activity-compose = "1.9.0"
 ksp = "1.9.22-1.0.17"
 moshi = "1.15.1"
 okhttp = "4.12.0"
@@ -74,8 +74,8 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose
 coil-compose-base = { module = "io.coil-kt:coil-compose-base", version.ref = "coil-compose" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "hilt" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "hilt" }
-firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx", version = "21.6.1" }
-firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx", version = "18.6.3" }
+firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx", version = "21.6.2" }
+firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx", version = "18.6.4" }
 firebase-perf = { module = "com.google.firebase:firebase-perf", version.ref = "firebase-perf" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
