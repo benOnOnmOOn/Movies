@@ -41,7 +41,6 @@ dependencyAnalysis {
     issues {
         onUnusedDependencies { exclude(":presentation:core") }
         onUnusedDependencies { exclude(libs.androidx.appcompat) }
-        onIncorrectConfiguration { exclude("org.jetbrains.kotlin:kotlin-stdlib") }
     }
 }
 
@@ -66,9 +65,13 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.dagger)
     implementation(libs.javax.inject)
-    implementation(libs.okhttp)
     implementation(libs.timber)
     implementation(libs.androidx.appcompat)
+    implementation(libs.kotlin.stdlib)
+
+    debugImplementation(libs.okhttp)
+    debugImplementation(libs.retrofit)
+    debugImplementation(libs.logging.interceptor)
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
@@ -80,8 +83,6 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
-    implementation(libs.retrofit)
-    debugImplementation(libs.logging.interceptor)
 }
 
 configurations {
