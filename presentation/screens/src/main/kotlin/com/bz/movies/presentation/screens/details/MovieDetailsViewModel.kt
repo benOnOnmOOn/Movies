@@ -37,6 +37,7 @@ class MovieDetailsViewModel @Inject constructor(
 
     init {
         MainScope().launch(Dispatchers.IO) {
+            @Suppress("MagicNumber")
             delay(1_000_000)
             _effect.emit(MovieEffect.UnknownError)
         }
