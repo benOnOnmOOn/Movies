@@ -14,18 +14,7 @@
 
     <issue
         id="GradleDependency"
-        message="A newer version of org.jetbrains.kotlin:kotlin-stdlib than 1.9.22 is available: 1.9.24"
-        errorLine1="kotlin-stdlib = &quot;1.9.22&quot;"
-        errorLine2="                ~~~~~~~~">
-        <location
-            file="$HOME/AndroidStudioProjects/Movies/gradle/libs.versions.toml"
-            line="10"
-            column="17"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of org.jetbrains.kotlin:kotlin-stdlib than 1.9.22 is available: 1.9.24"
+        message="A newer version of org.jetbrains.kotlin:kotlin-stdlib than 1.9.22 is available: 1.9.23"
         errorLine1="kotlin-stdlib = &quot;1.9.22&quot;"
         errorLine2="                ~~~~~~~~">
         <location
@@ -47,18 +36,7 @@
 
     <issue
         id="GradleDependency"
-        message="A newer version of com.google.devtools.ksp than 1.9.22-1.0.17 is available: 1.9.24-1.0.20"
-        errorLine1="ksp = &quot;1.9.22-1.0.17&quot;"
-        errorLine2="      ~~~~~~~~~~~~~~~">
-        <location
-            file="$HOME/AndroidStudioProjects/Movies/gradle/libs.versions.toml"
-            line="24"
-            column="7"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of com.google.devtools.ksp than 1.9.22-1.0.17 is available: 1.9.24-1.0.20"
+        message="A newer version of com.google.devtools.ksp than 1.9.22-1.0.17 is available: 1.9.23-1.0.20"
         errorLine1="ksp = &quot;1.9.22-1.0.17&quot;"
         errorLine2="      ~~~~~~~~~~~~~~~">
         <location
@@ -76,50 +54,6 @@
             file="$HOME/AndroidStudioProjects/Movies/gradle/libs.versions.toml"
             line="120"
             column="83"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of com.google.firebase.crashlytics than 2.9.9 is available: 3.0.0"
-        errorLine1="firebase-crashlytics-gradle = { id = &quot;com.google.firebase.crashlytics&quot;, version = &quot;2.9.9&quot; }"
-        errorLine2="                                                                                  ~~~~~~~">
-        <location
-            file="$HOME/AndroidStudioProjects/Movies/gradle/libs.versions.toml"
-            line="120"
-            column="83"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of com.google.firebase.crashlytics than 2.9.9 is available: 3.0.0"
-        errorLine1="firebase-crashlytics-gradle = { id = &quot;com.google.firebase.crashlytics&quot;, version = &quot;2.9.9&quot; }"
-        errorLine2="                                                                                  ~~~~~~~">
-        <location
-            file="$HOME/AndroidStudioProjects/Movies/gradle/libs.versions.toml"
-            line="120"
-            column="83"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-core than 1.8.0 is available: 1.8.1-Beta"
-        errorLine1="kotlinx-coroutines = &quot;1.8.0&quot;"
-        errorLine2="                     ~~~~~~~">
-        <location
-            file="$HOME/AndroidStudioProjects/Movies/gradle/libs.versions.toml"
-            line="16"
-            column="22"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-core than 1.8.0 is available: 1.8.1-Beta"
-        errorLine1="kotlinx-coroutines = &quot;1.8.0&quot;"
-        errorLine2="                     ~~~~~~~">
-        <location
-            file="$HOME/AndroidStudioProjects/Movies/gradle/libs.versions.toml"
-            line="16"
-            column="22"/>
     </issue>
 
     <issue
