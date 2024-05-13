@@ -877,6 +877,8 @@
 |    |    \--- com.squareup.leakcanary:leakcanary-android-utils:3.0-alpha-4 (*)
 |    \--- com.squareup.leakcanary:leakcanary-object-watcher-android:3.0-alpha-4
 |         \--- com.squareup.leakcanary:leakcanary-object-watcher-android-core:3.0-alpha-4 (*)
++--- com.squareup.okhttp3:okhttp:4.12.0 (*)
++--- com.squareup.retrofit2:retrofit:2.11.0 (*)
 +--- com.google.firebase:firebase-analytics-ktx:22.0.0
 |    +--- com.google.firebase:firebase-analytics:22.0.0
 |    |    +--- com.google.android.gms:play-services-measurement:22.0.0
@@ -944,4 +946,6 @@
 |    +--- com.google.firebase:firebase-common:21.0.0 (*)
 |    +--- com.google.firebase:firebase-common-ktx:21.0.0 (*)
 |    \--- com.google.firebase:firebase-components:18.0.0 (*)
-\--- com.google.guava:guava:33.2.0-android (*)
++--- com.google.guava:guava:33.2.0-android (*)
++--- org.chromium.net:cronet-api:119.6045.31
+\--- com.google.net.cronet:cronet-okhttp:0.1.0 (*)
