@@ -75,8 +75,8 @@ dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.leakcanary.android)
 
-    debugImplementation(libs.okhttp)
-    debugImplementation(libs.retrofit)
+    implementation(libs.okhttp)
+    implementation(libs.retrofit)
     debugImplementation(libs.logging.interceptor)
 
     releaseImplementation(libs.guava)
@@ -91,6 +91,9 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
+
+    releaseImplementation(libs.cronet.api)
+    releaseImplementation(libs.cronet.okhttp)
 }
 
 configurations {

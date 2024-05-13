@@ -69,8 +69,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.kotlin.stdlib)
 
-    debugImplementation(libs.okhttp)
-    debugImplementation(libs.retrofit)
+    implementation(libs.okhttp)
+    implementation(libs.retrofit)
     debugImplementation(libs.logging.interceptor)
 
     testImplementation(libs.junit.api)
