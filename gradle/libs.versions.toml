@@ -1,7 +1,7 @@
 [versions]
 annotation = "1.7.1"
 coil-compose = "2.6.0"
-com-android-plugin = "8.4.0"
+com-android-plugin = "8.2.2"
 compose = "1.6.7"
 cronet = "119.6045.31"
 firebase-perf = "21.0.0"
