@@ -40,7 +40,8 @@ android {
 dependencyAnalysis {
     issues {
         onUnusedDependencies { exclude(":presentation:core") }
-        onIncorrectConfiguration { exclude("org.jetbrains.kotlin:kotlin-stdlib") }
+        onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
+        onUnusedDependencies { exclude(libs.androidx.appcompat) }
     }
 }
 
@@ -67,10 +68,16 @@ dependencies {
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.androidx.annotation)
+    implementation(libs.androidx.appcompat)
     implementation(libs.dagger)
     implementation(libs.javax.inject)
-    implementation(libs.okhttp)
     implementation(libs.timber)
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.leakcanary.android)
+
+    implementation(libs.okhttp)
+    implementation(libs.retrofit)
+    debugImplementation(libs.logging.interceptor)
 
     releaseImplementation(libs.guava)
 
@@ -84,10 +91,9 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
+
     releaseImplementation(libs.cronet.api)
     releaseImplementation(libs.cronet.okhttp)
-    implementation(libs.retrofit)
-    debugImplementation(libs.logging.interceptor)
 }
 
 configurations {

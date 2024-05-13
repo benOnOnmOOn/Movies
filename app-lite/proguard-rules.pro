@@ -31,6 +31,7 @@
 
 -repackageclasses ''
 -allowaccessmodification
+-whyareyoukeeping
 
 #Hide some missliding warnings
 -dontwarn org.bouncycastle.**

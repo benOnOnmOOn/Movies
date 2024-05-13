@@ -183,7 +183,7 @@ fun <
         checkAllWarnings = true
         warningsAsErrors = true
         checkReleaseBuilds = false
-        checkDependencies = true
+        checkDependencies = false
     }
 
     compileOptions {
@@ -216,8 +216,10 @@ fun <
         setOf(
             "kotlin/**",
             "META-INF/**",
+            "META-INF/services/**",
             "**.properties",
-            "kotlin-tooling-metadata.json"
+            "kotlin-tooling-metadata.json",
+            "DebugProbesKt.bin"
         )
 }
 

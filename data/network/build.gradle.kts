@@ -38,6 +38,8 @@ dependencies {
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.ktx)
 
+    runtimeOnly(libs.kotlinx.coroutines.android)
+
     testRuntimeOnly(libs.junit.engine)
 
     testImplementation(libs.converter.moshi)
@@ -49,6 +51,4 @@ dependencies {
 
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
-
-    runtimeOnly(libs.kotlinx.coroutines.android)
 }

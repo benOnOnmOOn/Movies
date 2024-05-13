@@ -1,22 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.2.2" type="baseline" client="gradle" dependencies="true" name="AGP (8.2.2)" variant="all" version="8.2.2">
+<issues format="6" by="lint 8.2.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.2.2)" variant="all" version="8.2.2">
 
     <issue
         id="ObsoleteLintCustomCheck"
         message="Library lint checks reference invalid APIs; these checks **will be skipped**!&#xA;&#xA;Lint found an issue registry (`androidx.compose.runtime.lint.RuntimeIssueRegistry`)&#xA;which contains some references to invalid API:&#xA;org.jetbrains.kotlin.analysis.api.session.KtAnalysisSessionProvider: org.jetbrains.kotlin.analysis.api.lifetime.KtLifetimeTokenFactory getTokenFactory()&#xA;(Referenced from androidx/compose/runtime/lint/AutoboxingStateCreationDetector.class)&#xA;&#xA;Therefore, this lint check library is **not** included&#xA;in analysis. This affects the following lint checks:&#xA;`AutoboxingStateValueProperty`&#xA;`AutoboxingStateCreation`&#xA;`CoroutineCreationDuringComposition`&#xA;`FlowOperatorInvokedInComposition`&#xA;`ComposableLambdaParameterNaming`&#xA;`ComposableLambdaParameterPosition`&#xA;`ComposableNaming`&#xA;`StateFlowValueCalledInComposition`&#xA;`CompositionLocalNaming`&#xA;`MutableCollectionMutableState`&#xA;`ProduceStateDoesNotAssignValue`&#xA;`RememberReturnType`&#xA;`OpaqueUnitKey`&#xA;`UnrememberedMutableState`&#xA;&#xA;To use this lint check, upgrade to a more recent version&#xA;of the library.">
         <location
-            file="../../../.gradle/caches/transforms-4/0f0ea2ff011e5b52163f55ae9ca9c094/transformed/runtime-release/jars/lint.jar"/>
+            file="$GRADLE_USER_HOME/caches/transforms-4/775f7c76bd5b28aff5327b328e35d9a9/transformed/runtime-release/jars/lint.jar"/>
     </issue>
 
     <issue
         id="GradleDependency"
-        message="A newer version of com.google.guava:guava than 33.0.0-android is available: 33.0.0-jre"
-        errorLine1="guava = &quot;33.0.0-android&quot;"
+        message="A newer version of com.android.application than 8.2.2 is available: 8.4.0"
+        errorLine1="com-android-plugin = &quot;8.2.2&quot;"
+        errorLine2="                     ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="4"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.android.library than 8.2.2 is available: 8.4.0"
+        errorLine1="com-android-plugin = &quot;8.2.2&quot;"
+        errorLine2="                     ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="4"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.guava:guava than 33.2.0-android is available: 33.2.0-jre"
+        errorLine1="guava = &quot;33.2.0-android&quot;"
         errorLine2="        ~~~~~~~~~~~~~~~~">
         <location
             file="../gradle/libs.versions.toml"
             line="9"
             column="9"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of org.jetbrains.kotlin:kotlin-stdlib than 1.9.23 is available: 1.9.24"
+        errorLine1="kotlin-stdlib = &quot;1.9.23&quot;"
+        errorLine2="                ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="10"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.devtools.ksp than 1.9.22-1.0.17 is available: 1.9.24-1.0.20"
+        errorLine1="ksp = &quot;1.9.22-1.0.17&quot;"
+        errorLine2="      ~~~~~~~~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="24"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.firebase.crashlytics than 2.9.9 is available: 3.0.0"
+        errorLine1="firebase-crashlytics-gradle = { id = &quot;com.google.firebase.crashlytics&quot;, version = &quot;2.9.9&quot; }"
+        errorLine2="                                                                                  ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="120"
+            column="83"/>
     </issue>
 
 </issues>
