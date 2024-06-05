@@ -29,7 +29,7 @@
     public void printStackTrace();
 }
 
-#-repackageclasses ''
+-repackageclasses ''
 -allowaccessmodification
 
 #Hide some missliding warnings
