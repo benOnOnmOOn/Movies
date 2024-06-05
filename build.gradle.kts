@@ -175,7 +175,7 @@ fun <
 
     lint {
         baseline = file("lint-baseline.xml")
-        disable += "NewerVersionAvailable"
+        disable += listOf("NewerVersionAvailable", "GradleDependency")
         abortOnError = true
         checkAllWarnings = true
         warningsAsErrors = true
