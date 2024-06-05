@@ -73,7 +73,7 @@ dependencies {
     implementation(libs.javax.inject)
     implementation(libs.timber)
     implementation(libs.kotlin.stdlib)
-    implementation(libs.leakcanary.android)
+    debugImplementation(libs.leakcanary.android)
 
     implementation(libs.okhttp)
     implementation(libs.retrofit)

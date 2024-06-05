@@ -56,7 +56,6 @@ dependencies {
     api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.core)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.coil.compose)
     implementation(libs.coil.compose.base)
     runtimeOnly(libs.androidx.startup.runtime)
