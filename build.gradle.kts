@@ -3,6 +3,7 @@ import com.android.build.api.dsl.BuildFeatures
 import com.android.build.api.dsl.BuildType
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.DefaultConfig
+import com.android.build.api.dsl.Installation
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.dsl.ProductFlavor
 import com.android.build.gradle.AppPlugin
@@ -16,8 +17,6 @@ import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import kotlinx.kover.gradle.plugin.KoverGradlePlugin
 import kotlinx.kover.gradle.plugin.dsl.KoverReportExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jlleitschuh.gradle.ktlint.KtlintExtension
-import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -151,10 +150,6 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 
             is HiltGradlePlugin ->
                 project.extensions.getByType<HiltExtension>().baseConfig()
-
-            is KtlintPlugin -> {
-                project.extensions.getByType<KtlintExtension>().baseConfig()
-            }
         }
     }
 }
@@ -166,8 +161,9 @@ fun <
     BT : BuildType,
     DC : DefaultConfig,
     PF : ProductFlavor,
-    AR : AndroidResources
-    > CommonExtension<BF, BT, DC, PF, AR>.defaultBaseConfig() {
+    AR : AndroidResources,
+    IN : Installation
+    > CommonExtension<BF, BT, DC, PF, AR, IN>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
     buildToolsVersion = "34.0.0"
 
@@ -179,11 +175,13 @@ fun <
 
     lint {
         baseline = file("lint-baseline.xml")
+        disable += "NewerVersionAvailable"
         abortOnError = true
         checkAllWarnings = true
         warningsAsErrors = true
         checkReleaseBuilds = false
         checkDependencies = false
+        checkGeneratedSources = false
     }
 
     compileOptions {
@@ -297,14 +295,7 @@ fun HiltExtension.baseConfig() {
 }
 
 ktlint {
-    version.set("1.1.1")
-}
-
-fun KtlintExtension.baseConfig() {
-    version.set("1.1.1")
-    filter {
-        exclude("**/generated/**")
-    }
+    version.set("1.3.0")
 }
 
 subprojects {
