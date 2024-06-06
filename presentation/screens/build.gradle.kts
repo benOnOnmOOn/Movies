@@ -74,8 +74,8 @@ dependencies {
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.ui.tooling)
 
-    implementation(libs.leakcanary.watcher.android.core)
-    implementation(libs.leakcanary.watcher)
+    debugImplementation(libs.leakcanary.watcher.android.core)
+    debugImplementation(libs.leakcanary.watcher)
 
     androidTestImplementation(libs.androidx.monitor)
     androidTestRuntimeOnly(libs.junit.engine)
