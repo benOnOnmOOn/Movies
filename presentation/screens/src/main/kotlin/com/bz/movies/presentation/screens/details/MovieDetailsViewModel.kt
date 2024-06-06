@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
+import com.bz.movies.presentation.screens.utils.createCustomAppWatcher
 import com.bz.network.repository.EmptyBodyException
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
@@ -22,7 +23,6 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import leakcanary.AppWatcher
 import timber.log.Timber
 
 @HiltViewModel
@@ -36,20 +36,12 @@ class MovieDetailsViewModel @Inject constructor(
     val effect = _effect.asSharedFlow()
 
     init {
+        createCustomAppWatcher()
         MainScope().launch(Dispatchers.IO) {
             @Suppress("MagicNumber")
             delay(1_000_000)
             _effect.emit(MovieEffect.UnknownError)
         }
-    }
-
-    override fun onCleared() {
-        Timber.i("MovieDetailsViewModel cleared")
-        AppWatcher.objectWatcher.watch(
-            watchedObject = this,
-            description = "MovieDetailsViewModel received ViewModel#onCleared() callback"
-        )
-        super.onCleared()
     }
 
     @Suppress("MagicNumber")

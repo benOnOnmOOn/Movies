@@ -56,7 +56,6 @@ dependencies {
     api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.core)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.coil.compose)
     implementation(libs.coil.compose.base)
     runtimeOnly(libs.androidx.startup.runtime)
@@ -75,8 +74,8 @@ dependencies {
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.ui.tooling)
 
-    implementation(libs.leakcanary.watcher.android.core)
-    implementation(libs.leakcanary.watcher)
+    debugImplementation(libs.leakcanary.watcher.android.core)
+    debugImplementation(libs.leakcanary.watcher)
 
     androidTestImplementation(libs.androidx.monitor)
     androidTestRuntimeOnly(libs.junit.engine)
