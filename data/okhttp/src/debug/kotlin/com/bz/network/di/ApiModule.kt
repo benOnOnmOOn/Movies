@@ -1,5 +1,6 @@
 package com.bz.network.di
 
+import android.DelegatingSocketFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,6 +29,7 @@ internal class ApiModule {
         throwOnMainThread("provideOkHttpClient")
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
+            .socketFactory(DelegatingSocketFactory())
             .build()
     }
 

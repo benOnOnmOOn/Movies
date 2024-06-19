@@ -1,7 +1,8 @@
 plugins {
-    embeddedKotlin("android")
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.com.google.dagger.hilt.android)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
     alias(libs.plugins.ksp)
 }
@@ -16,9 +17,6 @@ android {
                 "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
                 "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
             )
-    }
-    buildFeatures {
-        compose = true
     }
 }
 

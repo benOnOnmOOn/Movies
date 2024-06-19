@@ -1,5 +1,6 @@
 package com.bz.network.di
 
+import android.DelegatingSocketFactory
 import android.content.Context
 import com.google.android.gms.net.CronetProviderInstaller
 import com.google.android.gms.tasks.Tasks
@@ -48,6 +49,7 @@ internal class ApiModule {
             .connectTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+            .socketFactory(DelegatingSocketFactory())
             .build()
     }
 

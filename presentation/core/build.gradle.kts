@@ -1,5 +1,6 @@
 plugins {
-    embeddedKotlin("android")
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.com.google.dagger.hilt.android)
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
@@ -8,10 +9,6 @@ plugins {
 
 android {
     namespace = "com.bz.core"
-
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
