@@ -1,5 +1,7 @@
 package com.bz.network.di
 
+import android.DelegatingSocketFactory
+import android.net.TrafficStats
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,6 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import throwOnMainThread
+import javax.net.SocketFactory
 
 const val BASE_URL = "https://api.themoviedb.org/3/"
 
@@ -28,6 +31,7 @@ internal class ApiModule {
         throwOnMainThread("provideOkHttpClient")
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
+            .socketFactory(                DelegatingSocketFactory()            )
             .build()
     }
 

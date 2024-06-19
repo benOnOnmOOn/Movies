@@ -16,12 +16,12 @@ import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import kotlinx.kover.gradle.plugin.KoverGradlePlugin
 import kotlinx.kover.gradle.plugin.dsl.KoverReportExtension
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    embeddedKotlin("android") apply false
-    embeddedKotlin("jvm") apply true
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.jvm) apply true
     alias(libs.plugins.com.android.application) apply false
     alias(libs.plugins.com.android.library) apply false
     alias(libs.plugins.ksp) apply false
@@ -34,6 +34,7 @@ plugins {
     alias(libs.plugins.org.jlleitschuh.gradle.ktlint) apply true
     alias(libs.plugins.org.gradle.android.cache.fix) apply false
     alias(libs.plugins.androidx.room) apply false
+    alias(libs.plugins.compose.compiler) apply false
 }
 
 //region Dependency Updates Task
@@ -114,10 +115,8 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
 //endregion
 
 //region Global kotlin and java configuration
-allprojects {
-    tasks.withType<KotlinCompile>().configureEach { kotlinOptions.jvmTarget = "17" }
-}
 kotlin {
+    compilerOptions.jvmTarget = JvmTarget.JVM_17
     jvmToolchain(17)
 }
 

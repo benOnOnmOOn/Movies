@@ -1,13 +1,13 @@
 [versions]
 annotation = "1.8.0"
 coil-compose = "2.6.0"
-com-android-plugin = "8.4.1"
-compose = "1.6.7"
+com-android-plugin = "8.5.0"
+compose = "1.6.8"
 cronet = "119.6045.31"
 firebase-perf = "21.0.1"
-fragment = "1.7.1"
+fragment = "1.8.0"
 guava = "33.2.1-android"
-kotlin-stdlib = "1.9.23"
+kotlin = "2.0.0"
 leakcanary-android = "3.0-alpha-8"
 play-services-cronet = "18.1.0"
 hilt = "2.51.1"
@@ -19,9 +19,9 @@ monitor = "1.6.1"
 navigation-compose = "2.7.7"
 core-ktx = "1.13.1"
 junit = "5.10.2"
-lifecycle-runtime-ktx = "2.8.1"
+lifecycle-runtime-ktx = "2.8.2"
 activity-compose = "1.9.0"
-ksp = "1.9.22-1.0.17"
+ksp = "2.0.0-1.0.22"
 moshi = "1.15.1"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
@@ -51,7 +51,6 @@ androidx-lifecycle-viewmodel-savedstate = { module = "androidx.lifecycle:lifecyc
 androidx-material-android = { module = "androidx.compose.material:material-android", version.ref = "compose" }
 androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle-runtime-ktx" }
-androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-runtime-ktx" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle-runtime-ktx" }
 androidx-monitor = { module = "androidx.test:monitor", version.ref = "monitor" }
 androidx-navigation-common = { module = "androidx.navigation:navigation-common", version.ref = "navigation-compose" }
@@ -85,7 +84,7 @@ javax-inject = { module = "javax.inject:javax.inject", version.ref = "javax-inje
 hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hilt" }
 junit-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
 junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin-stdlib" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary-android" }
@@ -127,5 +126,8 @@ org-gradle-android-cache-fix = { id = "org.gradle.android.cache-fix", version = 
 androidx-room = { id = "androidx.room", version.ref = "room" }
 dependency-guard = { id = "com.dropbox.dependency-guard", version = "0.5.0" }
 dexcount = { id = "com.getkeepsafe.dexcount", version = "4.0.0" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 [bundles]
 

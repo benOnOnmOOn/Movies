@@ -48,6 +48,7 @@ internal class ApiModule {
             .connectTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+            .socketFactory(DelegatingSocketFactory())
             .build()
     }
 

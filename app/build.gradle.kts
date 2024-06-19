@@ -1,7 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    embeddedKotlin("android")
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.com.google.gms.google.services) apply false
     alias(libs.plugins.firebase.crashlytics.gradle) apply false
