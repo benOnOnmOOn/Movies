@@ -21,7 +21,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias(libs.plugins.kotlin.android) apply false
-    alias(libs.plugins.kotlin.jvm) apply true
+    alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.com.android.application) apply false
     alias(libs.plugins.com.android.library) apply false
     alias(libs.plugins.ksp) apply false
@@ -114,24 +114,9 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
 
 //endregion
 
-//region Global kotlin and java configuration
-kotlin {
-    compilerOptions.jvmTarget = JvmTarget.JVM_17
-    jvmToolchain(17)
-}
-
-//endregion
-
 dependencyAnalysis {
     issues {
         all { onAny { severity("fail") } }
-        all { onUnusedDependencies { exclude("org.jetbrains.kotlin:kotlin-stdlib") } }
-    }
-
-    structure {
-        bundle("kotlin-stdlib") {
-            includeGroup("org.jetbrains.kotlin")
-        }
     }
 }
 
@@ -164,7 +149,7 @@ fun <
     IN : Installation
     > CommonExtension<BF, BT, DC, PF, AR, IN>.defaultBaseConfig() {
     compileSdk = libs.versions.android.sdk.target.get().toInt()
-    buildToolsVersion = "34.0.0"
+    buildToolsVersion = "35.0.0"
 
     defaultConfig {
         minSdk = libs.versions.android.min.sdk.get().toInt()
@@ -300,6 +285,24 @@ ktlint {
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
     apply(plugin = "org.gradle.android.cache-fix")
+    configurations.all {
+        exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
+        exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
+        exclude("com.google.code.findbugs", "jsr305")
+        exclude("com.google.errorprone", "error_prone_annotations")
+        exclude("androidx.legacy", "legacy-support-core-utils")
+        exclude("androidx.loader", "loader")
+        exclude("androidx.privacysandbox.ads", "ads-adservices-java")
+        exclude("androidx.privacysandbox.ads", "ads-adservices")
+        exclude("androidx.cursoradapter", "cursoradapter")
+        exclude("androidx.customview", "customview")
+        exclude("androidx.versionedparcelable", "versionedparcelable")
+        exclude("androidx.vectordrawable", "vectordrawable-animated")
+        exclude("androidx.vectordrawable", "vectordrawable")
+        exclude("androidx.drawerlayout", "drawerlayout")
+        exclude("org.checkerframework", "checker-qual")
+        exclude("androidx.viewpager","viewpager")
+    }
 }
 
 doctor {

@@ -85,24 +85,6 @@ dependencies {
     androidTestRuntimeOnly(libs.junit.engine)
 }
 
-configurations {
-    implementation {
-        exclude("com.google.code.findbugs", "jsr305")
-        exclude("com.google.errorprone", "error_prone_annotations")
-        exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
-        exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
-        exclude("androidx.loader", "loader")
-        exclude("androidx.cursoradapter", "cursoradapter")
-        exclude("androidx.customview", "customview")
-        exclude("androidx.viewpager", "viewpager")
-        exclude("androidx.versionedparcelable", "versionedparcelable")
-        exclude("androidx.vectordrawable", "vectordrawable-animated")
-        exclude("androidx.vectordrawable", "vectordrawable")
-        exclude("androidx.drawerlayout", "drawerlayout")
-        exclude("org.checkerframework", "checker-qual")
-    }
-}
-
 dependencyGuard {
     // All dependencies included in Production Release APK
     configuration("releaseRuntimeClasspath")
