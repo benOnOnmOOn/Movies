@@ -16,7 +16,6 @@ import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import kotlinx.kover.gradle.plugin.KoverGradlePlugin
 import kotlinx.kover.gradle.plugin.dsl.KoverReportExtension
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -301,7 +300,7 @@ subprojects {
         exclude("androidx.vectordrawable", "vectordrawable")
         exclude("androidx.drawerlayout", "drawerlayout")
         exclude("org.checkerframework", "checker-qual")
-        exclude("androidx.viewpager","viewpager")
+        exclude("androidx.viewpager", "viewpager")
     }
 }
 
