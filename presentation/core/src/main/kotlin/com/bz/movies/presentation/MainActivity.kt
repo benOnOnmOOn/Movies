@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-            val currentRootRoute by navController.currentRootRouteAsState()
+            val currentRootRoute by currentRootRouteAsState(navController)
 
             MoviesTheme {
                 Scaffold(

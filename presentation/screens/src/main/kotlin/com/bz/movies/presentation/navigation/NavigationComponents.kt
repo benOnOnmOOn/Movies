@@ -14,8 +14,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 
 @Composable
+@Suppress("UnusedParameter")
 fun BottomNavigationBar(
     currentRootRoute: RootRoute,
+    modifier: Modifier = Modifier,
     navigateToTopLevelDestination: (TopLevelDestination) -> Unit
 ) {
     NavigationBar(

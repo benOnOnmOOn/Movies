@@ -18,6 +18,7 @@ import com.bz.movies.presentation.components.MovieContent
 @Composable
 fun MoviesContentWithPullToRefresh(
     playingNowState: MoviesState,
+    modifier: Modifier = Modifier,
     refresh: () -> Unit = {},
     onMovieClicked: (MovieItem) -> Unit
 ) {
@@ -25,11 +26,11 @@ fun MoviesContentWithPullToRefresh(
 
     Box(
         modifier =
-        Modifier
+        modifier
             .fillMaxSize()
             .pullRefresh(pullRefreshState)
     ) {
-        MoviesContentLazyColumn(playingNowState, onMovieClicked)
+        MoviesContentLazyColumn(playingNowState, Modifier, onMovieClicked)
 
         PullRefreshIndicator(
             playingNowState.isRefreshing,
@@ -40,15 +41,21 @@ fun MoviesContentWithPullToRefresh(
 }
 
 @Composable
-fun MoviesContent(playingNowState: MoviesState, onMovieClicked: (MovieItem) -> Unit) {
+fun MoviesContent(
+    playingNowState: MoviesState,
+    modifier: Modifier = Modifier,
+    onMovieClicked: (MovieItem) -> Unit
+) {
     Box(modifier = Modifier.fillMaxSize()) {
-        MoviesContentLazyColumn(playingNowState, onMovieClicked)
+        MoviesContentLazyColumn(playingNowState, modifier, onMovieClicked)
     }
 }
 
 @Composable
+@Suppress("UnusedParameter")
 private fun MoviesContentLazyColumn(
     playingNowState: MoviesState,
+    modifier: Modifier = Modifier,
     onMovieClicked: (MovieItem) -> Unit
 ) {
     LazyColumn(

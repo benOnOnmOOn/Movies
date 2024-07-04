@@ -9,6 +9,8 @@ android {
 }
 
 dependencies {
+    lintChecks(libs.slack.lint.checks)
+
     testImplementation(libs.junit.api)
     testRuntimeOnly(libs.junit.engine)
 }

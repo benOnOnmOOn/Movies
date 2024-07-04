@@ -24,6 +24,9 @@ dependencies {
     api(project(":data:dto"))
 
     implementation(project(":utlis:android"))
+
+    lintChecks(libs.slack.lint.checks)
+
     // HILT
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)

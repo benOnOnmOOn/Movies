@@ -6,6 +6,7 @@ import timber.log.Timber
 
 const val VIEW_MODEL_APP_WATCHER_KEY = "VIEW_MODEL_APP_WATCHER_KEY"
 
+@Suppress("DeprecatedCall")
 inline fun <reified T : ViewModel> T.createCustomAppWatcher() {
     addCloseable(VIEW_MODEL_APP_WATCHER_KEY) {
         val name = T::class.java.simpleName

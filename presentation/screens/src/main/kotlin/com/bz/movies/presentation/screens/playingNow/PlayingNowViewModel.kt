@@ -15,7 +15,6 @@ import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -23,13 +22,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.onEmpty
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 @HiltViewModel
@@ -98,30 +94,26 @@ class PlayingNowViewModel @Inject constructor(
 
     private fun collectPlayingNowMovies() {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                localMovieRepository.playingNowMovies
-                    .flowOn(Dispatchers.IO)
-                    .onEmpty { fetchPlayingNowMovies() }
-                    .onEach { data ->
-                        _state.update {
-                            MoviesState(
-                                isLoading = false,
-                                playingNowMovies = data.map(MovieDto::toMovieItem)
-                            )
-                        }
+            localMovieRepository.playingNowMovies
+                .onEmpty { fetchPlayingNowMovies() }
+                .catch {
+                    _effect.emit(MovieEffect.UnknownError)
+                    Timber.e(it)
+                    _state.update {
+                        MoviesState(
+                            isLoading = false,
+                            isRefreshing = false
+                        )
                     }
-                    .catch {
-                        _effect.emit(MovieEffect.UnknownError)
-                        Timber.e(it)
-                        _state.update {
-                            MoviesState(
-                                isLoading = false,
-                                isRefreshing = false
-                            )
-                        }
+                }
+                .collectLatest { data ->
+                    _state.update {
+                        MoviesState(
+                            isLoading = false,
+                            playingNowMovies = data.map(MovieDto::toMovieItem)
+                        )
                     }
-                    .launchIn(viewModelScope)
-            }
+                }
         }
     }
 }

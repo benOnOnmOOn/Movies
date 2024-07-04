@@ -25,7 +25,7 @@ fun MoviesNavHost(navController: NavHostController, modifier: Modifier = Modifie
             PlayingNowScreen()
         }
         composable(RootRoute.Popular.route) {
-            PopularMoviesScreen(hiltViewModel(), navController)
+            PopularMoviesScreen(navController)
         }
         composable(RootRoute.Favorite.route) {
             FavoriteScreen()

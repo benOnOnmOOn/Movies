@@ -54,6 +54,8 @@ dependencies {
     kover(project(":data:network"))
     kover(project(":data:database"))
 
+    lintChecks(libs.slack.lint.checks)
+
     releaseImplementation(libs.firebase.analytics.ktx)
     releaseImplementation(libs.firebase.crashlytics.ktx)
     implementation(libs.firebase.perf)

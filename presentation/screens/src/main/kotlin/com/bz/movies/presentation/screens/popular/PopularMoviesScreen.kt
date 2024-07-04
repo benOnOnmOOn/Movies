@@ -18,8 +18,8 @@ import com.bz.presentation.screens.R
 
 @Composable
 fun PopularMoviesScreen(
-    playingNowViewModel: PopularMoviesViewModel = hiltViewModel(),
-    navController: NavHostController
+    navController: NavHostController,
+    playingNowViewModel: PopularMoviesViewModel = hiltViewModel()
 ) {
     val playingNow by playingNowViewModel.state.collectAsState()
     PopularMoviesScreen(playingNow, playingNowViewModel::sendEvent) {

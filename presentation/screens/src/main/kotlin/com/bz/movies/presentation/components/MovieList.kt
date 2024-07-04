@@ -25,7 +25,12 @@ import com.bz.presentation.screens.R
 inline fun MovieContent(
     movieItem: MovieItem,
     isLast: Boolean,
+    modifier: Modifier = Modifier,
     crossinline onMovieClicked: (MovieItem) -> Unit
+) = Column(
+    modifier
+        .fillMaxWidth()
+        .wrapContentHeight()
 ) {
     Row(
         Modifier

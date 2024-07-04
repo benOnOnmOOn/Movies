@@ -53,6 +53,8 @@ dependencies {
     kover(project(":data:network"))
     kover(project(":data:database"))
 
+    lintChecks(libs.slack.lint.checks)
+
     //  HILT
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)

@@ -25,6 +25,9 @@ dependencies {
     api(project(":data:database"))
     api(project(":data:dto"))
 
+    lintChecks(libs.slack.lint.checks)
+    lintChecks(libs.compose.lint.checks)
+
     //  HILT
     ksp(libs.hilt.android.compiler)
     ksp(libs.dagger.compiler)
