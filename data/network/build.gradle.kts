@@ -36,7 +36,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.protolite.well.known.types)
 
     runtimeOnly(libs.kotlinx.coroutines.android)
 

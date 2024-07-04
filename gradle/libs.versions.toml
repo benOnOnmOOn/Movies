@@ -112,7 +112,6 @@ cronet-okhttp = { group = "com.google.net.cronet", name = "cronet-okhttp", versi
 play-services-cronet = { module = "com.google.android.gms:play-services-cronet", version.ref = "play-services-cronet" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
-protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protolite-well-known-types" }
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "com-android-plugin" }
 com-android-library = { id = "com.android.library", version.ref = "com-android-plugin" }
