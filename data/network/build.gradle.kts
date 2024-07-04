@@ -19,7 +19,6 @@ dependencyAnalysis {
 dependencies {
     api(project(":data:dto"))
     implementation(project(":utlis:android"))
-
     ksp(libs.moshi.kotlin.codegen)
 
     // HILT
@@ -37,6 +36,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.protolite.well.known.types)
 
     runtimeOnly(libs.kotlinx.coroutines.android)
 

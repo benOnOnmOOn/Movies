@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 @Composable
 fun BottomNavigationBar(
     currentRootRoute: RootRoute,
+    modifier: Modifier = Modifier,
     navigateToTopLevelDestination: (TopLevelDestination) -> Unit
 ) {
     NavigationBar(

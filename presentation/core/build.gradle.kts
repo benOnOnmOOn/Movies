@@ -15,6 +15,8 @@ dependencies {
     implementation(project(":presentation:screens"))
     testImplementation(project(":data:dto"))
 
+    lintChecks(libs.slack.lint.checks)
+
     //  HILT
     ksp(libs.hilt.android.compiler)
     api(libs.hilt.android)

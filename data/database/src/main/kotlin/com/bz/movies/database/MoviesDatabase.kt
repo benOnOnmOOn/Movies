@@ -18,7 +18,7 @@ internal fun createMoviesDatabase(context: Application): MoviesDatabase = Room.d
     context = context,
     klass = MoviesDatabase::class.java,
     name = DATABASE_NAME
-).fallbackToDestructiveMigrationOnDowngrade()
+).fallbackToDestructiveMigrationOnDowngrade(true)
     .build()
 
 @Database(

@@ -19,7 +19,7 @@ fun MoreScreen(moreScreenViewModel: MoreScreenViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun MoreScreen(state: MoreState = MoreState(), sendEvent: (MoreEvent) -> Unit = {}) {
+private fun MoreScreen(state: MoreState = MoreState(), sendEvent: (MoreEvent) -> Unit = {}) {
     Column {
         Text(text = stringResource(R.string.more_screen_title))
 
@@ -39,7 +39,7 @@ fun MoreScreen(state: MoreState = MoreState(), sendEvent: (MoreEvent) -> Unit = 
 
 @Preview(showBackground = true)
 @Composable
-fun MoreScreenPreview() {
+private fun MoreScreenPreview() {
     MoviesTheme {
         MoreScreen()
     }

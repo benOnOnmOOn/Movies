@@ -16,6 +16,7 @@ import dagger.Lazy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
+import runSuspendCatching
 
 private const val AUTH_KEY = "55957fcf3ba81b137f8fc01ac5a31fb5"
 private const val LANGUAGE = "en-US"
@@ -68,7 +69,7 @@ internal class MovieRepositoryImpl(
             return@withContext Result.failure(NoInternetException())
         }
 
-        runCatching {
+        runSuspendCatching {
             val response = apiCall()
 
             if (response.isSuccessful) {

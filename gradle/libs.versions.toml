@@ -3,9 +3,10 @@ annotation = "1.8.0"
 coil-compose = "2.6.0"
 com-android-plugin = "8.5.0"
 compose = "1.6.8"
+compose-lint-checks = "1.3.1"
 cronet = "119.6045.31"
 firebase-perf = "21.0.1"
-fragment = "1.8.0"
+fragment = "1.8.1"
 guava = "33.2.1-android"
 kotlin = "2.0.20-Beta1"
 leakcanary-android = "3.0-alpha-8"
@@ -15,11 +16,11 @@ hilt-navigation-compose = "1.2.0"
 javax-inject = "1"
 kotlinx-coroutines = "1.9.0-RC"
 material3 = "1.2.1"
-monitor = "1.6.1"
+monitor = "1.7.1"
 navigation-compose = "2.7.7"
 core-ktx = "1.13.1"
-junit = "5.10.2"
-lifecycle-runtime-ktx = "2.8.2"
+junit = "5.10.3"
+lifecycle-runtime-ktx = "2.8.3"
 activity-compose = "1.9.0"
 ksp = "2.0.20-Beta1-1.0.22"
 moshi = "1.15.1"
@@ -27,6 +28,7 @@ okhttp = "4.12.0"
 retrofit = "2.11.0"
 mockk = "1.13.11"
 room = "2.7.0-alpha04"
+slack-lint-checks = "0.7.4"
 sqlite = "2.4.0"
 startup-runtime = "1.1.1"
 timber = "5.0.1"
@@ -35,6 +37,7 @@ turbine = "1.1.0"
 kotlin-compose-compiler-extension = "1.5.10"
 android-sdk-target = "34"
 android-min-sdk = "28"
+protolite-well-known-types = "18.0.0"
 
 
 [libraries]
@@ -71,6 +74,7 @@ androidx-ui-unit-android = { module = "androidx.compose.ui:ui-unit-android", ver
 androidx-ui-tooling-preview-android = { module = "androidx.compose.ui:ui-tooling-preview-android", version.ref = "compose" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
 coil-compose-base = { module = "io.coil-kt:coil-compose-base", version.ref = "coil-compose" }
+compose-lint-checks = { module = "com.slack.lint.compose:compose-lint-checks", version.ref = "compose-lint-checks" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "hilt" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "hilt" }
 firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx", version = "22.0.2" }
@@ -90,6 +94,7 @@ leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", ve
 leakcanary-watcher = { module = "com.squareup.leakcanary:leakcanary-object-watcher", version.ref = "leakcanary-android" }
 leakcanary-watcher-android-core = { module = "com.squareup.leakcanary:leakcanary-object-watcher-android-core", version.ref = "leakcanary-android" }
 mockk-dsl = { module = "io.mockk:mockk-dsl", version.ref = "mockk" }
+slack-lint-checks = { module = "com.slack.lint:slack-lint-checks", version.ref = "slack-lint-checks" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
@@ -107,6 +112,7 @@ cronet-okhttp = { group = "com.google.net.cronet", name = "cronet-okhttp", versi
 play-services-cronet = { module = "com.google.android.gms:play-services-cronet", version.ref = "play-services-cronet" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protolite-well-known-types" }
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "com-android-plugin" }
 com-android-library = { id = "com.android.library", version.ref = "com-android-plugin" }
