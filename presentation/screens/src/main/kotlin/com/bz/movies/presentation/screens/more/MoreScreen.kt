@@ -39,6 +39,7 @@ private fun MoreScreen(state: MoreState = MoreState(), sendEvent: (MoreEvent) ->
 
 @Preview(showBackground = true)
 @Composable
+@Suppress("UnusedPrivateMember")
 private fun MoreScreenPreview() {
     MoviesTheme {
         MoreScreen()

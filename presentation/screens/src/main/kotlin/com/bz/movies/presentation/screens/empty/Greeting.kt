@@ -19,6 +19,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
+@Suppress("UnusedPrivateMember")
 private fun GreetingPreview() {
     MoviesTheme {
         Greeting("Android")

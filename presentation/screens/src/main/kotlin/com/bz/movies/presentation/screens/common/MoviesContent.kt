@@ -52,6 +52,7 @@ fun MoviesContent(
 }
 
 @Composable
+@Suppress("UnusedParameter")
 private fun MoviesContentLazyColumn(
     playingNowState: MoviesState,
     modifier: Modifier = Modifier,

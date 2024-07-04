@@ -7,6 +7,7 @@ fun throwOnMainThread(methodName: String) {
     }
 }
 
+@Suppress("TooGenericExceptionCaught")
 inline fun <R> runSuspendCatching(block: () -> R): Result<R> {
     return try {
         Result.success(block())
