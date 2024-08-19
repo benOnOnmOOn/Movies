@@ -153,7 +153,7 @@ fun <
 
     lint {
         baseline = project.file("lint-baseline.xml")
-        disable += listOf("NewerVersionAvailable", "GradleDependency")
+        disable += listOf("NewerVersionAvailable", "GradleDependency", "RawDispatchersUse")
         abortOnError = true
         checkAllWarnings = true
         warningsAsErrors = true

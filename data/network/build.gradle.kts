@@ -29,6 +29,8 @@ dependencies {
     implementation(project(":utlis:android"))
     ksp(libs.moshi.kotlin.codegen)
 
+    lintChecks(libs.slack.lint.checks)
+
     // HILT
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)
