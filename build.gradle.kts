@@ -14,8 +14,6 @@ import dagger.hilt.android.plugin.HiltExtension
 import dagger.hilt.android.plugin.HiltGradlePlugin
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
-import kotlinx.kover.gradle.plugin.KoverGradlePlugin
-import kotlinx.kover.gradle.plugin.dsl.KoverReportExtension
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -128,9 +126,6 @@ fun PluginContainer.applyBaseConfig(project: Project) {
             is LibraryPlugin ->
                 project.extensions.getByType<LibraryExtension>().baseConfig()
 
-            is KoverGradlePlugin ->
-                project.extensions.getByType<KoverReportExtension>().baseConfig(project)
-
             is HiltGradlePlugin ->
                 project.extensions.getByType<HiltExtension>().baseConfig()
         }
@@ -158,7 +153,7 @@ fun <
 
     lint {
         baseline = project.file("lint-baseline.xml")
-        disable += listOf("NewerVersionAvailable", "GradleDependency")
+        disable += listOf("NewerVersionAvailable", "GradleDependency", "RawDispatchersUse")
         abortOnError = true
         checkAllWarnings = true
         warningsAsErrors = true
@@ -168,8 +163,8 @@ fun <
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     buildTypes {
@@ -230,55 +225,12 @@ subprojects {
 }
 // endregion
 
-fun KoverReportExtension.baseConfig(project: Project) {
-    defaults {
-        html {
-            onCheck = true
-        }
-        xml {
-            onCheck = true
-        }
-        filters {
-            excludes {
-                classes(
-                    // moshi json adapter
-                    "com.bz.network.api.model.*JsonAdapter",
-                    "*ComposableSingletons*",
-                    "*_Factor*y",
-                    "*_HiltModules*",
-                    "*Hilt_*",
-                    "*_Impl*"
-                )
-                packages(
-                    "hilt_aggregated_deps",
-                    "dagger.hilt.internal.aggregatedroot.codegen",
-                    "com.bz.movies.database.dao",
-                    "com.bz.movies.presentation.theme",
-                    "com.bz.movies.presentation.navigation"
-                )
-                annotatedBy(
-                    "*Generated*",
-                    "*Composable*",
-                    "*Module*",
-                    "*HiltAndroidApp*",
-                    "*AndroidEntryPoint*"
-                )
-            }
-        }
-        project.configurations.forEach {
-            if (it.description?.contains("debug") == true) {
-                mergeWith("debug")
-            }
-        }
-    }
-}
-
 fun HiltExtension.baseConfig() {
     enableAggregatingTask = true
 }
 
 ktlint {
-    version.set("1.3.0")
+    version.set("1.3.1")
 }
 
 subprojects {

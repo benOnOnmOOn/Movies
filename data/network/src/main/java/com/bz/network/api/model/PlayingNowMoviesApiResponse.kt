@@ -5,8 +5,8 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 internal data class PlayingNowMoviesApiResponse(
-    @Json(name = "dates") val dates: Dates,
-    @Json(name = "page") val page: Int,
+    val dates: Dates,
+    val page: Int,
     @Json(name = "results") val movies: List<MovieApiResponse>,
     @Json(name = "total_pages") val totalPages: Int,
     @Json(name = "total_results") val totalResults: Int
@@ -14,6 +14,6 @@ internal data class PlayingNowMoviesApiResponse(
 
 @JsonClass(generateAdapter = true)
 internal data class Dates(
-    @Json(name = "maximum") val maximum: String,
-    @Json(name = "minimum") val minimum: String
+    val maximum: String,
+    val minimum: String
 )

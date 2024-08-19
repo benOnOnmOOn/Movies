@@ -16,10 +16,20 @@ dependencyAnalysis {
     }
 }
 
+kover {
+    currentProject {
+        createVariant("custom") {
+            add("debug")
+        }
+    }
+}
+
 dependencies {
     api(project(":data:dto"))
     implementation(project(":utlis:android"))
     ksp(libs.moshi.kotlin.codegen)
+
+    lintChecks(libs.slack.lint.checks)
 
     // HILT
     implementation(libs.hilt.android)

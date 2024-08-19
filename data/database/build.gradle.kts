@@ -19,6 +19,14 @@ ksp {
     arg("room.generateKotlin", "true")
 }
 
+kover {
+    currentProject {
+        createVariant("custom") {
+            add("debug")
+        }
+    }
+}
+
 dependencies {
 
     api(project(":data:dto"))
