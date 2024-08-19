@@ -278,7 +278,7 @@ fun HiltExtension.baseConfig() {
 }
 
 ktlint {
-    version.set("1.3.0")
+    version.set("1.3.1")
 }
 
 subprojects {
