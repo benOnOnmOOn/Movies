@@ -18,7 +18,7 @@ jobs:
           java-version: 21
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+        uses: gradle/actions/setup-gradle@v4
         with:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
           gradle-home-cache-cleanup: true
@@ -53,4 +53,4 @@ jobs:
         uses: mi-kas/kover-report@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          path: ${{ github.workspace }}/app/build/reports/kover/report.xml
+          path: ${{ github.workspace }}/app/build/reports/kover/reportCustom.xml
