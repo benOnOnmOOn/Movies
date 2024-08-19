@@ -21,7 +21,6 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
-          gradle-home-cache-cleanup: true
 
       # Build debug app to improve pr check build speed by storing debug cache
       - name: Build apk
@@ -53,4 +52,4 @@ jobs:
         uses: mi-kas/kover-report@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          path: ${{ github.workspace }}/app/build/reports/kover/reportCustom.xml
+          path: ${{ github.workspace }}/app/build/reports/kover/report.xml
