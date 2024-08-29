@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
     alias(libs.plugins.com.android.library)
+    alias(libs.plugins.dependency.analysis)
 }
 
 android {

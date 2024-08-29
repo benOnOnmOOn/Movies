@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
     alias(libs.plugins.androidx.room)
+    alias(libs.plugins.dependency.analysis)
 }
 
 android {

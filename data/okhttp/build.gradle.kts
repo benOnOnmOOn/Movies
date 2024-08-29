@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.ksp)
     alias(libs.plugins.com.google.dagger.hilt.android)
+    alias(libs.plugins.dependency.analysis)
 }
 
 android {
