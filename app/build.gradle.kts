@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.dependency.guard)
     alias(libs.plugins.dexcount)
+    alias(libs.plugins.dependency.analysis)
 }
 
 android {

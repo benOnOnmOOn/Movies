@@ -11,6 +11,7 @@ import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -63,7 +64,7 @@ class FavoriteScreenViewModel @Inject constructor(
 
     @SuppressLint("RawDispatchersUse")
     private fun collectFavoriteMovies() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             localMovieRepository.favoritesMovies
                 .catch {
                     _effect.emit(MovieEffect.UnknownError)

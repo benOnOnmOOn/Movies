@@ -95,10 +95,9 @@ class PlayingNowViewModel @Inject constructor(
     }
 
     private fun collectPlayingNowMovies() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             localMovieRepository.playingNowMovies
                 .onEmpty { fetchPlayingNowMovies() }
-                .flowOn(Dispatchers.IO)
                 .catch {
                     _effect.emit(MovieEffect.UnknownError)
                     Timber.e(it)

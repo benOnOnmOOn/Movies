@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.dependency.analysis)
 }
 
 android {

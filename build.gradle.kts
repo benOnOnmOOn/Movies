@@ -147,7 +147,7 @@ fun <
 
     defaultConfig {
         minSdk = libs.versions.android.min.sdk.get().toInt()
-
+        resourceConfigurations += listOf("pl", "en")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -253,6 +253,13 @@ subprojects {
         exclude("androidx.drawerlayout", "drawerlayout")
         exclude("org.checkerframework", "checker-qual")
         exclude("androidx.viewpager", "viewpager")
+        exclude("androidx.activity", "activity-ktx")
+        exclude("androidx.collection", "collection-ktx")
+        exclude("androidx.lifecycle", "lifecycle-runtime-ktx-android")
+        exclude("androidx.lifecycle", "lifecycle-runtime-ktx")
+        exclude("androidx.lifecycle", "lifecycle-viewmodel-ktx")
+        exclude("androidx.navigation", "navigation-common-ktx")
+        exclude("androidx.navigation", "navigation-runtime-ktx")
     }
 }
 

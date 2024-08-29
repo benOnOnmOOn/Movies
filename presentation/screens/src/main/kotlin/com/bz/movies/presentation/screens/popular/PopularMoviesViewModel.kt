@@ -98,8 +98,7 @@ class PopularMoviesViewModel @Inject constructor(
 
     @SuppressLint("RawDispatchersUse")
     private fun collectPopularMovies() {
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) {
                 localMovieRepository.popularMovies
                     .flowOn(Dispatchers.Main)
                     .onStart { fetchPopularNowMovies() }
@@ -123,5 +122,4 @@ class PopularMoviesViewModel @Inject constructor(
                     }
             }
         }
-    }
 }
