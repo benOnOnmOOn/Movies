@@ -24,7 +24,6 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEmpty
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch

@@ -29,7 +29,6 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 @HiltViewModel
@@ -99,27 +98,27 @@ class PopularMoviesViewModel @Inject constructor(
     @SuppressLint("RawDispatchersUse")
     private fun collectPopularMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-                localMovieRepository.popularMovies
-                    .flowOn(Dispatchers.Main)
-                    .onStart { fetchPopularNowMovies() }
-                    .catch {
-                        _effect.emit(MovieEffect.UnknownError)
-                        Timber.e(it)
-                        _state.update {
-                            MoviesState(
-                                isLoading = false,
-                                isRefreshing = false
-                            )
-                        }
+            localMovieRepository.popularMovies
+                .flowOn(Dispatchers.Main)
+                .onStart { fetchPopularNowMovies() }
+                .catch {
+                    _effect.emit(MovieEffect.UnknownError)
+                    Timber.e(it)
+                    _state.update {
+                        MoviesState(
+                            isLoading = false,
+                            isRefreshing = false
+                        )
                     }
-                    .collectLatest { data ->
-                        _state.update {
-                            MoviesState(
-                                isLoading = false,
-                                playingNowMovies = data.map(MovieDto::toMovieItem)
-                            )
-                        }
+                }
+                .collectLatest { data ->
+                    _state.update {
+                        MoviesState(
+                            isLoading = false,
+                            playingNowMovies = data.map(MovieDto::toMovieItem)
+                        )
                     }
-            }
+                }
         }
+    }
 }
