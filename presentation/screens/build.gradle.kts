@@ -42,7 +42,6 @@ dependencies {
     ksp(libs.dagger.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.hilt.core)
     api(libs.dagger)
     api(libs.javax.inject)
     //

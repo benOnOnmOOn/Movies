@@ -24,7 +24,6 @@
   public static void throwUninitializedPropertyAccessException(java.lang.String);
 }
 
--whyareyoukeeping class androidx.compose.ui.**
 
 #Hide some missliding warnings
 -dontwarn org.bouncycastle.**
@@ -37,3 +36,23 @@
 -dontwarn com.google.auto.value.**
 -dontwarn org.codehaus.mojo.**
 -dontwarn javax.annotation.**
+-dontwarn androidx.customview.view.AbsSavedState
+-dontwarn androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
+-dontwarn androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
+
+# Valid rules copy paste from file "proguard-android-optimize.txt"
+
+# For native methods, see https://www.guardsquare.com/manual/configuration/examples#native
+-keepclasseswithmembernames,includedescriptorclasses class * {
+    native <methods>;
+}
+
+# For enumeration classes, see https://www.guardsquare.com/manual/configuration/examples#enumerations
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keepclassmembers class * implements android.os.Parcelable {
+    public static final ** CREATOR;
+}
