@@ -36,6 +36,13 @@
 -dontwarn com.google.auto.value.**
 -dontwarn org.codehaus.mojo.**
 -dontwarn javax.annotation.**
+-dontwarn androidx.customview.view.AbsSavedState
+-dontwarn androidx.legacy.content.WakefulBroadcastReceiver
+-dontwarn androidx.loader.app.LoaderManager
+-dontwarn androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures
+-dontwarn androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
+-dontwarn androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
+-dontwarn androidx.versionedparcelable.CustomVersionedParcelable
 
 # Valid rules copy paste from file "proguard-android-optimize.txt"
 
