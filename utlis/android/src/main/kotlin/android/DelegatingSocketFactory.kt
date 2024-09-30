@@ -12,6 +12,7 @@ import javax.net.SocketFactory
 open class DelegatingSocketFactory(
     private val delegate: SocketFactory = SocketFactory.getDefault(),
     private val configureSocket: (Socket) -> Socket = { socket ->
+        @Suppress("DeprecatedCall")
         TrafficStats.setThreadStatsTag(Thread.currentThread().id.toInt())
         socket
     }

@@ -170,10 +170,6 @@ fun <
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
 
@@ -260,6 +256,7 @@ subprojects {
         exclude("androidx.lifecycle", "lifecycle-viewmodel-ktx")
         exclude("androidx.navigation", "navigation-common-ktx")
         exclude("androidx.navigation", "navigation-runtime-ktx")
+        exclude("com.google.dagger", "dagger-lint-aar")
     }
 }
 
