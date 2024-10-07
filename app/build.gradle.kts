@@ -40,55 +40,7 @@ android {
 
 dependencyAnalysis {
     issues {
-        onUnusedDependencies { exclude(":presentation:core") }
         onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
-        onUnusedDependencies { exclude(libs.androidx.appcompat) }
-    }
-}
-
-kover {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
-    }
-
-    reports {
-        total {
-            html {
-                onCheck = true
-            }
-            xml {
-                onCheck = true
-            }
-        }
-        filters {
-            excludes {
-                classes(
-                    // moshi json adapter
-                    "com.bz.network.api.model.*JsonAdapter",
-                    "*ComposableSingletons*",
-                    "*_Factor*y",
-                    "*_HiltModules*",
-                    "*Hilt_*",
-                    "*_Impl*"
-                )
-                packages(
-                    "hilt_aggregated_deps",
-                    "dagger.hilt.internal.aggregatedroot.codegen",
-                    "com.bz.movies.database.dao",
-                    "com.bz.movies.presentation.theme",
-                    "com.bz.movies.presentation.navigation"
-                )
-                annotatedBy(
-                    "*Generated*",
-                    "*Composable*",
-                    "*Module*",
-                    "*HiltAndroidApp*",
-                    "*AndroidEntryPoint*"
-                )
-            }
-        }
     }
 }
 
@@ -116,7 +68,6 @@ dependencies {
     implementation(libs.androidx.startup.runtime)
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
-    implementation(libs.androidx.appcompat)
     implementation(libs.dagger)
     implementation(libs.timber)
     implementation(libs.kotlin.stdlib)

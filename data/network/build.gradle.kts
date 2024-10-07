@@ -17,14 +17,6 @@ dependencyAnalysis {
     }
 }
 
-kover {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
-    }
-}
-
 dependencies {
     api(project(":data:dto"))
     implementation(project(":utlis:android"))

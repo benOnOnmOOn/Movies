@@ -38,58 +38,6 @@ android {
     }
 }
 
-dependencyAnalysis {
-    issues {
-        onUnusedDependencies { exclude(":presentation:core") }
-        onUnusedDependencies { exclude(libs.androidx.appcompat) }
-    }
-}
-
-kover {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
-    }
-    reports {
-        total {
-            html {
-                onCheck = true
-            }
-            xml {
-                onCheck = true
-            }
-        }
-        filters {
-            excludes {
-                classes(
-                    // moshi json adapter
-                    "com.bz.network.api.model.*JsonAdapter",
-                    "*ComposableSingletons*",
-                    "*_Factor*y",
-                    "*_HiltModules*",
-                    "*Hilt_*",
-                    "*_Impl*"
-                )
-                packages(
-                    "hilt_aggregated_deps",
-                    "dagger.hilt.internal.aggregatedroot.codegen",
-                    "com.bz.movies.database.dao",
-                    "com.bz.movies.presentation.theme",
-                    "com.bz.movies.presentation.navigation"
-                )
-                annotatedBy(
-                    "*Generated*",
-                    "*Composable*",
-                    "*Module*",
-                    "*HiltAndroidApp*",
-                    "*AndroidEntryPoint*"
-                )
-            }
-        }
-    }
-}
-
 dependencies {
     // don't warn
     implementation(project(":presentation:core"))
@@ -112,7 +60,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.dagger)
     implementation(libs.timber)
-    implementation(libs.androidx.appcompat)
     implementation(libs.kotlin.stdlib)
 
     implementation(libs.okhttp)

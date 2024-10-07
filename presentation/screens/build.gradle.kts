@@ -21,14 +21,6 @@ android {
     }
 }
 
-kover {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
-    }
-}
-
 dependencies {
     api(project(":data:network"))
     api(project(":data:database"))

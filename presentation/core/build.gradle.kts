@@ -12,14 +12,6 @@ android {
     namespace = "com.bz.core"
 }
 
-kover {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
-    }
-}
-
 dependencies {
     implementation(project(":presentation:screens"))
     testImplementation(project(":data:dto"))

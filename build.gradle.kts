@@ -10,10 +10,10 @@ import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import dagger.hilt.android.plugin.HiltExtension
-import dagger.hilt.android.plugin.HiltGradlePlugin
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import org.gradle.android.AndroidCacheFixPlugin
+import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -26,7 +26,7 @@ plugins {
     alias(libs.plugins.detekt) apply true
     alias(libs.plugins.dependency.analysis) apply true
     alias(libs.plugins.com.google.dagger.hilt.android) apply false
-    alias(libs.plugins.org.jetbrains.kotlinx.kover) apply false
+    alias(libs.plugins.org.jetbrains.kotlinx.kover) apply true
     alias(libs.plugins.com.osacky.doctor) apply true
     alias(libs.plugins.org.jlleitschuh.gradle.ktlint) apply true
     alias(libs.plugins.org.gradle.android.cache.fix) apply false
@@ -125,9 +125,6 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 
             is LibraryPlugin ->
                 project.extensions.getByType<LibraryExtension>().baseConfig()
-
-            is HiltGradlePlugin ->
-                project.extensions.getByType<HiltExtension>().baseConfig()
         }
     }
 }
@@ -142,6 +139,14 @@ fun <
     AR : AndroidResources,
     IN : Installation
     > CommonExtension<BF, BT, DC, PF, AR, IN>.defaultBaseConfig() {
+    kover {
+        currentProject {
+            createVariant("custom") {
+                add("debug")
+            }
+        }
+    }
+
     compileSdk = libs.versions.android.sdk.target.get().toInt()
     buildToolsVersion = "35.0.0"
 
@@ -221,17 +226,51 @@ subprojects {
 }
 // endregion
 
-fun HiltExtension.baseConfig() {
-    enableAggregatingTask = true
-}
-
 ktlint {
     version.set("1.3.1")
 }
 
+kover {
+    reports {
+        total {
+            html.onCheck = true
+            xml.onCheck = true
+        }
+        filters {
+            excludes {
+                classes(
+                    // moshi json adapter
+                    "com.bz.network.api.model.*JsonAdapter",
+                    "*ComposableSingletons*",
+                    "*_Factor*y",
+                    "*_HiltModules*",
+                    "*Hilt_*",
+                    "*_Impl*"
+                )
+                packages(
+                    "hilt_aggregated_deps",
+                    "dagger.hilt.internal.aggregatedroot.codegen",
+                    "com.bz.movies.database.dao",
+                    "com.bz.movies.presentation.theme",
+                    "com.bz.movies.presentation.navigation"
+                )
+                annotatedBy(
+                    "*Generated*",
+                    "*Composable*",
+                    "*Module*",
+                    "*HiltAndroidApp*",
+                    "*AndroidEntryPoint*"
+                )
+            }
+        }
+    }
+}
+
 subprojects {
-    apply(plugin = "org.jlleitschuh.gradle.ktlint")
-    apply(plugin = "org.gradle.android.cache-fix")
+
+    apply<KtlintPlugin>()
+    apply<AndroidCacheFixPlugin>()
+
     configurations.all {
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
