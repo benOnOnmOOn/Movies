@@ -9,38 +9,10 @@ plugins {
     alias(libs.plugins.dependency.analysis)
 }
 
-android {
-    namespace = "com.bz.movies"
+android.namespace = "com.bz.movies"
 
-    defaultConfig {
-        applicationId = "com.bz.movies"
-        versionCode = 1
-        versionName = "1.0"
-    }
-
-    @Suppress("UnstableApiUsage")
-    androidResources.generateLocaleConfig = true
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles("proguard-rules.pro")
-
-//            optimization {
-//                keepRules {
-//                    ignoreAllExternalDependencies(true)
-//                }
-//            }
-            signingConfig = signingConfigs.getByName("debug")
-        }
-    }
-}
-
-dependencyAnalysis {
-    issues {
-        onUnusedDependencies { exclude(libs.androidx.appcompat) }
-    }
+dependencyAnalysis.issues {
+    onUnusedDependencies { exclude(libs.androidx.appcompat) }
 }
 
 dependencies {

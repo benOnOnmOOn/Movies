@@ -13,6 +13,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import org.gradle.android.AndroidCacheFixPlugin
+import org.gradle.kotlin.dsl.getByName
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -111,10 +112,8 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
 
 //endregion
 
-dependencyAnalysis {
-    issues {
-        all { onAny { severity("fail") } }
-    }
+dependencyAnalysis.issues {
+    all { onAny { severity("fail") } }
 }
 
 fun PluginContainer.applyBaseConfig(project: Project) {
@@ -213,12 +212,35 @@ fun BaseAppModuleExtension.baseConfig() {
         includeInApk = false
         includeInBundle = false
     }
+
+    @Suppress("UnstableApiUsage")
+    androidResources.generateLocaleConfig = true
+
     defaultConfig {
         targetSdk = libs.versions.android.sdk.target.get().toInt()
         multiDexEnabled = false
+        applicationId = "com.bz.movies"
+        versionCode = 1
+        versionName = "1.0"
     }
     compileOptions.isCoreLibraryDesugaringEnabled = false
     compileOptions.incremental = true
+
+    buildTypes {
+        release {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles("proguard-rules.pro")
+
+//            @Suppress("UnstableApiUsage")
+//            optimization {
+//                keepRules {
+//                    ignoreFromAllExternalDependencies(true)
+//                }
+//            }
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
 }
 
 subprojects {

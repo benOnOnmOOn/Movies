@@ -15,15 +15,6 @@ plugins {
 android {
     namespace = "com.bz.movies"
 
-    defaultConfig {
-        applicationId = "com.bz.movies"
-        versionCode = 1
-        versionName = "1.0"
-    }
-
-    @Suppress("UnstableApiUsage")
-    androidResources.generateLocaleConfig = true
-
     buildTypes {
         release {
             apply(plugin = "com.google.gms.google-services")
@@ -37,11 +28,9 @@ android {
     }
 }
 
-dependencyAnalysis {
-    issues {
-        onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
-        onUnusedDependencies { exclude(libs.androidx.appcompat) }
-    }
+dependencyAnalysis.issues {
+    onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
+    onUnusedDependencies { exclude(libs.androidx.appcompat) }
 }
 
 dependencies {

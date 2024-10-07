@@ -11,10 +11,8 @@ android {
     namespace = "com.bz.network"
 }
 
-dependencyAnalysis {
-    issues {
-        onUsedTransitiveDependencies { exclude(libs.okhttp) }
-    }
+dependencyAnalysis.issues {
+    onUsedTransitiveDependencies { exclude(libs.okhttp) }
 }
 
 dependencies {
