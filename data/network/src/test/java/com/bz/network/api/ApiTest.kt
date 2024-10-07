@@ -51,7 +51,7 @@ internal class ApiTest {
         assertTrue(response.isSuccessful)
 
         assertTrue(response.body() is MovieDetailsApiResponse)
-        val body = response.body()!!
+        val body = response.body()
         assertEquals(EXPECTED_MOVIE_DETAILS, body)
     }
 

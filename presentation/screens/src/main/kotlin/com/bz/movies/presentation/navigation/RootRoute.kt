@@ -33,6 +33,7 @@ fun NavController.navigateToRootRoute(rootRoute: RootRoute) {
 fun currentRootRouteAsState(navController: NavController): State<RootRoute> {
     val selectedItem = remember { mutableStateOf(RootRoute.PlayingNow) }
 
+    @Suppress("DeprecatedCall")
     DisposableEffect(navController) {
         val listener =
             NavController.OnDestinationChangedListener { _, destination, _ ->

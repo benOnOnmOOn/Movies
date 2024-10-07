@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.com.android.application)
@@ -20,6 +18,7 @@ android {
         versionName = "1.0"
     }
 
+    @Suppress("UnstableApiUsage")
     androidResources.generateLocaleConfig = true
 
     buildTypes {
@@ -35,6 +34,12 @@ android {
 //            }
             signingConfig = signingConfigs.getByName("debug")
         }
+    }
+}
+
+dependencyAnalysis {
+    issues {
+        onUnusedDependencies { exclude(libs.androidx.appcompat) }
     }
 }
 
@@ -58,6 +63,7 @@ dependencies {
     implementation(libs.androidx.startup.runtime)
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
+    implementation(libs.androidx.appcompat)
     implementation(libs.dagger)
     implementation(libs.timber)
     implementation(libs.kotlin.stdlib)

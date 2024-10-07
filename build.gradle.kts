@@ -130,7 +130,6 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 }
 
 //region Global android configuration
-@Suppress("UnstableApiUsage")
 fun <
     BF : BuildFeatures,
     BT : BuildType,
@@ -182,6 +181,7 @@ fun <
         kotlinCompilerExtensionVersion = libs.versions.kotlin.compose.compiler.extension.get()
     }
 
+    @Suppress("UnstableApiUsage")
     testOptions {
         unitTests.isReturnDefaultValues = true
         unitTests.all {
