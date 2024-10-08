@@ -1,4 +1,6 @@
-@file:Suppress("UnstableApiUsage")
+import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsPlugin
+import com.google.firebase.perf.plugin.FirebasePerfPlugin
+import com.google.gms.googleservices.GoogleServicesPlugin
 
 plugins {
     alias(libs.plugins.kotlin.android)
@@ -17,19 +19,11 @@ plugins {
 android {
     namespace = "com.bz.movies"
 
-    defaultConfig {
-        applicationId = "com.bz.movies"
-        versionCode = 1
-        versionName = "1.0"
-    }
-
-    androidResources.generateLocaleConfig = true
-
     buildTypes {
         release {
-            apply(plugin = "com.google.gms.google-services")
-            apply(plugin = "com.google.firebase.crashlytics")
-            apply(plugin = "com.google.firebase.firebase-perf")
+            apply<GoogleServicesPlugin>()
+            apply<CrashlyticsPlugin>()
+            apply<FirebasePerfPlugin>()
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles("proguard-rules.pro")
@@ -40,7 +34,6 @@ android {
 
 dependencyAnalysis {
     issues {
-        onUnusedDependencies { exclude(":presentation:core") }
         onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
         onUnusedDependencies { exclude(libs.androidx.appcompat) }
     }
