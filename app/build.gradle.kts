@@ -1,3 +1,7 @@
+import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsPlugin
+import com.google.firebase.perf.plugin.FirebasePerfPlugin
+import com.google.gms.googleservices.GoogleServicesPlugin
+
 plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.com.android.application)
@@ -17,9 +21,9 @@ android {
 
     buildTypes {
         release {
-            apply(plugin = "com.google.gms.google-services")
-            apply(plugin = "com.google.firebase.crashlytics")
-            apply(plugin = "com.google.firebase.firebase-perf")
+            apply<GoogleServicesPlugin>()
+            apply<CrashlyticsPlugin>()
+            apply<FirebasePerfPlugin>()
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles("proguard-rules.pro")
