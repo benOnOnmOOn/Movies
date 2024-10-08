@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.com.android.application)
@@ -17,14 +15,6 @@ plugins {
 android {
     namespace = "com.bz.movies"
 
-    defaultConfig {
-        applicationId = "com.bz.movies"
-        versionCode = 1
-        versionName = "1.0"
-    }
-
-    androidResources.generateLocaleConfig = true
-
     buildTypes {
         release {
             apply(plugin = "com.google.gms.google-services")
@@ -40,7 +30,6 @@ android {
 
 dependencyAnalysis {
     issues {
-        onUnusedDependencies { exclude(":presentation:core") }
         onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
         onUnusedDependencies { exclude(libs.androidx.appcompat) }
     }

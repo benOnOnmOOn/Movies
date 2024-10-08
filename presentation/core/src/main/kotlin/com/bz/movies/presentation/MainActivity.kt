@@ -1,5 +1,3 @@
-@file:Suppress("FunctionNaming")
-
 package com.bz.movies.presentation
 
 import android.os.Bundle

@@ -10,10 +10,10 @@ import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import dagger.hilt.android.plugin.HiltExtension
-import dagger.hilt.android.plugin.HiltGradlePlugin
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import org.gradle.android.AndroidCacheFixPlugin
+import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -125,15 +125,11 @@ fun PluginContainer.applyBaseConfig(project: Project) {
 
             is LibraryPlugin ->
                 project.extensions.getByType<LibraryExtension>().baseConfig()
-
-            is HiltGradlePlugin ->
-                project.extensions.getByType<HiltExtension>().baseConfig()
         }
     }
 }
 
 //region Global android configuration
-@Suppress("UnstableApiUsage")
 fun <
     BF : BuildFeatures,
     BT : BuildType,
@@ -177,6 +173,7 @@ fun <
         kotlinCompilerExtensionVersion = libs.versions.kotlin.compose.compiler.extension.get()
     }
 
+    @Suppress("UnstableApiUsage")
     testOptions {
         unitTests.isReturnDefaultValues = true
         unitTests.all {
@@ -208,30 +205,33 @@ fun BaseAppModuleExtension.baseConfig() {
         includeInApk = false
         includeInBundle = false
     }
+
+    @Suppress("UnstableApiUsage")
+    androidResources.generateLocaleConfig = true
+
     defaultConfig {
+        applicationId = "com.bz.movies"
+        versionCode = 1
+        versionName = "1.0"
+
         targetSdk = libs.versions.android.sdk.target.get().toInt()
         multiDexEnabled = false
     }
+
     compileOptions.isCoreLibraryDesugaringEnabled = false
     compileOptions.incremental = true
 }
 
-subprojects {
-    project.plugins.applyBaseConfig(project)
-}
 // endregion
-
-fun HiltExtension.baseConfig() {
-    enableAggregatingTask = true
-}
 
 ktlint {
     version.set("1.3.1")
 }
 
 subprojects {
-    apply(plugin = "org.jlleitschuh.gradle.ktlint")
-    apply(plugin = "org.gradle.android.cache-fix")
+    project.plugins.applyBaseConfig(project)
+    apply<KtlintPlugin>()
+    apply<AndroidCacheFixPlugin>()
     configurations.all {
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
