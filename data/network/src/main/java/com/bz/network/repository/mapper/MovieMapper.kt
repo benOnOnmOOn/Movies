@@ -8,7 +8,7 @@ import com.bz.network.api.model.PopularMoviesPageApiResponse
 import com.bz.network.repository.model.MoveDetailDto
 import com.bz.network.repository.model.PopularMoviePageDto
 
-const val VOTE_MULTIPLER = 10
+private const val VOTE_MULTIPLER = 10
 
 internal fun MovieApiResponse.toPopularMovieDto() = MovieDto(
     id = id,

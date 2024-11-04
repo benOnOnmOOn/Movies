@@ -16,7 +16,7 @@ import com.bz.movies.presentation.theme.MoviesTheme
 import com.bz.presentation.screens.R
 
 @Composable
-fun FavoriteScreen(favoriteScreenViewModel: FavoriteScreenViewModel = hiltViewModel()) {
+internal fun FavoriteScreen(favoriteScreenViewModel: FavoriteScreenViewModel = hiltViewModel()) {
     val playingNow by favoriteScreenViewModel.state.collectAsState()
     FavoriteScreen(playingNow, favoriteScreenViewModel::sendEvent)
 }

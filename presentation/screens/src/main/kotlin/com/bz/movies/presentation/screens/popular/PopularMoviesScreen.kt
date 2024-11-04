@@ -17,7 +17,7 @@ import com.bz.movies.presentation.theme.MoviesTheme
 import com.bz.presentation.screens.R
 
 @Composable
-fun PopularMoviesScreen(
+internal fun PopularMoviesScreen(
     navController: NavHostController,
     playingNowViewModel: PopularMoviesViewModel = hiltViewModel()
 ) {

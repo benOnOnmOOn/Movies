@@ -9,8 +9,6 @@ import retrofit2.Retrofit
 import retrofit2.create
 import throwOnMainThread
 
-const val BASE_URL = "https://api.themoviedb.org/3/"
-
 @Module
 @InstallIn(ViewModelComponent::class)
 internal class ServiceModule {

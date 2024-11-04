@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import throwOnMainThread
 
-const val BASE_URL = "https://api.themoviedb.org/3/"
+internal const val BASE_URL = "https://api.themoviedb.org/3/"
 
 @Module
 @InstallIn(ViewModelComponent::class)

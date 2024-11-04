@@ -16,7 +16,10 @@ import com.bz.movies.presentation.theme.MoviesTheme
 import com.bz.presentation.screens.R
 
 @Composable
-fun MovieDetailsScreen(id: Int?, movieDetailsViewModel: MovieDetailsViewModel = hiltViewModel()) {
+internal fun MovieDetailsScreen(
+    id: Int?,
+    movieDetailsViewModel: MovieDetailsViewModel = hiltViewModel()
+) {
     val playingNow by movieDetailsViewModel.state.collectAsState()
     if (id != null) {
         movieDetailsViewModel.fetchMovieDetails(id)

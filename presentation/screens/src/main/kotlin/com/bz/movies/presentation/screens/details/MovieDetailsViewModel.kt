@@ -28,7 +28,7 @@ import timber.log.Timber
 
 @SuppressLint("MainScopeUsage")
 @HiltViewModel
-class MovieDetailsViewModel @Inject constructor(
+internal class MovieDetailsViewModel @Inject constructor(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
     private val _state = MutableStateFlow(MovieDetailState())

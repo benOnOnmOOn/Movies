@@ -32,6 +32,7 @@ plugins {
     alias(libs.plugins.org.gradle.android.cache.fix) apply false
     alias(libs.plugins.androidx.room) apply false
     alias(libs.plugins.compose.compiler) apply false
+    alias(libs.plugins.binary.compatibility) apply false
 }
 
 //region Dependency Updates Task
@@ -225,13 +226,13 @@ fun BaseAppModuleExtension.baseConfig() {
 // endregion
 
 ktlint {
-    version.set("1.3.1")
+    version.set("1.4.0")
 }
 
 subprojects {
-    project.plugins.applyBaseConfig(project)
     apply<KtlintPlugin>()
     apply<AndroidCacheFixPlugin>()
+    project.plugins.applyBaseConfig(project)
     configurations.all {
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
