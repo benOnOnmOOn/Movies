@@ -94,6 +94,7 @@ dependencies {
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)
+    implementation(libs.javax.inject)
     //
 
     implementation(libs.androidx.startup.runtime)

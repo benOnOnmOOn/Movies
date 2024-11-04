@@ -9,6 +9,8 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,24 +22,19 @@ fun MoviesContentWithPullToRefresh(
     playingNowState: MoviesState,
     modifier: Modifier = Modifier,
     refresh: () -> Unit = {},
-    onMovieClicked: (MovieItem) -> Unit
+    onMovieClicked: (MovieItem) -> Unit,
 ) {
-    val pullRefreshState = rememberPullRefreshState(playingNowState.isRefreshing, refresh)
+    val pullRefreshState = rememberPullToRefreshState()
 
-    Box(
-        modifier =
-        modifier
-            .fillMaxSize()
-            .pullRefresh(pullRefreshState)
+    PullToRefreshBox(
+        state = pullRefreshState,
+        isRefreshing = playingNowState.isRefreshing,
+        onRefresh = refresh,
+        modifier = modifier.fillMaxSize()
     ) {
         MoviesContentLazyColumn(playingNowState, Modifier, onMovieClicked)
-
-        PullRefreshIndicator(
-            playingNowState.isRefreshing,
-            pullRefreshState,
-            Modifier.align(Alignment.TopCenter)
-        )
     }
+
 }
 
 @Composable
