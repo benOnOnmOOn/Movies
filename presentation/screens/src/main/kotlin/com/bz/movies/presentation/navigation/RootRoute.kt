@@ -9,7 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 
-enum class RootRoute(val route: String) {
+internal enum class RootRoute(val route: String) {
     PlayingNow("tab_playing_now"),
     Popular("tab_popular"),
     Favorite("tab_favorite"),
@@ -30,7 +30,7 @@ internal fun NavController.navigateToRootRoute(rootRoute: RootRoute) {
 
 @Stable
 @Composable
-fun currentRootRouteAsState(navController: NavController): State<RootRoute> {
+internal fun currentRootRouteAsState(navController: NavController): State<RootRoute> {
     val selectedItem = remember { mutableStateOf(RootRoute.PlayingNow) }
 
     DisposableEffect(navController) {
