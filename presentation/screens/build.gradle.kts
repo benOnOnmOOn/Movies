@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlinx.kover)
     alias(libs.plugins.ksp)
     alias(libs.plugins.dependency.analysis)
+    alias(libs.plugins.binary.compatibility)
 }
 
 android {
@@ -27,6 +28,17 @@ kover {
             add("debug")
         }
     }
+}
+
+apiValidation {
+    ignoredPackages.add("hilt_aggregated_deps")
+    nonPublicMarkers.addAll(
+        listOf(
+            "dagger.internal.DaggerGenerated",
+            "javax.annotation.processing.Generated",
+            "dagger.hilt.codegen.OriginatingElement"
+        )
+    )
 }
 
 dependencies {
@@ -54,7 +66,6 @@ dependencies {
     api(libs.androidx.material3)
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.foundation.layout.android)
-    implementation(libs.androidx.material.android)
     implementation(libs.androidx.ui.graphics.android)
     implementation(libs.androidx.ui.text.android)
     implementation(libs.androidx.ui.tooling.preview.android)

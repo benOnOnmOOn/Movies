@@ -16,7 +16,7 @@ import com.bz.movies.presentation.theme.MoviesTheme
 import com.bz.presentation.screens.R
 
 @Composable
-fun PlayingNowScreen(playingNowViewModel: PlayingNowViewModel = hiltViewModel()) {
+internal fun PlayingNowScreen(playingNowViewModel: PlayingNowViewModel = hiltViewModel()) {
     val playingNow by playingNowViewModel.state.collectAsState()
     PlayingNowScreen(playingNow, playingNowViewModel::sendEvent)
 }

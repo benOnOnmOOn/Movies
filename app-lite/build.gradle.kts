@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.dependency.guard)
     alias(libs.plugins.dexcount)
     alias(libs.plugins.dependency.analysis)
+    alias(libs.plugins.binary.compatibility)
 }
 
 android {
@@ -32,6 +33,17 @@ dependencyAnalysis {
     issues {
         onUnusedDependencies { exclude(libs.androidx.appcompat) }
     }
+}
+
+apiValidation {
+    ignoredPackages.add("hilt_aggregated_deps")
+    nonPublicMarkers.addAll(
+        listOf(
+            "dagger.internal.DaggerGenerated",
+            "javax.annotation.processing.Generated",
+            "dagger.hilt.codegen.OriginatingElement"
+        )
+    )
 }
 
 kover {

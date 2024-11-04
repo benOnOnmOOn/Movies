@@ -1,0 +1,12 @@
+public abstract interface class com/bz/movies/database/repository/LocalMovieRepository {
+	public abstract fun clearPlayingNowMovies-IoAF18A (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun clearPopularMovies-IoAF18A (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun deleteFavoriteMovie-gIAlu-s (Lcom/bz/dto/MovieDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getFavoritesMovies ()Lkotlinx/coroutines/flow/Flow;
+	public abstract fun getPlayingNowMovies ()Lkotlinx/coroutines/flow/Flow;
+	public abstract fun getPopularMovies ()Lkotlinx/coroutines/flow/Flow;
+	public abstract fun insertFavoriteMovie-gIAlu-s (Lcom/bz/dto/MovieDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun insertPlayingNowMovies-gIAlu-s (Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun insertPopularMovies-gIAlu-s (Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+

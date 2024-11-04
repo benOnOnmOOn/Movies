@@ -22,7 +22,7 @@ import com.bz.movies.presentation.screens.common.MovieItem
 import com.bz.presentation.screens.R
 
 @Composable
-inline fun MovieContent(
+internal inline fun MovieContent(
     movieItem: MovieItem,
     isLast: Boolean,
     modifier: Modifier = Modifier,

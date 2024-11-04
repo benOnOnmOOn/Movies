@@ -11,8 +11,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import throwOnMainThread
 
-const val BASE_URL = "https://api.themoviedb.org/3/"
-const val NETWORK_CONNECTION_TIMEOUT = 30L
+internal const val BASE_URL = "https://api.themoviedb.org/3/"
+internal const val NETWORK_CONNECTION_TIMEOUT = 30L
 
 @Module
 @InstallIn(ViewModelComponent::class)

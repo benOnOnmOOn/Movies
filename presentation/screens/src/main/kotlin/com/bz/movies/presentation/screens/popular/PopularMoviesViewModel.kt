@@ -32,7 +32,7 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @HiltViewModel
-class PopularMoviesViewModel @Inject constructor(
+internal class PopularMoviesViewModel @Inject constructor(
     private val movieRepository: MovieRepository,
     private val localMovieRepository: LocalMovieRepository
 ) : ViewModel() {

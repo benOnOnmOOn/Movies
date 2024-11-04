@@ -3,7 +3,8 @@ package com.bz.movies.presentation.mappers
 import com.bz.dto.MovieDto
 import com.bz.movies.presentation.screens.common.MovieItem
 
-const val BASE_URL = "https://image.tmdb.org/t/p/w154/"
+internal const val BASE_URL = "https://image.tmdb.org/t/p/w154/"
+
 fun MovieDto.toMovieItem() = MovieItem(
     id = id,
     posterUrl = "$BASE_URL$posterUrl",

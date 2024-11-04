@@ -8,7 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.bz.movies.presentation.theme.MoviesTheme
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+internal fun Greeting(name: String, modifier: Modifier = Modifier) {
     Column {
         Text(
             text = "Hello $name!",

@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @HiltViewModel
-class FavoriteScreenViewModel @Inject constructor(
+internal class FavoriteScreenViewModel @Inject constructor(
     private val localMovieRepository: LocalMovieRepository
 ) : ViewModel() {
     private val _state = MutableStateFlow(MoviesState())

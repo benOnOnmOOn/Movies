@@ -6,9 +6,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.pullrefresh.PullRefreshIndicator
-import androidx.compose.material.pullrefresh.pullRefresh
-import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
@@ -18,11 +15,11 @@ import androidx.compose.ui.unit.dp
 import com.bz.movies.presentation.components.MovieContent
 
 @Composable
-fun MoviesContentWithPullToRefresh(
+internal fun MoviesContentWithPullToRefresh(
     playingNowState: MoviesState,
     modifier: Modifier = Modifier,
     refresh: () -> Unit = {},
-    onMovieClicked: (MovieItem) -> Unit,
+    onMovieClicked: (MovieItem) -> Unit
 ) {
     val pullRefreshState = rememberPullToRefreshState()
 
@@ -34,11 +31,10 @@ fun MoviesContentWithPullToRefresh(
     ) {
         MoviesContentLazyColumn(playingNowState, Modifier, onMovieClicked)
     }
-
 }
 
 @Composable
-fun MoviesContent(
+internal fun MoviesContent(
     playingNowState: MoviesState,
     modifier: Modifier = Modifier,
     onMovieClicked: (MovieItem) -> Unit

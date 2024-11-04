@@ -13,7 +13,7 @@ import com.bz.movies.presentation.theme.MoviesTheme
 import com.bz.presentation.screens.R
 
 @Composable
-fun MoreScreen(moreScreenViewModel: MoreScreenViewModel = hiltViewModel()) {
+internal fun MoreScreen(moreScreenViewModel: MoreScreenViewModel = hiltViewModel()) {
     val moreState by moreScreenViewModel.state.collectAsState()
     MoreScreen(moreState, moreScreenViewModel::sendEvent)
 }

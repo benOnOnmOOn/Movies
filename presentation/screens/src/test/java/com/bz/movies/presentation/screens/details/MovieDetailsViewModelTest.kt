@@ -116,7 +116,7 @@ class MovieDetailsViewModelTest {
 
     companion object {
 
-        val EXPECTED_DETAILS_STATE = MovieDetailState(
+        internal val EXPECTED_DETAILS_STATE = MovieDetailState(
             isLoading = false,
             MovieItem(
                 id = 1234,
