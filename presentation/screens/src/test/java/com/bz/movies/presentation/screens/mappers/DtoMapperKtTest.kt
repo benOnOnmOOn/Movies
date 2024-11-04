@@ -1,6 +1,8 @@
-package com.bz.movies.presentation.mappers
+package com.bz.movies.presentation.screens.mappers
 
 import com.bz.dto.MovieDto
+import com.bz.movies.presentation.mappers.toDTO
+import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.movies.presentation.screens.common.MovieItem
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -27,7 +29,7 @@ class DtoMapperKtTest {
             language = "PL"
         )
 
-        val movieItem = MovieItem(
+        internal val movieItem = MovieItem(
             id = 1234,
             posterUrl = "https://image.tmdb.org/t/p/w154/posterUrl",
             title = "Coś dziwnego",

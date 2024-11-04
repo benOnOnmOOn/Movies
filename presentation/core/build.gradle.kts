@@ -34,7 +34,6 @@ apiValidation {
 
 dependencies {
     implementation(project(":presentation:screens"))
-    testImplementation(project(":data:dto"))
 
     lintChecks(libs.slack.lint.checks)
 
