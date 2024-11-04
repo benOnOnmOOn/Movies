@@ -12,13 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavController
 
 @Composable
 @Suppress("UnusedParameter")
 fun BottomNavigationBar(
     currentRootRoute: RootRoute,
-    modifier: Modifier = Modifier,
-    navigateToTopLevelDestination: (TopLevelDestination) -> Unit
+    navController: NavController,
+    modifier: Modifier = Modifier
 ) {
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
@@ -29,7 +30,7 @@ fun BottomNavigationBar(
             val isItemSelected = destination.rootRoute == currentRootRoute
             NavigationBarItem(
                 selected = isItemSelected,
-                onClick = { navigateToTopLevelDestination(destination) },
+                onClick = { navController.navigateToRootRoute(destination.rootRoute) },
                 icon = { NavIcon(destination, isItemSelected) },
                 alwaysShowLabel = true,
                 label = {

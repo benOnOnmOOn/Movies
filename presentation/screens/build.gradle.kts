@@ -15,9 +15,7 @@ android {
     kotlinOptions {
         freeCompilerArgs +=
             listOf(
-                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-                "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
-                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
             )
     }
 }
@@ -44,7 +42,7 @@ apiValidation {
 dependencies {
     api(project(":data:network"))
     api(project(":data:database"))
-    api(project(":data:dto"))
+    implementation(project(":data:dto"))
 
     lintChecks(libs.slack.lint.checks)
     lintChecks(libs.compose.lint.checks)
