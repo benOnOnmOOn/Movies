@@ -8,6 +8,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -17,10 +18,11 @@ import androidx.navigation.NavController
 @Composable
 @Suppress("UnusedParameter")
 fun BottomNavigationBar(
-    currentRootRoute: RootRoute,
     navController: NavController,
     modifier: Modifier = Modifier
 ) {
+    val currentRootRoute by currentRootRouteAsState(navController)
+
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
         containerColor = MaterialTheme.colorScheme.surface,
