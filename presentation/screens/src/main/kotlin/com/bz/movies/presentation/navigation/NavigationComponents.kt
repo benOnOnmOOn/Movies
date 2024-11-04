@@ -19,7 +19,7 @@ import androidx.navigation.NavController
 fun BottomNavigationBar(
     currentRootRoute: RootRoute,
     navController: NavController,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
