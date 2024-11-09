@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
-@Suppress("ComposableNaming","ComposeUnstableReceiver")
+@Suppress("ComposableNaming", "ComposeUnstableReceiver")
 @Composable
 fun <T> Flow<T>.collectInLaunchedEffectWithLifecycle(
     vararg keys: Any?,

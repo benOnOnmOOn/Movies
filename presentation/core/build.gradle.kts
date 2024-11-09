@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.appcompat)
 
     api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.navigation.common)
