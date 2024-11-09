@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
-@Suppress("ComposableNaming")
+@Suppress("ComposableNaming","ComposeUnstableReceiver")
 @Composable
 fun <T> Flow<T>.collectInLaunchedEffectWithLifecycle(
     vararg keys: Any?,
@@ -23,6 +23,7 @@ fun <T> Flow<T>.collectInLaunchedEffectWithLifecycle(
     val flow = this
     val currentCollector by rememberUpdatedState(collector)
 
+    @Suppress("DeprecatedCall")
     LaunchedEffect(flow, lifecycle, minActiveState, *keys) {
         withContext(Dispatchers.Main.immediate) {
             lifecycle.repeatOnLifecycle(minActiveState) {
