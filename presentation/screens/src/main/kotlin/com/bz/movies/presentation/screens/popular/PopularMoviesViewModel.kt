@@ -17,6 +17,7 @@ import com.bz.network.repository.NoInternetException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -27,6 +28,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -42,8 +44,8 @@ internal class PopularMoviesViewModel @Inject constructor(
     private val _event: MutableSharedFlow<MovieEvent> = MutableSharedFlow()
     private val event: SharedFlow<MovieEvent> = _event.asSharedFlow()
 
-    private val _effect: MutableSharedFlow<MovieEffect> = MutableSharedFlow()
-    val effect = _effect.asSharedFlow()
+    private val _effect: Channel<MovieEffect> = Channel()
+    val effect = _effect.receiveAsFlow()
 
     init {
         collectPopularMovies()
@@ -64,7 +66,6 @@ internal class PopularMoviesViewModel @Inject constructor(
                 localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())
 
             MovieEvent.Refresh -> {
-                localMovieRepository.clearPopularMovies()
                 fetchPopularNowMovies()
             }
         }
@@ -72,13 +73,13 @@ internal class PopularMoviesViewModel @Inject constructor(
 
     private fun fetchPopularNowMovies() = viewModelScope.launch {
         val result = movieRepository.getPopularMovies(1)
+        _state.update {
+            it.copy(
+                isLoading = true,
+                isRefreshing = true
+            )
+        }
         result.onSuccess { data ->
-            _state.update {
-                MoviesState(
-                    isLoading = false,
-                    playingNowMovies = data.map(MovieDto::toMovieItem)
-                )
-            }
             localMovieRepository.insertPopularMovies(data)
         }
         result.onFailure {
@@ -89,9 +90,14 @@ internal class PopularMoviesViewModel @Inject constructor(
 
                     else -> MovieEffect.UnknownError
                 }
-            _effect.emit(error)
+            _effect.send(error)
             Timber.e(it)
-            _state.update { MoviesState(isLoading = false) }
+            _state.update {
+                it.copy(
+                    isLoading = false,
+                    isRefreshing = false
+                )
+            }
         }
     }
 
@@ -102,7 +108,7 @@ internal class PopularMoviesViewModel @Inject constructor(
                 .flowOn(Dispatchers.Main)
                 .onStart { fetchPopularNowMovies() }
                 .catch {
-                    _effect.emit(MovieEffect.UnknownError)
+                    _effect.send(MovieEffect.UnknownError)
                     Timber.e(it)
                     _state.update {
                         MoviesState(
@@ -115,6 +121,7 @@ internal class PopularMoviesViewModel @Inject constructor(
                     _state.update {
                         MoviesState(
                             isLoading = false,
+                            isRefreshing = false,
                             playingNowMovies = data.map(MovieDto::toMovieItem)
                         )
                     }

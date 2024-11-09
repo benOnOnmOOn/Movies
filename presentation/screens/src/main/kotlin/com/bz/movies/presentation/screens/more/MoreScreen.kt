@@ -4,17 +4,17 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.bz.movies.presentation.theme.MoviesTheme
 import com.bz.presentation.screens.R
 
 @Composable
 internal fun MoreScreen(moreScreenViewModel: MoreScreenViewModel = hiltViewModel()) {
-    val moreState by moreScreenViewModel.state.collectAsState()
+    val moreState by moreScreenViewModel.state.collectAsStateWithLifecycle()
     MoreScreen(moreState, moreScreenViewModel::sendEvent)
 }
 
