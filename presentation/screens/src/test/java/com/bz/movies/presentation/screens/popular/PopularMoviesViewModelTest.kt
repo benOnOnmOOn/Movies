@@ -34,7 +34,7 @@ class PopularMoviesViewModelTest {
     private val localMovieRepository: LocalMovieRepository = mockk(relaxed = true)
 
     @Test
-    fun `when viewmodel is init it should load try to load data from locale storage and network`() =
+    fun `when local storage is empty then it  should load data from network and store it `() =
         runTest {
             every { localMovieRepository.popularMovies } returns flowOf(emptyList())
             coEvery { movieRepository.getPopularMovies(any()) } returns Result.success(emptyList())
@@ -174,12 +174,11 @@ class PopularMoviesViewModelTest {
 
         val viewModel = PopularMoviesViewModel(movieRepository, localMovieRepository)
         viewModel.state.test {
-            awaitItem()
-            awaitItem()
+            skipItems(2)
         }
         viewModel.sendEvent(MovieEvent.Refresh)
         viewModel.state.test {
-            awaitItem()
+            skipItems(1)
         }
         advanceUntilIdle()
 

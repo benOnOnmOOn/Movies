@@ -66,6 +66,13 @@ internal class PopularMoviesViewModel @Inject constructor(
                 localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())
 
             MovieEvent.Refresh -> {
+                localMovieRepository.clearPopularMovies()
+                _state.update {
+                    it.copy(
+                        isLoading = true,
+                        isRefreshing = true
+                    )
+                }
                 fetchPopularNowMovies()
             }
         }
@@ -73,12 +80,6 @@ internal class PopularMoviesViewModel @Inject constructor(
 
     private fun fetchPopularNowMovies() = viewModelScope.launch {
         val result = movieRepository.getPopularMovies(1)
-        _state.update {
-            it.copy(
-                isLoading = true,
-                isRefreshing = true
-            )
-        }
         result.onSuccess { data ->
             localMovieRepository.insertPopularMovies(data)
         }
