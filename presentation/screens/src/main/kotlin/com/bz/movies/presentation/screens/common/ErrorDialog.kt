@@ -12,6 +12,7 @@ import androidx.compose.ui.res.stringResource
 import com.bz.presentation.screens.R
 
 @Composable
+@Suppress("UnusedParameter")
 internal fun ErrorDialog(
     modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit = {},
@@ -56,6 +57,7 @@ internal fun ErrorDialog(
 }
 
 @Composable
+@Suppress("UnusedParameter")
 internal fun NoInternetDialog(
     modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit = {},
