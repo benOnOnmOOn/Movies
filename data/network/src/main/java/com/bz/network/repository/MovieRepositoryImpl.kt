@@ -14,7 +14,6 @@ import com.bz.network.repository.model.PopularMoviePageDto
 import com.bz.network.utils.InternetConnection
 import dagger.Lazy
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 import runSuspendCatching
