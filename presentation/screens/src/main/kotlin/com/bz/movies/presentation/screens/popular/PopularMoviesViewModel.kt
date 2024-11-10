@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bz.dto.MovieDto
 import com.bz.movies.database.repository.LocalMovieRepository
+import com.bz.movies.datastore.repository.DataStoreRepository
 import com.bz.movies.presentation.mappers.toDTO
 import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.movies.presentation.screens.common.MovieEffect
@@ -36,7 +37,8 @@ import timber.log.Timber
 @HiltViewModel
 internal class PopularMoviesViewModel @Inject constructor(
     private val movieRepository: MovieRepository,
-    private val localMovieRepository: LocalMovieRepository
+    private val localMovieRepository: LocalMovieRepository,
+    private val dataStoreRepository: DataStoreRepository
 ) : ViewModel() {
     private val _state = MutableStateFlow(MoviesState())
     val state: StateFlow<MoviesState> = _state.asStateFlow()
@@ -61,6 +63,7 @@ internal class PopularMoviesViewModel @Inject constructor(
     }
 
     private suspend fun handleEvent(event: MovieEvent) {
+        dataStoreRepository.getPlyingNowRefreshDate()
         when (event) {
             is MovieEvent.OnMovieClicked ->
                 localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())

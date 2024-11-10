@@ -43,6 +43,7 @@ apiValidation {
 dependencies {
     api(project(":data:network"))
     api(project(":data:database"))
+    api(project(":data:datastore"))
     implementation(project(":data:dto"))
 
     lintChecks(libs.slack.lint.checks)
