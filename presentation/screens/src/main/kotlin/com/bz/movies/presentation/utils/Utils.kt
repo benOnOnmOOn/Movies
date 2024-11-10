@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 @Suppress("ComposableNaming", "ComposeUnstableReceiver")
 @Composable
-fun <T> Flow<T>.collectInLaunchedEffectWithLifecycle(
+internal fun <T> Flow<T>.collectInLaunchedEffectWithLifecycle(
     vararg keys: Any?,
     lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
     minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
