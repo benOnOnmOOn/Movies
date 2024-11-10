@@ -3,34 +3,63 @@ package com.bz.movies.presentation.screens.popular
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import com.bz.movies.presentation.screens.common.ErrorDialog
+import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesContentWithPullToRefresh
 import com.bz.movies.presentation.screens.common.MoviesState
+import com.bz.movies.presentation.screens.common.NoInternetDialog
 import com.bz.movies.presentation.theme.MoviesTheme
+import com.bz.movies.presentation.utils.collectInLaunchedEffectWithLifecycle
 import com.bz.presentation.screens.R
 
 @Composable
 internal fun PopularMoviesScreen(
     navController: NavHostController,
-    playingNowViewModel: PopularMoviesViewModel = hiltViewModel()
+    popularViewModel: PopularMoviesViewModel = hiltViewModel()
 ) {
-    val playingNow by playingNowViewModel.state.collectAsState()
-    PopularMoviesScreen(playingNow, playingNowViewModel::sendEvent) {
+    val popular by popularViewModel.state.collectAsStateWithLifecycle()
+
+    val noInternetDialog = remember { mutableStateOf(false) }
+    val errorDialog = remember { mutableStateOf(false) }
+
+    popularViewModel.effect.collectInLaunchedEffectWithLifecycle {
+        when (it) {
+            MovieEffect.NetworkConnectionError -> noInternetDialog.value = true
+            MovieEffect.UnknownError -> errorDialog.value = true
+        }
+    }
+
+    PopularMoviesScreen(
+        state = popular,
+        sendEvent = popularViewModel::sendEvent,
+        showNoInternetDialog = noInternetDialog.value,
+        showErrorDialog = errorDialog.value,
+        onNetworkErrorDismiss = { noInternetDialog.value = false },
+        onErrorDismiss = { errorDialog.value = false }
+    ) {
         navController.navigate("details/$it")
     }
 }
 
 @Composable
+@Suppress("LongParameterList")
 private fun PopularMoviesScreen(
     state: MoviesState = MoviesState(),
     sendEvent: (MovieEvent) -> Unit = {},
+    showNoInternetDialog: Boolean = false,
+    showErrorDialog: Boolean = false,
+    onNetworkErrorDismiss: () -> Unit = {},
+    onErrorDismiss: () -> Unit = {},
     onMovieClicked: (id: Int) -> Unit = {}
 ) {
     Column(
@@ -43,6 +72,20 @@ private fun PopularMoviesScreen(
             refresh = { sendEvent(MovieEvent.Refresh) },
             onMovieClicked = { onMovieClicked(it.id) }
         )
+
+        if (showNoInternetDialog) {
+            NoInternetDialog(
+                onDismissRequest = { onNetworkErrorDismiss() },
+                onConfirmation = { onNetworkErrorDismiss() }
+            )
+        }
+
+        if (showErrorDialog) {
+            ErrorDialog(
+                onDismissRequest = { onErrorDismiss() },
+                onConfirmation = { onErrorDismiss() }
+            )
+        }
     }
 }
 

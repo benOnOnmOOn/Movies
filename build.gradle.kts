@@ -150,7 +150,15 @@ fun <
 
     lint {
         baseline = project.file("lint-baseline.xml")
-        disable += listOf("NewerVersionAvailable", "GradleDependency", "RawDispatchersUse")
+        disable += listOf(
+            "NewerVersionAvailable",
+            "GradleDependency",
+            "RawDispatchersUse",
+            // The crash seems to involve the detector \\\`androidx.navigation.lint.BaseWrongStartDestinationTypeDetector\\\`.
+            "WrongStartDestinationType",
+            "WrongStartDestinationType",
+            "WrongStartDestinationType"
+        )
         abortOnError = true
         checkAllWarnings = true
         warningsAsErrors = true
@@ -245,9 +253,9 @@ subprojects {
         exclude("androidx.cursoradapter", "cursoradapter")
         exclude("androidx.customview", "customview")
         exclude("androidx.versionedparcelable", "versionedparcelable")
-        exclude("androidx.vectordrawable", "vectordrawable-animated")
-        exclude("androidx.vectordrawable", "vectordrawable")
-        exclude("androidx.drawerlayout", "drawerlayout")
+//        exclude("androidx.vectordrawable", "vectordrawable-animated")
+//        exclude("androidx.vectordrawable", "vectordrawable")
+//        exclude("androidx.drawerlayout", "drawerlayout")
         exclude("org.checkerframework", "checker-qual")
         exclude("androidx.viewpager", "viewpager")
         exclude("androidx.activity", "activity-ktx")

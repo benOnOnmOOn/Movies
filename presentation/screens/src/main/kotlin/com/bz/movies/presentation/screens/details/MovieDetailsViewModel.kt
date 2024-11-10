@@ -16,12 +16,12 @@ import javax.inject.Inject
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -34,15 +34,15 @@ internal class MovieDetailsViewModel @Inject constructor(
     private val _state = MutableStateFlow(MovieDetailState())
     val state: StateFlow<MovieDetailState> = _state.asStateFlow()
 
-    private val _effect: MutableSharedFlow<MovieEffect> = MutableSharedFlow()
-    val effect = _effect.asSharedFlow()
+    private val _effect: Channel<MovieEffect> = Channel()
+    val effect = _effect.consumeAsFlow()
 
     init {
         createCustomAppWatcher()
         MainScope().launch(Dispatchers.IO) {
             @Suppress("MagicNumber")
             delay(1_000_000)
-            _effect.emit(MovieEffect.UnknownError)
+            _effect.send(MovieEffect.UnknownError)
         }
     }
 
@@ -72,7 +72,7 @@ internal class MovieDetailsViewModel @Inject constructor(
 
                     else -> MovieEffect.UnknownError
                 }
-            _effect.emit(error)
+            _effect.send(error)
             Timber.e(it)
             _state.update { MovieDetailState(isLoading = false) }
         }

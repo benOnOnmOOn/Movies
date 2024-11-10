@@ -61,6 +61,10 @@ private fun NavIcon(destination: TopLevelDestination, isItemSelected: Boolean) {
             id = if (isItemSelected) destination.selectedIcon else destination.unselectedIcon
         ),
         contentDescription = stringResource(id = destination.iconTextId),
-        tint = if (isItemSelected) Color.Unspecified else MaterialTheme.colorScheme.onSurfaceVariant
+        tint = if (isItemSelected) {
+            MaterialTheme.colorScheme.secondary
+        } else {
+            MaterialTheme.colorScheme.onSurfaceVariant
+        }
     )
 }

@@ -15,7 +15,8 @@ android {
     kotlinOptions {
         freeCompilerArgs +=
             listOf(
-                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
+                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
             )
     }
 }
@@ -62,8 +63,11 @@ dependencies {
     api(libs.androidx.navigation.runtime)
     api(libs.androidx.navigation.common)
     api(libs.androidx.material3)
+    api(libs.androidx.lifecycle.common)
+    api(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.foundation.layout.android)
     implementation(libs.androidx.ui.graphics.android)
     implementation(libs.androidx.ui.text.android)
     implementation(libs.androidx.ui.tooling.preview.android)
