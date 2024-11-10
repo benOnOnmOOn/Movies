@@ -44,6 +44,8 @@ androidx-activity = { module = "androidx.activity:activity", version.ref = "acti
 androidx-animation-android = { module = "androidx.compose.animation:animation-android", version.ref = "compose" }
 androidx-core = { module = "androidx.core:core", version.ref = "core" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core" }
+androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastore-preferences" }
+androidx-datastore-core = { module = "androidx.datastore:datastore-core", version.ref = "datastore-preferences" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore-preferences" }
 androidx-datastore-preferences-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore-preferences" }
 androidx-foundation-layout-android = { module = "androidx.compose.foundation:foundation-layout-android", version.ref = "compose" }

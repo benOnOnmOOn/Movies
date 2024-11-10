@@ -46,10 +46,11 @@ dependencies {
 
     implementation(libs.timber)
 
+    api(libs.androidx.datastore.core)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.datastore.preferences.core)
-    api("androidx.datastore:datastore-core:1.1.1")
-    implementation("androidx.datastore:datastore:1.1.1")
+    implementation(libs.androidx.datastore)
+
     implementation(libs.kotlinx.coroutines.core)
 
     testRuntimeOnly(libs.junit.engine)
