@@ -63,6 +63,7 @@ internal class PopularMoviesViewModel @Inject constructor(
     }
 
     private suspend fun handleEvent(event: MovieEvent) {
+        dataStoreRepository.getPlyingNowRefreshDate()
         when (event) {
             is MovieEvent.OnMovieClicked ->
                 localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())
