@@ -51,13 +51,13 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.appcompat)
+    api(libs.androidx.appcompat)
 
     api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.navigation.common)
     implementation(libs.androidx.navigation.runtime)
 
-    api(libs.androidx.activity)
+    implementation(libs.androidx.activity)
     implementation(libs.androidx.material3)
 
     testImplementation(libs.junit.api)
