@@ -11,6 +11,7 @@ import com.bz.network.repository.EmptyBodyException
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
+import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.random.Random
@@ -29,7 +30,7 @@ import timber.log.Timber
 @SuppressLint("MainScopeUsage")
 @HiltViewModel
 internal class MovieDetailsViewModel @Inject constructor(
-    private val movieRepository: MovieRepository
+    private val movieRepository: Lazy<MovieRepository>
 ) : ViewModel() {
     private val _state = MutableStateFlow(MovieDetailState())
     val state: StateFlow<MovieDetailState> = _state.asStateFlow()
@@ -47,8 +48,8 @@ internal class MovieDetailsViewModel @Inject constructor(
     }
 
     @Suppress("MagicNumber")
-    fun fetchMovieDetails(movieId: Int) = viewModelScope.launch {
-        val result = movieRepository.getMovieDetail(movieId)
+    fun fetchMovieDetails(movieId: Int) = viewModelScope.launch(Dispatchers.IO) {
+        val result = movieRepository.get().getMovieDetail(movieId)
         result.onSuccess { data ->
             _state.update {
                 MovieDetailState(

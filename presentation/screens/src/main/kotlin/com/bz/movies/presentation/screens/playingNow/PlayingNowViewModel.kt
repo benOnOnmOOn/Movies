@@ -13,6 +13,7 @@ import com.bz.network.repository.EmptyBodyException
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
+import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -33,8 +34,8 @@ import timber.log.Timber
 
 @HiltViewModel
 internal class PlayingNowViewModel @Inject constructor(
-    private val movieRepository: MovieRepository,
-    private val localMovieRepository: LocalMovieRepository
+    private val movieRepository: Lazy<MovieRepository>,
+    private val localMovieRepository: Lazy<LocalMovieRepository>
 ) : ViewModel() {
     private val _state = MutableStateFlow(MoviesState())
     val state: StateFlow<MoviesState> = _state.asStateFlow()
@@ -61,7 +62,7 @@ internal class PlayingNowViewModel @Inject constructor(
     private suspend fun handleEvent(event: MovieEvent) {
         when (event) {
             is MovieEvent.OnMovieClicked ->
-                localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())
+                localMovieRepository.get().insertFavoriteMovie(event.movieItem.toDTO())
 
             MovieEvent.Refresh -> {
                 _state.update {
@@ -76,11 +77,11 @@ internal class PlayingNowViewModel @Inject constructor(
         }
     }
 
-    private fun fetchPlayingNowMovies() = viewModelScope.launch {
-        localMovieRepository.clearPlayingNowMovies()
-        val result = movieRepository.getPlayingNowMovies()
+    private fun fetchPlayingNowMovies() = viewModelScope.launch(Dispatchers.IO) {
+        localMovieRepository.get().clearPlayingNowMovies()
+        val result = movieRepository.get().getPlayingNowMovies()
         result.onSuccess { data ->
-            localMovieRepository.insertPlayingNowMovies(data)
+            localMovieRepository.get().insertPlayingNowMovies(data)
         }
         result.onFailure {
             val error =
@@ -97,7 +98,7 @@ internal class PlayingNowViewModel @Inject constructor(
 
     private fun collectPlayingNowMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-            localMovieRepository.playingNowMovies
+            localMovieRepository.get().playingNowMovies
                 .onEmpty { fetchPlayingNowMovies() }
                 .catch {
                     _effect.send(MovieEffect.UnknownError)

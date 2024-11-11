@@ -10,6 +10,7 @@ import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesState
+import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +30,7 @@ import timber.log.Timber
 
 @HiltViewModel
 internal class FavoriteScreenViewModel @Inject constructor(
-    private val localMovieRepository: LocalMovieRepository
+    private val localMovieRepository: Lazy<LocalMovieRepository>
 ) : ViewModel() {
     private val _state = MutableStateFlow(MoviesState())
     val state: StateFlow<MoviesState> = _state.asStateFlow()
@@ -45,18 +46,18 @@ internal class FavoriteScreenViewModel @Inject constructor(
         handleEvent()
     }
 
-    fun sendEvent(event: MovieEvent) = viewModelScope.launch {
+    fun sendEvent(event: MovieEvent) = viewModelScope.launch(Dispatchers.IO) {
         _event.emit(event)
     }
 
-    private fun handleEvent() = viewModelScope.launch {
+    private fun handleEvent() = viewModelScope.launch(Dispatchers.IO) {
         event.collect { handleEvent(it) }
     }
 
     private suspend fun handleEvent(event: MovieEvent) {
         when (event) {
             is MovieEvent.OnMovieClicked ->
-                localMovieRepository.deleteFavoriteMovie(event.movieItem.toDTO())
+                localMovieRepository.get().deleteFavoriteMovie(event.movieItem.toDTO())
 
             MovieEvent.Refresh -> {
                 // do nothing
@@ -67,7 +68,7 @@ internal class FavoriteScreenViewModel @Inject constructor(
     @SuppressLint("RawDispatchersUse")
     private fun collectFavoriteMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-            localMovieRepository.favoritesMovies
+            localMovieRepository.get().favoritesMovies
                 .catch {
                     _effect.send(MovieEffect.UnknownError)
                     Timber.e(it)

@@ -41,10 +41,10 @@ internal class DataStoreModule {
 
     @Singleton
     @Provides
-    internal fun provideMDataStoreRepository(
+    internal fun provideDataStoreRepository(
         dataStore: DataStore<Preferences>
     ): DataStoreRepository {
-        throwOnMainThread("provideMDataStoreRepository")
+        throwOnMainThread("provideDataStoreRepository")
         return DataStoreRepositoryImpl(dataStore)
     }
 }
