@@ -156,8 +156,7 @@ fun <
             "RawDispatchersUse",
             // The crash seems to involve the detector \\\`androidx.navigation.lint.BaseWrongStartDestinationTypeDetector\\\`.
             "WrongStartDestinationType",
-            "WrongStartDestinationType",
-            "WrongStartDestinationType"
+            "WrongNavigateRouteType"
         )
         abortOnError = true
         checkAllWarnings = true

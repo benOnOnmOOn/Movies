@@ -23,6 +23,7 @@ internal fun MovieDetailsScreen(
 ) {
     val playingNow by movieDetailsViewModel.state.collectAsStateWithLifecycle()
 
+    @Suppress("DeprecatedCall")
     LaunchedEffect(id) {
         if (id != null) {
             movieDetailsViewModel.fetchMovieDetails(id)
