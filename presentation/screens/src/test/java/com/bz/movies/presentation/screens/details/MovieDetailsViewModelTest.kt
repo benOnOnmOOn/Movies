@@ -19,6 +19,7 @@ import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.AfterAll
@@ -59,6 +60,7 @@ class MovieDetailsViewModelTest {
 
         val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
         viewModel.fetchMovieDetails(1234)
+        runCurrent()
         viewModel.state.test {
             val actualItem = awaitItem()
             assertEquals(EXPECTED_DETAILS_STATE, actualItem)

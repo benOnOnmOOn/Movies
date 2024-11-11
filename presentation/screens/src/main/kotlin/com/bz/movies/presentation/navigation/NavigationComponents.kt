@@ -26,7 +26,7 @@ fun BottomNavigationBar(navController: NavController, modifier: Modifier = Modif
         contentColor = MaterialTheme.colorScheme.surface
     ) {
         TOP_LEVEL_DESTINATIONS.forEach { destination ->
-            val isItemSelected = destination.rootRoute == currentRootRoute
+            val isItemSelected = currentRootRoute.route.startsWith(destination.rootRoute.route)
             NavigationBarItem(
                 selected = isItemSelected,
                 onClick = { navController.navigateToRootRoute(destination.rootRoute) },
@@ -38,8 +38,7 @@ fun BottomNavigationBar(navController: NavController, modifier: Modifier = Modif
                         color = getNavTextColor(isItemSelected)
                     )
                 },
-                colors =
-                NavigationBarItemDefaults.colors(
+                colors = NavigationBarItemDefaults.colors(
                     indicatorColor = MaterialTheme.colorScheme.surface
                 )
             )

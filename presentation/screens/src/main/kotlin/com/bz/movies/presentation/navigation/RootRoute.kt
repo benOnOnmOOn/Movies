@@ -14,7 +14,7 @@ internal enum class RootRoute(val route: String) {
     Popular("tab_popular"),
     Favorite("tab_favorite"),
     More("tab_more"),
-    Details("details/{id}")
+    Details("tab_popular/details/{id}")
 }
 
 internal fun NavController.navigateToRootRoute(rootRoute: RootRoute) {
@@ -24,7 +24,7 @@ internal fun NavController.navigateToRootRoute(rootRoute: RootRoute) {
         }
 
         launchSingleTop = true
-        restoreState = true
+        restoreState = false
     }
 }
 
