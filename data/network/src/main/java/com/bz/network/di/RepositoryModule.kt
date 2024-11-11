@@ -9,13 +9,18 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import throwOnMainThread
 
 @Module
 @InstallIn(ViewModelComponent::class)
 internal class RepositoryModule {
     @Provides
-    internal fun provideMovieRepository(
+    internal fun provideNetworkMovieRepository(
         apiService: Lazy<MovieService>,
         internetConnection: Lazy<InternetConnection>
-    ): MovieRepository = MovieRepositoryImpl(apiService, internetConnection)
+    ): MovieRepository {
+        throwOnMainThread("provideNetworkMovieRepository")
+
+        return MovieRepositoryImpl(apiService, internetConnection)
+    }
 }

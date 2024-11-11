@@ -10,18 +10,24 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import throwOnMainThread
 
 @Module
 @InstallIn(ViewModelComponent::class)
 internal class RepositoryModule {
     @Provides
-    internal fun provideMovieRepository(
+    internal fun provideLocalMovieRepository(
         movieDAO: Lazy<MovieDAO>,
         playingNowMovieDAO: Lazy<PlayingNowMovieDAO>,
         popularMovieDAO: Lazy<PopularMovieDAO>
-    ): LocalMovieRepository = LocalMovieRepositoryImpl(
-        movieDAO,
-        playingNowMovieDAO,
-        popularMovieDAO
-    )
+    ): LocalMovieRepository {
+
+        throwOnMainThread("provideLocalMovieRepository")
+
+        return LocalMovieRepositoryImpl(
+            movieDAO,
+            playingNowMovieDAO,
+            popularMovieDAO
+        )
+    }
 }

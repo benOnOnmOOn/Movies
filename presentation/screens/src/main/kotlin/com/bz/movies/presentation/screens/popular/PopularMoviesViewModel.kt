@@ -1,6 +1,7 @@
 package com.bz.movies.presentation.screens.popular
 
 import android.annotation.SuppressLint
+import android.icu.text.SimpleDateFormat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bz.dto.MovieDto
@@ -15,6 +16,7 @@ import com.bz.network.repository.EmptyBodyException
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
+import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -36,9 +38,9 @@ import timber.log.Timber
 
 @HiltViewModel
 internal class PopularMoviesViewModel @Inject constructor(
-    private val movieRepository: MovieRepository,
-    private val localMovieRepository: LocalMovieRepository,
-    private val dataStoreRepository: DataStoreRepository
+    private val movieRepository: Lazy<MovieRepository>,
+    private val localMovieRepository: Lazy<LocalMovieRepository>,
+    private val dataStoreRepository: Lazy<DataStoreRepository>
 ) : ViewModel() {
     private val _state = MutableStateFlow(MoviesState())
     val state: StateFlow<MoviesState> = _state.asStateFlow()
@@ -58,18 +60,18 @@ internal class PopularMoviesViewModel @Inject constructor(
         _event.emit(event)
     }
 
-    private fun handleEvent() = viewModelScope.launch {
+    private fun handleEvent() = viewModelScope.launch(Dispatchers.IO) {
         event.collect { handleEvent(it) }
     }
 
     private suspend fun handleEvent(event: MovieEvent) {
-        dataStoreRepository.getPlyingNowRefreshDate()
+
         when (event) {
             is MovieEvent.OnMovieClicked ->
-                localMovieRepository.insertFavoriteMovie(event.movieItem.toDTO())
+                localMovieRepository.get().insertFavoriteMovie(event.movieItem.toDTO())
 
             MovieEvent.Refresh -> {
-                localMovieRepository.clearPopularMovies()
+                localMovieRepository.get().clearPopularMovies()
                 _state.update {
                     it.copy(
                         isLoading = true,
@@ -81,10 +83,10 @@ internal class PopularMoviesViewModel @Inject constructor(
         }
     }
 
-    private fun fetchPopularNowMovies() = viewModelScope.launch {
-        val result = movieRepository.getPopularMovies(1)
+    private fun fetchPopularNowMovies() = viewModelScope.launch(Dispatchers.IO) {
+        val result = movieRepository.get().getPopularMovies(1)
         result.onSuccess { data ->
-            localMovieRepository.insertPopularMovies(data)
+            localMovieRepository.get().insertPopularMovies(data)
         }
         result.onFailure {
             val error =
@@ -108,7 +110,11 @@ internal class PopularMoviesViewModel @Inject constructor(
     @SuppressLint("RawDispatchersUse")
     private fun collectPopularMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-            localMovieRepository.popularMovies
+
+            val lastDate  = dataStoreRepository.get().getPlyingNowRefreshDate()
+            Timber.d("Last date : ${SimpleDateFormat.getInstance().format(lastDate)}")
+
+            localMovieRepository.get().popularMovies
                 .flowOn(Dispatchers.Main)
                 .onStart { fetchPopularNowMovies() }
                 .catch {
