@@ -110,7 +110,7 @@ internal class PopularMoviesViewModel @Inject constructor(
     private fun collectPopularMovies() {
         viewModelScope.launch(Dispatchers.IO) {
             val lastDate = dataStoreRepository.get().getPlyingNowRefreshDate()
-            Timber.d("Last date : ${SimpleDateFormat.getInstance().format(lastDate)}")
+//            Timber.d("Last date : ${SimpleDateFormat.getInstance().format(lastDate)}")
 
             localMovieRepository.get().popularMovies
                 .flowOn(Dispatchers.Main)
