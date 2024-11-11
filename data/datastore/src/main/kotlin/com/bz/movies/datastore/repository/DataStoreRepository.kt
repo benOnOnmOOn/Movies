@@ -4,7 +4,7 @@ import java.util.Date
 
 interface DataStoreRepository {
 
-    suspend fun insertRefreshDatePlyingNow(data: Date)
+    suspend fun insertPlayingNowRefreshDate(data: Date)
 
     suspend fun getPlyingNowRefreshDate(): Date
 

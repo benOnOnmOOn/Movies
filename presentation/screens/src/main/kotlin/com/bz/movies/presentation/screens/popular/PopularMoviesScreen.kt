@@ -47,7 +47,7 @@ internal fun PopularMoviesScreen(
         onNetworkErrorDismiss = { noInternetDialog.value = false },
         onErrorDismiss = { errorDialog.value = false }
     ) {
-        navController.navigate("details/$it")
+        navController.navigate("tab_popular/details/$it")
     }
 }
 

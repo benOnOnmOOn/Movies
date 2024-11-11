@@ -18,6 +18,7 @@ import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.util.Date
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -85,6 +86,10 @@ internal class PopularMoviesViewModel @Inject constructor(
     private fun fetchPopularNowMovies() = viewModelScope.launch(Dispatchers.IO) {
         val result = movieRepository.get().getPopularMovies(1)
         result.onSuccess { data ->
+
+            dataStoreRepository.get().insertPopularNowRefreshDate(
+                @SuppressLint("DenyListedApi") Date()
+            )
             localMovieRepository.get().insertPopularMovies(data)
         }
         result.onFailure {
@@ -109,7 +114,7 @@ internal class PopularMoviesViewModel @Inject constructor(
     @SuppressLint("RawDispatchersUse")
     private fun collectPopularMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-            val lastDate = dataStoreRepository.get().getPlyingNowRefreshDate()
+            val lastDate = dataStoreRepository.get().getPopularRefreshDate()
             Timber.d("Last date : ${SimpleDateFormat.getInstance().format(lastDate)}")
 
             localMovieRepository.get().popularMovies

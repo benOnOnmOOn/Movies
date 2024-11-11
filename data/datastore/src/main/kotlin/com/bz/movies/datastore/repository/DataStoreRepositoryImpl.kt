@@ -20,7 +20,7 @@ internal class DataStoreRepositoryImpl(
     val playingNowKey = longPreferencesKey(PLAYING_NOW_KEY)
     val popularKey = longPreferencesKey(POPULAR_KEY)
 
-    override suspend fun insertRefreshDatePlyingNow(data: Date) {
+    override suspend fun insertPlayingNowRefreshDate(data: Date) {
         dataStore.edit {
             it[playingNowKey] = data.time
         }

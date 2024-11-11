@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,8 +22,11 @@ internal fun MovieDetailsScreen(
     movieDetailsViewModel: MovieDetailsViewModel = hiltViewModel()
 ) {
     val playingNow by movieDetailsViewModel.state.collectAsStateWithLifecycle()
-    if (id != null) {
-        movieDetailsViewModel.fetchMovieDetails(id)
+
+    LaunchedEffect(id) {
+        if (id != null) {
+            movieDetailsViewModel.fetchMovieDetails(id)
+        }
     }
     MovieDetailsScreen(playingNow)
 }
