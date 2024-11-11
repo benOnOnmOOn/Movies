@@ -46,6 +46,7 @@ internal fun PlayingNowScreen(playingNowViewModel: PlayingNowViewModel = hiltVie
 }
 
 @Composable
+@Suppress("LongParameterList")
 private fun PlayingNowScreen(
     state: MoviesState = MoviesState(),
     showNoInternetDialog: Boolean = false,
