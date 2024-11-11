@@ -37,7 +37,7 @@ class MovieDetailsViewModelTest {
             SUCCESS_MOVIE_DETAIL
         )
 
-        val viewModel = MovieDetailsViewModel(Lazy{movieRepository})
+        val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
         viewModel.state.test {
             val actualItem = awaitItem()
             val expectedItem = MovieDetailState()
@@ -57,7 +57,7 @@ class MovieDetailsViewModelTest {
         mockkObject(Random)
         every { Random.nextInt(any(), any()) } returns 69
 
-        val viewModel = MovieDetailsViewModel(Lazy{movieRepository})
+        val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
         viewModel.fetchMovieDetails(1234)
         viewModel.state.test {
             awaitItem()
@@ -79,7 +79,7 @@ class MovieDetailsViewModelTest {
             Timber.plant(timberPlantTree)
             verify(exactly = 0) { timberPlantTree.e(any<Throwable>()) }
 
-            val viewModel = MovieDetailsViewModel(Lazy{movieRepository})
+            val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
             viewModel.fetchMovieDetails(1234)
             viewModel.effect.test {
                 assertEquals(MovieEffect.NetworkConnectionError, awaitItem())
@@ -102,7 +102,7 @@ class MovieDetailsViewModelTest {
         Timber.plant(timberPlantTree)
         verify(exactly = 0) { timberPlantTree.e(any<Throwable>()) }
 
-        val viewModel = MovieDetailsViewModel(Lazy{movieRepository})
+        val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
         viewModel.fetchMovieDetails(1234)
         viewModel.effect.test {
             assertEquals(MovieEffect.UnknownError, awaitItem())

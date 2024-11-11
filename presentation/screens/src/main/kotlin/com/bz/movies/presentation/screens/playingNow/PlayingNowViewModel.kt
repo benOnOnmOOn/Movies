@@ -13,8 +13,8 @@ import com.bz.network.repository.EmptyBodyException
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
-import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.Lazy
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -35,7 +35,7 @@ import timber.log.Timber
 @HiltViewModel
 internal class PlayingNowViewModel @Inject constructor(
     private val movieRepository: Lazy<MovieRepository>,
-    private val localMovieRepository: Lazy<LocalMovieRepository>,
+    private val localMovieRepository: Lazy<LocalMovieRepository>
 ) : ViewModel() {
     private val _state = MutableStateFlow(MoviesState())
     val state: StateFlow<MoviesState> = _state.asStateFlow()

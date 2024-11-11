@@ -65,7 +65,6 @@ internal class PopularMoviesViewModel @Inject constructor(
     }
 
     private suspend fun handleEvent(event: MovieEvent) {
-
         when (event) {
             is MovieEvent.OnMovieClicked ->
                 localMovieRepository.get().insertFavoriteMovie(event.movieItem.toDTO())
@@ -110,8 +109,7 @@ internal class PopularMoviesViewModel @Inject constructor(
     @SuppressLint("RawDispatchersUse")
     private fun collectPopularMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-
-            val lastDate  = dataStoreRepository.get().getPlyingNowRefreshDate()
+            val lastDate = dataStoreRepository.get().getPlyingNowRefreshDate()
             Timber.d("Last date : ${SimpleDateFormat.getInstance().format(lastDate)}")
 
             localMovieRepository.get().popularMovies

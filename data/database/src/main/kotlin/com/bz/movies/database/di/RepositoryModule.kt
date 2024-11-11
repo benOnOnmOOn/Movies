@@ -21,7 +21,6 @@ internal class RepositoryModule {
         playingNowMovieDAO: Lazy<PlayingNowMovieDAO>,
         popularMovieDAO: Lazy<PopularMovieDAO>
     ): LocalMovieRepository {
-
         throwOnMainThread("provideLocalMovieRepository")
 
         return LocalMovieRepositoryImpl(
