@@ -1,7 +1,7 @@
 public abstract interface class com/bz/movies/datastore/repository/DataStoreRepository {
 	public abstract fun getPlyingNowRefreshDate (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getPopularRefreshDate (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun insertPlayingNowRefreshDate (Ljava/util/Date;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun insertPopularNowRefreshDate (Ljava/util/Date;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun insertRefreshDatePlyingNow (Ljava/util/Date;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
