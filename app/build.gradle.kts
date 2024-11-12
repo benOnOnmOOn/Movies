@@ -85,7 +85,7 @@ kover {
                     "com.bz.movies.database.dao",
                     "com.bz.movies.presentation.theme",
                     "com.bz.movies.presentation.navigation",
-                    "com.bz.movies.presentation.screens.utils",
+                    "com.bz.movies.presentation.screens.utils"
                 )
                 annotatedBy(
                     "*Generated*",
