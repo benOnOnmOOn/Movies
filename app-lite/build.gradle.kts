@@ -73,14 +73,16 @@ kover {
                     "*_Factor*y",
                     "*_HiltModules*",
                     "*Hilt_*",
-                    "*_Impl*"
+                    "*_Impl*",
+                    "com.bz.movies.core.CrashlyticsLogTree"
                 )
                 packages(
                     "hilt_aggregated_deps",
                     "dagger.hilt.internal.aggregatedroot.codegen",
                     "com.bz.movies.database.dao",
                     "com.bz.movies.presentation.theme",
-                    "com.bz.movies.presentation.navigation"
+                    "com.bz.movies.presentation.navigation",
+                    "com.bz.movies.presentation.screens.utils",
                 )
                 annotatedBy(
                     "*Generated*",
