@@ -4,6 +4,7 @@ import app.cash.turbine.test
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
+import com.bz.movies.presentation.screens.popular.PopularMoviesViewModelTest
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.model.MoveDetailDto
@@ -14,12 +15,13 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
 import io.mockk.unmockkAll
+import io.mockk.unmockkObject
 import io.mockk.verify
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.AfterAll
@@ -59,12 +61,15 @@ class MovieDetailsViewModelTest {
         every { Random.nextInt(any(), any()) } returns 69
 
         val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
+        // we may need that as in MovieDetailsViewModel I had sample for memory leak detection
+        advanceUntilIdle()
         viewModel.fetchMovieDetails(1234)
-        runCurrent()
         viewModel.state.test {
             val actualItem = awaitItem()
             assertEquals(EXPECTED_DETAILS_STATE, actualItem)
+            expectNoEvents()
         }
+        unmockkObject(Random)
     }
 
     @Test
@@ -118,6 +123,8 @@ class MovieDetailsViewModelTest {
 
     companion object {
 
+        val timberPlantTree: Timber.Tree = mockk(relaxed = true)
+
         internal val EXPECTED_DETAILS_STATE = MovieDetailState(
             isLoading = false,
             MovieItem(
@@ -144,12 +151,14 @@ class MovieDetailsViewModelTest {
         @JvmStatic
         fun setUp() {
             Dispatchers.setMain(StandardTestDispatcher())
+            Timber.plant(PopularMoviesViewModelTest.Companion.timberPlantTree)
         }
 
         @AfterAll
         @JvmStatic
         fun tearDown() {
             Dispatchers.resetMain()
+            Timber.uproot(PopularMoviesViewModelTest.Companion.timberPlantTree)
             unmockkAll()
         }
     }
