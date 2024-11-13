@@ -71,7 +71,7 @@ dependencies {
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.ui.graphics.android)
     implementation(libs.androidx.ui.text.android)
-    implementation(libs.androidx.ui.tooling.preview.android)
+    debugImplementation(libs.androidx.ui.tooling.preview.android)
     implementation(libs.androidx.ui.unit.android)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.appcompat)

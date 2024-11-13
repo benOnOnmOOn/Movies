@@ -39,6 +39,7 @@
 -dontwarn androidx.customview.view.AbsSavedState
 -dontwarn androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 -dontwarn androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
+-dontwarn androidx.loader.app.LoaderManager
 
 # Valid rules copy paste from file "proguard-android-optimize.txt"
 
