@@ -85,7 +85,8 @@ kover {
                     "com.bz.movies.database.dao",
                     "com.bz.movies.presentation.theme",
                     "com.bz.movies.presentation.navigation",
-                    "com.bz.movies.presentation.screens.utils"
+                    "com.bz.movies.presentation.screens.utils",
+                    "com.bz.movies.core"
                 )
                 annotatedBy(
                     "*Generated*",
@@ -107,6 +108,7 @@ dependencies {
     kover(project(":presentation:screens"))
     kover(project(":data:network"))
     kover(project(":data:database"))
+    kover(project(":data:datastore"))
 
     lintChecks(libs.slack.lint.checks)
 
