@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" ?>
 <SmellBaseline>
   <ManuallySuppressedIssues>
     <ID>UnusedPrivateMember:PopularMoviesScreen.kt$@Preview(showBackground = true) @Composable private fun PopularMoviesScreenPreview()</ID>
@@ -10,9 +10,5 @@
   <CurrentIssues>
     <ID>MaxLineLength:ApiTest.kt$ApiTest.Companion$overview = """A botched store robbery places Wonder Woman in a global battle against a powerful and mysterious ancient force that puts her powers in jeopardy."""</ID>
     <ID>MaxLineLength:PopularMoviesViewModelTest.kt$PopularMoviesViewModelTest$fun</ID>
-    <ID>UnusedPrivateMember:FavoriteScreen.kt$@Preview(showBackground = true) @Composable private fun FavoriteScreenPreview()</ID>
-    <ID>UnusedPrivateMember:MovieDetailsScreen.kt$@Preview(showBackground = true) @Composable private fun MovieDetailsScreenPreview()</ID>
-    <ID>UnusedPrivateMember:PlayingNowScreen.kt$@Preview(showBackground = true) @Composable private fun PlayingNowScreenPreview()</ID>
-    <ID>UnusedPrivateMember:PopularMoviesScreen.kt$@Preview(showBackground = true) @Composable private fun PopularMoviesScreenPreview()</ID>
   </CurrentIssues>
 </SmellBaseline>
