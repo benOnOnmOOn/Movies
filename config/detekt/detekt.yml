@@ -735,6 +735,7 @@ style:
   UnusedParameter:
     active: true
     allowedNames: 'ignored|expected'
+    ignoreAnnotated: ['Preview', 'Composable']
   UnusedPrivateClass:
     active: true
   UnusedPrivateMember:
