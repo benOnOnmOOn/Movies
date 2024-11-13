@@ -52,7 +52,6 @@ internal fun PopularMoviesScreen(
 }
 
 @Composable
-@Suppress("LongParameterList")
 private fun PopularMoviesScreen(
     state: MoviesState = MoviesState(),
     sendEvent: (MovieEvent) -> Unit = {},

@@ -66,12 +66,12 @@ class PopularMoviesViewModelTest {
                 val expectedItem2 = MoviesState(isLoading = false, isRefreshing = false)
                 assertEquals(expectedItem2, actualItem2)
 
-                verify(exactly = 1) { localMovieRepository.popularMovies }
-                coVerify(exactly = 1) { localMovieRepository.insertPopularMovies(any()) }
-                coVerify(exactly = 1) { movieRepository.getPopularMovies(any()) }
-
                 expectNoEvents()
             }
+
+            verify(exactly = 1) { localMovieRepository.popularMovies }
+            coVerify(exactly = 1) { localMovieRepository.insertPopularMovies(any()) }
+            coVerify(exactly = 1) { movieRepository.getPopularMovies(any()) }
         }
 
     @Test
@@ -148,13 +148,12 @@ class PopularMoviesViewModelTest {
                 val actualItem2 = awaitItem()
                 val expectedItem2 = MoviesState(isLoading = false, isRefreshing = false)
                 assertEquals(expectedItem2, actualItem2)
-
-                verify(exactly = 1) { localMovieRepository.popularMovies }
-                coVerify(exactly = 0) { localMovieRepository.insertPopularMovies(any()) }
-                coVerify(exactly = 1) { movieRepository.getPopularMovies(any()) }
-
                 expectNoEvents()
             }
+
+            verify(exactly = 1) { localMovieRepository.popularMovies }
+            coVerify(exactly = 0) { localMovieRepository.insertPopularMovies(any()) }
+            coVerify(exactly = 1) { movieRepository.getPopularMovies(any()) }
         }
 
     @Test

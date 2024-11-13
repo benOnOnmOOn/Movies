@@ -30,7 +30,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onEmpty
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -107,7 +107,7 @@ internal class PlayingNowViewModel @Inject constructor(
     private fun collectPlayingNowMovies() {
         viewModelScope.launch(Dispatchers.IO) {
             localMovieRepository.get().playingNowMovies
-                .onEmpty { fetchPlayingNowMovies() }
+                .onStart { fetchPlayingNowMovies() }
                 .catch {
                     _effect.send(MovieEffect.UnknownError)
                     Timber.e(it)

@@ -16,7 +16,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 
 @Composable
-@Suppress("UnusedParameter")
 fun BottomNavigationBar(navController: NavController, modifier: Modifier = Modifier) {
     val currentRootRoute by currentRootRouteAsState(navController)
 

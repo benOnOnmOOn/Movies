@@ -4,6 +4,6 @@
         <error line="80" column="1" source="standard:max-line-length" />
         <error line="109" column="1" source="standard:max-line-length" />
         <error line="130" column="1" source="standard:max-line-length" />
-        <error line="161" column="1" source="standard:max-line-length" />
+        <error line="160" column="1" source="standard:max-line-length" />
     </file>
 </baseline>
