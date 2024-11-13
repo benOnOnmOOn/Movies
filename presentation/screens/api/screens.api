@@ -59,13 +59,6 @@ public final class com/bz/movies/presentation/screens/details/MovieDetailsViewMo
 	public static fun provide ()Z
 }
 
-public final class com/bz/movies/presentation/screens/empty/ComposableSingletons$GreetingKt {
-	public static final field INSTANCE Lcom/bz/movies/presentation/screens/empty/ComposableSingletons$GreetingKt;
-	public static field lambda-1 Lkotlin/jvm/functions/Function2;
-	public fun <init> ()V
-	public final fun getLambda-1$screens_release ()Lkotlin/jvm/functions/Function2;
-}
-
 public final class com/bz/movies/presentation/screens/favorite/ComposableSingletons$FavoriteScreenKt {
 	public static final field INSTANCE Lcom/bz/movies/presentation/screens/favorite/ComposableSingletons$FavoriteScreenKt;
 	public static field lambda-1 Lkotlin/jvm/functions/Function2;
