@@ -1,6 +1,5 @@
 package com.bz.movies.presentation.screens.popular
 
-import android.annotation.SuppressLint
 import android.icu.text.DateFormat
 import android.icu.text.SimpleDateFormat
 import app.cash.turbine.test
@@ -21,7 +20,7 @@ import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.unmockkStatic
 import io.mockk.verify
-import java.util.Date
+import java.time.Instant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
@@ -41,9 +40,8 @@ class PopularMoviesViewModelTest {
     private val movieRepository: MovieRepository = mockk()
     private val localMovieRepository: LocalMovieRepository = mockk(relaxed = true)
 
-    @SuppressLint("DenyListedApi")
     private val storeRepository: DataStoreRepository = mockk(relaxed = true) {
-        coEvery { getPlyingNowRefreshDate() } returns Date()
+        coEvery { getPlyingNowRefreshDate() } returns Result.success(Instant.now())
     }
 
     @Test

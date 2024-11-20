@@ -1,7 +1,6 @@
 package com.bz.movies.presentation.screens.popular
 
 import android.annotation.SuppressLint
-import android.icu.text.SimpleDateFormat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bz.dto.MovieDto
@@ -18,7 +17,7 @@ import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.Date
+import java.time.Instant
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -87,9 +86,7 @@ internal class PopularMoviesViewModel @Inject constructor(
         val result = movieRepository.get().getPopularMovies(1)
         result.onSuccess { data ->
 
-            dataStoreRepository.get().insertPopularNowRefreshDate(
-                @SuppressLint("DenyListedApi") Date()
-            )
+            dataStoreRepository.get().insertPopularNowRefreshDate(Instant.now())
             localMovieRepository.get().insertPopularMovies(data)
         }
         result.onFailure {
@@ -114,8 +111,9 @@ internal class PopularMoviesViewModel @Inject constructor(
     @SuppressLint("RawDispatchersUse")
     private fun collectPopularMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-            val lastDate = dataStoreRepository.get().getPopularRefreshDate()
-            Timber.d("Last date : ${SimpleDateFormat.getInstance().format(lastDate)}")
+            dataStoreRepository.get().getPopularRefreshDate()
+                .onFailure(Timber::e)
+                .onSuccess { Timber.d("Last date : $it") }
 
             localMovieRepository.get().popularMovies
                 .flowOn(Dispatchers.Main)

@@ -1,7 +1,5 @@
 package com.bz.movies.presentation.screens.playingNow
 
-import android.annotation.SuppressLint
-import android.icu.text.SimpleDateFormat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bz.dto.MovieDto
@@ -18,7 +16,7 @@ import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.Date
+import java.time.Instant
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -86,9 +84,7 @@ internal class PlayingNowViewModel @Inject constructor(
         localMovieRepository.get().clearPlayingNowMovies()
         val result = movieRepository.get().getPlayingNowMovies()
         result.onSuccess { data ->
-            dataStoreRepository.get().insertPlayingNowRefreshDate(
-                @SuppressLint("DenyListedApi") Date()
-            )
+            dataStoreRepository.get().insertPlayingNowRefreshDate(Instant.now())
             localMovieRepository.get().insertPlayingNowMovies(data)
         }
         result.onFailure {
@@ -119,8 +115,10 @@ internal class PlayingNowViewModel @Inject constructor(
                     }
                 }
                 .collectLatest { data ->
-                    val lastDate = dataStoreRepository.get().getPlyingNowRefreshDate()
-                    Timber.d("Last date : ${SimpleDateFormat.getInstance().format(lastDate)}")
+                    dataStoreRepository.get().getPlyingNowRefreshDate()
+                        .onFailure(Timber::e)
+                        .onSuccess { Timber.d("Last date : $it") }
+
                     _state.update {
                         MoviesState(
                             isLoading = false,
