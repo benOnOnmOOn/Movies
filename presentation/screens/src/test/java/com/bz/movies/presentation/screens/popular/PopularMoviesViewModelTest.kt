@@ -1,7 +1,5 @@
 package com.bz.movies.presentation.screens.popular
 
-import android.icu.text.DateFormat
-import android.icu.text.SimpleDateFormat
 import app.cash.turbine.test
 import co.touchlab.kermit.LogcatWriter
 import co.touchlab.kermit.Logger
@@ -19,7 +17,6 @@ import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.mockkStatic
 import io.mockk.unmockkStatic
 import io.mockk.verify
 import java.time.Instant
@@ -264,10 +261,6 @@ class PopularMoviesViewModelTest {
         @JvmStatic
         fun setUp() {
             Dispatchers.setMain(StandardTestDispatcher())
-            mockkStatic(DateFormat::class)
-
-            every { SimpleDateFormat.getInstance() } returns mockk(relaxed = true)
-
             Logger.setLogWriters(emptyList<LogcatWriter>())
         }
 
@@ -275,7 +268,6 @@ class PopularMoviesViewModelTest {
         @JvmStatic
         fun tearDown() {
             Dispatchers.resetMain()
-            unmockkStatic(DateFormat::class)
         }
     }
 }

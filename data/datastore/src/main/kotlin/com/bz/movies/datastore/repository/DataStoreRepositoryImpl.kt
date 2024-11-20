@@ -1,5 +1,6 @@
 package com.bz.movies.datastore.repository
 
+import android.annotation.SuppressLint
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -22,9 +23,11 @@ internal class DataStoreRepositoryImpl(
     override suspend fun insertPlayingNowRefreshDate(data: Instant): Result<Unit> =
         runSuspendCatching { dataStore.edit { it[playingNowKey] = data.epochSecond } }
 
+
     override suspend fun getPlyingNowRefreshDate() = runSuspendCatching {
         val flow: Flow<Long> = dataStore.data.map { it[playingNowKey] ?: 0L }
-        Instant.ofEpochSecond(flow.first()) ?: throw NullPointerException()
+        @SuppressLint("AvoidUsingNotNullOperator")
+        Instant.ofEpochSecond(flow.first())!!
     }
 
     override suspend fun insertPopularNowRefreshDate(data: Instant): Result<Unit> {
@@ -33,6 +36,7 @@ internal class DataStoreRepositoryImpl(
 
     override suspend fun getPopularRefreshDate(): Result<Instant> = runSuspendCatching {
         val flow: Flow<Long> = dataStore.data.map { it[popularKey] ?: 0L }
-        Instant.ofEpochSecond(flow.first()) ?: throw NullPointerException()
+        @SuppressLint("AvoidUsingNotNullOperator")
+        Instant.ofEpochSecond(flow.first())!!
     }
 }
