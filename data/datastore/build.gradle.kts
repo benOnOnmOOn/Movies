@@ -53,6 +53,10 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.core)
 
+    debugImplementation(libs.kermit.core.android.debug)
+    debugImplementation(libs.kermit.android.debug)
+    releaseImplementation(libs.kermit.core)
+
     testRuntimeOnly(libs.junit.engine)
 
     testImplementation(libs.junit.api)

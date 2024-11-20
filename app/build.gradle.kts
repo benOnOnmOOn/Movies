@@ -145,6 +145,10 @@ dependencies {
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
 
+    debugImplementation(libs.kermit.core.android.debug)
+    debugImplementation(libs.kermit.android.debug)
+    releaseImplementation(libs.kermit.core)
+
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.ui.tooling)
 

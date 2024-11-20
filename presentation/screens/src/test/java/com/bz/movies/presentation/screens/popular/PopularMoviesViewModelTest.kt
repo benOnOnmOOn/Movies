@@ -17,7 +17,6 @@ import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.unmockkStatic
 import io.mockk.verify
 import java.time.Instant
 import kotlinx.coroutines.Dispatchers

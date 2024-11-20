@@ -51,7 +51,6 @@ class FavoriteScreenViewModelTest {
         @JvmStatic
         fun setUp() {
             Dispatchers.setMain(StandardTestDispatcher())
-
         }
 
         @AfterAll

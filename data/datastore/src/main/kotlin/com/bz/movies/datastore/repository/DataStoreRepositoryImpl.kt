@@ -23,7 +23,6 @@ internal class DataStoreRepositoryImpl(
     override suspend fun insertPlayingNowRefreshDate(data: Instant): Result<Unit> =
         runSuspendCatching { dataStore.edit { it[playingNowKey] = data.epochSecond } }
 
-
     override suspend fun getPlyingNowRefreshDate() = runSuspendCatching {
         val flow: Flow<Long> = dataStore.data.map { it[playingNowKey] ?: 0L }
         @SuppressLint("AvoidUsingNotNullOperator")

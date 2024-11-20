@@ -86,6 +86,15 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
 
     implementation(libs.kermit)
+    debugImplementation(libs.kermit.core.android.debug)
+    debugImplementation(libs.kermit.android.debug)
+    releaseImplementation(libs.kermit.core)
+
+    debugRuntimeOnly(libs.androidx.ui.test.manifest)
+    debugRuntimeOnly(libs.androidx.ui.tooling)
+
+    debugImplementation(libs.leakcanary.watcher.android.core)
+    debugImplementation(libs.leakcanary.watcher)
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
@@ -94,11 +103,9 @@ dependencies {
     testImplementation(libs.turbine)
     testRuntimeOnly(libs.junit.engine)
 
-    debugRuntimeOnly(libs.androidx.ui.test.manifest)
-    debugRuntimeOnly(libs.androidx.ui.tooling)
-
-    debugImplementation(libs.leakcanary.watcher.android.core)
-    debugImplementation(libs.leakcanary.watcher)
+    testImplementation(libs.kermit.android.debug)
+    testImplementation(libs.kermit.core)
+    testImplementation(libs.kermit.core.android.debug)
 
     androidTestImplementation(libs.androidx.monitor)
     androidTestRuntimeOnly(libs.junit.engine)
