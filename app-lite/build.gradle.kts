@@ -35,6 +35,8 @@ dependencyAnalysis {
     issues {
         onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
         onUnusedDependencies { exclude(libs.androidx.appcompat) }
+        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
+        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
     }
 }
 
@@ -128,8 +130,6 @@ dependencies {
     implementation(libs.retrofit)
     debugImplementation(libs.logging.interceptor)
 
-    debugImplementation(libs.kermit.core.android.debug)
-    debugImplementation(libs.kermit.android.debug)
     releaseImplementation(libs.kermit.core)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)

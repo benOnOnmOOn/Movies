@@ -40,6 +40,13 @@ apiValidation {
     )
 }
 
+dependencyAnalysis {
+    issues {
+        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
+        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
+    }
+}
+
 dependencies {
     api(project(":data:network"))
     api(project(":data:database"))
@@ -86,8 +93,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
 
     implementation(libs.kermit)
-    debugImplementation(libs.kermit.core.android.debug)
-    debugImplementation(libs.kermit.android.debug)
     releaseImplementation(libs.kermit.core)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
@@ -103,9 +108,7 @@ dependencies {
     testImplementation(libs.turbine)
     testRuntimeOnly(libs.junit.engine)
 
-    testImplementation(libs.kermit.android.debug)
     testImplementation(libs.kermit.core)
-    testImplementation(libs.kermit.core.android.debug)
 
     androidTestImplementation(libs.androidx.monitor)
     androidTestRuntimeOnly(libs.junit.engine)

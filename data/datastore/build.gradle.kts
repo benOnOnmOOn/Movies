@@ -31,6 +31,13 @@ kover {
     }
 }
 
+dependencyAnalysis {
+    issues {
+        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
+        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
+    }
+}
+
 dependencies {
     implementation(project(":utlis:android"))
 
@@ -53,8 +60,6 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.core)
 
-    debugImplementation(libs.kermit.core.android.debug)
-    debugImplementation(libs.kermit.android.debug)
     releaseImplementation(libs.kermit.core)
 
     testRuntimeOnly(libs.junit.engine)

@@ -92,11 +92,8 @@ hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hilt" }
 junit-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
 junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
-kermit-android-debug = { module = "co.touchlab:kermit-android-debug", version.ref = "kermit" }
 kermit-core = { module = "co.touchlab:kermit-core", version.ref = "kermit" }
-kermit-core-android-debug = { module = "co.touchlab:kermit-core-android-debug", version.ref = "kermit" }
 kermit-crashlytics = { module = "co.touchlab:kermit-crashlytics", version.ref = "kermit" }
-kermit-test = { module = "co.touchlab:kermit-test", version.ref = "kermit" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
