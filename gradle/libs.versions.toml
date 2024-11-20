@@ -8,6 +8,7 @@ datastore-preferences = "1.1.1"
 firebase-perf = "21.0.2"
 fragment = "1.8.5"
 guava = "33.3.0-android"
+kermit = "2.0.4"
 kotlin = "2.0.21"
 leakcanary-android = "3.0-alpha-8"
 play-services-cronet = "18.1.0"
@@ -31,7 +32,6 @@ room = "2.7.0-alpha11"
 slack-lint-checks = "0.8.2"
 sqlite = "2.4.0"
 startup-runtime = "1.2.0"
-timber = "5.0.1"
 appcompat = "1.7.0"
 turbine = "1.2.0"
 kotlin-compose-compiler-extension = "1.5.10"
@@ -91,6 +91,9 @@ javax-inject = { module = "javax.inject:javax.inject", version.ref = "javax-inje
 hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hilt" }
 junit-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
 junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+kermit-crashlytics = { module = "co.touchlab:kermit-crashlytics", version.ref = "kermit" }
+kermit-test = { module = "co.touchlab:kermit-test", version.ref = "kermit" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
@@ -99,7 +102,6 @@ leakcanary-watcher = { module = "com.squareup.leakcanary:leakcanary-object-watch
 leakcanary-watcher-android-core = { module = "com.squareup.leakcanary:leakcanary-object-watcher-android-core", version.ref = "leakcanary-android" }
 mockk-dsl = { module = "io.mockk:mockk-dsl", version.ref = "mockk" }
 slack-lint-checks = { module = "com.slack.lint:slack-lint-checks", version.ref = "slack-lint-checks" }
-timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }

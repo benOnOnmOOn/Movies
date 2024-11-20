@@ -85,7 +85,7 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.core)
 
-    implementation(libs.timber)
+    implementation(libs.kermit)
 
     testImplementation(libs.junit.api)
     testImplementation(libs.mockk)

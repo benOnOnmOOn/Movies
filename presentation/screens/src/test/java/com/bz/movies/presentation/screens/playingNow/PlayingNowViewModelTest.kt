@@ -3,6 +3,8 @@ package com.bz.movies.presentation.screens.playingNow
 import android.icu.text.DateFormat
 import android.icu.text.SimpleDateFormat
 import app.cash.turbine.test
+import co.touchlab.kermit.LogcatWriter
+import co.touchlab.kermit.Logger
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.datastore.repository.DataStoreRepository
 import com.bz.movies.presentation.screens.common.MoviesState
@@ -26,7 +28,6 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import timber.log.Timber
 
 class PlayingNowViewModelTest {
     private val movieRepository: MovieRepository = mockk()
@@ -66,8 +67,6 @@ class PlayingNowViewModelTest {
         }
 
     companion object {
-        val timberPlantTree: Timber.Tree = mockk(relaxed = true)
-
         @BeforeAll
         @JvmStatic
         fun setUp() {
@@ -76,7 +75,7 @@ class PlayingNowViewModelTest {
 
             every { SimpleDateFormat.getInstance() } returns mockk(relaxed = true)
 
-            Timber.plant(timberPlantTree)
+            Logger.setLogWriters(emptyList<LogcatWriter>())
         }
 
         @AfterAll
@@ -84,7 +83,6 @@ class PlayingNowViewModelTest {
         fun tearDown() {
             Dispatchers.resetMain()
             unmockkStatic(DateFormat::class)
-            Timber.uproot(timberPlantTree)
         }
     }
 }

@@ -2,6 +2,7 @@ package com.bz.movies.presentation.screens.playingNow
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.touchlab.kermit.Logger
 import com.bz.dto.MovieDto
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.datastore.repository.DataStoreRepository
@@ -32,7 +33,6 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @HiltViewModel
 internal class PlayingNowViewModel @Inject constructor(
@@ -96,7 +96,7 @@ internal class PlayingNowViewModel @Inject constructor(
                     else -> MovieEffect.UnknownError
                 }
             _effect.send(error)
-            Timber.e(it)
+            Logger.e("Loading error:", it)
         }
     }
 
@@ -106,7 +106,7 @@ internal class PlayingNowViewModel @Inject constructor(
                 .onStart { fetchPlayingNowMovies() }
                 .catch {
                     _effect.send(MovieEffect.UnknownError)
-                    Timber.e(it)
+                    Logger.e("Loading error:", it)
                     _state.update {
                         MoviesState(
                             isLoading = false,
@@ -116,8 +116,8 @@ internal class PlayingNowViewModel @Inject constructor(
                 }
                 .collectLatest { data ->
                     dataStoreRepository.get().getPlyingNowRefreshDate()
-                        .onFailure(Timber::e)
-                        .onSuccess { Timber.d("Last date : $it") }
+                        .onFailure { Logger.e("Loading error", it) }
+                        .onSuccess { Logger.d("Last date : $it") }
 
                     _state.update {
                         MoviesState(

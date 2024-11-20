@@ -128,7 +128,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.androidx.appcompat)
     implementation(libs.dagger)
-    implementation(libs.timber)
+
+    implementation(libs.kermit)
+    releaseImplementation(libs.kermit.crashlytics)
+
     implementation(libs.kotlin.stdlib)
     debugImplementation(libs.leakcanary.android)
 

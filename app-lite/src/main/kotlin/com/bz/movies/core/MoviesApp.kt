@@ -2,9 +2,9 @@ package com.bz.movies.core
 
 import android.app.Application
 import android.os.StrictMode
+import co.touchlab.kermit.Logger
 import dagger.hilt.android.HiltAndroidApp
 import java.util.concurrent.Executors
-import timber.log.Timber
 
 @HiltAndroidApp
 class MoviesApp : Application() {
@@ -13,14 +13,18 @@ class MoviesApp : Application() {
         StrictMode.setThreadPolicy(
             StrictMode.ThreadPolicy.Builder()
                 .detectAll()
-                .penaltyListener(Executors.newSingleThreadScheduledExecutor(), Timber::e)
+                .penaltyListener(Executors.newSingleThreadScheduledExecutor()) {
+                    Logger.e("StrictMode ThreadPolicy violation", it)
+                }
                 .build()
         )
 
         StrictMode.setVmPolicy(
             StrictMode.VmPolicy.Builder()
                 .detectAll()
-                .penaltyListener(Executors.newSingleThreadScheduledExecutor(), Timber::e)
+                .penaltyListener(Executors.newSingleThreadScheduledExecutor()) {
+                    Logger.e("StrictMode Vm Policy violation", it)
+                }
                 .build()
         )
     }

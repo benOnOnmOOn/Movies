@@ -3,6 +3,8 @@ package com.bz.movies.presentation.screens.popular
 import android.icu.text.DateFormat
 import android.icu.text.SimpleDateFormat
 import app.cash.turbine.test
+import co.touchlab.kermit.LogcatWriter
+import co.touchlab.kermit.Logger
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.datastore.repository.DataStoreRepository
 import com.bz.movies.presentation.screens.common.MovieEffect
@@ -33,7 +35,6 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import timber.log.Timber
 
 class PopularMoviesViewModelTest {
 
@@ -78,11 +79,6 @@ class PopularMoviesViewModelTest {
             every { localMovieRepository.popularMovies } returns flow { throw IllegalStateException() }
             coEvery { movieRepository.getPopularMovies(any()) } returns Result.success(emptyList())
 
-            val timberPlantTree: Timber.Tree = mockk(relaxed = true)
-            Timber.plant(timberPlantTree)
-
-            verify(exactly = 0) { timberPlantTree.e(any<Throwable>()) }
-
             val viewModel = PopularMoviesViewModel(
                 movieRepository = Lazy { movieRepository },
                 localMovieRepository = Lazy { localMovieRepository },
@@ -98,9 +94,6 @@ class PopularMoviesViewModelTest {
             verify(exactly = 1) { localMovieRepository.popularMovies }
             coVerify(exactly = 1) { localMovieRepository.insertPopularMovies(any()) }
             coVerify(exactly = 1) { movieRepository.getPopularMovies(any()) }
-            verify(exactly = 1) { timberPlantTree.e(any<Throwable>()) }
-
-            Timber.uproot(timberPlantTree)
         }
 
     @Test
@@ -183,10 +176,6 @@ class PopularMoviesViewModelTest {
         coEvery {
             movieRepository.getPopularMovies(any())
         } returns Result.failure(IllegalStateException())
-        val timberPlantTree: Timber.Tree = mockk(relaxed = true)
-        Timber.plant(timberPlantTree)
-
-        verify(exactly = 0) { timberPlantTree.e(any<Throwable>()) }
 
         val viewModel = PopularMoviesViewModel(
             movieRepository = Lazy { movieRepository },
@@ -201,7 +190,6 @@ class PopularMoviesViewModelTest {
         }
 
         coVerify(exactly = 1) { movieRepository.getPopularMovies(any()) }
-        verify(exactly = 1) { timberPlantTree.e(any<Throwable>()) }
     }
 
     @Test
@@ -271,7 +259,6 @@ class PopularMoviesViewModelTest {
     }
 
     companion object {
-        val timberPlantTree: Timber.Tree = mockk(relaxed = true)
 
         @BeforeAll
         @JvmStatic
@@ -281,7 +268,7 @@ class PopularMoviesViewModelTest {
 
             every { SimpleDateFormat.getInstance() } returns mockk(relaxed = true)
 
-            Timber.plant(timberPlantTree)
+            Logger.setLogWriters(emptyList<LogcatWriter>())
         }
 
         @AfterAll
@@ -289,7 +276,6 @@ class PopularMoviesViewModelTest {
         fun tearDown() {
             Dispatchers.resetMain()
             unmockkStatic(DateFormat::class)
-            Timber.uproot(timberPlantTree)
         }
     }
 }

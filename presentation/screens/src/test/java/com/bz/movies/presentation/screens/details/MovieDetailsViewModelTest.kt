@@ -1,10 +1,12 @@
 package com.bz.movies.presentation.screens.details
 
 import app.cash.turbine.test
+import co.touchlab.kermit.ExperimentalKermitApi
+import co.touchlab.kermit.LogcatWriter
+import co.touchlab.kermit.Logger
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
-import com.bz.movies.presentation.screens.popular.PopularMoviesViewModelTest
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.model.MoveDetailDto
@@ -16,7 +18,6 @@ import io.mockk.mockk
 import io.mockk.mockkObject
 import io.mockk.unmockkAll
 import io.mockk.unmockkObject
-import io.mockk.verify
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -28,7 +29,6 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import timber.log.Timber
 
 class MovieDetailsViewModelTest {
 
@@ -81,10 +81,6 @@ class MovieDetailsViewModelTest {
                 )
             } returns Result.failure(HttpException(""))
 
-            val timberPlantTree: Timber.Tree = mockk(relaxed = true)
-            Timber.plant(timberPlantTree)
-            verify(exactly = 0) { timberPlantTree.e(any<Throwable>()) }
-
             val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
             viewModel.fetchMovieDetails(1234)
             viewModel.effect.test {
@@ -93,9 +89,6 @@ class MovieDetailsViewModelTest {
             }
 
             coVerify(exactly = 1) { movieRepository.getMovieDetail(any()) }
-            verify(exactly = 1) { timberPlantTree.e(any<Throwable>()) }
-
-            Timber.uproot(timberPlantTree)
         }
 
     @Test
@@ -103,10 +96,6 @@ class MovieDetailsViewModelTest {
         coEvery {
             movieRepository.getMovieDetail(any())
         } returns Result.failure(IllegalStateException())
-
-        val timberPlantTree: Timber.Tree = mockk(relaxed = true)
-        Timber.plant(timberPlantTree)
-        verify(exactly = 0) { timberPlantTree.e(any<Throwable>()) }
 
         val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
         viewModel.fetchMovieDetails(1234)
@@ -116,14 +105,9 @@ class MovieDetailsViewModelTest {
         }
 
         coVerify(exactly = 1) { movieRepository.getMovieDetail(any()) }
-        verify(exactly = 1) { timberPlantTree.e(any<Throwable>()) }
-
-        Timber.uproot(timberPlantTree)
     }
 
     companion object {
-
-        val timberPlantTree: Timber.Tree = mockk(relaxed = true)
 
         internal val EXPECTED_DETAILS_STATE = MovieDetailState(
             isLoading = false,
@@ -147,18 +131,18 @@ class MovieDetailsViewModelTest {
             overview = "bornig"
         )
 
+        @OptIn(ExperimentalKermitApi::class)
         @BeforeAll
         @JvmStatic
         fun setUp() {
             Dispatchers.setMain(StandardTestDispatcher())
-            Timber.plant(PopularMoviesViewModelTest.Companion.timberPlantTree)
+            Logger.setLogWriters(emptyList<LogcatWriter>())
         }
 
         @AfterAll
         @JvmStatic
         fun tearDown() {
             Dispatchers.resetMain()
-            Timber.uproot(PopularMoviesViewModelTest.Companion.timberPlantTree)
             unmockkAll()
         }
     }

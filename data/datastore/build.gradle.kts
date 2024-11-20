@@ -44,7 +44,7 @@ dependencies {
     api(libs.javax.inject)
     //
 
-    implementation(libs.timber)
+    implementation(libs.kermit)
 
     api(libs.androidx.datastore.core)
     implementation(libs.androidx.datastore.preferences)
