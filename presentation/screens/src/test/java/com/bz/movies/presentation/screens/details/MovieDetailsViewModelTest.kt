@@ -2,8 +2,6 @@ package com.bz.movies.presentation.screens.details
 
 import app.cash.turbine.test
 import co.touchlab.kermit.ExperimentalKermitApi
-import co.touchlab.kermit.LogcatWriter
-import co.touchlab.kermit.Logger
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
@@ -16,7 +14,6 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
-import io.mockk.unmockkAll
 import io.mockk.unmockkObject
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
@@ -136,14 +133,12 @@ class MovieDetailsViewModelTest {
         @JvmStatic
         fun setUp() {
             Dispatchers.setMain(StandardTestDispatcher())
-            Logger.setLogWriters(emptyList<LogcatWriter>())
         }
 
         @AfterAll
         @JvmStatic
         fun tearDown() {
             Dispatchers.resetMain()
-            unmockkAll()
         }
     }
 }

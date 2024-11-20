@@ -1,8 +1,6 @@
 package com.bz.movies.presentation.screens.popular
 
 import app.cash.turbine.test
-import co.touchlab.kermit.LogcatWriter
-import co.touchlab.kermit.Logger
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.datastore.repository.DataStoreRepository
 import com.bz.movies.presentation.screens.common.MovieEffect
@@ -38,7 +36,7 @@ class PopularMoviesViewModelTest {
     private val localMovieRepository: LocalMovieRepository = mockk(relaxed = true)
 
     private val storeRepository: DataStoreRepository = mockk(relaxed = true) {
-        coEvery { getPlyingNowRefreshDate() } returns Result.success(Instant.now())
+        coEvery { getPopularRefreshDate() } returns Result.success(Instant.now())
     }
 
     @Test
@@ -260,7 +258,6 @@ class PopularMoviesViewModelTest {
         @JvmStatic
         fun setUp() {
             Dispatchers.setMain(StandardTestDispatcher())
-            Logger.setLogWriters(emptyList<LogcatWriter>())
         }
 
         @AfterAll

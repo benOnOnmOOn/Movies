@@ -1,8 +1,6 @@
 package com.bz.movies.presentation.screens.playingNow
 
 import app.cash.turbine.test
-import co.touchlab.kermit.LogcatWriter
-import co.touchlab.kermit.Logger
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.datastore.repository.DataStoreRepository
 import com.bz.movies.presentation.screens.common.MoviesState
@@ -67,7 +65,6 @@ class PlayingNowViewModelTest {
         @JvmStatic
         fun setUp() {
             Dispatchers.setMain(StandardTestDispatcher())
-            Logger.setLogWriters(emptyList<LogcatWriter>())
         }
 
         @AfterAll
