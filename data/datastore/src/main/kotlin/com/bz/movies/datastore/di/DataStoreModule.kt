@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
+import co.touchlab.kermit.Logger
 import com.bz.movies.datastore.repository.DataStoreRepository
 import com.bz.movies.datastore.repository.DataStoreRepositoryImpl
 import dagger.Module
@@ -16,7 +17,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 import throwOnMainThread
-import timber.log.Timber
 
 internal const val USER_PREFERENCES = "Settings"
 
@@ -30,7 +30,7 @@ internal class DataStoreModule {
         return PreferenceDataStoreFactory.create(
             corruptionHandler = ReplaceFileCorruptionHandler(
                 produceNewData = {
-                    Timber.e(it)
+                    Logger.e("DataStoreModule", it)
                     emptyPreferences()
                 }
             ),

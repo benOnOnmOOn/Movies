@@ -1,8 +1,5 @@
 package com.bz.movies.presentation.screens.popular
 
-import android.annotation.SuppressLint
-import android.icu.text.DateFormat
-import android.icu.text.SimpleDateFormat
 import app.cash.turbine.test
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.datastore.repository.DataStoreRepository
@@ -18,10 +15,8 @@ import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.mockkStatic
-import io.mockk.unmockkStatic
 import io.mockk.verify
-import java.util.Date
+import java.time.Instant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
@@ -34,16 +29,14 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import timber.log.Timber
 
 class PopularMoviesViewModelTest {
 
     private val movieRepository: MovieRepository = mockk()
     private val localMovieRepository: LocalMovieRepository = mockk(relaxed = true)
 
-    @SuppressLint("DenyListedApi")
     private val storeRepository: DataStoreRepository = mockk(relaxed = true) {
-        coEvery { getPlyingNowRefreshDate() } returns Date()
+        coEvery { getPopularRefreshDate() } returns Result.success(Instant.now())
     }
 
     @Test
@@ -80,11 +73,6 @@ class PopularMoviesViewModelTest {
             every { localMovieRepository.popularMovies } returns flow { throw IllegalStateException() }
             coEvery { movieRepository.getPopularMovies(any()) } returns Result.success(emptyList())
 
-            val timberPlantTree: Timber.Tree = mockk(relaxed = true)
-            Timber.plant(timberPlantTree)
-
-            verify(exactly = 0) { timberPlantTree.e(any<Throwable>()) }
-
             val viewModel = PopularMoviesViewModel(
                 movieRepository = Lazy { movieRepository },
                 localMovieRepository = Lazy { localMovieRepository },
@@ -100,9 +88,6 @@ class PopularMoviesViewModelTest {
             verify(exactly = 1) { localMovieRepository.popularMovies }
             coVerify(exactly = 1) { localMovieRepository.insertPopularMovies(any()) }
             coVerify(exactly = 1) { movieRepository.getPopularMovies(any()) }
-            verify(exactly = 1) { timberPlantTree.e(any<Throwable>()) }
-
-            Timber.uproot(timberPlantTree)
         }
 
     @Test
@@ -185,10 +170,6 @@ class PopularMoviesViewModelTest {
         coEvery {
             movieRepository.getPopularMovies(any())
         } returns Result.failure(IllegalStateException())
-        val timberPlantTree: Timber.Tree = mockk(relaxed = true)
-        Timber.plant(timberPlantTree)
-
-        verify(exactly = 0) { timberPlantTree.e(any<Throwable>()) }
 
         val viewModel = PopularMoviesViewModel(
             movieRepository = Lazy { movieRepository },
@@ -203,7 +184,6 @@ class PopularMoviesViewModelTest {
         }
 
         coVerify(exactly = 1) { movieRepository.getPopularMovies(any()) }
-        verify(exactly = 1) { timberPlantTree.e(any<Throwable>()) }
     }
 
     @Test
@@ -273,25 +253,17 @@ class PopularMoviesViewModelTest {
     }
 
     companion object {
-        val timberPlantTree: Timber.Tree = mockk(relaxed = true)
 
         @BeforeAll
         @JvmStatic
         fun setUp() {
             Dispatchers.setMain(StandardTestDispatcher())
-            mockkStatic(DateFormat::class)
-
-            every { SimpleDateFormat.getInstance() } returns mockk(relaxed = true)
-
-            Timber.plant(timberPlantTree)
         }
 
         @AfterAll
         @JvmStatic
         fun tearDown() {
             Dispatchers.resetMain()
-            unmockkStatic(DateFormat::class)
-            Timber.uproot(timberPlantTree)
         }
     }
 }

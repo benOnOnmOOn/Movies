@@ -1,15 +1,11 @@
 package com.bz.movies.presentation.screens.favorite
 
-import android.icu.text.DateFormat
-import android.icu.text.SimpleDateFormat
 import app.cash.turbine.test
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.presentation.screens.common.MoviesState
 import dagger.Lazy
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.mockkStatic
-import io.mockk.unmockkStatic
 import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOf
@@ -21,7 +17,6 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import timber.log.Timber
 
 class FavoriteScreenViewModelTest {
 
@@ -51,25 +46,17 @@ class FavoriteScreenViewModelTest {
         }
 
     companion object {
-        val timberPlantTree: Timber.Tree = mockk(relaxed = true)
 
         @BeforeAll
         @JvmStatic
         fun setUp() {
             Dispatchers.setMain(StandardTestDispatcher())
-            mockkStatic(DateFormat::class)
-
-            every { SimpleDateFormat.getInstance() } returns mockk(relaxed = true)
-
-            Timber.plant(timberPlantTree)
         }
 
         @AfterAll
         @JvmStatic
         fun tearDown() {
             Dispatchers.resetMain()
-            unmockkStatic(DateFormat::class)
-            Timber.uproot(timberPlantTree)
         }
     }
 }

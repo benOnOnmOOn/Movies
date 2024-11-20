@@ -3,6 +3,7 @@ package com.bz.movies.presentation.screens.favorite
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.touchlab.kermit.Logger
 import com.bz.dto.MovieDto
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.presentation.mappers.toDTO
@@ -26,7 +27,6 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @HiltViewModel
 internal class FavoriteScreenViewModel @Inject constructor(
@@ -71,7 +71,7 @@ internal class FavoriteScreenViewModel @Inject constructor(
             localMovieRepository.get().favoritesMovies
                 .catch {
                     _effect.send(MovieEffect.UnknownError)
-                    Timber.e(it)
+                    Logger.e("Loading issues", it)
                     _state.update {
                         MoviesState(
                             isLoading = false,

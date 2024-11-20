@@ -3,6 +3,7 @@ package com.bz.movies.presentation.screens.details
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.touchlab.kermit.Logger
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
@@ -25,7 +26,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @SuppressLint("MainScopeUsage")
 @HiltViewModel
@@ -74,7 +74,7 @@ internal class MovieDetailsViewModel @Inject constructor(
                     else -> MovieEffect.UnknownError
                 }
             _effect.send(error)
-            Timber.e(it)
+            Logger.e("Loading error", it)
             _state.update { MovieDetailState(isLoading = false) }
         }
     }

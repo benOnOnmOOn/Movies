@@ -1,9 +1,8 @@
 package com.bz.movies.presentation.screens.playingNow
 
-import android.annotation.SuppressLint
-import android.icu.text.SimpleDateFormat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.touchlab.kermit.Logger
 import com.bz.dto.MovieDto
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.datastore.repository.DataStoreRepository
@@ -18,7 +17,7 @@ import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.Date
+import java.time.Instant
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -34,7 +33,6 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @HiltViewModel
 internal class PlayingNowViewModel @Inject constructor(
@@ -86,9 +84,7 @@ internal class PlayingNowViewModel @Inject constructor(
         localMovieRepository.get().clearPlayingNowMovies()
         val result = movieRepository.get().getPlayingNowMovies()
         result.onSuccess { data ->
-            dataStoreRepository.get().insertPlayingNowRefreshDate(
-                @SuppressLint("DenyListedApi") Date()
-            )
+            dataStoreRepository.get().insertPlayingNowRefreshDate(Instant.now())
             localMovieRepository.get().insertPlayingNowMovies(data)
         }
         result.onFailure {
@@ -100,7 +96,7 @@ internal class PlayingNowViewModel @Inject constructor(
                     else -> MovieEffect.UnknownError
                 }
             _effect.send(error)
-            Timber.e(it)
+            Logger.e("Loading error:", it)
         }
     }
 
@@ -110,7 +106,7 @@ internal class PlayingNowViewModel @Inject constructor(
                 .onStart { fetchPlayingNowMovies() }
                 .catch {
                     _effect.send(MovieEffect.UnknownError)
-                    Timber.e(it)
+                    Logger.e("Loading error:", it)
                     _state.update {
                         MoviesState(
                             isLoading = false,
@@ -119,8 +115,10 @@ internal class PlayingNowViewModel @Inject constructor(
                     }
                 }
                 .collectLatest { data ->
-                    val lastDate = dataStoreRepository.get().getPlyingNowRefreshDate()
-                    Timber.d("Last date : ${SimpleDateFormat.getInstance().format(lastDate)}")
+                    dataStoreRepository.get().getPlyingNowRefreshDate()
+                        .onFailure { Logger.e("Loading error", it) }
+                        .onSuccess { Logger.d("Last date : $it") }
+
                     _state.update {
                         MoviesState(
                             isLoading = false,

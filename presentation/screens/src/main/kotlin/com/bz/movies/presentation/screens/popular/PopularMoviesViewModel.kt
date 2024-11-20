@@ -1,9 +1,9 @@
 package com.bz.movies.presentation.screens.popular
 
 import android.annotation.SuppressLint
-import android.icu.text.SimpleDateFormat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.touchlab.kermit.Logger
 import com.bz.dto.MovieDto
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.datastore.repository.DataStoreRepository
@@ -18,7 +18,7 @@ import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.Date
+import java.time.Instant
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -35,7 +35,6 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @HiltViewModel
 internal class PopularMoviesViewModel @Inject constructor(
@@ -87,9 +86,7 @@ internal class PopularMoviesViewModel @Inject constructor(
         val result = movieRepository.get().getPopularMovies(1)
         result.onSuccess { data ->
 
-            dataStoreRepository.get().insertPopularNowRefreshDate(
-                @SuppressLint("DenyListedApi") Date()
-            )
+            dataStoreRepository.get().insertPopularNowRefreshDate(Instant.now())
             localMovieRepository.get().insertPopularMovies(data)
         }
         result.onFailure {
@@ -101,7 +98,7 @@ internal class PopularMoviesViewModel @Inject constructor(
                     else -> MovieEffect.UnknownError
                 }
             _effect.send(error)
-            Timber.e(it)
+            Logger.e("Loading error", it)
             _state.update {
                 it.copy(
                     isLoading = false,
@@ -114,15 +111,16 @@ internal class PopularMoviesViewModel @Inject constructor(
     @SuppressLint("RawDispatchersUse")
     private fun collectPopularMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-            val lastDate = dataStoreRepository.get().getPopularRefreshDate()
-            Timber.d("Last date : ${SimpleDateFormat.getInstance().format(lastDate)}")
+            dataStoreRepository.get().getPopularRefreshDate()
+                .onFailure { Logger.e("Loading error") }
+                .onSuccess { Logger.d("Last date : $it") }
 
             localMovieRepository.get().popularMovies
                 .flowOn(Dispatchers.Main)
                 .onStart { fetchPopularNowMovies() }
                 .catch {
                     _effect.send(MovieEffect.UnknownError)
-                    Timber.e(it)
+                    Logger.e("Loading error", it)
                     _state.update {
                         MoviesState(
                             isLoading = false,

@@ -31,6 +31,13 @@ kover {
     }
 }
 
+dependencyAnalysis {
+    issues {
+        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
+        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
+    }
+}
+
 dependencies {
     implementation(project(":utlis:android"))
 
@@ -44,7 +51,7 @@ dependencies {
     api(libs.javax.inject)
     //
 
-    implementation(libs.timber)
+    implementation(libs.kermit)
 
     api(libs.androidx.datastore.core)
     implementation(libs.androidx.datastore.preferences)
@@ -52,6 +59,8 @@ dependencies {
     implementation(libs.androidx.datastore)
 
     implementation(libs.kotlinx.coroutines.core)
+
+    releaseImplementation(libs.kermit.core)
 
     testRuntimeOnly(libs.junit.engine)
 

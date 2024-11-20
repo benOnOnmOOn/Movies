@@ -1,8 +1,5 @@
 package com.bz.movies.presentation.screens.playingNow
 
-import android.annotation.SuppressLint
-import android.icu.text.DateFormat
-import android.icu.text.SimpleDateFormat
 import app.cash.turbine.test
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.datastore.repository.DataStoreRepository
@@ -13,10 +10,8 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.mockkStatic
-import io.mockk.unmockkStatic
 import io.mockk.verify
-import java.util.Date
+import java.time.Instant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -27,15 +22,13 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import timber.log.Timber
 
 class PlayingNowViewModelTest {
     private val movieRepository: MovieRepository = mockk()
     private val localMovieRepository: LocalMovieRepository = mockk(relaxed = true)
 
-    @SuppressLint("DenyListedApi")
     private val storeRepository: DataStoreRepository = mockk(relaxed = true) {
-        coEvery { getPlyingNowRefreshDate() } returns Date()
+        coEvery { getPlyingNowRefreshDate() } returns Result.success(Instant.now())
     }
 
     @Test
@@ -68,25 +61,16 @@ class PlayingNowViewModelTest {
         }
 
     companion object {
-        val timberPlantTree: Timber.Tree = mockk(relaxed = true)
-
         @BeforeAll
         @JvmStatic
         fun setUp() {
             Dispatchers.setMain(StandardTestDispatcher())
-            mockkStatic(DateFormat::class)
-
-            every { SimpleDateFormat.getInstance() } returns mockk(relaxed = true)
-
-            Timber.plant(timberPlantTree)
         }
 
         @AfterAll
         @JvmStatic
         fun tearDown() {
             Dispatchers.resetMain()
-            unmockkStatic(DateFormat::class)
-            Timber.uproot(timberPlantTree)
         }
     }
 }
