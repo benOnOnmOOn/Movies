@@ -97,6 +97,16 @@ androidx.startup:startup-runtime:1.2.0
 androidx.tracing:tracing:1.2.0
 androidx.vectordrawable:vectordrawable-animated:1.1.0
 androidx.vectordrawable:vectordrawable:1.1.0
+co.touchlab.crashkios:core-android:0.8.5
+co.touchlab.crashkios:core:0.8.5
+co.touchlab.crashkios:crashlytics-android:0.8.5
+co.touchlab.crashkios:crashlytics:0.8.5
+co.touchlab:kermit-android:2.0.4
+co.touchlab:kermit-core-android:2.0.4
+co.touchlab:kermit-core:2.0.4
+co.touchlab:kermit-crashlytics-android:2.0.4
+co.touchlab:kermit-crashlytics:2.0.4
+co.touchlab:kermit:2.0.4
 com.google.accompanist:accompanist-drawablepainter:0.32.0
 com.google.android.datatransport:transport-api:3.2.0
 com.google.android.datatransport:transport-backend-cct:3.3.0
@@ -142,7 +152,6 @@ com.google.guava:guava:33.3.0-android
 com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava
 com.google.net.cronet:cronet-okhttp:0.1.0
 com.google.protobuf:protobuf-javalite:3.25.5
-com.jakewharton.timber:timber:5.0.1
 com.squareup.moshi:moshi:1.15.1
 com.squareup.okhttp3:okhttp:4.12.0
 com.squareup.okio:okio-jvm:3.9.0
