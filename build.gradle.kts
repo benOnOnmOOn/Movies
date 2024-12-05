@@ -153,10 +153,7 @@ fun <
         disable += listOf(
             "NewerVersionAvailable",
             "GradleDependency",
-            "RawDispatchersUse",
-            // The crash seems to involve the detector \\\`androidx.navigation.lint.BaseWrongStartDestinationTypeDetector\\\`.
-            "WrongStartDestinationType",
-            "WrongNavigateRouteType"
+            "RawDispatchersUse"
         )
         abortOnError = true
         checkAllWarnings = true
