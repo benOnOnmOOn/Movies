@@ -153,7 +153,7 @@ fun <
         disable += listOf(
             "NewerVersionAvailable",
             "GradleDependency",
-            "RawDispatchersUse",
+            "RawDispatchersUse"
         )
         abortOnError = true
         checkAllWarnings = true
