@@ -6,13 +6,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesContent
 import com.bz.movies.presentation.screens.common.MoviesState
-import com.bz.movies.presentation.theme.MoviesTheme
 import com.bz.presentation.screens.R
 
 @Composable
@@ -22,7 +20,7 @@ internal fun FavoriteScreen(favoriteScreenViewModel: FavoriteScreenViewModel = h
 }
 
 @Composable
-private fun FavoriteScreen(state: MoviesState = MoviesState(), sendEvent: (MovieEvent) -> Unit) {
+internal fun FavoriteScreen(state: MoviesState = MoviesState(), sendEvent: (MovieEvent) -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -31,13 +29,5 @@ private fun FavoriteScreen(state: MoviesState = MoviesState(), sendEvent: (Movie
         MoviesContent(playingNowState = state) {
             sendEvent(MovieEvent.OnMovieClicked(it))
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun FavoriteScreenPreview() {
-    MoviesTheme {
-        FavoriteScreen()
     }
 }

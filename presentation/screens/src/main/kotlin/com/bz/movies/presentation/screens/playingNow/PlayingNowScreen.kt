@@ -8,7 +8,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.bz.movies.presentation.screens.common.ErrorDialog
@@ -17,7 +16,6 @@ import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesContentWithPullToRefresh
 import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.movies.presentation.screens.common.NoInternetDialog
-import com.bz.movies.presentation.theme.MoviesTheme
 import com.bz.movies.presentation.utils.collectInLaunchedEffectWithLifecycle
 import com.bz.presentation.screens.R
 
@@ -78,13 +76,5 @@ private fun PlayingNowScreen(
                 onConfirmation = { onErrorDismiss() }
             )
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun PlayingNowScreenPreview() {
-    MoviesTheme {
-        PlayingNowScreen()
     }
 }
