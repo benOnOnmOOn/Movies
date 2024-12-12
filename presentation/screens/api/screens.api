@@ -30,24 +30,12 @@ public final class com/bz/movies/presentation/screens/common/ComposableSingleton
 	public final fun getLambda-9$screens_release ()Lkotlin/jvm/functions/Function2;
 }
 
-public final class com/bz/movies/presentation/screens/details/ComposableSingletons$MovieDetailsScreenKt {
-	public static final field INSTANCE Lcom/bz/movies/presentation/screens/details/ComposableSingletons$MovieDetailsScreenKt;
-	public fun <init> ()V
-	public final fun getLambda-1$screens_release ()Lkotlin/jvm/functions/Function2;
-}
-
 public abstract class com/bz/movies/presentation/screens/details/MovieDetailsViewModel_HiltModules$BindsModule {
 	public abstract fun binds (Lcom/bz/movies/presentation/screens/details/MovieDetailsViewModel;)Landroidx/lifecycle/ViewModel;
 }
 
 public final class com/bz/movies/presentation/screens/details/MovieDetailsViewModel_HiltModules$KeyModule {
 	public static fun provide ()Z
-}
-
-public final class com/bz/movies/presentation/screens/favorite/ComposableSingletons$FavoriteScreenKt {
-	public static final field INSTANCE Lcom/bz/movies/presentation/screens/favorite/ComposableSingletons$FavoriteScreenKt;
-	public fun <init> ()V
-	public final fun getLambda-1$screens_release ()Lkotlin/jvm/functions/Function2;
 }
 
 public abstract class com/bz/movies/presentation/screens/favorite/FavoriteScreenViewModel_HiltModules$BindsModule {
@@ -58,30 +46,12 @@ public final class com/bz/movies/presentation/screens/favorite/FavoriteScreenVie
 	public static fun provide ()Z
 }
 
-public final class com/bz/movies/presentation/screens/more/ComposableSingletons$MoreScreenKt {
-	public static final field INSTANCE Lcom/bz/movies/presentation/screens/more/ComposableSingletons$MoreScreenKt;
-	public fun <init> ()V
-	public final fun getLambda-1$screens_release ()Lkotlin/jvm/functions/Function2;
-}
-
-public final class com/bz/movies/presentation/screens/playingNow/ComposableSingletons$PlayingNowScreenKt {
-	public static final field INSTANCE Lcom/bz/movies/presentation/screens/playingNow/ComposableSingletons$PlayingNowScreenKt;
-	public fun <init> ()V
-	public final fun getLambda-1$screens_release ()Lkotlin/jvm/functions/Function2;
-}
-
 public abstract class com/bz/movies/presentation/screens/playingNow/PlayingNowViewModel_HiltModules$BindsModule {
 	public abstract fun binds (Lcom/bz/movies/presentation/screens/playingNow/PlayingNowViewModel;)Landroidx/lifecycle/ViewModel;
 }
 
 public final class com/bz/movies/presentation/screens/playingNow/PlayingNowViewModel_HiltModules$KeyModule {
 	public static fun provide ()Z
-}
-
-public final class com/bz/movies/presentation/screens/popular/ComposableSingletons$PopularMoviesScreenKt {
-	public static final field INSTANCE Lcom/bz/movies/presentation/screens/popular/ComposableSingletons$PopularMoviesScreenKt;
-	public fun <init> ()V
-	public final fun getLambda-1$screens_release ()Lkotlin/jvm/functions/Function2;
 }
 
 public abstract class com/bz/movies/presentation/screens/popular/PopularMoviesViewModel_HiltModules$BindsModule {
