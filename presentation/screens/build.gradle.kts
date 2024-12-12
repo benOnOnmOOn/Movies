@@ -78,10 +78,10 @@ dependencies {
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.ui.graphics.android)
     implementation(libs.androidx.ui.text.android)
-    implementation(libs.androidx.ui.tooling.preview.android)
     implementation(libs.androidx.ui.unit.android)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.appcompat)
+    debugImplementation(libs.androidx.ui.tooling.preview.android)
 
     api(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.core)
