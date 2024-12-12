@@ -36,6 +36,7 @@
 -dontwarn com.google.auto.value.**
 -dontwarn org.codehaus.mojo.**
 -dontwarn javax.annotation.**
+-dontwarn androidx.loader.app.LoaderManager
 -dontwarn androidx.customview.view.AbsSavedState
 -dontwarn androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 -dontwarn androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
