@@ -23,7 +23,7 @@ private fun MovieDetailsScreenPreview() {
 @Composable
 private fun FavoriteScreenPreview() {
     MoviesTheme {
-        FavoriteScreen(state = MoviesState()){}
+        FavoriteScreen(state = MoviesState()) {}
     }
 }
 
