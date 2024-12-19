@@ -1,12 +1,12 @@
 package com.bz.network.repository.mapper
 
+import com.bz.dto.MoveDetailDto
 import com.bz.dto.MovieDto
+import com.bz.dto.PopularMoviePageDto
 import com.bz.network.api.model.MovieApiResponse
 import com.bz.network.api.model.MovieDetailsApiResponse
 import com.bz.network.api.model.PlayingNowMoviesApiResponse
 import com.bz.network.api.model.PopularMoviesPageApiResponse
-import com.bz.dto.MoveDetailDto
-import com.bz.dto.PopularMoviePageDto
 
 private const val VOTE_MULTIPLER = 10
 
