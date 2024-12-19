@@ -14,3 +14,9 @@ public class android/DelegatingSocketFactory : javax/net/SocketFactory {
 	public fun createSocket (Ljava/net/InetAddress;ILjava/net/InetAddress;I)Ljava/net/Socket;
 }
 
+public abstract interface annotation class com/bz/network/di/qualifiiers/CurrencyRetrofit : java/lang/annotation/Annotation {
+}
+
+public abstract interface annotation class com/bz/network/di/qualifiiers/MoviesRetrofit : java/lang/annotation/Annotation {
+}
+

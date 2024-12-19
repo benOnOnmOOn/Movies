@@ -7,7 +7,7 @@ import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
-import com.bz.network.repository.model.MoveDetailDto
+import com.bz.dto.MoveDetailDto
 import dagger.Lazy
 import io.mockk.coEvery
 import io.mockk.coVerify

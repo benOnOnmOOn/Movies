@@ -8,8 +8,8 @@ import com.bz.network.api.model.MovieDetailsApiResponse
 import com.bz.network.api.model.PlayingNowMoviesApiResponse
 import com.bz.network.api.model.PopularMoviesPageApiResponse
 import com.bz.network.api.service.MovieService
-import com.bz.network.repository.model.MoveDetailDto
-import com.bz.network.repository.model.PopularMoviePageDto
+import com.bz.dto.MoveDetailDto
+import com.bz.dto.PopularMoviePageDto
 import com.bz.network.utils.InternetConnection
 import io.mockk.coEvery
 import io.mockk.coVerify

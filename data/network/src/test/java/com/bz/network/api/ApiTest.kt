@@ -32,16 +32,6 @@ internal class ApiTest {
 
     private val movieService: MovieService = retrofit.create(MovieService::class.java)
 
-//    @Before
-//    fun setup() {
-//        mockWebServer.start(8080)
-//    }
-//
-//    @After
-//    fun teardown() {
-//        mockWebServer.shutdown()
-//    }
-
     @Test
     fun `getMovieDetails check json parsing using sample json`() = runTest {
         mockWebServer.enqueueFromFile("movie_details.json")
@@ -78,7 +68,7 @@ internal class ApiTest {
     }
 
     companion object {
-        val EXPECTED_MOVIE_DETAILS =
+        private val EXPECTED_MOVIE_DETAILS =
             MovieDetailsApiResponse(
                 adult = false,
                 backdropPath = "/srYya1ZlI97Au4jUYAktDe3avyA.jpg",
