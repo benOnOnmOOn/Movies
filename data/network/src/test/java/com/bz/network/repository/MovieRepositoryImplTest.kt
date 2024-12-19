@@ -1,6 +1,8 @@
 package com.bz.network.repository
 
+import com.bz.dto.MoveDetailDto
 import com.bz.dto.MovieDto
+import com.bz.dto.PopularMoviePageDto
 import com.bz.network.api.model.Dates
 import com.bz.network.api.model.Genre
 import com.bz.network.api.model.MovieApiResponse
@@ -8,8 +10,6 @@ import com.bz.network.api.model.MovieDetailsApiResponse
 import com.bz.network.api.model.PlayingNowMoviesApiResponse
 import com.bz.network.api.model.PopularMoviesPageApiResponse
 import com.bz.network.api.service.MovieService
-import com.bz.network.repository.model.MoveDetailDto
-import com.bz.network.repository.model.PopularMoviePageDto
 import com.bz.network.utils.InternetConnection
 import io.mockk.coEvery
 import io.mockk.coVerify

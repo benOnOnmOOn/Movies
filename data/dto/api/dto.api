@@ -1,3 +1,56 @@
+public final class com/bz/dto/CurrencyDto {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()I
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Lcom/bz/dto/CurrencyDto;
+	public static synthetic fun copy$default (Lcom/bz/dto/CurrencyDto;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/Object;)Lcom/bz/dto/CurrencyDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getDecimalDigits ()I
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSymbol ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/bz/dto/ExchangeRateDto {
+	public fun <init> (Ljava/lang/String;F)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()F
+	public final fun copy (Ljava/lang/String;F)Lcom/bz/dto/ExchangeRateDto;
+	public static synthetic fun copy$default (Lcom/bz/dto/ExchangeRateDto;Ljava/lang/String;FILjava/lang/Object;)Lcom/bz/dto/ExchangeRateDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getExchangeRate ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/bz/dto/MoveDetailDto {
+	public fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;Ljava/lang/String;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/util/Set;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun copy (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;Ljava/lang/String;)Lcom/bz/dto/MoveDetailDto;
+	public static synthetic fun copy$default (Lcom/bz/dto/MoveDetailDto;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;Ljava/lang/String;ILjava/lang/Object;)Lcom/bz/dto/MoveDetailDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGenre ()Ljava/util/Set;
+	public final fun getId ()I
+	public final fun getLanguage ()Ljava/lang/String;
+	public final fun getOverview ()Ljava/lang/String;
+	public final fun getPosterUrl ()Ljava/lang/String;
+	public final fun getPublicationDate ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class com/bz/dto/MovieDto {
 	public fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
 	public final fun component1 ()I
@@ -15,6 +68,23 @@ public final class com/bz/dto/MovieDto {
 	public final fun getPublicationDate ()Ljava/lang/String;
 	public final fun getRating ()I
 	public final fun getTitle ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/bz/dto/PopularMoviePageDto {
+	public fun <init> (IIILjava/util/List;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (IIILjava/util/List;)Lcom/bz/dto/PopularMoviePageDto;
+	public static synthetic fun copy$default (Lcom/bz/dto/PopularMoviePageDto;IIILjava/util/List;ILjava/lang/Object;)Lcom/bz/dto/PopularMoviePageDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPage ()I
+	public final fun getPopularMovies ()Ljava/util/List;
+	public final fun getTotalPages ()I
+	public final fun getTotalResults ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }

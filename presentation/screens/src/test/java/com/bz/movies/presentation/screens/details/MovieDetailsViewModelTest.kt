@@ -2,12 +2,12 @@ package com.bz.movies.presentation.screens.details
 
 import app.cash.turbine.test
 import co.touchlab.kermit.ExperimentalKermitApi
+import com.bz.dto.MoveDetailDto
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
-import com.bz.network.repository.model.MoveDetailDto
 import dagger.Lazy
 import io.mockk.coEvery
 import io.mockk.coVerify

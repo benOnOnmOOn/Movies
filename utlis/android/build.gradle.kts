@@ -22,6 +22,8 @@ apiValidation {
 }
 
 dependencies {
+    api(libs.javax.inject)
+
     lintChecks(libs.slack.lint.checks)
 
     testImplementation(libs.junit.api)
