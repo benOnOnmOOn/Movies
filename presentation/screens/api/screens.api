@@ -46,6 +46,14 @@ public final class com/bz/movies/presentation/screens/favorite/FavoriteScreenVie
 	public static fun provide ()Z
 }
 
+public abstract class com/bz/movies/presentation/screens/more/MoreScreenViewModel_HiltModules$BindsModule {
+	public abstract fun binds (Lcom/bz/movies/presentation/screens/more/MoreScreenViewModel;)Landroidx/lifecycle/ViewModel;
+}
+
+public final class com/bz/movies/presentation/screens/more/MoreScreenViewModel_HiltModules$KeyModule {
+	public static fun provide ()Z
+}
+
 public abstract class com/bz/movies/presentation/screens/playingNow/PlayingNowViewModel_HiltModules$BindsModule {
 	public abstract fun binds (Lcom/bz/movies/presentation/screens/playingNow/PlayingNowViewModel;)Landroidx/lifecycle/ViewModel;
 }
