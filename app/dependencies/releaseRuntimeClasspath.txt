@@ -147,7 +147,7 @@ com.google.firebase:firebase-perf:21.0.3
 com.google.firebase:firebase-sessions:2.0.7
 com.google.firebase:protolite-well-known-types:18.0.0
 com.google.guava:failureaccess:1.0.2
-com.google.guava:guava:33.3.1-android
+com.google.guava:guava:33.4.0-android
 com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava
 com.google.j2objc:j2objc-annotations:3.0.0
 com.google.net.cronet:cronet-okhttp:0.1.0
