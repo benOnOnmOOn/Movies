@@ -53,6 +53,30 @@ class CurrencyApiTest {
         assertEquals(EXPECTED_EXCHANGE_RATE, body)
     }
 
+    @Test
+    fun `getSupportedCurrencies check if json is correctly parsed for huge real data`() = runTest {
+        mockWebServer.enqueueFromFile("all_supported_currencies.json")
+
+        val response = currencyService.getSupportedCurrencies(apiKey = "api-key")
+        assertTrue(response.isSuccessful)
+
+        assertTrue(response.body() is CurrenciesResponseModel)
+//        val body = response.body()
+//        assertEquals(SUPPORTED_CURRENCIES, body)
+    }
+
+    @Test
+    fun `getExchangeRate check if json is correctly parsed for huge real data`() = runTest {
+        mockWebServer.enqueueFromFile("all_exchange_rate.json")
+
+        val response = currencyService.getExchangeRate(apiKey = "api-key", baseCurrency = "EUR")
+        assertTrue(response.isSuccessful)
+
+        assertTrue(response.body() is ExchangeRateResponseModel)
+//        val body = response.body()
+//        assertEquals(EXPECTED_EXCHANGE_RATE, body)
+    }
+
     private companion object {
         private val SUPPORTED_CURRENCIES = CurrenciesResponseModel(
             data = mapOf(

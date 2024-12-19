@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bz.network.repository.CurrencyRepository
 import dagger.Lazy
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,6 +17,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+@HiltViewModel
 internal class MoreScreenViewModel @Inject constructor(
     private val currencyRepository: Lazy<CurrencyRepository>
 ) : ViewModel() {
@@ -27,6 +30,12 @@ internal class MoreScreenViewModel @Inject constructor(
     init {
         collectCurrentLanguage()
         handleEvent()
+        getCurrencies()
+    }
+
+    private fun getCurrencies() =viewModelScope.launch(Dispatchers.IO) {
+        currencyRepository.get().getAllCurrencies()
+        currencyRepository.get().getExchangeRate("EUR")
     }
 
     private fun collectCurrentLanguage() = viewModelScope.launch {
