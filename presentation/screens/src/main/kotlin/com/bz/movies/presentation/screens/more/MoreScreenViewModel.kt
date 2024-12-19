@@ -34,7 +34,7 @@ internal class MoreScreenViewModel @Inject constructor(
     }
 
     private fun getCurrencies() = viewModelScope.launch(Dispatchers.IO) {
-        currencyRepository.get().getAllCurrencies()
+//        currencyRepository.get().getAllCurrencies()
         currencyRepository.get().getExchangeRate("EUR")
     }
 

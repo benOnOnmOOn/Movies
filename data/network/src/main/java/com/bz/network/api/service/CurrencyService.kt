@@ -13,7 +13,7 @@ internal interface CurrencyService {
         @Query("apikey") apiKey: String
     ): Response<CurrenciesResponseModel>
 
-    @GET("currencies")
+    @GET("latest")
     suspend fun getExchangeRate(
         @Query("apikey") apiKey: String,
         @Query("base_currency") baseCurrency: String
