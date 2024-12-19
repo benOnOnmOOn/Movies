@@ -5,8 +5,8 @@ import com.bz.network.api.model.MovieApiResponse
 import com.bz.network.api.model.MovieDetailsApiResponse
 import com.bz.network.api.model.PlayingNowMoviesApiResponse
 import com.bz.network.api.model.PopularMoviesPageApiResponse
-import com.bz.network.repository.model.MoveDetailDto
-import com.bz.network.repository.model.PopularMoviePageDto
+import com.bz.dto.MoveDetailDto
+import com.bz.dto.PopularMoviePageDto
 
 private const val VOTE_MULTIPLER = 10
 

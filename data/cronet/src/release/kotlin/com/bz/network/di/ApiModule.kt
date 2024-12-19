@@ -2,6 +2,8 @@ package com.bz.network.di
 
 import android.DelegatingSocketFactory
 import android.content.Context
+import com.bz.network.di.qualifiiers.CurrencyRetrofit
+import com.bz.network.di.qualifiiers.MoviesRetrofit
 import com.google.android.gms.net.CronetProviderInstaller
 import com.google.android.gms.tasks.Tasks
 import com.google.net.cronet.okhttptransport.CronetCallFactory
@@ -16,10 +18,10 @@ import okhttp3.OkHttpClient
 import org.chromium.net.CronetEngine
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
 import throwOnMainThread
 
-internal const val BASE_URL = "https://api.themoviedb.org/3/"
+internal const val MOVIES_BASE_URL = "https://api.themoviedb.org/3/"
+internal const val CURRENCY_BASE_URL = "https://api.currencyapi.com/v3/"
 internal const val NETWORK_CONNECTION_TIMEOUT = 30L
 
 @Module
@@ -54,16 +56,32 @@ internal class ApiModule {
     }
 
     @Provides
-    fun provideRetrofit(
+    @MoviesRetrofit
+    internal fun provideMoviesRetrofit(
         okHttpClient: OkHttpClient,
         cornetCallFactory: Lazy<CronetCallFactory>
     ): Retrofit {
-        throwOnMainThread("provideRetrofit")
+        throwOnMainThread("provideMoviesRetrofit")
         return Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
             .callFactory(cornetCallFactory.get())
-            .baseUrl(BASE_URL)
+            .baseUrl(MOVIES_BASE_URL)
+            .build()
+    }
+
+    @Provides
+    @CurrencyRetrofit
+    internal fun provideCurrencyRetrofit(
+        okHttpClient: OkHttpClient,
+        cornetCallFactory: Lazy<CronetCallFactory>
+    ): Retrofit {
+        throwOnMainThread("provideCurrencyRetrofit")
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .callFactory(cornetCallFactory.get())
+            .baseUrl(CURRENCY_BASE_URL)
             .build()
     }
 }

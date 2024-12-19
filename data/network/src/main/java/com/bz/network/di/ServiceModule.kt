@@ -1,6 +1,9 @@
 package com.bz.network.di
 
+import com.bz.network.api.service.CurrencyService
 import com.bz.network.api.service.MovieService
+import com.bz.network.di.qualifiiers.CurrencyRetrofit
+import com.bz.network.di.qualifiiers.MoviesRetrofit
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,8 +17,14 @@ import throwOnMainThread
 internal class ServiceModule {
 
     @Provides
-    internal fun provideApiService(retrofit: Retrofit): MovieService {
-        throwOnMainThread("provideApiService")
+    internal fun provideMoviesApiService(@MoviesRetrofit retrofit: Retrofit): MovieService {
+        throwOnMainThread("provideMoviesApiService")
+        return retrofit.create()
+    }
+
+    @Provides
+    internal fun provideCurrencyApiService(@CurrencyRetrofit retrofit: Retrofit): CurrencyService {
+        throwOnMainThread("provideCurrencyApiService")
         return retrofit.create()
     }
 }

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bz.network.repository.CurrencyRepository
+import dagger.Lazy
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +15,9 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-internal class MoreScreenViewModel @Inject constructor() : ViewModel() {
+internal class MoreScreenViewModel @Inject constructor(
+    private val currencyRepository: Lazy<CurrencyRepository>
+) : ViewModel() {
     private val _state = MutableStateFlow(MoreState())
     val state: StateFlow<MoreState> = _state.asStateFlow()
 
