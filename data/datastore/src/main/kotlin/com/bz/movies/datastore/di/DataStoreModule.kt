@@ -16,7 +16,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-import throwOnMainThread
+import android.throwOnMainThread
 
 internal const val USER_PREFERENCES = "Settings"
 

@@ -9,7 +9,7 @@ import java.time.Instant
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import runSuspendCatching
+import android.runSuspendCatching
 
 private const val PLAYING_NOW_KEY = "playing_now_refresh_data"
 private const val POPULAR_KEY = "popular_refresh_data"

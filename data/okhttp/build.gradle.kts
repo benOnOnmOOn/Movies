@@ -35,12 +35,10 @@ dependencies {
     ksp(libs.hilt.android.compiler)
     ksp(libs.dagger.compiler)
     api(libs.dagger)
-    api(libs.javax.inject)
+    debugApi(libs.javax.inject)
     //
 
-    implementation(libs.converter.moshi)
     api(libs.okhttp)
-    api(libs.retrofit)
 
     // use debug impl to prevent from adding this deps to release version
     debugApi(libs.logging.interceptor)

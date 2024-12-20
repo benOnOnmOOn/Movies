@@ -12,7 +12,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import throwOnMainThread
+import android.throwOnMainThread
 
 @Module
 @InstallIn(ViewModelComponent::class)

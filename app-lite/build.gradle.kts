@@ -102,6 +102,7 @@ dependencies {
     // don't warn
     implementation(project(":presentation:core"))
     implementation(project(":data:okhttp"))
+    implementation(project(":utlis:android"))
     kover(project(":presentation:core"))
     kover(project(":presentation:screens"))
     kover(project(":data:network"))

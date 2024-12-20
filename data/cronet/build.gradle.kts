@@ -45,9 +45,7 @@ dependencies {
     releaseImplementation(libs.play.services.cronet)
     //
 
-    implementation(libs.converter.moshi)
     api(libs.okhttp)
-    api(libs.retrofit)
 
     // use debug impl to prevent from adding this deps to release version
     debugApi(libs.logging.interceptor)

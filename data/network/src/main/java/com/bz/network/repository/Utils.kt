@@ -4,7 +4,7 @@ import com.bz.network.utils.InternetConnection
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
-import runSuspendCatching
+import android.runSuspendCatching
 
 internal suspend inline fun <T, R> executeApiCall(
     internetConnectionChecker: InternetConnection,

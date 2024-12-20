@@ -11,7 +11,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-import throwOnMainThread
+import android.throwOnMainThread
 
 @Module
 @InstallIn(SingletonComponent::class)
