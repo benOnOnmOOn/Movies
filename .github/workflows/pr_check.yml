@@ -24,6 +24,28 @@ jobs:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
           cache-cleanup: never
 
+      - name: Format sources with ktlint
+        run: ./gradlew ktlintFormat
+        continue-on-error: true
+
+      - name: Update ktlint baseline
+        run: ./gradlew ktlintGenerateBaseline
+
+      - name: Update dependency guard baseline
+        run: ./gradlew dependencyGuardBaseline
+
+      - name: Update android lint baseline
+        run: ./gradlew updateLintBaseline
+
+      - name: Fix deps using dependency analysis gradle plugin
+        run: ./gradlew fixDependencies
+
+      - name: Run api dump
+        run: ./gradlew apiDump
+
+      # Commit all changed files back to the repository
+      - uses: stefanzweifel/git-auto-commit-action@v5
+
       - name: Build apk
         run: ./gradlew app:assembleDebug
 

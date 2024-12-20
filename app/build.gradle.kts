@@ -106,6 +106,7 @@ dependencies {
     // don't warn
     implementation(project(":presentation:core"))
     implementation(project(":data:cronet"))
+    implementation(project(":utlis:android"))
     kover(project(":presentation:core"))
     kover(project(":presentation:screens"))
     kover(project(":data:network"))
@@ -155,9 +156,6 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
-
-    releaseImplementation(libs.cronet.api)
-    releaseImplementation(libs.cronet.okhttp)
 }
 
 dependencyGuard {

@@ -21,8 +21,16 @@ apiValidation {
     )
 }
 
+dependencyAnalysis {
+    issues {
+        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
+        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
+    }
+}
+
 dependencies {
-    api(libs.javax.inject)
+    implementation(libs.kermit)
+    implementation(libs.kermit.core)
 
     lintChecks(libs.slack.lint.checks)
 

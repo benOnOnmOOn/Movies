@@ -211,7 +211,7 @@ fun BaseAppModuleExtension.baseConfig() {
         includeInBundle = false
     }
 
-    @Suppress("UnstableApiUsage")
+    @Suppress("UnstableApiUsage", "MissingResourcesProperties")
     androidResources.generateLocaleConfig = true
 
     defaultConfig {

@@ -55,7 +55,10 @@ dependencies {
 
     implementation(libs.moshi)
 
+    implementation(libs.converter.moshi)
+    api(libs.okhttp)
     api(libs.retrofit)
+
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.ktx)
@@ -64,7 +67,6 @@ dependencies {
 
     testRuntimeOnly(libs.junit.engine)
 
-    testImplementation(libs.converter.moshi)
     testImplementation(libs.mockk.dsl)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockk)

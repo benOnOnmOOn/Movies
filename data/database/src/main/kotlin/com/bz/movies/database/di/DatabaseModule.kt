@@ -1,6 +1,7 @@
 package com.bz.movies.database.di
 
 import android.app.Application
+import android.throwOnMainThread
 import com.bz.movies.database.MoviesDatabase
 import com.bz.movies.database.createMoviesDatabase
 import com.bz.movies.database.dao.MovieDAO
@@ -11,7 +12,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-import throwOnMainThread
 
 @Module
 @InstallIn(SingletonComponent::class)
