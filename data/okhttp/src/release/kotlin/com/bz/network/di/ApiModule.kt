@@ -1,13 +1,13 @@
 package com.bz.network.di
 
 import android.DelegatingSocketFactory
+import android.throwOnMainThread
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
-import android.throwOnMainThread
 
 private const val NETWORK_CONNECTION_TIMEOUT = 30L
 

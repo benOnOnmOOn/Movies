@@ -3,9 +3,9 @@ package android
 import android.os.Build
 import android.os.Looper
 import android.os.StrictMode
+import co.touchlab.kermit.Logger
 import java.util.concurrent.Executors
 import kotlin.coroutines.cancellation.CancellationException
-import co.touchlab.kermit.Logger
 
 fun throwOnMainThread(methodName: String) {
     check(Looper.myLooper() != Looper.getMainLooper()) {
@@ -24,7 +24,7 @@ inline fun <R> runSuspendCatching(block: () -> R): Result<R> {
     }
 }
 
-fun enableStrictMode(){
+fun enableStrictMode()  {
     StrictMode.setThreadPolicy(
         StrictMode.ThreadPolicy.Builder()
             .detectAll()

@@ -1,6 +1,7 @@
 package com.bz.movies.datastore.di
 
 import android.app.Application
+import android.throwOnMainThread
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.SharedPreferencesMigration
@@ -16,7 +17,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-import android.throwOnMainThread
 
 internal const val USER_PREFERENCES = "Settings"
 

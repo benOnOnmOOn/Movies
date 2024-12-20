@@ -1,17 +1,17 @@
 package com.bz.network.di
 
+import android.throwOnMainThread
 import com.bz.network.api.service.CurrencyService
 import com.bz.network.api.service.MovieService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import javax.inject.Qualifier
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
-import android.throwOnMainThread
-import javax.inject.Qualifier
 
 private const val MOVIES_BASE_URL = "https://api.themoviedb.org/3/"
 private const val CURRENCY_BASE_URL = "https://api.currencyapi.com/v3/"

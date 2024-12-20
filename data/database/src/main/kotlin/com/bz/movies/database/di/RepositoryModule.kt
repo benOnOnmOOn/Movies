@@ -1,5 +1,6 @@
 package com.bz.movies.database.di
 
+import android.throwOnMainThread
 import com.bz.movies.database.dao.MovieDAO
 import com.bz.movies.database.dao.PlayingNowMovieDAO
 import com.bz.movies.database.dao.PopularMovieDAO
@@ -10,7 +11,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import android.throwOnMainThread
 
 @Module
 @InstallIn(ViewModelComponent::class)

@@ -1,5 +1,6 @@
 package com.bz.network.di
 
+import android.throwOnMainThread
 import com.bz.network.api.service.CurrencyService
 import com.bz.network.api.service.MovieService
 import com.bz.network.repository.CurrencyRepository
@@ -12,7 +13,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import android.throwOnMainThread
 
 @Module
 @InstallIn(ViewModelComponent::class)

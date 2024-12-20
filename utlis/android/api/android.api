@@ -1,8 +1,3 @@
-public final class UtilsKt {
-	public static final fun runSuspendCatching (Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
-	public static final fun throwOnMainThread (Ljava/lang/String;)V
-}
-
 public class android/DelegatingSocketFactory : javax/net/SocketFactory {
 	public fun <init> ()V
 	public fun <init> (Ljavax/net/SocketFactory;Lkotlin/jvm/functions/Function1;)V
@@ -14,9 +9,9 @@ public class android/DelegatingSocketFactory : javax/net/SocketFactory {
 	public fun createSocket (Ljava/net/InetAddress;ILjava/net/InetAddress;I)Ljava/net/Socket;
 }
 
-public abstract interface annotation class com/bz/network/di/qualifiiers/CurrencyRetrofit : java/lang/annotation/Annotation {
-}
-
-public abstract interface annotation class com/bz/network/di/qualifiiers/MoviesRetrofit : java/lang/annotation/Annotation {
+public final class android/UtilsKt {
+	public static final fun enableStrictMode ()V
+	public static final fun runSuspendCatching (Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+	public static final fun throwOnMainThread (Ljava/lang/String;)V
 }
 

@@ -1,5 +1,6 @@
 package com.bz.movies.database.repository
 
+import android.runSuspendCatching
 import com.bz.dto.MovieDto
 import com.bz.movies.database.dao.MovieDAO
 import com.bz.movies.database.dao.PlayingNowMovieDAO
@@ -17,7 +18,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
-import android.runSuspendCatching
 
 internal class LocalMovieRepositoryImpl(
     private val movieDAO: Lazy<MovieDAO>,
