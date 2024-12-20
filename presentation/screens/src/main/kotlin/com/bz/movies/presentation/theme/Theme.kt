@@ -49,7 +49,7 @@ fun MoviesTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            @Suppress("DeprecatedCall","DEPRECATION")
+            @Suppress("DeprecatedCall", "DEPRECATION")
             window.statusBarColor = colorScheme.primary.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }

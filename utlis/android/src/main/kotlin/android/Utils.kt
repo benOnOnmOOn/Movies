@@ -24,7 +24,7 @@ inline fun <R> runSuspendCatching(block: () -> R): Result<R> {
     }
 }
 
-fun enableStrictMode()  {
+fun enableStrictMode() {
     StrictMode.setThreadPolicy(
         StrictMode.ThreadPolicy.Builder()
             .detectAll()

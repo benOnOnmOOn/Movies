@@ -1,13 +1,13 @@
 package com.bz.network.di
 
 import android.DelegatingSocketFactory
+import android.throwOnMainThread
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import android.throwOnMainThread
 
 @Module
 @InstallIn(ViewModelComponent::class)
