@@ -26,8 +26,3 @@ public abstract interface class com/bz/network/utils/InternetConnection {
 	public abstract fun isConnected ()Z
 }
 
-public final class com/bz/network/utils/InternetConnectionImpl : com/bz/network/utils/InternetConnection {
-	public fun <init> (Landroid/net/ConnectivityManager;)V
-	public fun isConnected ()Z
-}
-
