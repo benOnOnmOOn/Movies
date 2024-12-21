@@ -35,7 +35,7 @@ internal class RepositoryModule {
 
     @Provides
     internal fun provideCurrencyRepository(
-       currencyDAO: Lazy<CurrencyDAO>
+        currencyDAO: Lazy<CurrencyDAO>
     ): LocalCurrencyRepository {
         throwOnMainThread()
 

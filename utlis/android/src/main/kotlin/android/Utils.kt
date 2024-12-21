@@ -9,7 +9,7 @@ import kotlin.coroutines.cancellation.CancellationException
 
 fun throwOnMainThread() {
     check(Looper.myLooper() != Looper.getMainLooper()) {
-        val methodName = object{}.javaClass.enclosingMethod?.name ?: "Unknown"
+        val methodName = object {}.javaClass.enclosingMethod?.name ?: "Unknown"
         "method: $methodName may not be called from main thread."
     }
 }

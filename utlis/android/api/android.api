@@ -12,6 +12,6 @@ public class android/DelegatingSocketFactory : javax/net/SocketFactory {
 public final class android/UtilsKt {
 	public static final fun enableStrictMode ()V
 	public static final fun runSuspendCatching (Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
-	public static final fun throwOnMainThread (Ljava/lang/String;)V
+	public static final fun throwOnMainThread ()V
 }
 

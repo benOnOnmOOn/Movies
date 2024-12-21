@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 internal class MoreScreenViewModel @Inject constructor(
     private val currencyRepository: Lazy<CurrencyRepository>,
-    private val localCurrencyRepository: Lazy<LocalCurrencyRepository>,
+    private val localCurrencyRepository: Lazy<LocalCurrencyRepository>
 ) : ViewModel() {
     private val _state = MutableStateFlow(MoreState())
     val state: StateFlow<MoreState> = _state.asStateFlow()
@@ -41,7 +41,7 @@ internal class MoreScreenViewModel @Inject constructor(
             listOf(
                 CurrencyDto(symbol = "$", name = "Dollar", decimalDigits = 2, code = "USD"),
                 CurrencyDto(symbol = "€", name = "Euro", decimalDigits = 2, code = "EUR"),
-                CurrencyDto(symbol = "zł", name = "Polish Zloty", decimalDigits = 2, code = "PLN"),
+                CurrencyDto(symbol = "zł", name = "Polish Zloty", decimalDigits = 2, code = "PLN")
             )
         )
         val currencyRepository = currencyRepository.get()

@@ -4,8 +4,6 @@ import androidx.room.Dao
 import androidx.room.Query
 import com.bz.movies.database.entity.CURRENCY_ENTITY_NAME
 import com.bz.movies.database.entity.CurrencyEntity
-import com.bz.movies.database.entity.POPULAR_MOVIE_ENTITY_NAME
-import com.bz.movies.database.entity.PopularMovieEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
