@@ -34,10 +34,6 @@ sqlite = "2.4.0"
 startup-runtime = "1.2.0"
 appcompat = "1.7.0"
 turbine = "1.2.0"
-kotlin-compose-compiler-extension = "1.5.10"
-android-sdk-target = "35"
-android-min-sdk = "27"
-
 
 [libraries]
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activity" }

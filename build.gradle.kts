@@ -139,11 +139,11 @@ fun <
     AR : AndroidResources,
     IN : Installation
     > CommonExtension<BF, BT, DC, PF, AR, IN>.defaultBaseConfig() {
-    compileSdk = libs.versions.android.sdk.target.get().toInt()
+    compileSdk = 35
     buildToolsVersion = "35.0.0"
 
     defaultConfig {
-        minSdk = libs.versions.android.min.sdk.get().toInt()
+        minSdk = 27
         resourceConfigurations += listOf("pl", "en")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -172,10 +172,6 @@ fun <
         release {
             isMinifyEnabled = false
         }
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.kotlin.compose.compiler.extension.get()
     }
 
     @Suppress("UnstableApiUsage")
@@ -219,7 +215,7 @@ fun BaseAppModuleExtension.baseConfig() {
         versionCode = 1
         versionName = "1.0"
 
-        targetSdk = libs.versions.android.sdk.target.get().toInt()
+        targetSdk = 35
         multiDexEnabled = false
     }
 
