@@ -17,7 +17,7 @@ internal class ApiModule {
 
     @Provides
     internal fun provideOkHttpClient(): OkHttpClient {
-        throwOnMainThread("provideOkHttpClient")
+        throwOnMainThread()
         return OkHttpClient.Builder()
             .connectTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)

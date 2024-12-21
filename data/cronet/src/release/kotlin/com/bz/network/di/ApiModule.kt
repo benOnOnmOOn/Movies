@@ -22,7 +22,7 @@ internal const val NETWORK_CONNECTION_TIMEOUT = 30L
 internal class ApiModule {
     @Provides
     internal fun provideCronetEngine(@ApplicationContext context: Context): CronetEngine {
-        throwOnMainThread("provideCronetEngine")
+        throwOnMainThread()
         Tasks.await(CronetProviderInstaller.installProvider(context))
 
         return CronetEngine.Builder(context)
@@ -33,13 +33,13 @@ internal class ApiModule {
 
     @Provides
     internal fun provideCronetCallFactory(engine: CronetEngine): CronetCallFactory {
-        throwOnMainThread("provideCronetCallFactory")
+        throwOnMainThread()
         return CronetCallFactory.newBuilder(engine).build()
     }
 
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
-        throwOnMainThread("provideOkHttpClient")
+        throwOnMainThread()
         return OkHttpClient.Builder()
             .connectTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
