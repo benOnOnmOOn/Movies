@@ -26,7 +26,7 @@ internal class DataStoreModule {
     @Singleton
     @Provides
     internal fun providePreferences(app: Application): DataStore<Preferences> {
-        throwOnMainThread("providePreferences")
+        throwOnMainThread()
         return PreferenceDataStoreFactory.create(
             corruptionHandler = ReplaceFileCorruptionHandler(
                 produceNewData = {
@@ -44,7 +44,7 @@ internal class DataStoreModule {
     internal fun provideDataStoreRepository(
         dataStore: DataStore<Preferences>
     ): DataStoreRepository {
-        throwOnMainThread("provideDataStoreRepository")
+        throwOnMainThread()
         return DataStoreRepositoryImpl(dataStore)
     }
 }

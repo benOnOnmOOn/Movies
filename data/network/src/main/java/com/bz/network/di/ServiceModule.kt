@@ -30,20 +30,20 @@ internal class ServiceModule {
 
     @Provides
     internal fun provideMoviesApiService(@MoviesRetrofit retrofit: Retrofit): MovieService {
-        throwOnMainThread("provideMoviesApiService")
+        throwOnMainThread()
         return retrofit.create()
     }
 
     @Provides
     internal fun provideCurrencyApiService(@CurrencyRetrofit retrofit: Retrofit): CurrencyService {
-        throwOnMainThread("provideCurrencyApiService")
+        throwOnMainThread()
         return retrofit.create()
     }
 
     @Provides
     @MoviesRetrofit
     internal fun provideMoviesRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        throwOnMainThread("provideMoviesRetrofit")
+        throwOnMainThread()
         return Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
@@ -54,7 +54,7 @@ internal class ServiceModule {
     @Provides
     @CurrencyRetrofit
     internal fun provideCurrencyRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        throwOnMainThread("provideCurrencyRetrofit")
+        throwOnMainThread()
         return Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())

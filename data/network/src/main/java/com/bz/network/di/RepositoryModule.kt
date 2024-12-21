@@ -22,7 +22,7 @@ internal class RepositoryModule {
         apiService: Lazy<MovieService>,
         internetConnection: Lazy<InternetConnection>
     ): MovieRepository {
-        throwOnMainThread("provideNetworkMovieRepository")
+        throwOnMainThread()
 
         return MovieRepositoryImpl(apiService, internetConnection)
     }
@@ -32,7 +32,7 @@ internal class RepositoryModule {
         apiService: Lazy<CurrencyService>,
         internetConnection: Lazy<InternetConnection>
     ): CurrencyRepository {
-        throwOnMainThread("provideNetworkMovieRepository")
+        throwOnMainThread()
 
         return CurrencyRepositoryImpl(apiService, internetConnection)
     }

@@ -14,7 +14,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 internal class ApiModule {
     @Provides
     internal fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        throwOnMainThread("provideHttpLoggingInterceptor")
+        throwOnMainThread()
         return HttpLoggingInterceptor().apply {
             setLevel(HttpLoggingInterceptor.Level.BODY)
         }
@@ -22,7 +22,7 @@ internal class ApiModule {
 
     @Provides
     internal fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
-        throwOnMainThread("provideOkHttpClient")
+        throwOnMainThread()
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
             .socketFactory(DelegatingSocketFactory())

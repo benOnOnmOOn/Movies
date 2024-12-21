@@ -19,7 +19,7 @@ internal class NetworkModule {
     internal fun provideConnectivityManager(
         @ApplicationContext context: Context
     ): ConnectivityManager? {
-        throwOnMainThread("provideInternetConnection")
+        throwOnMainThread()
         return context.getSystemService<ConnectivityManager>()
     }
 
@@ -27,7 +27,7 @@ internal class NetworkModule {
     internal fun provideInternetConnection(
         connectivityManager: ConnectivityManager?
     ): InternetConnection {
-        throwOnMainThread("provideInternetConnection")
+        throwOnMainThread()
         return InternetConnectionImpl(connectivityManager)
     }
 }

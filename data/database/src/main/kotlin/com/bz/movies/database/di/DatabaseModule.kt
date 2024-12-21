@@ -4,6 +4,7 @@ import android.app.Application
 import android.throwOnMainThread
 import com.bz.movies.database.MoviesDatabase
 import com.bz.movies.database.createMoviesDatabase
+import com.bz.movies.database.dao.CurrencyDAO
 import com.bz.movies.database.dao.MovieDAO
 import com.bz.movies.database.dao.PlayingNowMovieDAO
 import com.bz.movies.database.dao.PopularMovieDAO
@@ -19,28 +20,35 @@ internal class DatabaseModule {
     @Singleton
     @Provides
     internal fun provideDb(app: Application): MoviesDatabase {
-        throwOnMainThread("provideDb")
+        throwOnMainThread()
         return createMoviesDatabase(app)
     }
 
     @Singleton
     @Provides
     internal fun provideMovieDao(db: MoviesDatabase): MovieDAO {
-        throwOnMainThread("provideMovieDao")
+        throwOnMainThread()
         return db.movieDAO()
     }
 
     @Singleton
     @Provides
     internal fun providePlayingNowMovieDao(db: MoviesDatabase): PlayingNowMovieDAO {
-        throwOnMainThread("providePlayingNowMovieDao")
+        throwOnMainThread()
         return db.playingNowMovieDAO()
     }
 
     @Singleton
     @Provides
     internal fun providePopularMovieDao(db: MoviesDatabase): PopularMovieDAO {
-        throwOnMainThread("providePopularMovieDao")
+        throwOnMainThread()
         return db.popularMovieDAO()
+    }
+
+    @Singleton
+    @Provides
+    internal fun provideCurrencyDao(db: MoviesDatabase): CurrencyDAO {
+        throwOnMainThread()
+        return db.currencyDAO()
     }
 }
