@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bz.dto.CurrencyDto
+import com.bz.movies.database.repository.LocalCurrencyRepository
 import com.bz.network.repository.CurrencyRepository
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +21,8 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class MoreScreenViewModel @Inject constructor(
-    private val currencyRepository: Lazy<CurrencyRepository>
+    private val currencyRepository: Lazy<CurrencyRepository>,
+    private val localCurrencyRepository: Lazy<LocalCurrencyRepository>
 ) : ViewModel() {
     private val _state = MutableStateFlow(MoreState())
     val state: StateFlow<MoreState> = _state.asStateFlow()
@@ -34,8 +37,16 @@ internal class MoreScreenViewModel @Inject constructor(
     }
 
     private fun getCurrencies() = viewModelScope.launch(Dispatchers.IO) {
+        localCurrencyRepository.get().insertAllSupportedCurrencyRepository(
+            listOf(
+                CurrencyDto(symbol = "$", name = "Dollar", decimalDigits = 2, code = "USD"),
+                CurrencyDto(symbol = "€", name = "Euro", decimalDigits = 2, code = "EUR"),
+                CurrencyDto(symbol = "zł", name = "Polish Zloty", decimalDigits = 2, code = "PLN")
+            )
+        )
+        val currencyRepository = currencyRepository.get()
 //        currencyRepository.get().getAllCurrencies()
-        currencyRepository.get().getExchangeRate("EUR")
+//        currencyRepository.get().getExchangeRate("EUR")
     }
 
     private fun collectCurrentLanguage() = viewModelScope.launch {

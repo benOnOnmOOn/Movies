@@ -7,8 +7,9 @@ import co.touchlab.kermit.Logger
 import java.util.concurrent.Executors
 import kotlin.coroutines.cancellation.CancellationException
 
-fun throwOnMainThread(methodName: String) {
+fun throwOnMainThread() {
     check(Looper.myLooper() != Looper.getMainLooper()) {
+        val methodName = object {}.javaClass.enclosingMethod?.name ?: "Unknown"
         "method: $methodName may not be called from main thread."
     }
 }

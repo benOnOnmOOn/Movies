@@ -1,3 +1,13 @@
+public final class com/bz/movies/database/UtilKt {
+	public static final fun runCatchingWithContext (Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun runCatchingWithContext$default (Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public abstract interface class com/bz/movies/database/repository/LocalCurrencyRepository {
+	public abstract fun getAllSupportedCurrencyRepository-IoAF18A (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun insertAllSupportedCurrencyRepository-gIAlu-s (Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public abstract interface class com/bz/movies/database/repository/LocalMovieRepository {
 	public abstract fun clearPlayingNowMovies-IoAF18A (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun clearPopularMovies-IoAF18A (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
