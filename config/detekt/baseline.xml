@@ -8,8 +8,9 @@
     <ID>MaxLineLength:ApiTest.kt$ApiTest.Companion$overview = """A botched store robbery places Wonder Woman in a global battle against a powerful and mysterious ancient force that puts her powers in jeopardy."""</ID>
   </ManuallySuppressedIssues>
   <CurrentIssues>
+    <ID>MagicNumber:MoreScreenViewModel.kt$MoreScreenViewModel$0.5</ID>
+    <ID>MagicNumber:MoreScreenViewModel.kt$MoreScreenViewModel$20.0</ID>
     <ID>MaxLineLength:ApiTest.kt$ApiTest.Companion$overview = """A botched store robbery places Wonder Woman in a global battle against a powerful and mysterious ancient force that puts her powers in jeopardy."""</ID>
     <ID>MaxLineLength:PopularMoviesViewModelTest.kt$PopularMoviesViewModelTest$fun</ID>
-    <ID>UnusedPrivateProperty:MoreScreenViewModel.kt$MoreScreenViewModel$private val currencyRepository: Lazy&lt;CurrencyRepository&gt;</ID>
   </CurrentIssues>
 </SmellBaseline>
