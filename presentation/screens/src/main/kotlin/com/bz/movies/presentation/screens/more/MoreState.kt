@@ -5,7 +5,7 @@ import com.bz.dto.ExchangeRateDto
 internal data class MoreState(
     val language: Language = Language.ENG,
     val exchangeRate: ExchangeRateDto? = null,
-    val selectedCurrency: String?= null,
+    val selectedCurrency: String? = null
 )
 
 internal enum class Language(val code: String) {

@@ -38,7 +38,6 @@ internal fun MoreScreen(state: MoreState = MoreState(), sendEvent: (MoreEvent) -
             onClick = { sendEvent(MoreEvent.OnLanguageClick(Language.POL)) }
         )
 
-
         Text(stringResource(R.string.more_screen_usd_label))
         RadioButton(
             selected = state.selectedCurrency == "USD",

@@ -12,6 +12,8 @@ import com.bz.movies.database.repository.LocalCurrencyRepository
 import com.bz.network.repository.CurrencyRepository
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,8 +22,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
-import kotlin.random.Random
 
 @HiltViewModel
 internal class MoreScreenViewModel @Inject constructor(
@@ -59,7 +59,9 @@ internal class MoreScreenViewModel @Inject constructor(
     private fun getExchangeRate(currency: String) {
         viewModelScope.launch(Dispatchers.IO) {
 //            val exchangeRate = currencyRepository.get().getExchangeRate(currency)
-            val exchangeRate = Result.success(listOf(ExchangeRateDto("GBP", Random.nextDouble(0.5, 20.0).toFloat())))
+            val exchangeRate = Result.success(
+                listOf(ExchangeRateDto("GBP", Random.nextDouble(0.5, 20.0).toFloat()))
+            )
             exchangeRate
                 .onSuccess {
                     lruCache.put(currency, it)
