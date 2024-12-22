@@ -31,6 +31,9 @@ jobs:
       - name: Update ktlint baseline
         run: ./gradlew ktlintGenerateBaseline
 
+      - name: Update detekt baseline
+        run: ./gradlew detektGenerateBaseline
+
       - name: Update dependency guard baseline
         run: ./gradlew dependencyGuardBaseline
 
