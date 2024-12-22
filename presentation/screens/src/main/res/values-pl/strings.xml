@@ -19,4 +19,9 @@
     <string name="dismiss_error_button_label">Schowaj</string>
     <string name="confirm_error_button">Potwierdź</string>
     <string name="try_again_network_error_button_label">Ponów</string>
+
+    <string name="more_screen_usd_label">Dolar</string>
+    <string name="more_menu_eur_label">Euro</string>
+    <string name="more_menu_pln_label">Złoty</string>
+    <string name="more_menu_exchange_rate">Kurs wymiany %s</string>
 </resources>

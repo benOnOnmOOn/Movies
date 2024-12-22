@@ -37,5 +37,33 @@ internal fun MoreScreen(state: MoreState = MoreState(), sendEvent: (MoreEvent) -
             selected = state.language == Language.POL,
             onClick = { sendEvent(MoreEvent.OnLanguageClick(Language.POL)) }
         )
+
+
+        Text(stringResource(R.string.more_screen_usd_label))
+        RadioButton(
+            selected = state.selectedCurrency == "USD",
+            onClick = { sendEvent(MoreEvent.OnCurrencyClick("USD")) }
+        )
+
+        Text(stringResource(R.string.more_menu_eur_label))
+        RadioButton(
+            selected = state.selectedCurrency == "EUR",
+            onClick = { sendEvent(MoreEvent.OnCurrencyClick("EUR")) }
+        )
+
+        Text(stringResource(R.string.more_menu_pln_label))
+        RadioButton(
+            selected = state.selectedCurrency == "PLN",
+            onClick = { sendEvent(MoreEvent.OnCurrencyClick("PLN")) }
+        )
+
+        if (state.exchangeRate != null) {
+            Text(
+                stringResource(
+                    R.string.more_menu_exchange_rate,
+                    state.exchangeRate.exchangeRate.toString()
+                )
+            )
+        }
     }
 }
