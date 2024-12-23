@@ -54,44 +54,42 @@ class MoreScreenViewModelTest {
         }
 
     @Test
-    fun `when view model get change currency event it should fetch exchange rate`() =
-        runTest {
-            coJustRun { localCurrencyRepository.insertAllSupportedCurrencyRepository(any()) }
-            coEvery {
-                currencyRepository.getExchangeRate("USD")
-            } returns Result.success(
-                listOf(
-                    ExchangeRateDto("EUR", 124.0f),
-                    ExchangeRateDto("GBP", 1.21340f),
-                    ExchangeRateDto("PLN", 32.0f),
-                )
+    fun `when view model get change currency event it should fetch exchange rate`() = runTest {
+        coJustRun { localCurrencyRepository.insertAllSupportedCurrencyRepository(any()) }
+        coEvery {
+            currencyRepository.getExchangeRate("USD")
+        } returns Result.success(
+            listOf(
+                ExchangeRateDto("EUR", 124.0f),
+                ExchangeRateDto("GBP", 1.21340f),
+                ExchangeRateDto("PLN", 32.0f)
             )
-            val viewModel = MoreScreenViewModel(
-                currencyRepository = Lazy { currencyRepository },
-                localCurrencyRepository = Lazy { localCurrencyRepository }
+        )
+        val viewModel = MoreScreenViewModel(
+            currencyRepository = Lazy { currencyRepository },
+            localCurrencyRepository = Lazy { localCurrencyRepository }
+        )
+
+        viewModel.sendEvent(MoreEvent.OnCurrencyClick("USD"))
+
+        viewModel.state.test {
+            skipItems(1)
+            val actualItem = awaitItem()
+            val expectedItem = MoreState(
+                selectedCurrency = "USD",
+                exchangeRate = ExchangeRateDto("EUR", 124.0f)
             )
+            assertEquals(expectedItem, actualItem)
 
-
-            viewModel.sendEvent(MoreEvent.OnCurrencyClick("USD"))
-
-            viewModel.state.test {
-                skipItems(1)
-                val actualItem = awaitItem()
-                val expectedItem = MoreState(
-                    selectedCurrency = "USD",
-                    exchangeRate = ExchangeRateDto("EUR", 124.0f),
-                )
-                assertEquals(expectedItem, actualItem)
-
-                expectNoEvents()
-            }
-
-            coVerify(exactly = 1) {
-                localCurrencyRepository.insertAllSupportedCurrencyRepository(any())
-            }
-            coVerify(exactly = 0) { localCurrencyRepository.getAllSupportedCurrencyRepository() }
-            coVerify(exactly = 1) { currencyRepository.getExchangeRate(any()) }
+            expectNoEvents()
         }
+
+        coVerify(exactly = 1) {
+            localCurrencyRepository.insertAllSupportedCurrencyRepository(any())
+        }
+        coVerify(exactly = 0) { localCurrencyRepository.getAllSupportedCurrencyRepository() }
+        coVerify(exactly = 1) { currencyRepository.getExchangeRate(any()) }
+    }
 
     companion object {
         @BeforeAll
@@ -111,5 +109,4 @@ class MoreScreenViewModelTest {
             Dispatchers.resetMain()
         }
     }
-
 }
