@@ -34,7 +34,7 @@ internal class MoreScreenViewModel @Inject constructor(
     private val _event: MutableSharedFlow<MoreEvent> = MutableSharedFlow()
     private val event: SharedFlow<MoreEvent> = _event.asSharedFlow()
 
-    val lruCache = lruCache<String, List<ExchangeRateDto>>(maxSize = 2)
+    private val lruCache = lruCache<String, List<ExchangeRateDto>>(maxSize = 2)
 
     init {
         collectCurrentLanguage()
@@ -58,10 +58,10 @@ internal class MoreScreenViewModel @Inject constructor(
 
     private fun getExchangeRate(currency: String) {
         viewModelScope.launch(Dispatchers.IO) {
-//            val exchangeRate = currencyRepository.get().getExchangeRate(currency)
-            val exchangeRate = Result.success(
-                listOf(ExchangeRateDto("GBP", Random.nextDouble(0.5, 20.0).toFloat()))
-            )
+            val exchangeRate = currencyRepository.get().getExchangeRate(currency)
+//            val exchangeRate = Result.success(
+//                listOf(ExchangeRateDto("GBP", Random.nextDouble(0.5, 20.0).toFloat()))
+//            )
             exchangeRate
                 .onSuccess {
                     lruCache.put(currency, it)
