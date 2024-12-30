@@ -1,6 +1,9 @@
 [versions]
 androidTools = "31.7.3"
 coil-compose = "2.7.0"
+collection = "1.4.5"
+collection-jvm = "1.4.5"
+com-android-plugin = "8.7.3"
 androidxLintGradle = "1.0.0-alpha03"
 android-gradle-plugin = "8.7.3"
 collection = "1.4.5"
@@ -48,6 +51,8 @@ androidx-animation-android = { module = "androidx.compose.animation:animation-an
 androidx-collection-jvm = { module = "androidx.collection:collection-jvm", version.ref = "collection-jvm" }
 androidx-collection = { module = "androidx.collection:collection", version.ref = "collection" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-collection-jvm = { module = "androidx.collection:collection-jvm", version.ref = "collection-jvm" }
+androidx-collection = { module = "androidx.collection:collection", version.ref = "collection" }
 androidx-core = { module = "androidx.core:core", version.ref = "core" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core" }
 androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastore-preferences" }
