@@ -12,8 +12,8 @@ internal interface CurrencyDAO : BaseDao<CurrencyEntity> {
     fun observeAllCurrencies(): Flow<List<CurrencyEntity>>
 
     @Query("SELECT * FROM $CURRENCY_ENTITY_NAME")
-    fun getAllCurrencies(): List<CurrencyEntity>
+    suspend fun getAllCurrencies(): List<CurrencyEntity>
 
     @Query("DELETE FROM $CURRENCY_ENTITY_NAME")
-    fun clearTable()
+    suspend fun clearTable()
 }

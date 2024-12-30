@@ -81,6 +81,8 @@ dependencies {
     implementation(libs.androidx.ui.unit.android)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.collection)
+    implementation(libs.androidx.collection.jvm)
     debugImplementation(libs.androidx.ui.tooling.preview.android)
 
     api(libs.androidx.lifecycle.viewmodel)
