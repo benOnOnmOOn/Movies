@@ -1,10 +1,10 @@
 plugins {
-    alias(libs.plugins.binary.compatibility)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.dexcount)
     alias(libs.plugins.movies.android.application)
     alias(libs.plugins.movies.android.application.compose)
     alias(libs.plugins.movies.android.application.firebase)
+    alias(libs.plugins.movies.binary.compatibility)
     alias(libs.plugins.movies.hilt)
     alias(libs.plugins.movies.kover)
 }
@@ -21,18 +21,6 @@ dependencyAnalysis {
         onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
     }
 }
-
-apiValidation {
-    ignoredPackages.add("hilt_aggregated_deps")
-    nonPublicMarkers.addAll(
-        listOf(
-            "dagger.internal.DaggerGenerated",
-            "javax.annotation.processing.Generated",
-            "dagger.hilt.codegen.OriginatingElement"
-        )
-    )
-}
-
 
 dependencies {
     // don't warn

@@ -4,22 +4,11 @@ plugins {
     alias(libs.plugins.movies.kover)
     alias(libs.plugins.movies.android.room)
     alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.binary.compatibility)
+    alias(libs.plugins.movies.binary.compatibility)
 }
 
 android {
     namespace = "com.bz.movies.database"
-}
-
-apiValidation {
-    ignoredPackages.add("hilt_aggregated_deps")
-    nonPublicMarkers.addAll(
-        listOf(
-            "dagger.internal.DaggerGenerated",
-            "javax.annotation.processing.Generated",
-            "dagger.hilt.codegen.OriginatingElement"
-        )
-    )
 }
 
 dependencies {

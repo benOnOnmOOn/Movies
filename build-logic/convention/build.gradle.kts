@@ -24,16 +24,14 @@ plugins {
 
 group = "com.bz.movies.buildlogic"
 
-// Configure the build-logic plugins to target JDK 17
-// This matches the JDK used to build the project, and is not related to what is running on device.
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 kotlin {
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_17
+        jvmTarget = JvmTarget.JVM_21
     }
 }
 
@@ -42,6 +40,7 @@ dependencies {
     compileOnly(libs.android.tools.common)
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.kover.gradlePlugin)
+    compileOnly(libs.binary.compatibility.gradlePlugin)
     compileOnly(libs.firebase.crashlytics.gradlePlugin)
     compileOnly(libs.firebase.performance.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
@@ -102,7 +101,11 @@ gradlePlugin {
         }
         register("kover") {
             id = libs.plugins.movies.kover.get().pluginId
-            implementationClass = "KoveryConventionPlugin"
+            implementationClass = "KoverConventionPlugin"
+        }
+        register("binaryCompatibility") {
+            id = libs.plugins.movies.binary.compatibility.get().pluginId
+            implementationClass = "BinaryCompatibilityConventionPlugin"
         }
     }
 }
