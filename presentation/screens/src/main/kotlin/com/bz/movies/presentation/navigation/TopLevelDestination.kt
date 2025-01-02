@@ -1,6 +1,6 @@
 package com.bz.movies.presentation.navigation
 
-import com.bz.presentation.screens.R
+import com.bz.movies.presentation.screens.R
 
 internal data class TopLevelDestination(
     val rootRoute: RootRoute,

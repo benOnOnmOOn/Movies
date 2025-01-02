@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.bz.movies.presentation.screens.R
 import com.bz.movies.presentation.screens.common.MovieDetailState
-import com.bz.presentation.screens.R
 
 @Composable
 internal fun MovieDetailsScreen(
