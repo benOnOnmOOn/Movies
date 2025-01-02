@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.movies.android.library)
     alias(libs.plugins.movies.hilt)
-    alias(libs.plugins.kotlinx.kover)
+    alias(libs.plugins.movies.kover)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.binary.compatibility)
 }
@@ -24,14 +24,6 @@ apiValidation {
 dependencyAnalysis {
     issues {
         onUsedTransitiveDependencies { exclude(libs.okhttp) }
-    }
-}
-
-kover {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
     }
 }
 

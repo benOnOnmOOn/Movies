@@ -1,12 +1,12 @@
 plugins {
-    alias(libs.plugins.kotlinx.kover)
-    alias(libs.plugins.dexcount)
-    alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.binary.compatibility)
+    alias(libs.plugins.dependency.analysis)
+    alias(libs.plugins.dexcount)
     alias(libs.plugins.movies.android.application)
-    alias(libs.plugins.movies.android.application.firebase)
     alias(libs.plugins.movies.android.application.compose)
+    alias(libs.plugins.movies.android.application.firebase)
     alias(libs.plugins.movies.hilt)
+    alias(libs.plugins.movies.kover)
 }
 
 android {
@@ -33,54 +33,6 @@ apiValidation {
     )
 }
 
-kover {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
-    }
-
-    reports {
-        total {
-            html {
-                onCheck = true
-            }
-            xml {
-                onCheck = true
-            }
-        }
-        filters {
-            excludes {
-                classes(
-                    // moshi json adapter
-                    "com.bz.network.api.model.*JsonAdapter",
-                    "*ComposableSingletons*",
-                    "*_Factor*y",
-                    "*_HiltModules*",
-                    "*Hilt_*",
-                    "*_Impl*",
-                    "com.bz.movies.core.CrashlyticsLogTree"
-                )
-                packages(
-                    "hilt_aggregated_deps",
-                    "dagger.hilt.internal.aggregatedroot.codegen",
-                    "com.bz.movies.database.dao",
-                    "com.bz.movies.presentation.theme",
-                    "com.bz.movies.presentation.navigation",
-                    "com.bz.movies.presentation.screens.utils",
-                    "com.bz.movies.core"
-                )
-                annotatedBy(
-                    "*Generated*",
-                    "*Composable*",
-                    "*Module*",
-                    "*HiltAndroidApp*",
-                    "*AndroidEntryPoint*"
-                )
-            }
-        }
-    }
-}
 
 dependencies {
     // don't warn

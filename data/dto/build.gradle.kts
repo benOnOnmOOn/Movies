@@ -1,9 +1,8 @@
 plugins {
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.kotlinx.kover)
+    alias(libs.plugins.movies.jvm.library)
+    alias(libs.plugins.movies.kover)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.binary.compatibility)
-    id("com.android.lint")
 }
 
 apiValidation {
@@ -17,7 +16,3 @@ apiValidation {
     )
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
-}

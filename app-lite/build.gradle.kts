@@ -1,7 +1,7 @@
 import org.gradle.kotlin.dsl.android
 
 plugins {
-    alias(libs.plugins.kotlinx.kover)
+    alias(libs.plugins.movies.kover)
     alias(libs.plugins.dependency.guard)
     alias(libs.plugins.dexcount)
     alias(libs.plugins.dependency.analysis)
@@ -33,53 +33,6 @@ apiValidation {
             "dagger.hilt.codegen.OriginatingElement"
         )
     )
-}
-
-kover {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
-    }
-    reports {
-        total {
-            html {
-                onCheck = true
-            }
-            xml {
-                onCheck = true
-            }
-        }
-        filters {
-            excludes {
-                classes(
-                    // moshi json adapter
-                    "com.bz.network.api.model.*JsonAdapter",
-                    "*ComposableSingletons*",
-                    "*_Factor*y",
-                    "*_HiltModules*",
-                    "*Hilt_*",
-                    "*_Impl*"
-                )
-                packages(
-                    "hilt_aggregated_deps",
-                    "dagger.hilt.internal.aggregatedroot.codegen",
-                    "com.bz.movies.database.dao",
-                    "com.bz.movies.presentation.theme",
-                    "com.bz.movies.presentation.navigation",
-                    "com.bz.movies.presentation.screens.utils",
-                    "com.bz.movies.core"
-                )
-                annotatedBy(
-                    "*Generated*",
-                    "*Composable*",
-                    "*Module*",
-                    "*HiltAndroidApp*",
-                    "*AndroidEntryPoint*"
-                )
-            }
-        }
-    }
 }
 
 dependencies {

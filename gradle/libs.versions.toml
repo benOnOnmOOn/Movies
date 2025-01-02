@@ -133,6 +133,7 @@ firebase-performance-gradlePlugin = { group = "com.google.firebase", name = "per
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
+kover-gradlePlugin = { group = "org.jetbrains.kotlinx.kover", name = "org.jetbrains.kotlinx.kover.gradle.plugin", version = "0.9.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
@@ -169,6 +170,7 @@ movies-android-room = { id = "movies.android.room" }
 movies-android-test = { id = "movies.android.test" }
 movies-hilt = { id = "movies.hilt" }
 movies-jvm-library = { id = "movies.jvm.library" }
+movies-kover = { id = "movies.kover" }
 
 [bundles]
 

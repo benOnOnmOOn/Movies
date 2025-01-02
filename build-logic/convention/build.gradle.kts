@@ -41,6 +41,7 @@ dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.android.tools.common)
     compileOnly(libs.compose.gradlePlugin)
+    compileOnly(libs.kover.gradlePlugin)
     compileOnly(libs.firebase.crashlytics.gradlePlugin)
     compileOnly(libs.firebase.performance.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
@@ -98,6 +99,10 @@ gradlePlugin {
         register("jvmLibrary") {
             id = libs.plugins.movies.jvm.library.get().pluginId
             implementationClass = "JvmLibraryConventionPlugin"
+        }
+        register("kover") {
+            id = libs.plugins.movies.kover.get().pluginId
+            implementationClass = "KoveryConventionPlugin"
         }
     }
 }
