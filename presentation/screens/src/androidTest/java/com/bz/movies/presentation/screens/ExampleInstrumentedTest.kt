@@ -1,4 +1,4 @@
-package com.bz.presentationscreens
+package com.bz.movies.presentation.screens
 
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.jupiter.api.Assertions.assertEquals

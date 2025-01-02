@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.bz.movies.presentation.screens.R
 import com.bz.movies.presentation.screens.common.ErrorDialog
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieEvent
@@ -17,7 +18,7 @@ import com.bz.movies.presentation.screens.common.MoviesContentWithPullToRefresh
 import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.movies.presentation.screens.common.NoInternetDialog
 import com.bz.movies.presentation.utils.collectInLaunchedEffectWithLifecycle
-import com.bz.presentation.screens.R
+
 
 @Composable
 internal fun PlayingNowScreen(playingNowViewModel: PlayingNowViewModel = hiltViewModel()) {
