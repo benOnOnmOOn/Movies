@@ -1,13 +1,9 @@
 plugins {
+    alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.movies.android.library)
+    alias(libs.plugins.movies.binary.compatibility)
     alias(libs.plugins.movies.hilt)
     alias(libs.plugins.movies.kover)
-    alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.movies.binary.compatibility)
-}
-
-android {
-    namespace = "com.bz.movies.datastore"
 }
 
 dependencyAnalysis {

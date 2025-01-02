@@ -1,12 +1,8 @@
 plugins {
-    alias(libs.plugins.movies.kover)
-    alias(libs.plugins.movies.android.library)
     alias(libs.plugins.dependency.analysis)
+    alias(libs.plugins.movies.android.library)
     alias(libs.plugins.movies.binary.compatibility)
-}
-
-android {
-    namespace = "com.bz.utils.android"
+    alias(libs.plugins.movies.kover)
 }
 
 dependencyAnalysis {

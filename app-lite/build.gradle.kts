@@ -2,7 +2,6 @@ import org.gradle.kotlin.dsl.android
 
 plugins {
     alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.dependency.guard)
     alias(libs.plugins.dexcount)
     alias(libs.plugins.movies.android.application)
     alias(libs.plugins.movies.android.application.compose)
@@ -12,7 +11,7 @@ plugins {
 }
 
 android {
-    namespace = "com.bz.movies"
+    namespace = "com.bz.movies.lite"
 }
 
 dependencyAnalysis {

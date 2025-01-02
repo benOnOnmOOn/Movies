@@ -1,15 +1,13 @@
 plugins {
-    alias(libs.plugins.movies.android.library.compose)
+    alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.movies.android.library)
+    alias(libs.plugins.movies.android.library.compose)
+    alias(libs.plugins.movies.binary.compatibility)
     alias(libs.plugins.movies.hilt)
     alias(libs.plugins.movies.kover)
-    alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.movies.binary.compatibility)
 }
 
 android {
-    namespace = "com.bz.presentation.screens"
-
     kotlinOptions {
         freeCompilerArgs +=
             listOf(
