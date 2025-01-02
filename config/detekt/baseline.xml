@@ -8,6 +8,8 @@
     <ID>MaxLineLength:ApiTest.kt$ApiTest.Companion$overview = """A botched store robbery places Wonder Woman in a global battle against a powerful and mysterious ancient force that puts her powers in jeopardy."""</ID>
   </ManuallySuppressedIssues>
   <CurrentIssues>
+    <ID>MagicNumber:KotlinAndroid.kt$27</ID>
+    <ID>MagicNumber:KotlinAndroid.kt$35</ID>
     <ID>MaxLineLength:ApiTest.kt$ApiTest.Companion$overview = """A botched store robbery places Wonder Woman in a global battle against a powerful and mysterious ancient force that puts her powers in jeopardy."""</ID>
     <ID>MaxLineLength:PopularMoviesViewModelTest.kt$PopularMoviesViewModelTest$fun</ID>
   </CurrentIssues>

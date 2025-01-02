@@ -1,7 +1,3 @@
-import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsPlugin
-import com.google.firebase.perf.plugin.FirebasePerfPlugin
-import com.google.gms.googleservices.GoogleServicesPlugin
-
 plugins {
     alias(libs.plugins.kotlinx.kover)
     alias(libs.plugins.dexcount)
