@@ -19,7 +19,6 @@ import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.movies.presentation.screens.common.NoInternetDialog
 import com.bz.movies.presentation.utils.collectInLaunchedEffectWithLifecycle
 
-
 @Composable
 internal fun PlayingNowScreen(playingNowViewModel: PlayingNowViewModel = hiltViewModel()) {
     val playingNow by playingNowViewModel.state.collectAsStateWithLifecycle()
