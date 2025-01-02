@@ -25,11 +25,6 @@ class AndroidLintConventionPlugin : Plugin<Project> {
 }
 
 private fun Lint.configure(project: Project) {
-    xmlReport = true
-    sarifReport = true
-    checkDependencies = true
-    disable += "GradleDependency"
-
     baseline = project.file("lint-baseline.xml")
     disable += listOf(
         "NewerVersionAvailable",

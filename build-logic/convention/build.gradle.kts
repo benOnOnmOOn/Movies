@@ -16,10 +16,12 @@
 
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
+
 plugins {
     `kotlin-dsl`
     alias(libs.plugins.android.lint)
-    alias(libs.plugins.dependency.analysis)
+    alias(libs.plugins.dependency.analysis) apply true
+    alias(libs.plugins.ktlint) apply true
 }
 
 group = "com.bz.movies.buildlogic"
@@ -33,6 +35,10 @@ kotlin {
     compilerOptions {
         jvmTarget = JvmTarget.JVM_21
     }
+}
+
+ktlint {
+    version.set("1.4.0")
 }
 
 dependencies {

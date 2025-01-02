@@ -22,9 +22,6 @@ import org.gradle.api.Project
 /**
  * Configure Compose-specific options
  */
-internal fun Project.configureAndroidCompose(
-    commonExtension: CommonExtension<*, *, *, *, *, *>,
-) {
+internal fun Project.configureAndroidCompose(commonExtension: CommonExtension<*, *, *, *, *, *>) {
     commonExtension.buildFeatures { compose = true }
-
 }

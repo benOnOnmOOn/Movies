@@ -15,8 +15,6 @@ class KoverConventionPlugin : Plugin<Project> {
 
                 pluginManager.hasPlugin("com.android.library") ->
                     configure<KoverProjectExtension> { configure() }
-
-
             }
         }
     }

@@ -1,10 +1,8 @@
 import androidx.room.gradle.RoomExtension
 import com.google.devtools.ksp.gradle.KspExtension
-import com.bz.movies.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.dependencies
 
 class AndroidRoomConventionPlugin : Plugin<Project> {
 
@@ -20,7 +18,6 @@ class AndroidRoomConventionPlugin : Plugin<Project> {
             extensions.configure<RoomExtension> {
                 schemaDirectory("$projectDir/schemas")
             }
-
         }
     }
 }

@@ -16,5 +16,4 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
             }
         }
     }
-
 }

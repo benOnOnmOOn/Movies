@@ -17,5 +17,4 @@ class AndroidTestConventionPlugin : Plugin<Project> {
             }
         }
     }
-
 }

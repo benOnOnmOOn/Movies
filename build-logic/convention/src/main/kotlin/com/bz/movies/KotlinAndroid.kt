@@ -16,28 +16,19 @@
 
 package com.bz.movies
 
-import com.android.build.api.dsl.AndroidResources
 import com.android.build.api.dsl.ApplicationExtension
-import com.android.build.api.dsl.BuildFeatures
-import com.android.build.api.dsl.BuildType
 import com.android.build.api.dsl.CommonExtension
-import com.android.build.api.dsl.DefaultConfig
-import com.android.build.api.dsl.Installation
-import com.android.build.api.dsl.LibraryExtension
-import com.android.build.api.dsl.ProductFlavor
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import kotlin.collections.plusAssign
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.provideDelegate
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
-import kotlin.collections.plusAssign
 
 fun ApplicationExtension.baseConfig(project: Project) {
     defaultBaseConfig(project)
@@ -75,7 +66,6 @@ fun ApplicationExtension.baseConfig(project: Project) {
     compileOptions.isCoreLibraryDesugaringEnabled = false
 }
 
-
 //region Global android configuration
 internal fun CommonExtension<*, *, *, *, *, *>.defaultBaseConfig(project: Project) {
     compileSdk = 35
@@ -85,21 +75,6 @@ internal fun CommonExtension<*, *, *, *, *, *>.defaultBaseConfig(project: Projec
         minSdk = 27
         resourceConfigurations += listOf("pl", "en")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    lint {
-        baseline = project.file("lint-baseline.xml")
-        disable += listOf(
-            "NewerVersionAvailable",
-            "GradleDependency",
-            "RawDispatchersUse"
-        )
-        abortOnError = true
-        checkAllWarnings = true
-        warningsAsErrors = true
-        checkReleaseBuilds = false
-        checkDependencies = false
-        checkGeneratedSources = false
     }
 
     compileOptions {
@@ -130,20 +105,15 @@ internal fun CommonExtension<*, *, *, *, *, *>.defaultBaseConfig(project: Projec
 /**
  * Configure base Kotlin with Android options
  */
-internal fun Project.configureKotlinAndroidApp(
-    commonExtension: ApplicationExtension,
-) {
+internal fun Project.configureKotlinAndroidApp(commonExtension: ApplicationExtension) {
     commonExtension.baseConfig(this)
     configureKotlin<KotlinAndroidProjectExtension>()
 }
 
-
 /**
  * Configure base Kotlin with Android options
  */
-internal fun Project.configureKotlinAndroid(
-    commonExtension: CommonExtension<*, *, *, *, *, *>,
-) {
+internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, *, *, *, *, *>) {
     commonExtension.defaultBaseConfig(this)
     configureKotlin<KotlinAndroidProjectExtension>()
 }
@@ -174,7 +144,7 @@ private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() =
         allWarningsAsErrors = warningsAsErrors.toBoolean()
         freeCompilerArgs.add(
             // Enable experimental coroutines APIs, including Flow
-            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
         )
     }
 }

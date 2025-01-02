@@ -1,5 +1,4 @@
 import com.android.build.api.dsl.ApplicationExtension
-import com.bz.movies.configureKotlinAndroid
 import com.bz.movies.configureKotlinAndroidApp
 import org.gradle.api.Plugin
 import org.gradle.api.Project
