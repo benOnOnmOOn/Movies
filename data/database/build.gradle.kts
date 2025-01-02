@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.movies.android.library)
     alias(libs.plugins.movies.hilt)
     alias(libs.plugins.kotlinx.kover)
-    alias(libs.plugins.androidx.room)
+    alias(libs.plugins.movies.android.room)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.binary.compatibility)
 }
@@ -20,14 +20,6 @@ apiValidation {
             "dagger.hilt.codegen.OriginatingElement"
         )
     )
-}
-
-room {
-    schemaDirectory("$projectDir/schemas/")
-}
-
-ksp {
-    arg("room.generateKotlin", "true")
 }
 
 kover {

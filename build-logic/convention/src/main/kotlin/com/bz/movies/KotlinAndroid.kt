@@ -110,6 +110,7 @@ internal fun CommonExtension<*, *, *, *, *, *>.defaultBaseConfig(project: Projec
     @Suppress("UnstableApiUsage")
     testOptions {
         unitTests.isReturnDefaultValues = true
+        animationsDisabled = true
         unitTests.all {
             it.useJUnitPlatform()
         }

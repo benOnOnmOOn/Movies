@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 The Android Open Source Project
+ * Copyright 2023 The Android Open Source Project
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -14,29 +14,20 @@
  *   limitations under the License.
  */
 
-import com.android.build.api.variant.LibraryAndroidComponentsExtension
-import com.android.build.gradle.LibraryExtension
-import com.bz.movies.configureKotlinAndroid
-import com.bz.movies.disableUnnecessaryAndroidTests
+import com.bz.movies.configureKotlinJvm
+import com.bz.movies.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 
-class AndroidLibraryConventionPlugin : Plugin<Project> {
+class KoverConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
-                apply("com.android.library")
-                apply("org.jetbrains.kotlin.android")
+                apply("org.jetbrains.kotlin.jvm")
                 apply("movies.android.lint")
             }
-
-            extensions.configure<LibraryExtension> {
-                configureKotlinAndroid(this)
-            }
-            extensions.configure<LibraryAndroidComponentsExtension> {
-                disableUnnecessaryAndroidTests(target)
-            }
+            configureKotlinJvm()
         }
     }
 }
