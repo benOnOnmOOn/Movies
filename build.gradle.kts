@@ -1,14 +1,4 @@
-import com.android.build.api.dsl.AndroidResources
-import com.android.build.api.dsl.BuildFeatures
-import com.android.build.api.dsl.BuildType
-import com.android.build.api.dsl.CommonExtension
-import com.android.build.api.dsl.DefaultConfig
-import com.android.build.api.dsl.Installation
-import com.android.build.api.dsl.LibraryExtension
-import com.android.build.api.dsl.ProductFlavor
-import com.android.build.gradle.AppPlugin
-import com.android.build.gradle.LibraryPlugin
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
@@ -20,19 +10,23 @@ import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.jvm) apply false
-    alias(libs.plugins.com.android.application) apply false
-    alias(libs.plugins.com.android.library) apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.gradle.versions) apply true
     alias(libs.plugins.detekt) apply true
     alias(libs.plugins.dependency.analysis) apply true
-    alias(libs.plugins.com.google.dagger.hilt.android) apply false
-    alias(libs.plugins.org.jetbrains.kotlinx.kover) apply false
-    alias(libs.plugins.com.osacky.doctor) apply true
-    alias(libs.plugins.org.jlleitschuh.gradle.ktlint) apply true
-    alias(libs.plugins.org.gradle.android.cache.fix) apply false
+    alias(libs.plugins.hilt.android) apply false
+    alias(libs.plugins.kotlinx.kover) apply false
+    alias(libs.plugins.gradle.doctor) apply true
+    alias(libs.plugins.ktlint) apply true
+    alias(libs.plugins.android.cache.fix) apply false
     alias(libs.plugins.androidx.room) apply false
     alias(libs.plugins.compose.compiler) apply false
+    alias(libs.plugins.dependency.guard) apply false
+    alias(libs.plugins.google.services) apply false
+    alias(libs.plugins.firebase.crashlytics) apply false
+    alias(libs.plugins.firebase.perf) apply false
     alias(libs.plugins.binary.compatibility) apply false
 }
 
@@ -119,113 +113,6 @@ dependencyAnalysis {
     }
 }
 
-fun PluginContainer.applyBaseConfig(project: Project) {
-    whenPluginAdded {
-        when (this) {
-            is AppPlugin ->
-                project.extensions.getByType<BaseAppModuleExtension>().baseConfig()
-
-            is LibraryPlugin ->
-                project.extensions.getByType<LibraryExtension>().baseConfig()
-        }
-    }
-}
-
-//region Global android configuration
-fun <
-    BF : BuildFeatures,
-    BT : BuildType,
-    DC : DefaultConfig,
-    PF : ProductFlavor,
-    AR : AndroidResources,
-    IN : Installation
-    > CommonExtension<BF, BT, DC, PF, AR, IN>.defaultBaseConfig() {
-    compileSdk = 35
-    buildToolsVersion = "35.0.0"
-
-    defaultConfig {
-        minSdk = 27
-        resourceConfigurations += listOf("pl", "en")
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    lint {
-        baseline = project.file("lint-baseline.xml")
-        disable += listOf(
-            "NewerVersionAvailable",
-            "GradleDependency",
-            "RawDispatchersUse"
-        )
-        abortOnError = true
-        checkAllWarnings = true
-        warningsAsErrors = true
-        checkReleaseBuilds = false
-        checkDependencies = false
-        checkGeneratedSources = false
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-        }
-    }
-
-    @Suppress("UnstableApiUsage")
-    testOptions {
-        unitTests.isReturnDefaultValues = true
-        unitTests.all {
-            it.useJUnitPlatform()
-        }
-    }
-
-    packaging.resources.excludes +=
-        setOf(
-            "kotlin/**",
-            "META-INF/**",
-            "META-INF/services/**",
-            "**.properties",
-            "kotlin-tooling-metadata.json",
-            "DebugProbesKt.bin"
-        )
-}
-
-fun LibraryExtension.baseConfig() {
-    defaultBaseConfig()
-    defaultConfig {
-        consumerProguardFiles("consumer-rules.pro")
-    }
-}
-
-fun BaseAppModuleExtension.baseConfig() {
-    defaultBaseConfig()
-    dependenciesInfo.apply {
-        includeInApk = false
-        includeInBundle = false
-    }
-
-    @Suppress("UnstableApiUsage", "MissingResourcesProperties")
-    androidResources.generateLocaleConfig = true
-
-    defaultConfig {
-        applicationId = "com.bz.movies"
-        versionCode = 1
-        versionName = "1.0"
-
-        targetSdk = 35
-        multiDexEnabled = false
-    }
-
-    compileOptions.isCoreLibraryDesugaringEnabled = false
-    compileOptions.incremental = true
-}
-
-// endregion
-
 ktlint {
     version.set("1.4.0")
 }
@@ -233,7 +120,6 @@ ktlint {
 subprojects {
     apply<KtlintPlugin>()
     apply<AndroidCacheFixPlugin>()
-    project.plugins.applyBaseConfig(project)
     configurations.all {
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")

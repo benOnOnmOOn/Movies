@@ -1,8 +1,6 @@
 plugins {
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.com.android.library)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.com.google.dagger.hilt.android)
+    alias(libs.plugins.movies.android.library)
+    alias(libs.plugins.movies.hilt)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.binary.compatibility)
 }

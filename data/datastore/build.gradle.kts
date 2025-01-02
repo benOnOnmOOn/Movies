@@ -1,9 +1,7 @@
 plugins {
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.com.android.library)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.com.google.dagger.hilt.android) apply false
-    alias(libs.plugins.org.jetbrains.kotlinx.kover)
+    alias(libs.plugins.movies.android.library)
+    alias(libs.plugins.movies.hilt)
+    alias(libs.plugins.kotlinx.kover)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.binary.compatibility)
 }
@@ -35,6 +33,7 @@ dependencyAnalysis {
     issues {
         onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
         onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
+        onUnusedDependencies { exclude("com.google.dagger:hilt-android") }
     }
 }
 
@@ -45,6 +44,7 @@ dependencies {
 
     // HILT
     implementation(libs.hilt.core)
+    implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
     ksp(libs.dagger.compiler)
     api(libs.dagger)

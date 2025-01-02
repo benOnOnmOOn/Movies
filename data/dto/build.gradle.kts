@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.org.jetbrains.kotlinx.kover)
+    alias(libs.plugins.kotlinx.kover)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.binary.compatibility)
     id("com.android.lint")

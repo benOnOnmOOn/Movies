@@ -1,7 +1,6 @@
 plugins {
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.org.jetbrains.kotlinx.kover)
-    alias(libs.plugins.com.android.library)
+    alias(libs.plugins.kotlinx.kover)
+    alias(libs.plugins.movies.android.library)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.binary.compatibility)
 }

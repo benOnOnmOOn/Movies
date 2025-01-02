@@ -1,34 +1,18 @@
 import org.gradle.kotlin.dsl.android
 
 plugins {
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.com.android.application)
-    alias(libs.plugins.com.google.dagger.hilt.android)
-    alias(libs.plugins.org.jetbrains.kotlinx.kover)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinx.kover)
     alias(libs.plugins.dependency.guard)
     alias(libs.plugins.dexcount)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.binary.compatibility)
+    alias(libs.plugins.movies.android.application)
+    alias(libs.plugins.movies.android.application.compose)
+    alias(libs.plugins.movies.hilt)
 }
 
 android {
     namespace = "com.bz.movies"
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles("proguard-rules.pro")
-
-//            optimization {
-//                keepRules {
-//                    ignoreAllExternalDependencies(true)
-//                }
-//            }
-            signingConfig = signingConfigs.getByName("debug")
-        }
-    }
 }
 
 dependencyAnalysis {
