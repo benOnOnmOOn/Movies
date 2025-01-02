@@ -11,3 +11,4 @@ local.properties
 /.gradle/
 /*/build/
 /.kotlin/
+/build-logic/.gradle/
