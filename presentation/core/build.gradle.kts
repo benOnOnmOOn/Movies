@@ -1,35 +1,14 @@
 plugins {
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.com.android.library)
-    alias(libs.plugins.com.google.dagger.hilt.android)
-    alias(libs.plugins.org.jetbrains.kotlinx.kover)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.movies.android.library)
+    alias(libs.plugins.movies.android.library.compose)
+    alias(libs.plugins.movies.hilt)
+    alias(libs.plugins.movies.kover)
     alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.binary.compatibility)
+    alias(libs.plugins.movies.binary.compatibility)
 }
 
 android {
     namespace = "com.bz.core"
-}
-
-kover {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
-    }
-}
-
-apiValidation {
-    ignoredPackages.add("hilt_aggregated_deps")
-    nonPublicMarkers.addAll(
-        listOf(
-            "dagger.internal.DaggerGenerated",
-            "javax.annotation.processing.Generated",
-            "dagger.hilt.codegen.OriginatingElement"
-        )
-    )
 }
 
 dependencies {
@@ -48,7 +27,7 @@ dependencies {
     implementation(libs.androidx.foundation.layout.android)
     implementation(libs.androidx.ui.android)
     implementation(libs.androidx.ui.graphics.android)
-    implementation(libs.activity.compose)
+    implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material3)
     api(libs.androidx.appcompat)

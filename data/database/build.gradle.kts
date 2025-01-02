@@ -1,43 +1,14 @@
 plugins {
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.com.android.library)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.com.google.dagger.hilt.android) apply false
-    alias(libs.plugins.org.jetbrains.kotlinx.kover)
-    alias(libs.plugins.androidx.room)
+    alias(libs.plugins.movies.android.library)
+    alias(libs.plugins.movies.hilt)
+    alias(libs.plugins.movies.kover)
+    alias(libs.plugins.movies.android.room)
     alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.binary.compatibility)
+    alias(libs.plugins.movies.binary.compatibility)
 }
 
 android {
     namespace = "com.bz.movies.database"
-}
-
-apiValidation {
-    ignoredPackages.add("hilt_aggregated_deps")
-    nonPublicMarkers.addAll(
-        listOf(
-            "dagger.internal.DaggerGenerated",
-            "javax.annotation.processing.Generated",
-            "dagger.hilt.codegen.OriginatingElement"
-        )
-    )
-}
-
-room {
-    schemaDirectory("$projectDir/schemas/")
-}
-
-ksp {
-    arg("room.generateKotlin", "true")
-}
-
-kover {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
-    }
 }
 
 dependencies {

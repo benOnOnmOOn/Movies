@@ -1,34 +1,18 @@
 import org.gradle.kotlin.dsl.android
 
 plugins {
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.com.android.application)
-    alias(libs.plugins.com.google.dagger.hilt.android)
-    alias(libs.plugins.org.jetbrains.kotlinx.kover)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.dependency.guard)
     alias(libs.plugins.dexcount)
-    alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.binary.compatibility)
+    alias(libs.plugins.movies.android.application)
+    alias(libs.plugins.movies.android.application.compose)
+    alias(libs.plugins.movies.binary.compatibility)
+    alias(libs.plugins.movies.hilt)
+    alias(libs.plugins.movies.kover)
 }
 
 android {
     namespace = "com.bz.movies"
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles("proguard-rules.pro")
-
-//            optimization {
-//                keepRules {
-//                    ignoreAllExternalDependencies(true)
-//                }
-//            }
-            signingConfig = signingConfigs.getByName("debug")
-        }
-    }
 }
 
 dependencyAnalysis {
@@ -37,64 +21,6 @@ dependencyAnalysis {
         onUnusedDependencies { exclude(libs.androidx.appcompat) }
         onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
         onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
-    }
-}
-
-apiValidation {
-    ignoredPackages.add("hilt_aggregated_deps")
-    nonPublicMarkers.addAll(
-        listOf(
-            "dagger.internal.DaggerGenerated",
-            "javax.annotation.processing.Generated",
-            "dagger.hilt.codegen.OriginatingElement"
-        )
-    )
-}
-
-kover {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
-    }
-    reports {
-        total {
-            html {
-                onCheck = true
-            }
-            xml {
-                onCheck = true
-            }
-        }
-        filters {
-            excludes {
-                classes(
-                    // moshi json adapter
-                    "com.bz.network.api.model.*JsonAdapter",
-                    "*ComposableSingletons*",
-                    "*_Factor*y",
-                    "*_HiltModules*",
-                    "*Hilt_*",
-                    "*_Impl*"
-                )
-                packages(
-                    "hilt_aggregated_deps",
-                    "dagger.hilt.internal.aggregatedroot.codegen",
-                    "com.bz.movies.database.dao",
-                    "com.bz.movies.presentation.theme",
-                    "com.bz.movies.presentation.navigation",
-                    "com.bz.movies.presentation.screens.utils",
-                    "com.bz.movies.core"
-                )
-                annotatedBy(
-                    "*Generated*",
-                    "*Composable*",
-                    "*Module*",
-                    "*HiltAndroidApp*",
-                    "*AndroidEntryPoint*"
-                )
-            }
-        }
     }
 }
 

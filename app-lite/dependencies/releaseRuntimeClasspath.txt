@@ -101,9 +101,9 @@ co.touchlab:kermit-core-android:2.0.5
 co.touchlab:kermit-core:2.0.5
 co.touchlab:kermit:2.0.5
 com.google.accompanist:accompanist-drawablepainter:0.32.0
-com.google.dagger:dagger:2.53.1
-com.google.dagger:hilt-android:2.53.1
-com.google.dagger:hilt-core:2.53.1
+com.google.dagger:dagger:2.54
+com.google.dagger:hilt-android:2.54
+com.google.dagger:hilt-core:2.54
 com.google.guava:listenablefuture:1.0
 com.squareup.moshi:moshi:1.15.2
 com.squareup.okhttp3:okhttp:4.12.0
