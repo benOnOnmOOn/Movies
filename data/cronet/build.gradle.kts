@@ -5,10 +5,6 @@ plugins {
     alias(libs.plugins.movies.hilt)
 }
 
-android {
-    namespace = "com.bz.cronet"
-}
-
 dependencies {
     implementation(project(":utlis:android"))
 

@@ -11,7 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.bz.presentation.screens.R
+import com.bz.movies.presentation.screens.R
 
 @Composable
 internal fun MoreScreen(moreScreenViewModel: MoreScreenViewModel = hiltViewModel()) {

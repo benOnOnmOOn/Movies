@@ -1,12 +1,8 @@
 plugins {
-    alias(libs.plugins.movies.android.library)
-    alias(libs.plugins.movies.hilt)
     alias(libs.plugins.dependency.analysis)
+    alias(libs.plugins.movies.android.library)
     alias(libs.plugins.movies.binary.compatibility)
-}
-
-android {
-    namespace = "com.bz.cronet"
+    alias(libs.plugins.movies.hilt)
 }
 
 dependencies {
