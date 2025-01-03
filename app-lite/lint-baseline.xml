@@ -1,37 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <issues format="6" by="lint 8.7.3" type="baseline" client="gradle" dependencies="false" name="AGP (8.7.3)" variant="all" version="8.7.3">
 
-    <issue
-        id="MissingClass"
-        message="Class referenced in the manifest, `com.bz.movies.lite.core.MoviesApp`, was not found in the project or the libraries"
-        errorLine1="        android:name=&quot;.core.MoviesApp&quot;"
-        errorLine2="                      ~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="6"
-            column="23"/>
-    </issue>
-
-    <issue
-        id="MissingClass"
-        message="Class referenced in the manifest, `com.bz.movies.lite.presentation.MainActivity`, was not found in the project or the libraries"
-        errorLine1="            android:name=&quot;.presentation.MainActivity&quot;"
-        errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="17"
-            column="27"/>
-    </issue>
-
-    <issue
-        id="Registered"
-        message="The `&lt;application> com.bz.movies.core.MoviesApp` is not registered in the manifest"
-        errorLine1="class MoviesApp : Application() {"
-        errorLine2="      ~~~~~~~~~">
-        <location
-            file="src/main/kotlin/com/bz/movies/core/MoviesApp.kt"
-            line="8"
-            column="7"/>
-    </issue>
-
 </issues>
