@@ -1,17 +1,27 @@
 pluginManagement {
     repositories {
+        google {
+            content {
+                includeGroupByRegex("com.android.*")
+                includeGroupByRegex("androidx.*")
+                includeGroupByRegex("com.google.*")
+                includeGroupByRegex("org.chromium.net.*")
+                excludeGroup("com.google.auto.service")
+            }
+        }
         gradlePluginPortal()
-        google()
     }
 }
 
 dependencyResolutionManagement {
+    @Suppress("UnstableApiUsage")
     repositories {
         google {
             content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("com.android.*")
+                includeGroupByRegex("com.google.*")
                 includeGroupByRegex("androidx.*")
+                excludeGroup("com.google.auto.service")
             }
         }
         mavenCentral()
