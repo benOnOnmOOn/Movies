@@ -16,7 +16,7 @@ kermit = "2.0.5"
 kotlin = "2.1.20-Beta1"
 leakcanary-android = "3.0-alpha-8"
 play-services-cronet = "18.1.0"
-hilt = "2.54"
+hilt = "2.55"
 hilt-navigation-compose = "1.2.0"
 javax-inject = "1"
 kotlinx-coroutines = "1.10.1"
@@ -133,7 +133,7 @@ firebase-performance-gradlePlugin = { group = "com.google.firebase", name = "per
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
-kover-gradlePlugin = { group = "org.jetbrains.kotlinx.kover", name = "org.jetbrains.kotlinx.kover.gradle.plugin", version = "0.9.0" }
+kover-gradlePlugin = { group = "org.jetbrains.kotlinx.kover", name = "org.jetbrains.kotlinx.kover.gradle.plugin", version = "0.9.1" }
 binary-compatibility-gradlePlugin = { group = "org.jetbrains.kotlinx.binary-compatibility-validator", name = "org.jetbrains.kotlinx.binary-compatibility-validator.gradle.plugin",  version = "0.17.0" }
 
 [plugins]
