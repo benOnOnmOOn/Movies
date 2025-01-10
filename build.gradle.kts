@@ -2,8 +2,8 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
-//import org.gradle.android.AndroidCacheFixPlugin
-//import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+// import org.gradle.android.AndroidCacheFixPlugin
+// import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -150,7 +150,7 @@ subprojects {
     }
 }
 
-//doctor {
+// doctor {
 //    daggerThreshold.set(100)
 //    negativeAvoidanceThreshold.set(50)
-//}
+// }
