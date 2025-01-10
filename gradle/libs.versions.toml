@@ -138,7 +138,7 @@ binary-compatibility-gradlePlugin = { group = "org.jetbrains.kotlinx.binary-comp
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
-android-cache-fix = { id = "org.gradle.android.cache-fix", version = "3.0.1" }
+#android-cache-fix = { id = "org.gradle.android.cache-fix", version = "3.0.1" }
 android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
 android-lint = { id = "com.android.lint", version.ref = "android-gradle-plugin" }
 androidx-room = { id = "androidx.room", version.ref = "room" }
@@ -152,11 +152,11 @@ firebase-crashlytics = { id = "com.google.firebase.crashlytics", version = "3.0.
 firebase-perf = { id = "com.google.firebase.firebase-perf", version = "1.4.2" }
 google-services = { id = "com.google.gms.google-services", version = "4.4.2" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
-gradle_doctor = { id = "com.osacky.doctor", version = "0.10.0" }
+#gradle_doctor = { id = "com.osacky.doctor", version = "0.10.0" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version = "0.9.0" }
+kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version = "0.9.1" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "12.1.2" }
 
