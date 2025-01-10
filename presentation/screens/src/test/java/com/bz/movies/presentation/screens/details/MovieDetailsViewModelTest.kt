@@ -59,7 +59,6 @@ class MovieDetailsViewModelTest {
 
         val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
         // we may need that as in MovieDetailsViewModel I had sample for memory leak detection
-        advanceUntilIdle()
         viewModel.fetchMovieDetails(1234)
         viewModel.state.test {
             val actualItem = awaitItem()
