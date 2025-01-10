@@ -18,7 +18,6 @@ import io.mockk.unmockkObject
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
@@ -59,7 +58,6 @@ class MovieDetailsViewModelTest {
 
         val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
         // we may need that as in MovieDetailsViewModel I had sample for memory leak detection
-        advanceUntilIdle()
         viewModel.fetchMovieDetails(1234)
         viewModel.state.test {
             val actualItem = awaitItem()

@@ -2,14 +2,14 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
-import org.gradle.android.AndroidCacheFixPlugin
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
+// import org.gradle.android.AndroidCacheFixPlugin
+// import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.android.cache.fix) apply false
+//    alias(libs.plugins.android.cache.fix) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.androidx.room) apply false
     alias(libs.plugins.binary.compatibility) apply false
@@ -26,7 +26,8 @@ plugins {
 
     alias(libs.plugins.dependency.analysis) apply true
     alias(libs.plugins.detekt) apply true
-    alias(libs.plugins.gradle.doctor) apply true
+//    alias(libs.plugins.gradle.doctor) apply true
+    // Versions plugin need to be enabled here for proper work in whole project
     alias(libs.plugins.gradle.versions) apply true
     alias(libs.plugins.ktlint) apply true
 }
@@ -120,7 +121,7 @@ ktlint {
 
 subprojects {
     apply<KtlintPlugin>()
-    apply<AndroidCacheFixPlugin>()
+//    apply<AndroidCacheFixPlugin>()
     configurations.all {
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
         exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
@@ -149,14 +150,7 @@ subprojects {
     }
 }
 
-doctor {
-    daggerThreshold.set(100)
-    negativeAvoidanceThreshold.set(50)
-}
-
-tasks.withType<Test> {
-    testLogging {
-        exceptionFormat = TestExceptionFormat.FULL
-        showStackTraces = true
-    }
-}
+// doctor {
+//    daggerThreshold.set(100)
+//    negativeAvoidanceThreshold.set(50)
+// }
