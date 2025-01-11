@@ -22,16 +22,13 @@ dependencies {
     //
 
     // CRONET
-    releaseApi(libs.cronet.okhttp)
-    releaseApi(libs.cronet.api)
-    releaseRuntimeOnly(libs.cronet.embedded)
-    releaseImplementation(libs.play.services.cronet)
+    api(libs.cronet.okhttp)
+    api(libs.cronet.api)
+    runtimeOnly(libs.cronet.embedded)
+    implementation(libs.play.services.cronet)
     //
 
     api(libs.okhttp)
-
-    // use debug impl to prevent from adding this deps to release version
-    debugApi(libs.logging.interceptor)
 
     runtimeOnly(libs.kotlinx.coroutines.android)
 }
