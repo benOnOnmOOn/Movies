@@ -79,6 +79,8 @@ detekt {
 
 tasks.register<Detekt>("detektAll") {
     description = "Runs Detekt for all modules"
+    baseline = file(baselineFile)
+    config.setFrom(files(configFile))
     setSource(projectSource)
     include(kotlinFiles)
     exclude(resourceFiles, buildFiles)
@@ -93,6 +95,8 @@ tasks.register<Detekt>("detektAll") {
 
 tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
     description = "Custom DETEKT build to build baseline for all modules"
+    baseline = file(baselineFile)
+    config.setFrom(files(configFile))
     setSource(projectSource)
     include(kotlinFiles)
     exclude(resourceFiles, buildFiles)
