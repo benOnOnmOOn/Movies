@@ -13,10 +13,10 @@ dependencies {
     ksp(libs.moshi.kotlin.codegen)
 
     // HILT
-    implementation(libs.hilt.android)
-    implementation(libs.hilt.core)
     ksp(libs.hilt.android.compiler)
     ksp(libs.dagger.compiler)
+    implementation(libs.hilt.core)
+    implementation(libs.hilt.android)
     api(libs.dagger)
     debugApi(libs.javax.inject)
     //

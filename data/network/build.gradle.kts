@@ -47,7 +47,4 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(libs.mockwebserver)
     testImplementation(libs.junit.api)
-
-    androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.junit.api)
 }

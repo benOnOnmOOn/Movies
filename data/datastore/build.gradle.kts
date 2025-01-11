@@ -28,13 +28,12 @@ dependencies {
     api(libs.javax.inject)
     //
 
-    implementation(libs.kermit)
-
     api(libs.androidx.datastore.core)
+
+    implementation(libs.androidx.datastore)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.datastore.preferences.core)
-    implementation(libs.androidx.datastore)
-
+    implementation(libs.kermit)
     implementation(libs.kotlinx.coroutines.core)
 
     releaseImplementation(libs.kermit.core)
@@ -42,8 +41,4 @@ dependencies {
     testRuntimeOnly(libs.junit.engine)
 
     testImplementation(libs.junit.api)
-
-    androidTestImplementation(libs.junit.api)
-    androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.junit.api)
 }

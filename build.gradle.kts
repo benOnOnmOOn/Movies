@@ -75,10 +75,13 @@ detekt {
     parallel = true
     ignoreFailures = false
     autoCorrect = false
-    buildUponDefaultConfig = true
 }
 
-tasks.withType<Detekt>().configureEach {
+tasks.register<Detekt>("detektAll") {
+    description = "Runs Detekt for all modules"
+    setSource(projectSource)
+    include(kotlinFiles)
+    exclude(resourceFiles, buildFiles)
     reports {
         html.required.set(true)
         xml.required.set(true)
@@ -88,21 +91,9 @@ tasks.withType<Detekt>().configureEach {
     }
 }
 
-tasks.register<Detekt>("detektAll") {
-    description = "Runs Detekt for all modules"
-    allRules = false
-    config = files(configFile)
-    baseline = file(baselineFile)
-    setSource(projectSource)
-    include(kotlinFiles)
-    exclude(resourceFiles, buildFiles)
-}
-
 tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
     description = "Custom DETEKT build to build baseline for all modules"
     setSource(projectSource)
-    baseline.set(baselineFile)
-    config.setFrom(configFile)
     include(kotlinFiles)
     exclude(resourceFiles, buildFiles)
 }

@@ -35,16 +35,16 @@ dependencies {
 
     lintChecks(libs.slack.lint.checks)
 
-    releaseImplementation(libs.firebase.analytics.ktx)
-    releaseImplementation(libs.firebase.crashlytics.ktx)
-    releaseImplementation(libs.firebase.perf)
-
     //  HILT
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)
     implementation(libs.javax.inject)
     //
+
+    releaseImplementation(libs.firebase.analytics.ktx)
+    releaseImplementation(libs.firebase.crashlytics.ktx)
+    releaseImplementation(libs.firebase.perf)
 
     implementation(libs.androidx.startup.runtime)
     implementation(libs.androidx.fragment)

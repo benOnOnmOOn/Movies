@@ -6,9 +6,8 @@ import org.gradle.kotlin.dsl.configure
 class KoverConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("org.jetbrains.kotlinx.kover")
-            }
+            pluginManager.apply("org.jetbrains.kotlinx.kover")
+
             when {
                 pluginManager.hasPlugin("com.android.application") ->
                     configure<KoverProjectExtension> { configure() }
