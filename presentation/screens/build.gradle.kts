@@ -86,5 +86,4 @@ dependencies {
     testImplementation(libs.mockk.dsl)
     testImplementation(libs.turbine)
     testRuntimeOnly(libs.junit.engine)
-
 }
