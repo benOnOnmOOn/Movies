@@ -1,10 +1,10 @@
 [versions]
-androidTools = "31.7.3"
+androidTools = "31.8.0"
 coil-compose = "2.7.0"
 collection = "1.4.5"
 collection-jvm = "1.4.5"
 androidxLintGradle = "1.0.0-alpha03"
-android-gradle-plugin = "8.9.0-alpha08"
+android-gradle-plugin = "8.9.0-alpha09"
 compose = "1.7.6"
 compose-lint-checks = "1.4.2"
 cronet = "119.6045.31"
@@ -31,7 +31,7 @@ ksp = "2.1.20-Beta1-1.0.29"
 moshi = "1.15.2"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
-mockk = "1.13.14"
+mockk = "1.13.16"
 room = "2.7.0-alpha12"
 slack-lint-checks = "0.8.2"
 sqlite = "2.4.0"
@@ -144,7 +144,7 @@ android-lint = { id = "com.android.lint", version.ref = "android-gradle-plugin" 
 androidx-room = { id = "androidx.room", version.ref = "room" }
 binary-compatibility = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.17.0" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "2.6.1" }
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "2.7.0" }
 dependency-guard = { id = "com.dropbox.dependency-guard", version = "0.5.0" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.7" }
 dexcount = { id = "com.getkeepsafe.dexcount", version = "4.0.0" }
