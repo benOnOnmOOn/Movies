@@ -65,7 +65,6 @@ dependencies {
 
     releaseImplementation(libs.guava)
 
-    testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
 
