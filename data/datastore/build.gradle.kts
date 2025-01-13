@@ -39,5 +39,4 @@ dependencies {
     releaseImplementation(libs.kermit.core)
 
     testRuntimeOnly(libs.junit.engine)
-
 }

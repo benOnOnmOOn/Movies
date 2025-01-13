@@ -32,5 +32,4 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     testRuntimeOnly(libs.junit.engine)
-
 }
