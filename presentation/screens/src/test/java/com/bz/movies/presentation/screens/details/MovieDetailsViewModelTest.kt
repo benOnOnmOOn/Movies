@@ -63,6 +63,7 @@ class MovieDetailsViewModelTest {
         // we may need that as in MovieDetailsViewModel I had sample for memory leak detection
         viewModel.fetchMovieDetails(1234)
         viewModel.state.test {
+            skipItems(1)
             val actualItem = awaitItem()
             assertEquals(EXPECTED_DETAILS_STATE, actualItem)
             expectNoEvents()
