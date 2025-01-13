@@ -17,14 +17,19 @@ import io.mockk.mockkObject
 import io.mockk.unmockkObject
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class MovieDetailsViewModelTest {
@@ -58,12 +63,12 @@ class MovieDetailsViewModelTest {
         every { Random.nextInt(any(), any()) } returns 69
 
         val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
-        // we need to run sample of memory leak to pass this unit test
-        advanceUntilIdle()
-        // we may need that as in MovieDetailsViewModel I had sample for memory leak detection
+        viewModel.state.test {
+            assertEquals(MovieDetailState(), awaitItem())
+            expectNoEvents()
+        }
         viewModel.fetchMovieDetails(1234)
         viewModel.state.test {
-            skipItems(1)
             val actualItem = awaitItem()
             assertEquals(EXPECTED_DETAILS_STATE, actualItem)
             expectNoEvents()
@@ -106,6 +111,17 @@ class MovieDetailsViewModelTest {
         coVerify(exactly = 1) { movieRepository.getMovieDetail(any()) }
     }
 
+    @BeforeEach
+    fun setUp() {
+        Dispatchers.setMain(StandardTestDispatcher())
+    }
+
+    @AfterEach
+    fun tearDown() {
+        Dispatchers.resetMain()
+        MainScope().cancel()
+    }
+
     companion object {
 
         internal val EXPECTED_DETAILS_STATE = MovieDetailState(
@@ -129,18 +145,5 @@ class MovieDetailsViewModelTest {
             genre = setOf("Genre"),
             overview = "bornig"
         )
-
-        @OptIn(ExperimentalKermitApi::class)
-        @BeforeAll
-        @JvmStatic
-        fun setUp() {
-            Dispatchers.setMain(StandardTestDispatcher())
-        }
-
-        @AfterAll
-        @JvmStatic
-        fun tearDown() {
-            Dispatchers.resetMain()
-        }
     }
 }

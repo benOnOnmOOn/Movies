@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.AfterAll
@@ -200,12 +201,15 @@ class PopularMoviesViewModelTest {
 
         viewModel.state.test {
             skipItems(2)
+            expectNoEvents()
         }
         viewModel.sendEvent(MovieEvent.Refresh)
         viewModel.state.test {
             skipItems(1)
+            expectNoEvents()
         }
-        advanceUntilIdle()
+
+        runCurrent()
 
         coVerify(exactly = 1) { localMovieRepository.clearPopularMovies() }
         verify(exactly = 1) { localMovieRepository.popularMovies }
@@ -228,6 +232,7 @@ class PopularMoviesViewModelTest {
         viewModel.state.test {
             awaitItem()
             awaitItem()
+            expectNoEvents()
         }
         viewModel.sendEvent(
             MovieEvent.OnMovieClicked(
@@ -243,8 +248,9 @@ class PopularMoviesViewModelTest {
         )
         viewModel.state.test {
             awaitItem()
+            expectNoEvents()
         }
-        advanceUntilIdle()
+        runCurrent()
 
         coVerify(exactly = 1) { localMovieRepository.insertFavoriteMovie(any()) }
         verify(exactly = 1) { localMovieRepository.popularMovies }
