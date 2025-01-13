@@ -61,13 +61,8 @@ dependencies {
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.ui.tooling)
 
-    testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
-
-    androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.junit.api)
-    androidTestRuntimeOnly(libs.junit.engine)
 }
 
 dependencyGuard {

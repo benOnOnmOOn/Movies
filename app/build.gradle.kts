@@ -25,8 +25,9 @@ dependencyAnalysis {
 dependencies {
     // don't warn
     implementation(project(":presentation:core"))
-    implementation(project(":data:cronet"))
     implementation(project(":utlis:android"))
+    debugImplementation(project(":data:okhttp"))
+    releaseImplementation(project(":data:cronet"))
     kover(project(":presentation:core"))
     kover(project(":presentation:screens"))
     kover(project(":data:network"))
@@ -35,16 +36,16 @@ dependencies {
 
     lintChecks(libs.slack.lint.checks)
 
-    releaseImplementation(libs.firebase.analytics.ktx)
-    releaseImplementation(libs.firebase.crashlytics.ktx)
-    releaseImplementation(libs.firebase.perf)
-
     //  HILT
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)
     implementation(libs.javax.inject)
     //
+
+    releaseImplementation(libs.firebase.analytics.ktx)
+    releaseImplementation(libs.firebase.crashlytics.ktx)
+    releaseImplementation(libs.firebase.perf)
 
     implementation(libs.androidx.startup.runtime)
     implementation(libs.androidx.fragment)
@@ -64,7 +65,6 @@ dependencies {
 
     releaseImplementation(libs.guava)
 
-    testImplementation(libs.junit.api)
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
 

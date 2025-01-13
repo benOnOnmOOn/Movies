@@ -6,9 +6,9 @@ import org.gradle.kotlin.dsl.configure
 class BinaryCompatibilityConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("org.jetbrains.kotlinx.binary-compatibility-validator")
-            }
+
+            pluginManager.apply("org.jetbrains.kotlinx.binary-compatibility-validator")
+
             extensions.configure<ApiValidationExtension> {
                 ignoredPackages.add("hilt_aggregated_deps")
                 nonPublicMarkers.addAll(

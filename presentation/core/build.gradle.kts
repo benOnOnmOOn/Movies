@@ -18,31 +18,25 @@ dependencies {
     api(libs.hilt.core)
     //
 
-    api(libs.androidx.runtime.android)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.foundation.layout.android)
-    implementation(libs.androidx.ui.android)
-    implementation(libs.androidx.ui.graphics.android)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.material3)
     api(libs.androidx.appcompat)
-
     api(libs.androidx.lifecycle.viewmodel)
-    implementation(libs.androidx.navigation.common)
-    implementation(libs.androidx.navigation.runtime)
+    api(libs.androidx.runtime.android)
 
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.foundation.layout.android)
     implementation(libs.androidx.material3)
-
-    testImplementation(libs.junit.api)
-    testImplementation(libs.mockk)
-    testRuntimeOnly(libs.junit.engine)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.common)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.runtime)
+    implementation(libs.androidx.ui.android)
+    implementation(libs.androidx.ui.graphics.android)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.ui.tooling)
 
-    androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.junit.api)
-    androidTestRuntimeOnly(libs.junit.engine)
+    testImplementation(libs.mockk)
+    testRuntimeOnly(libs.junit.engine)
 }

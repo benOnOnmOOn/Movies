@@ -16,12 +16,12 @@ dependencies {
     lintChecks(libs.slack.lint.checks)
 
     // HILT
-    implementation(libs.hilt.android)
-    implementation(libs.hilt.core)
     ksp(libs.hilt.android.compiler)
     ksp(libs.dagger.compiler)
     api(libs.dagger)
     api(libs.javax.inject)
+    implementation(libs.hilt.core)
+    implementation(libs.hilt.android)
     //
 
     implementation(libs.androidx.room.common)
@@ -32,10 +32,4 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     testRuntimeOnly(libs.junit.engine)
-
-    testImplementation(libs.junit.api)
-
-    androidTestImplementation(libs.junit.api)
-    androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.junit.api)
 }

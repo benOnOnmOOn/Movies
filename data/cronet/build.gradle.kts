@@ -13,25 +13,22 @@ dependencies {
     ksp(libs.moshi.kotlin.codegen)
 
     // HILT
-    implementation(libs.hilt.android)
-    implementation(libs.hilt.core)
     ksp(libs.hilt.android.compiler)
     ksp(libs.dagger.compiler)
     api(libs.dagger)
     api(libs.javax.inject)
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.core)
     //
 
     // CRONET
-    releaseApi(libs.cronet.okhttp)
-    releaseApi(libs.cronet.api)
-    releaseRuntimeOnly(libs.cronet.embedded)
-    releaseImplementation(libs.play.services.cronet)
+    api(libs.cronet.okhttp)
+    api(libs.cronet.api)
+    runtimeOnly(libs.cronet.embedded)
+    implementation(libs.play.services.cronet)
     //
 
     api(libs.okhttp)
-
-    // use debug impl to prevent from adding this deps to release version
-    debugApi(libs.logging.interceptor)
 
     runtimeOnly(libs.kotlinx.coroutines.android)
 }
