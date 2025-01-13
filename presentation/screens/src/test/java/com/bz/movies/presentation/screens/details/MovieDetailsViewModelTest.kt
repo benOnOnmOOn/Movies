@@ -1,7 +1,6 @@
 package com.bz.movies.presentation.screens.details
 
 import app.cash.turbine.test
-import co.touchlab.kermit.ExperimentalKermitApi
 import com.bz.dto.MoveDetailDto
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
@@ -20,15 +19,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 

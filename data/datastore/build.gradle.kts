@@ -40,5 +40,4 @@ dependencies {
 
     testRuntimeOnly(libs.junit.engine)
 
-    testImplementation(libs.junit.api)
 }
