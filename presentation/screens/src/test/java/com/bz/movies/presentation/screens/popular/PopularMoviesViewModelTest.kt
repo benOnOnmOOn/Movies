@@ -21,13 +21,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class PopularMoviesViewModelTest {
@@ -208,7 +208,7 @@ class PopularMoviesViewModelTest {
             expectNoEvents()
         }
 
-        runCurrent()
+        advanceUntilIdle()
 
         coVerify(exactly = 1) { localMovieRepository.clearPopularMovies() }
         verify(exactly = 1) { localMovieRepository.popularMovies }
@@ -249,7 +249,8 @@ class PopularMoviesViewModelTest {
             awaitItem()
             expectNoEvents()
         }
-        runCurrent()
+
+        advanceUntilIdle()
 
         coVerify(exactly = 1) { localMovieRepository.insertFavoriteMovie(any()) }
         verify(exactly = 1) { localMovieRepository.popularMovies }
@@ -257,18 +258,13 @@ class PopularMoviesViewModelTest {
         coVerify(exactly = 1) { movieRepository.getPopularMovies(any()) }
     }
 
-    companion object {
+    @BeforeEach
+    fun setUp() {
+        Dispatchers.setMain(StandardTestDispatcher())
+    }
 
-        @BeforeAll
-        @JvmStatic
-        fun setUp() {
-            Dispatchers.setMain(StandardTestDispatcher())
-        }
-
-        @AfterAll
-        @JvmStatic
-        fun tearDown() {
-            Dispatchers.resetMain()
-        }
+    @AfterEach
+    fun tearDown() {
+        Dispatchers.resetMain()
     }
 }
