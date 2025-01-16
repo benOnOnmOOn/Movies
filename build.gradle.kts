@@ -105,11 +105,11 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
 
 //endregion
 
-//dependencyAnalysis {
+// dependencyAnalysis {
 //    issues {
 //        all { onAny { severity("fail") } }
 //    }
-//}
+// }
 
 ktlint {
     version.set("1.4.0")
