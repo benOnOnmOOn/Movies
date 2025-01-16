@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.movies.binary.compatibility)
     alias(libs.plugins.movies.hilt)
     alias(libs.plugins.movies.kover)
+    alias(libs.plugins.movies.dependencies)
 }
 
 android {

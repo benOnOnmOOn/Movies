@@ -96,5 +96,9 @@ gradlePlugin {
             id = libs.plugins.movies.binary.compatibility.get().pluginId
             implementationClass = "BinaryCompatibilityConventionPlugin"
         }
+        register("dependenciesConventionPlugin") {
+            id = libs.plugins.movies.dependencies.get().pluginId
+            implementationClass = "DependenciesConventionPlugin"
+        }
     }
 }
