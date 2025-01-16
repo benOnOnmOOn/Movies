@@ -30,6 +30,7 @@ dependencies {
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.kover.gradlePlugin)
     compileOnly(libs.binary.compatibility.gradlePlugin)
+    compileOnly(libs.dependency.analysis.gradlePlugin )
     compileOnly(libs.firebase.crashlytics.gradlePlugin)
     compileOnly(libs.firebase.performance.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
@@ -96,9 +97,13 @@ gradlePlugin {
             id = libs.plugins.movies.binary.compatibility.get().pluginId
             implementationClass = "BinaryCompatibilityConventionPlugin"
         }
-        register("dependenciesConventionPlugin") {
-            id = libs.plugins.movies.dependencies.get().pluginId
-            implementationClass = "DependenciesConventionPlugin"
+        register("strictDependenciesConventionPlugin") {
+            id = libs.plugins.movies.strict.dependencies.get().pluginId
+            implementationClass = "StrictDependenciesConventionPlugin"
+        }
+        register("dependencyAnalysisConventionPlugin") {
+            id = libs.plugins.movies.dependency.analysis.get().pluginId
+            implementationClass = "DependencyAnalysisConventionPlugin"
         }
     }
 }
