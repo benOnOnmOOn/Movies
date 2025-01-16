@@ -1,10 +1,12 @@
+import com.autonomousapps.DependencyAnalysisSubExtension
+
 plugins {
-    alias(libs.plugins.dependency.analysis)
+    alias(libs.plugins.movies.dependency.analysis)
     alias(libs.plugins.movies.android.library)
     alias(libs.plugins.movies.android.library.compose)
     alias(libs.plugins.movies.binary.compatibility)
     alias(libs.plugins.movies.hilt)
-    alias(libs.plugins.movies.dependencies)
+    alias(libs.plugins.movies.strict.dependencies)
     alias(libs.plugins.movies.kover)
 }
 
@@ -18,7 +20,7 @@ android {
     }
 }
 
-dependencyAnalysis {
+extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
     issues {
         onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
         onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }

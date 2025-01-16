@@ -24,7 +24,8 @@ plugins {
     alias(libs.plugins.kotlinx.kover) apply false
     alias(libs.plugins.ksp) apply false
 
-    alias(libs.plugins.dependency.analysis) apply true
+    alias(libs.plugins.dependency.analysis) apply false
+    alias(libs.plugins.movies.dependency.analysis) apply true
     alias(libs.plugins.detekt) apply true
 //    alias(libs.plugins.gradle.doctor) apply true
     // Versions plugin need to be enabled here for proper work in whole project
@@ -104,11 +105,11 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
 
 //endregion
 
-dependencyAnalysis {
-    issues {
-        all { onAny { severity("fail") } }
-    }
-}
+//dependencyAnalysis {
+//    issues {
+//        all { onAny { severity("fail") } }
+//    }
+//}
 
 ktlint {
     version.set("1.4.0")

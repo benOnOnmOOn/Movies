@@ -1,21 +1,22 @@
+import com.autonomousapps.DependencyAnalysisSubExtension
 import org.gradle.kotlin.dsl.android
 
 plugins {
-    alias(libs.plugins.dependency.analysis)
+    alias(libs.plugins.movies.dependency.analysis)
     alias(libs.plugins.dexcount)
     alias(libs.plugins.movies.android.application)
     alias(libs.plugins.movies.android.application.compose)
     alias(libs.plugins.movies.binary.compatibility)
     alias(libs.plugins.movies.hilt)
     alias(libs.plugins.movies.kover)
-    alias(libs.plugins.movies.dependencies)
+    alias(libs.plugins.movies.strict.dependencies)
 }
 
 android {
     namespace = "com.bz.movies.lite"
 }
 
-dependencyAnalysis {
+extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
     issues {
         onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
         onUnusedDependencies { exclude(libs.androidx.appcompat) }
