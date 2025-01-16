@@ -20,7 +20,7 @@ class DependenciesConventionPlugin : Plugin<Project> {
 //                exclude("androidx.versionedparcelable", "versionedparcelable")
 //                exclude("androidx.vectordrawable", "vectordrawable-animated")
 //                exclude("androidx.vectordrawable", "vectordrawable")
-                exclude("androidx.drawerlayout", "drawerlayout")
+//                exclude("androidx.drawerlayout", "drawerlayout")
                 exclude("org.checkerframework", "checker-qual")
                 exclude("androidx.viewpager", "viewpager")
                 exclude("androidx.activity", "activity-ktx")
