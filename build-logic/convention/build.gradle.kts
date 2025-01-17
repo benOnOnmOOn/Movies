@@ -30,7 +30,7 @@ dependencies {
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.kover.gradlePlugin)
     compileOnly(libs.binary.compatibility.gradlePlugin)
-    compileOnly(libs.dependency.analysis.gradlePlugin )
+    compileOnly(libs.dependency.analysis.gradlePlugin)
     compileOnly(libs.firebase.crashlytics.gradlePlugin)
     compileOnly(libs.firebase.performance.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)

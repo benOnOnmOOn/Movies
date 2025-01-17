@@ -24,6 +24,9 @@ jobs:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
           cache-cleanup: never
 
+      - name: Check build-logic
+        run: ./gradlew :build-logic:convention:check
+
       - name: Format sources with ktlint
         run: ./gradlew ktlintFormat
         continue-on-error: true

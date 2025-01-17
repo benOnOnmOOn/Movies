@@ -7,10 +7,11 @@ class StrictDependenciesConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             val enableApiDump =
-                properties.getOrDefault("movies.enableStrictDependency", true).toString().toBoolean()
+                providers.gradleProperty("movies.enableStrictDependency")
+                    .getOrElse("true").toBoolean()
             if (!enableApiDump) return
 
-            target.configurations.all {
+            target.configurations.configureEach {
                 exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
                 exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
                 exclude("com.google.code.findbugs", "jsr305")
