@@ -6,10 +6,10 @@ import org.gradle.kotlin.dsl.exclude
 class StrictDependenciesConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            val enableApiDump =
+            val enablePlugin =
                 providers.gradleProperty("movies.enableStrictDependency")
                     .getOrElse("true").toBoolean()
-            if (!enableApiDump) return
+            if (!enablePlugin) return
 
             target.configurations.configureEach {
                 exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")

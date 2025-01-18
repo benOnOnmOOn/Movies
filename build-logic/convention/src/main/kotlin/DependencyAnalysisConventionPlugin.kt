@@ -6,10 +6,10 @@ import org.gradle.kotlin.dsl.findByType
 class DependencyAnalysisConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            val enableApiDump =
+            val enablePlugin =
                 providers.gradleProperty("movies.enableDependencyAnalysis")
                     .getOrElse("true").toBoolean()
-            if (!enableApiDump) return
+            if (!enablePlugin) return
 
             pluginManager.apply("com.autonomousapps.dependency-analysis")
             extensions.findByType<DependencyAnalysisExtension>()?.issues {
