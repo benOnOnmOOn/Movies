@@ -19,6 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
@@ -64,6 +65,7 @@ class MovieDetailsViewModelTest {
         }
         viewModel.fetchMovieDetails(1234)
         viewModel.state.test {
+            awaitItem()
             val actualItem = awaitItem()
             assertEquals(EXPECTED_DETAILS_STATE, actualItem)
             expectNoEvents()

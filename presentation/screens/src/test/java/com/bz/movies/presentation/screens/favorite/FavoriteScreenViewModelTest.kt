@@ -14,8 +14,10 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class FavoriteScreenViewModelTest {
@@ -45,18 +47,14 @@ class FavoriteScreenViewModelTest {
             verify(exactly = 1) { localMovieRepository.favoritesMovies }
         }
 
-    companion object {
 
-        @BeforeAll
-        @JvmStatic
+        @BeforeEach
         fun setUp() {
             Dispatchers.setMain(StandardTestDispatcher())
         }
 
-        @AfterAll
-        @JvmStatic
+        @AfterEach
         fun tearDown() {
             Dispatchers.resetMain()
         }
-    }
 }
