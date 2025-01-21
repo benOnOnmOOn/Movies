@@ -30,11 +30,16 @@ dependencies {
     implementation(project(":presentation:core"))
     implementation(project(":data:okhttp"))
     implementation(project(":utlis:android"))
-    kover(project(":presentation:core"))
-    kover(project(":presentation:screens"))
-    kover(project(":data:network"))
-    kover(project(":data:database"))
-    kover(project(":data:datastore"))
+
+    val enableKover =
+        providers.gradleProperty("movies.enableKover").getOrElse("true").toBoolean()
+    if (enableKover) {
+        add("kover", project(":presentation:core"))
+        add("kover", project(":presentation:screens"))
+        add("kover", project(":data:database"))
+        add("kover", project(":data:network"))
+        add("kover", project(":data:datastore"))
+    }
 
     lintChecks(libs.slack.lint.checks)
 

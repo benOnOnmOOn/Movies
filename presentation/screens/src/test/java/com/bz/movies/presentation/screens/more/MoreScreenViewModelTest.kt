@@ -19,9 +19,9 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class MoreScreenViewModelTest {
@@ -91,22 +91,18 @@ class MoreScreenViewModelTest {
         coVerify(exactly = 1) { currencyRepository.getExchangeRate(any()) }
     }
 
-    companion object {
-        @BeforeAll
-        @JvmStatic
-        fun setUp() {
-            Dispatchers.setMain(StandardTestDispatcher())
-            mockkStatic(AppCompatDelegate::getApplicationLocales)
-            every {
-                AppCompatDelegate.getApplicationLocales()
-            } returns LocaleListCompat.getEmptyLocaleList()
-        }
+    @BeforeEach
+    fun setUp() {
+        Dispatchers.setMain(StandardTestDispatcher())
+        mockkStatic(AppCompatDelegate::getApplicationLocales)
+        every {
+            AppCompatDelegate.getApplicationLocales()
+        } returns LocaleListCompat.getEmptyLocaleList()
+    }
 
-        @AfterAll
-        @JvmStatic
-        fun tearDown() {
-            unmockkStatic(AppCompatDelegate::getApplicationLocales)
-            Dispatchers.resetMain()
-        }
+    @AfterEach
+    fun tearDown() {
+        unmockkStatic(AppCompatDelegate::getApplicationLocales)
+        Dispatchers.resetMain()
     }
 }
