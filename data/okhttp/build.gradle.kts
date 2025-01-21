@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.movies.binary.compatibility)
     alias(libs.plugins.movies.hilt)
     alias(libs.plugins.movies.strict.dependencies)
+    alias(libs.plugins.movies.ktlint)
 }
 
 dependencies {

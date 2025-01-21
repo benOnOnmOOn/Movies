@@ -29,6 +29,7 @@ dependencies {
     compileOnly(libs.android.tools.common)
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.kover.gradlePlugin)
+    compileOnly(libs.ktlint.gradlePlugin)
     compileOnly(libs.binary.compatibility.gradlePlugin)
     compileOnly(libs.dependency.analysis.gradlePlugin)
     compileOnly(libs.firebase.crashlytics.gradlePlugin)
@@ -89,7 +90,7 @@ gradlePlugin {
             id = libs.plugins.movies.jvm.library.get().pluginId
             implementationClass = "JvmLibraryConventionPlugin"
         }
-        register("kover") {
+        register("koverConventionPlugin") {
             id = libs.plugins.movies.kover.get().pluginId
             implementationClass = "KoverConventionPlugin"
         }
@@ -104,6 +105,10 @@ gradlePlugin {
         register("dependencyAnalysisConventionPlugin") {
             id = libs.plugins.movies.dependency.analysis.get().pluginId
             implementationClass = "DependencyAnalysisConventionPlugin"
+        }
+        register("ktlintConventionPlugin") {
+            id = libs.plugins.movies.ktlint.get().pluginId
+            implementationClass = "KtlintConventionPlugin"
         }
     }
 }

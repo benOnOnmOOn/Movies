@@ -136,6 +136,7 @@ room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", vers
 kover-gradlePlugin = { group = "org.jetbrains.kotlinx.kover", name = "org.jetbrains.kotlinx.kover.gradle.plugin", version = "0.9.1" }
 binary-compatibility-gradlePlugin = { group = "org.jetbrains.kotlinx.binary-compatibility-validator", name = "org.jetbrains.kotlinx.binary-compatibility-validator.gradle.plugin",  version = "0.17.0" }
 dependency-analysis-gradlePlugin = { group = "com.autonomousapps.dependency-analysis", name = "com.autonomousapps.dependency-analysis.gradle.plugin", version = "2.7.0" }
+ktlint-gradlePlugin = { group =  "org.jlleitschuh.gradle.ktlint", name = "org.jlleitschuh.gradle.ktlint.gradle.plugin", version = "12.1.2" }
 
 
 [plugins]
@@ -177,6 +178,7 @@ movies-kover = { id = "movies.kover" }
 movies-binary-compatibility = { id = "movies.binary.compatibility" }
 movies-strict-dependencies = { id = "movies.strict.dependencies" }
 movies-dependency-analysis = { id = "movies.dependency.analysis" }
+movies-ktlint = { id = "movies.ktlint" }
 
 [bundles]
 

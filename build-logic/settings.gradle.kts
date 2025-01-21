@@ -9,6 +9,7 @@ pluginManagement {
                 excludeGroup("com.google.auto.service")
             }
         }
+        mavenCentral()
         gradlePluginPortal()
     }
 }
@@ -25,6 +26,7 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
+        gradlePluginPortal()
     }
     versionCatalogs {
         create("libs") {

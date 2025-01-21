@@ -25,14 +25,14 @@ plugins {
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlinx.kover) apply false
     alias(libs.plugins.ksp) apply false
-
+    alias(libs.plugins.ktlint) apply false
     alias(libs.plugins.dependency.analysis) apply false
+
     alias(libs.plugins.movies.dependency.analysis) apply true
     alias(libs.plugins.detekt) apply true
 //    alias(libs.plugins.gradle.doctor) apply true
     // Versions plugin need to be enabled here for proper work in whole project
     alias(libs.plugins.gradle.versions) apply true
-    alias(libs.plugins.ktlint) apply true
 }
 
 //region Dependency Updates Task
@@ -117,16 +117,3 @@ tasks.withType<KotlinCompile>().configureEach {
     }
 }
 
-ktlint {
-    version.set("1.4.0")
-}
-
-subprojects {
-    apply<KtlintPlugin>()
-//    apply<AndroidCacheFixPlugin>()
-}
-
-// doctor {
-//    daggerThreshold.set(100)
-//    negativeAvoidanceThreshold.set(50)
-// }
