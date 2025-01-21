@@ -64,7 +64,6 @@ class MovieDetailsViewModelTest {
         }
         viewModel.fetchMovieDetails(1234)
         viewModel.state.test {
-            awaitItem()
             val actualItem = awaitItem()
             assertEquals(EXPECTED_DETAILS_STATE, actualItem)
             expectNoEvents()
