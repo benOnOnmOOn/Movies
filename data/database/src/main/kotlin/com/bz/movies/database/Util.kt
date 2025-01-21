@@ -8,8 +8,6 @@ import kotlinx.coroutines.withContext
 suspend inline fun <R> runCatchingWithContext(
     context: CoroutineContext = Dispatchers.IO,
     crossinline block: suspend () -> R
-): Result<R> {
-    return withContext(context) {
-        runSuspendCatching { block() }
-    }
+): Result<R> = withContext(context) {
+    runSuspendCatching { block() }
 }

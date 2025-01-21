@@ -41,10 +41,7 @@ internal data class BelongsToCollection(
 )
 
 @JsonClass(generateAdapter = true)
-internal data class Genre(
-    val id: Int,
-    val name: String
-)
+internal data class Genre(val id: Int, val name: String)
 
 @JsonClass(generateAdapter = true)
 internal data class ProductionCompany(

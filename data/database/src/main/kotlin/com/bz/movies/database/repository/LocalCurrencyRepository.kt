@@ -15,9 +15,8 @@ interface LocalCurrencyRepository {
     suspend fun insertAllSupportedCurrencyRepository(currencies: List<CurrencyDto>): Result<Unit>
 }
 
-internal class LocalCurrencyRepositoryImpl(
-    private val currencyDAO: Lazy<CurrencyDAO>
-) : LocalCurrencyRepository {
+internal class LocalCurrencyRepositoryImpl(private val currencyDAO: Lazy<CurrencyDAO>) :
+    LocalCurrencyRepository {
     override suspend fun getAllSupportedCurrencyRepository(): Result<List<CurrencyDto>> =
         runCatchingWithContext { currencyDAO.get().getAllCurrencies().map(CurrencyEntity::toDto) }
 

@@ -17,6 +17,4 @@ internal data class CurrencyResponseModel(
 )
 
 @JsonClass(generateAdapter = true)
-internal data class CurrenciesResponseModel(
-    val data: Map<String, CurrencyResponseModel>
-)
+internal data class CurrenciesResponseModel(val data: Map<String, CurrencyResponseModel>)

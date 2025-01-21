@@ -13,7 +13,4 @@ internal data class PlayingNowMoviesApiResponse(
 )
 
 @JsonClass(generateAdapter = true)
-internal data class Dates(
-    val maximum: String,
-    val minimum: String
-)
+internal data class Dates(val maximum: String, val minimum: String)
