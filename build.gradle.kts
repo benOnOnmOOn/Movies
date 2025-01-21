@@ -2,6 +2,8 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 // import org.gradle.android.AndroidCacheFixPlugin
 // import org.gradle.api.tasks.testing.logging.TestExceptionFormat
@@ -105,11 +107,16 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
 
 //endregion
 
-// dependencyAnalysis {
-//    issues {
-//        all { onAny { severity("fail") } }
-//    }
-// }
+tasks.withType<KotlinCompile>().configureEach {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_21)
+
+        freeCompilerArgs.addAll(listOf("-Xjvm-default=all", "-Xexpect-actual-classes"))
+        allWarningsAsErrors.set(true)
+        extraWarnings.set(true)
+    }
+}
+
 
 ktlint {
     version.set("1.4.0")
