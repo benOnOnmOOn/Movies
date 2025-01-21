@@ -14,9 +14,8 @@ import kotlinx.coroutines.flow.map
 private const val PLAYING_NOW_KEY = "playing_now_refresh_data"
 private const val POPULAR_KEY = "popular_refresh_data"
 
-internal class DataStoreRepositoryImpl(
-    private val dataStore: DataStore<Preferences>
-) : DataStoreRepository {
+internal class DataStoreRepositoryImpl(private val dataStore: DataStore<Preferences>) :
+    DataStoreRepository {
     val playingNowKey = longPreferencesKey(PLAYING_NOW_KEY)
     val popularKey = longPreferencesKey(POPULAR_KEY)
 
@@ -29,9 +28,10 @@ internal class DataStoreRepositoryImpl(
         Instant.ofEpochSecond(flow.first())!!
     }
 
-    override suspend fun insertPopularNowRefreshDate(data: Instant): Result<Unit> {
-        return runSuspendCatching { dataStore.edit { it[popularKey] = data.epochSecond } }
-    }
+    override suspend fun insertPopularNowRefreshDate(data: Instant): Result<Unit> =
+        runSuspendCatching {
+            dataStore.edit { it[popularKey] = data.epochSecond }
+        }
 
     override suspend fun getPopularRefreshDate(): Result<Instant> = runSuspendCatching {
         val flow: Flow<Long> = dataStore.data.map { it[popularKey] ?: 0L }
