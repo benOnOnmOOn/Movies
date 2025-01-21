@@ -117,7 +117,6 @@ tasks.withType<KotlinCompile>().configureEach {
     }
 }
 
-
 ktlint {
     version.set("1.4.0")
 }

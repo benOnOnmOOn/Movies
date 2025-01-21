@@ -33,7 +33,7 @@ dependencies {
 
     val enableKover =
         providers.gradleProperty("movies.enableKover").getOrElse("true").toBoolean()
-    if(enableKover) {
+    if (enableKover) {
         add("kover", project(":presentation:core"))
         add("kover", project(":presentation:screens"))
         add("kover", project(":data:database"))
