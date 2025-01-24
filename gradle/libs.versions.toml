@@ -4,7 +4,7 @@ coil-compose = "2.7.0"
 collection = "1.4.5"
 collection-jvm = "1.4.5"
 androidxLintGradle = "1.0.0-alpha03"
-android-gradle-plugin = "8.9.0-alpha09"
+android-gradle-plugin = "8.8.0"
 compose = "1.7.6"
 compose-lint-checks = "1.4.2"
 cronet = "119.6045.31"
@@ -154,7 +154,7 @@ dexcount = { id = "com.getkeepsafe.dexcount", version = "4.0.0" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version = "3.0.2" }
 firebase-perf = { id = "com.google.firebase.firebase-perf", version = "1.4.2" }
 google-services = { id = "com.google.gms.google-services", version = "4.4.2" }
-gradle-versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
+gradle-versions = { id = "com.github.ben-manes.versions", version = "0.52.0" }
 #gradle_doctor = { id = "com.osacky.doctor", version = "0.10.0" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
