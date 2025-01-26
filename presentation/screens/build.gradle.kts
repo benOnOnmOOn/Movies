@@ -1,5 +1,3 @@
-import com.autonomousapps.DependencyAnalysisSubExtension
-
 plugins {
     alias(libs.plugins.movies.dependency.analysis)
     alias(libs.plugins.movies.android.library)
@@ -18,13 +16,6 @@ android {
                 "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
                 "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
             )
-    }
-}
-
-extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
-    issues {
-        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
-        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
     }
 }
 

@@ -12,8 +12,6 @@ plugins {
 
 extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
     issues {
-        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
-        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
         onUnusedDependencies { exclude("com.google.dagger:hilt-android") }
     }
 }

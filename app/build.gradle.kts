@@ -1,5 +1,3 @@
-import com.autonomousapps.DependencyAnalysisSubExtension
-
 plugins {
     alias(libs.plugins.dexcount)
     alias(libs.plugins.movies.android.application)
@@ -15,15 +13,6 @@ plugins {
 
 android {
     namespace = "com.bz.movies"
-}
-
-extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
-    issues {
-        onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
-        onUnusedDependencies { exclude(libs.androidx.appcompat) }
-        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
-        onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
-    }
 }
 
 dependencies {
