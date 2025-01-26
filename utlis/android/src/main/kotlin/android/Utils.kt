@@ -15,14 +15,12 @@ fun throwOnMainThread() {
 }
 
 @Suppress("TooGenericExceptionCaught")
-inline fun <R> runSuspendCatching(block: () -> R): Result<R> {
-    return try {
-        Result.success(block())
-    } catch (c: CancellationException) {
-        throw c
-    } catch (e: Throwable) {
-        Result.failure(e)
-    }
+inline fun <R> runSuspendCatching(block: () -> R): Result<R> = try {
+    Result.success(block())
+} catch (c: CancellationException) {
+    throw c
+} catch (e: Throwable) {
+    Result.failure(e)
 }
 
 fun enableStrictMode() {

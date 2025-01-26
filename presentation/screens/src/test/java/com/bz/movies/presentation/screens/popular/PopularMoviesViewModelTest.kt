@@ -70,7 +70,8 @@ class PopularMoviesViewModelTest {
     @Test
     fun `when there is problem with load data from locale storage we should display error`() =
         runTest {
-            every { localMovieRepository.popularMovies } returns flow { throw IllegalStateException() }
+            every { localMovieRepository.popularMovies } returns
+                flow { throw IllegalStateException() }
             coEvery { movieRepository.getPopularMovies(any()) } returns Result.success(emptyList())
 
             val viewModel = PopularMoviesViewModel(

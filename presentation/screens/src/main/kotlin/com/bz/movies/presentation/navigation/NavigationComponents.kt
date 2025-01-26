@@ -53,16 +53,14 @@ private fun getNavTextColor(isItemSelected: Boolean): Color = if (isItemSelected
 }
 
 @Composable
-private fun NavIcon(destination: TopLevelDestination, isItemSelected: Boolean) {
-    return Icon(
-        painter = painterResource(
-            id = if (isItemSelected) destination.selectedIcon else destination.unselectedIcon
-        ),
-        contentDescription = stringResource(id = destination.iconTextId),
-        tint = if (isItemSelected) {
-            MaterialTheme.colorScheme.secondary
-        } else {
-            MaterialTheme.colorScheme.onSurfaceVariant
-        }
-    )
-}
+private fun NavIcon(destination: TopLevelDestination, isItemSelected: Boolean) = Icon(
+    painter = painterResource(
+        id = if (isItemSelected) destination.selectedIcon else destination.unselectedIcon
+    ),
+    contentDescription = stringResource(id = destination.iconTextId),
+    tint = if (isItemSelected) {
+        MaterialTheme.colorScheme.secondary
+    } else {
+        MaterialTheme.colorScheme.onSurfaceVariant
+    }
+)
