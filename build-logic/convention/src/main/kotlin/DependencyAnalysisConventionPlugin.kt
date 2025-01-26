@@ -22,7 +22,9 @@ class DependencyAnalysisConventionPlugin : Plugin<Project> {
                     onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
                     onUnusedDependencies { exclude("androidx.appcompat:appcompat") }
                     onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
-                    onUsedTransitiveDependencies { exclude("co.touchlab:kermit-core-android-debug") }
+                    onUsedTransitiveDependencies {
+                        exclude("co.touchlab:kermit-core-android-debug")
+                    }
                 }
             }
         }
