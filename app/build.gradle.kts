@@ -31,7 +31,7 @@ dependencies {
         add("kover", project(":data:datastore"))
     }
 
-    lintChecks(libs.slack.lint.checks)
+    lintChecks(libs.lint.slack.checks)
 
     //  HILT
     ksp(libs.hilt.android.compiler)

@@ -19,7 +19,7 @@ extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
 dependencies {
     implementation(project(":utlis:android"))
 
-    lintChecks(libs.slack.lint.checks)
+    lintChecks(libs.lint.slack.checks)
 
     // HILT
     implementation(libs.hilt.core)

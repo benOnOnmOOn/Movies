@@ -11,7 +11,7 @@ dependencies {
     implementation(libs.kermit)
     implementation(libs.kermit.core)
 
-    lintChecks(libs.slack.lint.checks)
+    lintChecks(libs.lint.slack.checks)
 
     testRuntimeOnly(libs.junit.engine)
 }

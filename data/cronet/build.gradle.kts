@@ -10,7 +10,7 @@ plugins {
 dependencies {
     implementation(project(":utlis:android"))
 
-    lintChecks(libs.slack.lint.checks)
+    lintChecks(libs.lint.slack.checks)
 
     ksp(libs.moshi.kotlin.codegen)
 

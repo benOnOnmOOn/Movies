@@ -13,7 +13,7 @@ dependencies {
     implementation(project(":utlis:android"))
     ksp(libs.moshi.kotlin.codegen)
 
-    lintChecks(libs.slack.lint.checks)
+    lintChecks(libs.lint.slack.checks)
 
     // HILT
     implementation(libs.hilt.android)
@@ -26,7 +26,7 @@ dependencies {
 
     implementation(libs.moshi)
 
-    implementation(libs.converter.moshi)
+    implementation(libs.moshi.converter)
     api(libs.okhttp)
     api(libs.retrofit)
 
