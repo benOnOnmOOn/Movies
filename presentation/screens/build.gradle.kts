@@ -25,8 +25,8 @@ dependencies {
     api(project(":data:datastore"))
     implementation(project(":data:dto"))
 
-    lintChecks(libs.slack.lint.checks)
-    lintChecks(libs.compose.lint.checks)
+    lintChecks(libs.lint.slack.checks)
+    lintChecks(libs.lint.compose.checks)
 
     //region HILT
     ksp(libs.hilt.android.compiler)

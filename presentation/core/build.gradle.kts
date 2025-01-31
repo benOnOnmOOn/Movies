@@ -12,7 +12,7 @@ plugins {
 dependencies {
     implementation(project(":presentation:screens"))
 
-    lintChecks(libs.slack.lint.checks)
+    lintChecks(libs.lint.slack.checks)
 
     //  HILT
     ksp(libs.hilt.android.compiler)
