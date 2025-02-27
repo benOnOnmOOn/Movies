@@ -60,7 +60,7 @@ dependencies {
     implementation(libs.androidx.ui.text.android)
     implementation(libs.androidx.ui.unit.android)
     implementation(libs.coil.compose)
-    implementation(libs.coil.compose.base)
+    implementation(libs.coil.network.okhttp)
     implementation(libs.kermit)
     implementation(libs.kotlinx.coroutines.core)
 
