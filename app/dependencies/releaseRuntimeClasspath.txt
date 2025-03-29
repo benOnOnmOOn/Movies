@@ -126,9 +126,9 @@ com.google.android.gms:play-services-measurement-sdk:22.3.0
 com.google.android.gms:play-services-measurement:22.3.0
 com.google.android.gms:play-services-stats:17.0.2
 com.google.android.gms:play-services-tasks:18.2.0
-com.google.dagger:dagger:2.55
-com.google.dagger:hilt-android:2.55
-com.google.dagger:hilt-core:2.55
+com.google.dagger:dagger:2.56.1
+com.google.dagger:hilt-android:2.56.1
+com.google.dagger:hilt-core:2.56.1
 com.google.firebase:firebase-abt:21.1.1
 com.google.firebase:firebase-analytics-ktx:22.3.0
 com.google.firebase:firebase-analytics:22.3.0
@@ -199,8 +199,8 @@ org.jetbrains.compose.ui:ui-util:1.7.3
 org.jetbrains.compose.ui:ui:1.7.3
 org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.9.22
 org.jetbrains.kotlin:kotlin-parcelize-runtime:1.9.22
-org.jetbrains.kotlin:kotlin-stdlib-common:2.1.20-RC3
-org.jetbrains.kotlin:kotlin-stdlib:2.1.20-RC3
+org.jetbrains.kotlin:kotlin-stdlib-common:2.1.20
+org.jetbrains.kotlin:kotlin-stdlib:2.1.20
 org.jetbrains.kotlinx:atomicfu-jvm:0.23.2
 org.jetbrains.kotlinx:atomicfu:0.23.2
 org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1
