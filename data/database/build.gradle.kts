@@ -21,7 +21,7 @@ dependencies {
     ksp(libs.hilt.android.compiler)
     ksp(libs.dagger.compiler)
     api(libs.dagger)
-    api(libs.javax.inject)
+    implementation(libs.javax.inject)
     implementation(libs.hilt.core)
     implementation(libs.hilt.android)
     //
