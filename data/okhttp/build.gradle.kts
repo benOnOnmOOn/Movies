@@ -20,7 +20,7 @@ dependencies {
     implementation(libs.hilt.core)
     implementation(libs.hilt.android)
     api(libs.dagger)
-    debugApi(libs.javax.inject)
+    debugImplementation(libs.javax.inject)
     //
 
     api(libs.okhttp)
