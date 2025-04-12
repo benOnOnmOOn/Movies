@@ -18,18 +18,18 @@ android {
 
 dependencies {
     // don't warn
-    implementation(project(":presentation:core"))
-    implementation(project(":data:okhttp"))
-    implementation(project(":utlis:android"))
+    implementation(projects.presentation.core)
+    implementation(projects.data.okhttp)
+    implementation(projects.utlis.android)
 
     val enableKover =
         providers.gradleProperty("movies.enableKover").getOrElse("true").toBoolean()
     if (enableKover) {
-        add("kover", project(":presentation:core"))
-        add("kover", project(":presentation:screens"))
-        add("kover", project(":data:database"))
-        add("kover", project(":data:network"))
-        add("kover", project(":data:datastore"))
+        add("kover", projects.presentation.core)
+        add("kover", projects.presentation.screens)
+        add("kover", projects.data.database)
+        add("kover", projects.data.network)
+        add("kover", projects.data.datastore)
     }
 
     lintChecks(libs.lint.slack.checks)
