@@ -10,7 +10,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":presentation:screens"))
+    implementation(projects.presentation.screens)
 
     lintChecks(libs.lint.slack.checks)
 

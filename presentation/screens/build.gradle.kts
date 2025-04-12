@@ -20,10 +20,10 @@ android {
 }
 
 dependencies {
-    api(project(":data:network"))
-    api(project(":data:database"))
-    api(project(":data:datastore"))
-    implementation(project(":data:dto"))
+    api(projects.data.network)
+    api(projects.data.database)
+    api(projects.data.datastore)
+    implementation(projects.data.dto)
 
     lintChecks(libs.lint.slack.checks)
     lintChecks(libs.lint.compose.checks)

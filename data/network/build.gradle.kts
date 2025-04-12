@@ -9,8 +9,8 @@ plugins {
 }
 
 dependencies {
-    api(project(":data:dto"))
-    implementation(project(":utlis:android"))
+    api(projects.data.dto)
+    implementation(projects.utlis.android)
     ksp(libs.moshi.kotlin.codegen)
 
     lintChecks(libs.lint.slack.checks)

@@ -8,7 +8,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":utlis:android"))
+    implementation(projects.utlis.android)
 
     lintChecks(libs.lint.slack.checks)
 
@@ -20,7 +20,6 @@ dependencies {
     implementation(libs.hilt.core)
     implementation(libs.hilt.android)
     api(libs.dagger)
-    debugImplementation(libs.javax.inject)
     //
 
     api(libs.okhttp)

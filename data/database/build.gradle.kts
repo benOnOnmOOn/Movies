@@ -11,9 +11,9 @@ plugins {
 
 dependencies {
 
-    api(project(":data:dto"))
+    api(projects.data.dto)
 
-    implementation(project(":utlis:android"))
+    implementation(projects.utlis.android)
 
     lintChecks(libs.lint.slack.checks)
 
