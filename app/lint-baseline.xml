@@ -1,4 +1,367 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.7.3" type="baseline" client="gradle" dependencies="false" name="AGP (8.7.3)" variant="all" version="8.7.3">
+<issues format="6" by="lint 8.9.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.9.2)" variant="all" version="8.9.2">
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.library than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.library than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.library than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.tools.build:gradle than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.tools.build:gradle than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.tools.build:gradle than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.android.lint than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.android.lint than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.android.lint than 8.9.2 is available: 8.10.0"
+        errorLine1="android-gradle-plugin = &quot;8.9.2&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.android.tools:common than 31.9.2 is available: 31.10.0"
+        errorLine1="android-tools = &quot;31.9.2&quot;"
+        errorLine2="                ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="3"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.android.tools:common than 31.9.2 is available: 31.10.0"
+        errorLine1="android-tools = &quot;31.9.2&quot;"
+        errorLine2="                ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="3"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.android.tools:common than 31.9.2 is available: 31.10.0"
+        errorLine1="android-tools = &quot;31.9.2&quot;"
+        errorLine2="                ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="3"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-core than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-core than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-core than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-preferences than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-preferences than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-preferences than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-preferences-core than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-preferences-core than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-preferences-core than 1.1.4 is available: 1.1.5"
+        errorLine1="androidx-datastore-preferences = &quot;1.1.4&quot;"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk than 1.14.0 is available: 1.14.2"
+        errorLine1="mockk = &quot;1.14.0&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="37"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk than 1.14.0 is available: 1.14.2"
+        errorLine1="mockk = &quot;1.14.0&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="37"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk than 1.14.0 is available: 1.14.2"
+        errorLine1="mockk = &quot;1.14.0&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="37"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk-dsl than 1.14.0 is available: 1.14.2"
+        errorLine1="mockk = &quot;1.14.0&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="37"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk-dsl than 1.14.0 is available: 1.14.2"
+        errorLine1="mockk = &quot;1.14.0&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="37"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk-dsl than 1.14.0 is available: 1.14.2"
+        errorLine1="mockk = &quot;1.14.0&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="37"
+            column="9"/>
+    </issue>
 
 </issues>

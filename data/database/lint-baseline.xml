@@ -1,4 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.7.3" type="baseline" client="gradle" dependencies="false" name="AGP (8.7.3)" variant="all" version="8.7.3">
+<issues format="6" by="lint 8.9.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.9.2)" variant="all" version="8.9.2">
+
+    <issue
+        id="RawDispatchersUse"
+        message="Use SlackDispatchers."
+        errorLine1="                .flowOn(Dispatchers.IO)"
+        errorLine2="                        ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/bz/movies/database/repository/LocalMovieRepository.kt"
+            line="51"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="RawDispatchersUse"
+        message="Use SlackDispatchers."
+        errorLine1="                .flowOn(Dispatchers.IO)"
+        errorLine2="                        ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/bz/movies/database/repository/LocalMovieRepository.kt"
+            line="59"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="RawDispatchersUse"
+        message="Use SlackDispatchers."
+        errorLine1="                .flowOn(Dispatchers.IO)"
+        errorLine2="                        ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/bz/movies/database/repository/LocalMovieRepository.kt"
+            line="67"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="RawDispatchersUse"
+        message="Use SlackDispatchers."
+        errorLine1="    context: CoroutineContext = Dispatchers.IO,"
+        errorLine2="                                ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/bz/movies/database/Util.kt"
+            line="9"
+            column="33"/>
+    </issue>
 
 </issues>
