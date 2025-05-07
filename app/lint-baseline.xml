@@ -56,4 +56,26 @@
             column="34"/>
     </issue>
 
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk than 1.14.0 is available: 1.14.2"
+        errorLine1="mockk = &quot;1.14.0&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="37"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk-dsl than 1.14.0 is available: 1.14.2"
+        errorLine1="mockk = &quot;1.14.0&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="37"
+            column="9"/>
+    </issue>
+
 </issues>
