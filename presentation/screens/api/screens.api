@@ -30,46 +30,6 @@ public final class com/bz/movies/presentation/screens/common/ComposableSingleton
 	public final fun getLambda$83923664$screens_release ()Lkotlin/jvm/functions/Function3;
 }
 
-public abstract class com/bz/movies/presentation/screens/details/MovieDetailsViewModel_HiltModules$BindsModule {
-	public abstract fun binds (Lcom/bz/movies/presentation/screens/details/MovieDetailsViewModel;)Landroidx/lifecycle/ViewModel;
-}
-
-public final class com/bz/movies/presentation/screens/details/MovieDetailsViewModel_HiltModules$KeyModule {
-	public static fun provide ()Z
-}
-
-public abstract class com/bz/movies/presentation/screens/favorite/FavoriteScreenViewModel_HiltModules$BindsModule {
-	public abstract fun binds (Lcom/bz/movies/presentation/screens/favorite/FavoriteScreenViewModel;)Landroidx/lifecycle/ViewModel;
-}
-
-public final class com/bz/movies/presentation/screens/favorite/FavoriteScreenViewModel_HiltModules$KeyModule {
-	public static fun provide ()Z
-}
-
-public abstract class com/bz/movies/presentation/screens/more/MoreScreenViewModel_HiltModules$BindsModule {
-	public abstract fun binds (Lcom/bz/movies/presentation/screens/more/MoreScreenViewModel;)Landroidx/lifecycle/ViewModel;
-}
-
-public final class com/bz/movies/presentation/screens/more/MoreScreenViewModel_HiltModules$KeyModule {
-	public static fun provide ()Z
-}
-
-public abstract class com/bz/movies/presentation/screens/playingNow/PlayingNowViewModel_HiltModules$BindsModule {
-	public abstract fun binds (Lcom/bz/movies/presentation/screens/playingNow/PlayingNowViewModel;)Landroidx/lifecycle/ViewModel;
-}
-
-public final class com/bz/movies/presentation/screens/playingNow/PlayingNowViewModel_HiltModules$KeyModule {
-	public static fun provide ()Z
-}
-
-public abstract class com/bz/movies/presentation/screens/popular/PopularMoviesViewModel_HiltModules$BindsModule {
-	public abstract fun binds (Lcom/bz/movies/presentation/screens/popular/PopularMoviesViewModel;)Landroidx/lifecycle/ViewModel;
-}
-
-public final class com/bz/movies/presentation/screens/popular/PopularMoviesViewModel_HiltModules$KeyModule {
-	public static fun provide ()Z
-}
-
 public final class com/bz/movies/presentation/theme/ThemeKt {
 	public static final fun MoviesTheme (ZZLkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
 }
