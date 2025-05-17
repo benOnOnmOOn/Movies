@@ -20,7 +20,7 @@ class BinaryCompatibilityConventionPlugin : Plugin<Project> {
                         "javax.annotation.processing.Generated",
                         "dagger.hilt.codegen.OriginatingElement",
                         "dagger.hilt.InstallIn",
-                        "dagger.Binds",
+                        "dagger.Binds"
                     )
                 )
             }
