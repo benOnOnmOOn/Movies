@@ -41,6 +41,4 @@ dependencies {
 
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
-    //noinspection UseTomlInstead
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
