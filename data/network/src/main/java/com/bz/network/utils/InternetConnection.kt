@@ -1,5 +1,5 @@
 package com.bz.network.utils
 
-interface InternetConnection {
+internal interface InternetConnection {
     val isConnected: Boolean
 }

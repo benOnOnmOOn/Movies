@@ -22,7 +22,3 @@ public final class com/bz/network/repository/NoInternetException : java/lang/Exc
 	public fun <init> ()V
 }
 
-public abstract interface class com/bz/network/utils/InternetConnection {
-	public abstract fun isConnected ()Z
-}
-

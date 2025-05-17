@@ -5,7 +5,7 @@ import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-suspend inline fun <R> runCatchingWithContext(
+internal suspend inline fun <R> runCatchingWithContext(
     context: CoroutineContext = Dispatchers.IO,
     crossinline block: suspend () -> R
 ): Result<R> = withContext(context) {
