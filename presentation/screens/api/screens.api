@@ -1,36 +1,4 @@
-public final class com/bz/movies/presentation/navigation/ComposableSingletons$MoviesNavHostKt {
-	public static final field INSTANCE Lcom/bz/movies/presentation/navigation/ComposableSingletons$MoviesNavHostKt;
-	public fun <init> ()V
-	public final fun getLambda$-263405689$screens_release ()Lkotlin/jvm/functions/Function4;
-	public final fun getLambda$-527102714$screens_release ()Lkotlin/jvm/functions/Function4;
-	public final fun getLambda$-790799739$screens_release ()Lkotlin/jvm/functions/Function4;
-	public final fun getLambda$-899633907$screens_release ()Lkotlin/jvm/functions/Function4;
-}
-
-public final class com/bz/movies/presentation/navigation/MoviesNavHostKt {
-	public static final fun MoviesNavHost (Landroidx/navigation/NavHostController;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
-}
-
-public final class com/bz/movies/presentation/navigation/NavigationComponentsKt {
-	public static final fun BottomNavigationBar (Landroidx/navigation/NavController;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
-}
-
-public final class com/bz/movies/presentation/screens/common/ComposableSingletons$ErrorDialogKt {
-	public static final field INSTANCE Lcom/bz/movies/presentation/screens/common/ComposableSingletons$ErrorDialogKt;
-	public fun <init> ()V
-	public final fun getLambda$-1005477175$screens_release ()Lkotlin/jvm/functions/Function2;
-	public final fun getLambda$-1703946158$screens_release ()Lkotlin/jvm/functions/Function3;
-	public final fun getLambda$-338725544$screens_release ()Lkotlin/jvm/functions/Function2;
-	public final fun getLambda$-940198866$screens_release ()Lkotlin/jvm/functions/Function3;
-	public final fun getLambda$1449144278$screens_release ()Lkotlin/jvm/functions/Function2;
-	public final fun getLambda$1950726698$screens_release ()Lkotlin/jvm/functions/Function2;
-	public final fun getLambda$333286248$screens_release ()Lkotlin/jvm/functions/Function2;
-	public final fun getLambda$555209367$screens_release ()Lkotlin/jvm/functions/Function2;
-	public final fun getLambda$677241584$screens_release ()Lkotlin/jvm/functions/Function3;
-	public final fun getLambda$83923664$screens_release ()Lkotlin/jvm/functions/Function3;
-}
-
-public final class com/bz/movies/presentation/theme/ThemeKt {
-	public static final fun MoviesTheme (ZZLkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+public final class com/bz/movies/presentation/screens/main/MainScreenKt {
+	public static final fun MainMoviesScreen (Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
 }
 

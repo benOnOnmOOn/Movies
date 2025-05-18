@@ -15,7 +15,7 @@ import com.bz.movies.presentation.screens.playingNow.PlayingNowScreen
 import com.bz.movies.presentation.screens.popular.PopularMoviesScreen
 
 @Composable
-fun MoviesNavHost(navController: NavHostController, modifier: Modifier = Modifier) {
+internal fun MoviesNavHost(navController: NavHostController, modifier: Modifier = Modifier) {
     NavHost(
         modifier = modifier,
         navController = navController,
