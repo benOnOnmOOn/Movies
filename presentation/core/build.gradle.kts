@@ -26,15 +26,7 @@ dependencies {
 
     implementation(libs.androidx.activity)
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.foundation.layout.android)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation.common)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.navigation.runtime)
     implementation(libs.androidx.ui.android)
-    implementation(libs.androidx.ui.graphics.android)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.ui.tooling)
