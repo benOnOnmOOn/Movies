@@ -13,24 +13,22 @@ import com.bz.movies.presentation.navigation.MoviesNavHost
 import com.bz.movies.presentation.theme.MoviesTheme
 
 @Composable
-fun MainMoviesScreen(
-    modifier: Modifier = Modifier,
-) {
+fun MainMoviesScreen(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
 
     MoviesTheme {
         Scaffold(
             bottomBar = {
                 BottomNavigationBar(navController = navController)
-            },
+            }
         ) {
             Surface(
                 modifier = Modifier.fillMaxSize().padding(it),
-                color = MaterialTheme.colorScheme.background,
+                color = MaterialTheme.colorScheme.background
             ) {
                 MoviesNavHost(
                     navController = navController,
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxSize()
                 )
             }
         }
