@@ -19,7 +19,6 @@ class DependencyAnalysisConventionPlugin : Plugin<Project> {
 
             extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
                 issues {
-                    onUnusedDependencies { exclude("com.squareup.leakcanary:leakcanary-android") }
                     onUnusedDependencies { exclude("androidx.appcompat:appcompat") }
                     onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
                     onUsedTransitiveDependencies {
