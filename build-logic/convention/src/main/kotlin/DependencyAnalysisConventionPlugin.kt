@@ -19,9 +19,8 @@ class DependencyAnalysisConventionPlugin : Plugin<Project> {
 
             extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
                 issues {
-                    onUnusedDependencies { exclude("androidx.appcompat:appcompat") }
-                    onUsedTransitiveDependencies { exclude("co.touchlab:kermit-android-debug") }
                     onUsedTransitiveDependencies {
+                        exclude("co.touchlab:kermit-android-debug")
                         exclude("co.touchlab:kermit-core-android-debug")
                     }
                 }

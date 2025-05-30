@@ -46,7 +46,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.dagger)
     implementation(libs.kermit)
-    implementation(libs.androidx.appcompat)
     implementation(libs.kotlin.stdlib)
     debugRuntimeOnly(libs.leakcanary.android)
 

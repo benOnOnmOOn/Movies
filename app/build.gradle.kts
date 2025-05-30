@@ -47,7 +47,6 @@ dependencies {
     implementation(libs.androidx.startup.runtime)
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
-    implementation(libs.androidx.appcompat)
     implementation(libs.dagger)
 
     implementation(libs.kermit)
