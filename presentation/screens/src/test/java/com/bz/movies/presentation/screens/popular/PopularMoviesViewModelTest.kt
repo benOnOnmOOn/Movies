@@ -9,7 +9,6 @@ import com.bz.movies.presentation.screens.common.MovieItem
 import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
-import dagger.Lazy
 import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify

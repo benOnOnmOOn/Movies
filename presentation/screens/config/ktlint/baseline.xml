@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <baseline version="1.0">
     <file name="src/test/java/com/bz/movies/presentation/screens/popular/PopularMoviesViewModelTest.kt">
-        <error line="95" column="101" source="standard:max-line-length" />
-        <error line="116" column="101" source="standard:max-line-length" />
-        <error line="146" column="101" source="standard:max-line-length" />
+        <error line="94" column="101" source="standard:max-line-length" />
+        <error line="115" column="101" source="standard:max-line-length" />
+        <error line="145" column="101" source="standard:max-line-length" />
     </file>
 </baseline>
