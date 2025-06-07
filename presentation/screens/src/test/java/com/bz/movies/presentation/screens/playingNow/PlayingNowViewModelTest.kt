@@ -5,7 +5,6 @@ import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.datastore.repository.DataStoreRepository
 import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.network.repository.MovieRepository
-import dagger.Lazy
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
@@ -38,9 +37,9 @@ class PlayingNowViewModelTest {
             coEvery { movieRepository.getPlayingNowMovies() } returns Result.success(emptyList())
 
             val viewModel = PlayingNowViewModel(
-                movieRepository = Lazy { movieRepository },
-                localMovieRepository = Lazy { localMovieRepository },
-                dataStoreRepository = Lazy { storeRepository }
+                movieRepository = { movieRepository },
+                localMovieRepository = { localMovieRepository },
+                dataStoreRepository = { storeRepository }
             )
             viewModel.state.test {
                 val actualItem = awaitItem()

@@ -46,11 +46,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.dagger)
     implementation(libs.kermit)
-    implementation(libs.androidx.appcompat)
     implementation(libs.kotlin.stdlib)
-    debugImplementation(libs.leakcanary.android)
+    debugRuntimeOnly(libs.leakcanary.android)
 
     implementation(libs.okhttp)
+    implementation(libs.okhttp.android)
     implementation(libs.retrofit)
     debugImplementation(libs.logging.interceptor)
 
