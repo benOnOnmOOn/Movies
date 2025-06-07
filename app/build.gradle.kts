@@ -56,6 +56,7 @@ dependencies {
     debugRuntimeOnly(libs.leakcanary.android)
 
     implementation(libs.okhttp)
+    implementation(libs.okhttp.android)
     implementation(libs.retrofit)
     debugImplementation(libs.logging.interceptor)
 

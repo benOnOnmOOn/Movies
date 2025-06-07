@@ -46,9 +46,9 @@ class PopularMoviesViewModelTest {
             coEvery { movieRepository.getPopularMovies(any()) } returns Result.success(emptyList())
 
             val viewModel = PopularMoviesViewModel(
-                movieRepository = Lazy { movieRepository },
-                localMovieRepository = Lazy { localMovieRepository },
-                dataStoreRepository = Lazy { storeRepository }
+                movieRepository = { movieRepository },
+                localMovieRepository = { localMovieRepository },
+                dataStoreRepository = { storeRepository }
             )
             viewModel.state.test {
                 val actualItem = awaitItem()
@@ -75,9 +75,9 @@ class PopularMoviesViewModelTest {
             coEvery { movieRepository.getPopularMovies(any()) } returns Result.success(emptyList())
 
             val viewModel = PopularMoviesViewModel(
-                movieRepository = Lazy { movieRepository },
-                localMovieRepository = Lazy { localMovieRepository },
-                dataStoreRepository = Lazy { storeRepository }
+                movieRepository = { movieRepository },
+                localMovieRepository = { localMovieRepository },
+                dataStoreRepository = { storeRepository }
             )
 
             viewModel.effect.test {
@@ -100,9 +100,9 @@ class PopularMoviesViewModelTest {
             } returns Result.failure(NoInternetException())
 
             val viewModel = PopularMoviesViewModel(
-                movieRepository = Lazy { movieRepository },
-                localMovieRepository = Lazy { localMovieRepository },
-                dataStoreRepository = Lazy { storeRepository }
+                movieRepository = { movieRepository },
+                localMovieRepository = { localMovieRepository },
+                dataStoreRepository = { storeRepository }
             )
 
             viewModel.effect.test {
@@ -121,9 +121,9 @@ class PopularMoviesViewModelTest {
             } returns Result.failure(NoInternetException())
 
             val viewModel = PopularMoviesViewModel(
-                movieRepository = Lazy { movieRepository },
-                localMovieRepository = Lazy { localMovieRepository },
-                dataStoreRepository = Lazy { storeRepository }
+                movieRepository = { movieRepository },
+                localMovieRepository = { localMovieRepository },
+                dataStoreRepository = { storeRepository }
             )
 
             viewModel.state.test {
@@ -151,9 +151,9 @@ class PopularMoviesViewModelTest {
             } returns Result.failure(IllegalStateException())
 
             val viewModel = PopularMoviesViewModel(
-                movieRepository = Lazy { movieRepository },
-                localMovieRepository = Lazy { localMovieRepository },
-                dataStoreRepository = Lazy { storeRepository }
+                movieRepository = { movieRepository },
+                localMovieRepository = { localMovieRepository },
+                dataStoreRepository = { storeRepository }
             )
 
             viewModel.effect.test {
@@ -173,9 +173,9 @@ class PopularMoviesViewModelTest {
         } returns Result.failure(IllegalStateException())
 
         val viewModel = PopularMoviesViewModel(
-            movieRepository = Lazy { movieRepository },
-            localMovieRepository = Lazy { localMovieRepository },
-            dataStoreRepository = Lazy { storeRepository }
+            movieRepository = { movieRepository },
+            localMovieRepository = { localMovieRepository },
+            dataStoreRepository = { storeRepository }
         )
 
         viewModel.effect.test {
@@ -194,9 +194,9 @@ class PopularMoviesViewModelTest {
         coJustRun { localMovieRepository.clearPopularMovies() }
 
         val viewModel = PopularMoviesViewModel(
-            movieRepository = Lazy { movieRepository },
-            localMovieRepository = Lazy { localMovieRepository },
-            dataStoreRepository = Lazy { storeRepository }
+            movieRepository = { movieRepository },
+            localMovieRepository = { localMovieRepository },
+            dataStoreRepository = { storeRepository }
         )
 
         viewModel.state.test {
@@ -224,9 +224,9 @@ class PopularMoviesViewModelTest {
         coJustRun { localMovieRepository.insertFavoriteMovie(any()) }
 
         val viewModel = PopularMoviesViewModel(
-            movieRepository = Lazy { movieRepository },
-            localMovieRepository = Lazy { localMovieRepository },
-            dataStoreRepository = Lazy { storeRepository }
+            movieRepository = { movieRepository },
+            localMovieRepository = { localMovieRepository },
+            dataStoreRepository = { storeRepository }
         )
 
         viewModel.state.test {
