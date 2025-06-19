@@ -1,5 +1,6 @@
 package com.bz.movies
 
+import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import org.gradle.api.Project
 
@@ -15,4 +16,11 @@ internal fun LibraryAndroidComponentsExtension.disableUnnecessaryAndroidTests(pr
     beforeVariants {
         it.androidTest.enable = it.androidTest.enable &&
             project.projectDir.resolve("src/androidTest").exists()
+    }
+
+
+internal fun ApplicationAndroidComponentsExtension.disableUnnecessaryAndroidTests(project: Project) =
+    beforeVariants {
+        it.androidTest.enable = it.androidTest.enable &&
+                project.projectDir.resolve("src/androidTest").exists()
     }

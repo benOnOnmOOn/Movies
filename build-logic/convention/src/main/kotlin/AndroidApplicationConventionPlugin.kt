@@ -1,5 +1,8 @@
 import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.variant.ApplicationAndroidComponentsExtension
+import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.bz.movies.configureKotlinAndroidApp
+import com.bz.movies.disableUnnecessaryAndroidTests
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -16,6 +19,10 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
 
             extensions.configure<ApplicationExtension> {
                 target.configureKotlinAndroidApp(this)
+            }
+
+            extensions.configure<ApplicationAndroidComponentsExtension> {
+                disableUnnecessaryAndroidTests(target)
             }
         }
     }
