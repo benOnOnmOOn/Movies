@@ -3,6 +3,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
+import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
@@ -109,11 +110,13 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
 //endregion
 
 allprojects {
+
     tasks.withType<KotlinCompile>().configureEach {
         explicitApiMode = ExplicitApiMode.Strict
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_21)
-            freeCompilerArgs.addAll(listOf("-Xjvm-default=all", "-Xexpect-actual-classes"))
+            jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
+            freeCompilerArgs.addAll(listOf("-Xexpect-actual-classes"))
             allWarningsAsErrors.set(false)
             extraWarnings.set(false)
             progressiveMode = true

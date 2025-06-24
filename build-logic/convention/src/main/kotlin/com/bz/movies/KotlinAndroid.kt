@@ -8,7 +8,6 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.provideDelegate
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
@@ -66,7 +65,6 @@ internal fun CommonExtension<*, *, *, *, *, *>.defaultBaseConfig(project: Projec
         targetCompatibility = JavaVersion.VERSION_21
     }
 
-    @Suppress("UnstableApiUsage")
     testOptions {
         unitTests.isReturnDefaultValues = true
         animationsDisabled = true
@@ -125,6 +123,6 @@ private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() =
     }.apply {
         jvmTarget = JvmTarget.JVM_21
         allWarningsAsErrors = false
-        progressiveMode=true
+        progressiveMode = true
     }
 }
