@@ -116,7 +116,6 @@ allprojects {
         compilerOptions {
             jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
             jvmTarget.set(JvmTarget.JVM_21)
-            jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
             freeCompilerArgs.addAll(listOf("-Xexpect-actual-classes"))
             allWarningsAsErrors.set(false)
             extraWarnings.set(false)

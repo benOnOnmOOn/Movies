@@ -150,7 +150,7 @@ android-application = { id = "com.android.application", version.ref = "android-g
 android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
 android-lint = { id = "com.android.lint", version.ref = "android-gradle-plugin" }
 androidx-room = { id = "androidx.room", version.ref = "androidx-room" }
-binary-compatibility = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.17.0" }
+binary-compatibility = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.18.0" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "dependency-analysis" }
 dependency-guard = { id = "com.dropbox.dependency-guard", version = "0.5.0" }
