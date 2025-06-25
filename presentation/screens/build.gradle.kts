@@ -9,13 +9,12 @@ plugins {
     alias(libs.plugins.movies.ktlint)
 }
 
-android {
-    kotlinOptions {
-        freeCompilerArgs +=
-            listOf(
-                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
-            )
+kotlin {
+    compilerOptions {
+        optIn = listOf(
+            "androidx.compose.material3.ExperimentalMaterial3Api",
+            "kotlinx.coroutines.ExperimentalCoroutinesApi"
+        )
     }
 }
 
