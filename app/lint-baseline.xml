@@ -12,15 +12,4 @@
             column="190"/>
     </issue>
 
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of org.jetbrains.kotlinx.binary-compatibility-validator than 0.17.0 is available: 0.18.0"
-        errorLine1="binary-compatibility = { id = &quot;org.jetbrains.kotlinx.binary-compatibility-validator&quot;, version = &quot;0.17.0&quot; }"
-        errorLine2="                                                                                                ~~~~~~~~">
-        <location
-            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
-            line="153"
-            column="97"/>
-    </issue>
-
 </issues>
