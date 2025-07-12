@@ -109,18 +109,3 @@ tasks.register<DetektCreateBaselineTask>("detektGenerateBaseline") {
 
 //endregion
 
-allprojects {
-
-    tasks.withType<KotlinCompile>().configureEach {
-        explicitApiMode = ExplicitApiMode.Strict
-        compilerOptions {
-            jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
-            jvmTarget.set(JvmTarget.JVM_21)
-            freeCompilerArgs.addAll(listOf("-Xexpect-actual-classes"))
-            allWarningsAsErrors.set(false)
-            extraWarnings.set(false)
-            progressiveMode = true
-        }
-    }
-}
-
