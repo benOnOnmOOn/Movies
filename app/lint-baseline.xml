@@ -3,13 +3,35 @@
 
     <issue
         id="NewerVersionAvailable"
-        message="A newer version of org.jetbrains.kotlinx.binary-compatibility-validator than 0.17.0 is available: 0.18.0"
-        errorLine1="binary-compatibility-gradlePlugin = { group = &quot;org.jetbrains.kotlinx.binary-compatibility-validator&quot;, name = &quot;org.jetbrains.kotlinx.binary-compatibility-validator.gradle.plugin&quot;, version = &quot;0.17.0&quot; }"
-        errorLine2="                                                                                                                                                                                             ~~~~~~~~">
+        message="A newer version of org.junit.jupiter:junit-jupiter-api than 5.13.2 is available: 5.13.3"
+        errorLine1="junit = &quot;5.13.2&quot;"
+        errorLine2="        ~~~~~~~~">
         <location
             file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
-            line="142"
-            column="190"/>
+            line="30"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.junit.jupiter:junit-jupiter-engine than 5.13.2 is available: 5.13.3"
+        errorLine1="junit = &quot;5.13.2&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="30"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.slack.lint:slack-lint-checks than 0.9.0 is available: 0.10.0"
+        errorLine1="lint-slack-checks = &quot;0.9.0&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="38"
+            column="21"/>
     </issue>
 
 </issues>
