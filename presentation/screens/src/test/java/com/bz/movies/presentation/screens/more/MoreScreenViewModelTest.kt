@@ -1,19 +1,13 @@
 package com.bz.movies.presentation.screens.more
 
-import androidx.core.os.LocaleListCompat
 import app.cash.turbine.test
 import com.bz.dto.ExchangeRateDto
 import com.bz.movies.database.repository.LocalCurrencyRepository
-import com.bz.movies.presentation.utils.LocaleSelector
 import com.bz.network.repository.CurrencyRepository
-import dagger.Lazy
 import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify
-import io.mockk.every
 import io.mockk.mockk
-import io.mockk.mockkStatic
-import io.mockk.unmockkStatic
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
@@ -29,7 +23,6 @@ class MoreScreenViewModelTest {
     private val currencyRepository: CurrencyRepository = mockk()
     private val localCurrencyRepository: LocalCurrencyRepository = mockk(relaxed = true)
 
-
     @Test
     fun `when view model is init then it should load all currencies from currency storage`() =
         runTest {
@@ -37,7 +30,7 @@ class MoreScreenViewModelTest {
             val viewModel = MoreScreenViewModel(
                 currencyRepository = { currencyRepository },
                 localCurrencyRepository = { localCurrencyRepository },
-                localeSelector = { mockk(relaxed = true) },
+                localeSelector = { mockk(relaxed = true) }
             )
 
             viewModel.state.test {
@@ -70,7 +63,7 @@ class MoreScreenViewModelTest {
         val viewModel = MoreScreenViewModel(
             currencyRepository = { currencyRepository },
             localCurrencyRepository = { localCurrencyRepository },
-            localeSelector = { mockk(relaxed = true) },
+            localeSelector = { mockk(relaxed = true) }
         )
 
         viewModel.sendEvent(MoreEvent.OnCurrencyClick("USD"))
