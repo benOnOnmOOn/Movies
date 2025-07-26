@@ -31,3 +31,9 @@ internal fun <T> Flow<T>.collectInLaunchedEffectWithLifecycle(
         }
     }
 }
+
+interface LocaleSelector {
+    fun setApplicationLocales(code: String)
+
+    fun getCurrentLang(): String?
+}

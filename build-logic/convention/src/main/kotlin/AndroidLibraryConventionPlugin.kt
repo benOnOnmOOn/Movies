@@ -16,7 +16,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
 
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
-                namespace = "com.bz.movies" + target.project.path.replace(':', '.')
+                namespace =
+                    "com.bz.movies" + target.project.path.replace(':', '.').replace('-', '.')
             }
             extensions.configure<LibraryAndroidComponentsExtension> {
                 disableUnnecessaryAndroidTests(target)

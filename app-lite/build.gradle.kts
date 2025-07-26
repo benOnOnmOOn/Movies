@@ -17,9 +17,13 @@ android {
 }
 
 dependencies {
-    // don't warn
-    implementation(projects.presentation.core)
+
+    implementation(projects.data.database)
+    implementation(projects.data.datastore)
+    implementation(projects.data.network)
     implementation(projects.data.okhttp)
+    implementation(projects.presentation.coreLite)
+    implementation(projects.presentation.screens)
     implementation(projects.utlis.android)
 
     val enableKover =
@@ -44,6 +48,8 @@ dependencies {
     implementation(libs.androidx.startup.runtime)
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
+    implementation(libs.androidx.datastore.core)
+
     implementation(libs.dagger)
     implementation(libs.kermit)
     implementation(libs.kotlin.stdlib)

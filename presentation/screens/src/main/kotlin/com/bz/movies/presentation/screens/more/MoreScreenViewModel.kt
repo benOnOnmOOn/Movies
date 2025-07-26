@@ -1,14 +1,13 @@
 package com.bz.movies.presentation.screens.more
 
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.collection.lruCache
-import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.touchlab.kermit.Logger
 import com.bz.dto.CurrencyDto
 import com.bz.dto.ExchangeRateDto
 import com.bz.movies.database.repository.LocalCurrencyRepository
+import com.bz.movies.presentation.utils.LocaleSelector
 import com.bz.network.repository.CurrencyRepository
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,7 +24,8 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 internal class MoreScreenViewModel @Inject constructor(
     private val currencyRepository: Lazy<CurrencyRepository>,
-    private val localCurrencyRepository: Lazy<LocalCurrencyRepository>
+    private val localCurrencyRepository: Lazy<LocalCurrencyRepository>,
+    private val localeSelector: Lazy<LocaleSelector>
 ) : ViewModel() {
     private val _state = MutableStateFlow(MoreState())
     val state: StateFlow<MoreState> = _state.asStateFlow()
@@ -79,7 +79,7 @@ internal class MoreScreenViewModel @Inject constructor(
     }
 
     private fun collectCurrentLanguage() = viewModelScope.launch {
-        val currentLang = AppCompatDelegate.getApplicationLocales()[0]?.language
+        val currentLang = localeSelector.get().getCurrentLang()
         if (currentLang == Language.POL.code) {
             _state.emit(MoreState(Language.POL))
         } else {
@@ -98,10 +98,8 @@ internal class MoreScreenViewModel @Inject constructor(
     private suspend fun handleEvent(event: MoreEvent) {
         when (event) {
             is MoreEvent.OnLanguageClick -> {
-                val appLocale: LocaleListCompat =
-                    LocaleListCompat.forLanguageTags(event.language.code)
                 _state.emit(_state.value.copy(language = event.language))
-                AppCompatDelegate.setApplicationLocales(appLocale)
+                localeSelector.get().setApplicationLocales(event.language.code)
             }
 
             is MoreEvent.OnCurrencyClick -> {
