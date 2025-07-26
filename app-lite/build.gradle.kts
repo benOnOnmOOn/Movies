@@ -61,6 +61,11 @@ dependencies {
 
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
+  implementation(libs.androidx.datastore.core)
+  implementation(project(":data:database"))
+  implementation(project(":data:datastore"))
+  implementation(project(":data:network"))
+  implementation(project(":presentation:screens"))
 }
 
 dependencyGuard {

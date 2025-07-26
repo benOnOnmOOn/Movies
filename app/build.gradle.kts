@@ -73,6 +73,11 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
+  implementation(libs.androidx.datastore.core)
+  implementation(project(":data:database"))
+  implementation(project(":data:datastore"))
+  implementation(project(":data:network"))
+  implementation(project(":presentation:screens"))
 }
 
 dependencyGuard {

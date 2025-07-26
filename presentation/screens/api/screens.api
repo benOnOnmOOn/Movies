@@ -26,3 +26,8 @@ public final class com/bz/movies/presentation/screens/main/MainScreenKt {
 	public static final fun MainMoviesScreen (Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
 }
 
+public abstract interface class com/bz/movies/presentation/utils/LocaleSelector {
+	public abstract fun getCurrentLang ()Ljava/lang/String;
+	public abstract fun setApplicationLocales (Ljava/lang/String;)V
+}
+

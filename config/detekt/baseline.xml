@@ -8,6 +8,7 @@
     <ID>MagicNumber:KotlinAndroid.kt$35</ID>
     <ID>MaxLineLength:ApiTest.kt$ApiTest.Companion$overview = """A botched store robbery places Wonder Woman in a global battle against a powerful and mysterious ancient force that puts her powers in jeopardy."""</ID>
     <ID>MaxLineLength:PopularMoviesViewModelTest.kt$PopularMoviesViewModelTest$fun</ID>
+    <ID>UnusedParameter:CoreModule.kt$CoreModule$app: Application</ID>
     <ID>UnusedParameter:KotlinAndroid.kt$project: Project</ID>
   </CurrentIssues>
 </SmellBaseline>
