@@ -17,10 +17,16 @@ android {
 
 dependencies {
     // don't warn
+    implementation(projects.data.database)
+    implementation(projects.data.datastore)
+    implementation(projects.data.network)
     implementation(projects.presentation.core)
+    implementation(projects.presentation.screens)
     implementation(projects.utlis.android)
+
     debugImplementation(projects.data.okhttp)
     releaseImplementation(projects.data.cronet)
+
     val enableKover =
         providers.gradleProperty("movies.enableKover").getOrElse("true").toBoolean()
     if (enableKover) {
@@ -47,6 +53,7 @@ dependencies {
     implementation(libs.androidx.startup.runtime)
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
+    implementation(libs.androidx.datastore.core)
     implementation(libs.dagger)
 
     implementation(libs.kermit)
@@ -73,11 +80,6 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
-  implementation(libs.androidx.datastore.core)
-  implementation(project(":data:database"))
-  implementation(project(":data:datastore"))
-  implementation(project(":data:network"))
-  implementation(project(":presentation:screens"))
 }
 
 dependencyGuard {

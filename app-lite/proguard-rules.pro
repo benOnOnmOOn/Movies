@@ -25,22 +25,6 @@
 }
 
 
-#Hide some missliding warnings
--dontwarn org.bouncycastle.**
--dontwarn org.conscrypt.**
--dontwarn org.openjsse.**
--dontwarn com.google.errorprone.annotations.**
--dontwarn java.lang.**
--dontwarn libcore.io.**
--dontwarn org.checkerframework.**
--dontwarn com.google.auto.value.**
--dontwarn org.codehaus.mojo.**
--dontwarn javax.annotation.**
--dontwarn androidx.loader.app.LoaderManager
--dontwarn androidx.customview.view.AbsSavedState
--dontwarn androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
--dontwarn androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
-
 # Valid rules copy paste from file "proguard-android-optimize.txt"
 
 # For native methods, see https://www.guardsquare.com/manual/configuration/examples#native
