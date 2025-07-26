@@ -18,7 +18,7 @@ android {
 
 dependencies {
     // don't warn
-    implementation(projects.presentation.core)
+    implementation(projects.presentation.coreLite)
     implementation(projects.data.okhttp)
     implementation(projects.utlis.android)
 

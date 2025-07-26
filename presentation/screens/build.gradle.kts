@@ -46,7 +46,6 @@ dependencies {
     api(libs.androidx.runtime.android)
     api(libs.androidx.ui.android)
 
-    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.collection)
     implementation(libs.androidx.collection.jvm)
     implementation(libs.androidx.core)

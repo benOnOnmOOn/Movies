@@ -9,6 +9,10 @@ plugins {
     alias(libs.plugins.movies.ktlint)
 }
 
+android {
+    namespace = "com.bz.movies.presentation.core.lite"
+}
+
 dependencies {
     api(projects.presentation.screens)
 
@@ -19,17 +23,16 @@ dependencies {
     api(libs.hilt.android)
     api(libs.hilt.core)
     api(libs.dagger)
-
     //
 
-    api(libs.androidx.appcompat)
+
+    api(libs.androidx.activity)
     api(libs.androidx.lifecycle.viewmodel)
     api(libs.androidx.runtime.android)
 
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.annotation)
     implementation(libs.androidx.core)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.ui.android)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)

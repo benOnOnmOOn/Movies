@@ -1,10 +1,10 @@
 package com.bz.movies.presentation.screens.more
 
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import app.cash.turbine.test
 import com.bz.dto.ExchangeRateDto
 import com.bz.movies.database.repository.LocalCurrencyRepository
+import com.bz.movies.presentation.utils.LocaleSelector
 import com.bz.network.repository.CurrencyRepository
 import dagger.Lazy
 import io.mockk.coEvery
@@ -29,13 +29,15 @@ class MoreScreenViewModelTest {
     private val currencyRepository: CurrencyRepository = mockk()
     private val localCurrencyRepository: LocalCurrencyRepository = mockk(relaxed = true)
 
+
     @Test
     fun `when view model is init then it should load all currencies from currency storage`() =
         runTest {
             coJustRun { localCurrencyRepository.insertAllSupportedCurrencyRepository(any()) }
             val viewModel = MoreScreenViewModel(
-                currencyRepository = Lazy { currencyRepository },
-                localCurrencyRepository = Lazy { localCurrencyRepository }
+                currencyRepository = { currencyRepository },
+                localCurrencyRepository = { localCurrencyRepository },
+                localeSelector = { mockk(relaxed = true) },
             )
 
             viewModel.state.test {
@@ -66,8 +68,9 @@ class MoreScreenViewModelTest {
             )
         )
         val viewModel = MoreScreenViewModel(
-            currencyRepository = Lazy { currencyRepository },
-            localCurrencyRepository = Lazy { localCurrencyRepository }
+            currencyRepository = { currencyRepository },
+            localCurrencyRepository = { localCurrencyRepository },
+            localeSelector = { mockk(relaxed = true) },
         )
 
         viewModel.sendEvent(MoreEvent.OnCurrencyClick("USD"))
@@ -94,15 +97,10 @@ class MoreScreenViewModelTest {
     @BeforeEach
     fun setUp() {
         Dispatchers.setMain(StandardTestDispatcher())
-        mockkStatic(AppCompatDelegate::getApplicationLocales)
-        every {
-            AppCompatDelegate.getApplicationLocales()
-        } returns LocaleListCompat.getEmptyLocaleList()
     }
 
     @AfterEach
     fun tearDown() {
-        unmockkStatic(AppCompatDelegate::getApplicationLocales)
         Dispatchers.resetMain()
     }
 }
