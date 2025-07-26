@@ -25,7 +25,6 @@ dependencies {
     api(libs.dagger)
     //
 
-
     api(libs.androidx.activity)
     api(libs.androidx.lifecycle.viewmodel)
     api(libs.androidx.runtime.android)
