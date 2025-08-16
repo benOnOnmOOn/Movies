@@ -94,6 +94,6 @@ configurations.configureEach {
     exclude("org.jetbrains.kotlinx", "kotlinx-serialization-core")
 }
 
-configurations.runtimeOnly{
-    exclude("androidx.fragment","fragment")
+configurations.runtimeOnly {
+    exclude("androidx.fragment", "fragment")
 }

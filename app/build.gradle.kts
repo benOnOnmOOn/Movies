@@ -99,6 +99,6 @@ dependencyGuard {
     configuration("releaseRuntimeClasspath")
 }
 
-configurations.runtimeOnly{
-    exclude("androidx.fragment","fragment")
+configurations.runtimeOnly {
+    exclude("androidx.fragment", "fragment")
 }

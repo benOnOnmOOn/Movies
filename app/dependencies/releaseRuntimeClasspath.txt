@@ -62,7 +62,6 @@ androidx.dynamicanimation:dynamicanimation:1.0.0
 androidx.emoji2:emoji2-views-helper:1.4.0
 androidx.emoji2:emoji2:1.4.0
 androidx.exifinterface:exifinterface:1.4.1
-androidx.fragment:fragment:1.8.9
 androidx.graphics:graphics-path:1.0.1
 androidx.hilt:hilt-navigation-compose:1.2.0
 androidx.hilt:hilt-navigation:1.2.0

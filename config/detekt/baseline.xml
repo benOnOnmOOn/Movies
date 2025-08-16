@@ -2,6 +2,7 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>EmptyFunctionBlock:Utils.kt${ }</ID>
     <ID>LongParameterList:PlayingNowScreen.kt$( state: MoviesState = MoviesState(), showNoInternetDialog: Boolean = false, showErrorDialog: Boolean = false, onNetworkErrorDismiss: () -&gt; Unit = {}, onErrorDismiss: () -&gt; Unit = {}, sendEvent: (MovieEvent) -&gt; Unit )</ID>
     <ID>LongParameterList:PopularMoviesScreen.kt$( state: MoviesState = MoviesState(), sendEvent: (MovieEvent) -&gt; Unit = {}, showNoInternetDialog: Boolean = false, showErrorDialog: Boolean = false, onNetworkErrorDismiss: () -&gt; Unit = {}, onErrorDismiss: () -&gt; Unit = {}, onMovieClicked: (id: Int) -&gt; Unit = {} )</ID>
     <ID>MagicNumber:KotlinAndroid.kt$27</ID>
