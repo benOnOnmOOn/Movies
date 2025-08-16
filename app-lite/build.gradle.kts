@@ -1,4 +1,7 @@
+import com.autonomousapps.DependencyAnalysisSubExtension
+import kotlin.apply
 import org.gradle.kotlin.dsl.android
+import org.gradle.kotlin.dsl.findByType
 
 plugins {
     alias(libs.plugins.movies.dependency.analysis)
@@ -16,6 +19,13 @@ android {
     namespace = "com.bz.movies.lite"
 }
 
+extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
+    issues {
+        onUnusedDependencies { exclude(projects.utlis.leakstub) }
+        onUnusedDependencies { exclude(projects.utlis.leakcanary) }
+    }
+}
+
 dependencies {
 
     implementation(projects.data.database)
@@ -25,6 +35,8 @@ dependencies {
     implementation(projects.presentation.coreLite)
     implementation(projects.presentation.screens)
     implementation(projects.utlis.android)
+
+    runtimeOnly(projects.utlis.leakstub)
 
     val enableKover =
         providers.gradleProperty("movies.enableKover").getOrElse("true").toBoolean()
@@ -46,14 +58,13 @@ dependencies {
     //
 
     implementation(libs.androidx.startup.runtime)
-    implementation(libs.androidx.fragment)
+    compileOnly(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.androidx.datastore.core)
 
     implementation(libs.dagger)
     implementation(libs.kermit)
     implementation(libs.kotlin.stdlib)
-    debugRuntimeOnly(libs.leakcanary.android)
 
     implementation(libs.okhttp)
     implementation(libs.okhttp.android)
@@ -71,5 +82,20 @@ dependencies {
 
 dependencyGuard {
     // All dependencies included in Production Release APK
-    configuration("releaseRuntimeClasspath")
+    configuration("releaseRuntimeClasspath") {
+        tree = true
+    }
+}
+
+configurations.configureEach {
+    exclude("androidx.vectordrawable", "vectordrawable")
+    exclude("androidx.vectordrawable", "vectordrawable-animated")
+    exclude("androidx.versionedparcelable", "versionedparcelable")
+    exclude("org.jetbrains.kotlinx", "kotlinx-serialization-bom")
+    exclude("org.jetbrains.kotlinx", "kotlinx-serialization-core-jvm")
+    exclude("org.jetbrains.kotlinx", "kotlinx-serialization-core")
+}
+
+configurations.runtimeOnly{
+    exclude("androidx.fragment","fragment")
 }

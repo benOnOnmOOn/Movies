@@ -24,6 +24,8 @@ dependencies {
     api(projects.data.datastore)
     implementation(projects.data.dto)
 
+    compileOnly(projects.utlis.leakstub)
+
     lintChecks(libs.lint.slack.checks)
     lintChecks(libs.lint.compose.checks)
 
@@ -66,8 +68,7 @@ dependencies {
     runtimeOnly(libs.androidx.startup.runtime)
 
     debugImplementation(libs.androidx.compose.ui.tooling.preview.android)
-    debugImplementation(libs.leakcanary.watcher)
-    debugImplementation(libs.leakcanary.watcher.android.core)
+
     debugRuntimeOnly(libs.androidx.compose.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.compose.ui.tooling)
 

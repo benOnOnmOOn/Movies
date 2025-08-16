@@ -1,0 +1,4 @@
+public final class com/bz/movies/presentation/screens/utils/UtilsKt {
+	public static final field VIEW_MODEL_APP_WATCHER_KEY Ljava/lang/String;
+}
+
