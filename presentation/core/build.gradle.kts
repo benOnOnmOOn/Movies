@@ -24,16 +24,16 @@ dependencies {
 
     api(libs.androidx.appcompat)
     api(libs.androidx.lifecycle.viewmodel)
-    api(libs.androidx.runtime.android)
+    api(libs.androidx.compose.runtime.android)
 
     implementation(libs.androidx.activity)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.core)
-    implementation(libs.androidx.ui.android)
+    implementation(libs.androidx.compose.ui.android)
 
-    debugRuntimeOnly(libs.androidx.ui.test.manifest)
-    debugRuntimeOnly(libs.androidx.ui.tooling)
+    debugRuntimeOnly(libs.androidx.compose.ui.test.manifest)
+    debugRuntimeOnly(libs.androidx.compose.ui.tooling)
 
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
