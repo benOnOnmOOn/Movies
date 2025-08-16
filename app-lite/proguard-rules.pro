@@ -41,3 +41,7 @@
 -keepclassmembers class * implements android.os.Parcelable {
     public static final ** CREATOR;
 }
+
+-dontwarn androidx.vectordrawable.graphics.drawable.**
+-dontwarn kotlinx.serialization.**
+-dontwarn androidx.emoji2.**

@@ -1,3 +1,7 @@
+import com.autonomousapps.DependencyAnalysisSubExtension
+import kotlin.apply
+import org.gradle.kotlin.dsl.findByType
+
 plugins {
     alias(libs.plugins.dexcount)
     alias(libs.plugins.movies.android.application)
@@ -15,6 +19,12 @@ android {
     namespace = "com.bz.movies"
 }
 
+extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
+    issues {
+        onUnusedDependencies { exclude(projects.utlis.leakstub) }
+        onUnusedDependencies { exclude(projects.utlis.leakcanary) }
+    }
+}
 dependencies {
     // don't warn
     implementation(projects.data.database)
@@ -23,6 +33,9 @@ dependencies {
     implementation(projects.presentation.core)
     implementation(projects.presentation.screens)
     implementation(projects.utlis.android)
+
+    debugRuntimeOnly(projects.utlis.leakcanary)
+    releaseRuntimeOnly(projects.utlis.leakstub)
 
     debugImplementation(projects.data.okhttp)
     releaseImplementation(projects.data.cronet)
@@ -51,7 +64,7 @@ dependencies {
     releaseImplementation(libs.firebase.perf)
 
     implementation(libs.androidx.startup.runtime)
-    implementation(libs.androidx.fragment)
+    compileOnly(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.androidx.datastore.core)
     implementation(libs.dagger)
@@ -60,7 +73,6 @@ dependencies {
     releaseImplementation(libs.kermit.crashlytics)
 
     implementation(libs.kotlin.stdlib)
-    debugRuntimeOnly(libs.leakcanary.android)
 
     implementation(libs.okhttp)
     implementation(libs.okhttp.android)
@@ -85,4 +97,8 @@ dependencies {
 dependencyGuard {
     // All dependencies included in Production Release APK
     configuration("releaseRuntimeClasspath")
+}
+
+configurations.runtimeOnly {
+    exclude("androidx.fragment", "fragment")
 }
