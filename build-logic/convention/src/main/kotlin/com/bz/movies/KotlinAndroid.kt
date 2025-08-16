@@ -52,8 +52,8 @@ fun ApplicationExtension.baseConfig(project: Project) {
 
 //region Global android configuration
 internal fun CommonExtension<*, *, *, *, *, *>.defaultBaseConfig(project: Project) {
-    compileSdk = 35
-    buildToolsVersion = "35.0.0"
+    compileSdk = 36
+    buildToolsVersion = "36.0.0"
 
     defaultConfig {
         minSdk = 27
