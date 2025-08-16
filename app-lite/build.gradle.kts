@@ -82,9 +82,7 @@ dependencies {
 
 dependencyGuard {
     // All dependencies included in Production Release APK
-    configuration("releaseRuntimeClasspath") {
-        tree = true
-    }
+    configuration("releaseRuntimeClasspath")
 }
 
 configurations.configureEach {
