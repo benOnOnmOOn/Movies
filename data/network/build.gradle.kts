@@ -21,7 +21,7 @@ dependencies {
     api(libs.dagger)
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)
-    implementation(libs.javax.inject)
+    compileOnly(libs.javax.inject)
     //
 
     implementation(libs.moshi)
