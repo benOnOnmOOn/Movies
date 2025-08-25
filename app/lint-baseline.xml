@@ -2,13 +2,68 @@
 <issues format="6" by="lint 9.0.0-alpha01" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.0-alpha01)" variant="all" version="9.0.0-alpha01">
 
     <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 9.0.0-alpha01 is available: 9.0.0-alpha02"
+        errorLine1="android-gradle-plugin = &quot;9.0.0-alpha01&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.library than 9.0.0-alpha01 is available: 9.0.0-alpha02"
+        errorLine1="android-gradle-plugin = &quot;9.0.0-alpha01&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.lint than 9.0.0-alpha01 is available: 9.0.0-alpha02"
+        errorLine1="android-gradle-plugin = &quot;9.0.0-alpha01&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.tools.build:gradle than 9.0.0-alpha01 is available: 9.0.0-alpha02"
+        errorLine1="android-gradle-plugin = &quot;9.0.0-alpha01&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
         id="GradleDependency"
         message="A newer version of com.android.tools:common than 31.12.0 is available: 31.12.1"
         errorLine1="android-tools = &quot;31.12.0&quot;"
         errorLine2="                ~~~~~~~~~">
         <location
-            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
             line="3"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jlleitschuh.gradle.ktlint than 13.0.0 is available: 13.1.0"
+        errorLine1="ktlint-plugin = &quot;13.0.0&quot;"
+        errorLine2="                ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="38"
             column="17"/>
     </issue>
 

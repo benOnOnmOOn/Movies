@@ -34,8 +34,6 @@ dependencies {
     implementation(projects.presentation.screens)
     implementation(projects.utlis.android)
 
-
-
     val enableKover =
         providers.gradleProperty("movies.enableKover").getOrElse("true").toBoolean()
     if (enableKover) {
