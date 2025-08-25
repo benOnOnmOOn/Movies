@@ -28,7 +28,7 @@ dependencies {
 
     implementation(libs.androidx.activity)
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.annotation)
+    compileOnly(libs.androidx.annotation)
     implementation(libs.androidx.core)
     implementation(libs.androidx.compose.ui.android)
 

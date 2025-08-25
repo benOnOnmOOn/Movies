@@ -34,12 +34,6 @@ dependencies {
     implementation(projects.presentation.screens)
     implementation(projects.utlis.android)
 
-    debugRuntimeOnly(projects.utlis.leakcanary)
-    releaseRuntimeOnly(projects.utlis.leakstub)
-
-    debugImplementation(projects.data.okhttp)
-    releaseImplementation(projects.data.cronet)
-
     val enableKover =
         providers.gradleProperty("movies.enableKover").getOrElse("true").toBoolean()
     if (enableKover) {
@@ -50,13 +44,19 @@ dependencies {
         add("kover", projects.data.datastore)
     }
 
+    debugRuntimeOnly(projects.utlis.leakcanary)
+    releaseRuntimeOnly(projects.utlis.leakstub)
+
+    debugImplementation(projects.data.okhttp)
+    releaseImplementation(projects.data.cronet)
+
     lintChecks(libs.lint.slack.checks)
 
     //  HILT
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)
-    implementation(libs.javax.inject)
+    compileOnly(libs.javax.inject)
     //
 
     releaseImplementation(libs.firebase.analytics.ktx)

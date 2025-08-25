@@ -30,12 +30,12 @@ dependencies {
     lintChecks(libs.lint.compose.checks)
 
     //region HILT
-    ksp(libs.hilt.android.compiler)
-    ksp(libs.dagger.compiler)
     api(libs.dagger)
-    implementation(libs.javax.inject)
-    implementation(libs.hilt.android)
+    compileOnly(libs.javax.inject)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.hilt.android)
+    ksp(libs.dagger.compiler)
+    ksp(libs.hilt.android.compiler)
     //
 
     api(libs.androidx.compose.animation.android)
@@ -51,7 +51,7 @@ dependencies {
     implementation(libs.androidx.collection)
     implementation(libs.androidx.collection.jvm)
     implementation(libs.androidx.compose.foundation.android)
-    implementation(libs.androidx.compose.runtime.annotation)
+    compileOnly(libs.androidx.compose.runtime.annotation)
     implementation(libs.androidx.compose.ui.graphics.android)
     implementation(libs.androidx.compose.ui.text.android)
     implementation(libs.androidx.compose.ui.unit.android)
