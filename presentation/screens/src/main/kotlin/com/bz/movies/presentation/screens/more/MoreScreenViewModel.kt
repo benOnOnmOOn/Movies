@@ -50,7 +50,7 @@ internal class MoreScreenViewModel @Inject constructor(
             )
         )
 
-        val currencyRepository = currencyRepository.get()
+//        val currencyRepository = currencyRepository.get()
 //        currencyRepository.get().getAllCurrencies()
 //        currencyRepository.get().getExchangeRate("EUR")
     }
