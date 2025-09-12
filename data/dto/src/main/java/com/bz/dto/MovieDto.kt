@@ -1,6 +1,6 @@
 package com.bz.dto
 
-data class MovieDto(
+public data class MovieDto(
     val id: Int,
     val posterUrl: String,
     val title: String,

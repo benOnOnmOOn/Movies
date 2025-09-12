@@ -7,7 +7,7 @@ import co.touchlab.kermit.Logger
 import java.util.concurrent.Executors
 import kotlin.coroutines.cancellation.CancellationException
 
-fun throwOnMainThread() {
+public fun throwOnMainThread() {
     check(Looper.myLooper() != Looper.getMainLooper()) {
         val methodName = object {}.javaClass.enclosingMethod?.name ?: "Unknown"
         "method: $methodName may not be called from main thread."
@@ -15,7 +15,7 @@ fun throwOnMainThread() {
 }
 
 @Suppress("TooGenericExceptionCaught")
-inline fun <R> runSuspendCatching(block: () -> R): Result<R> = try {
+public inline fun <R> runSuspendCatching(block: () -> R): Result<R> = try {
     Result.success(block())
 } catch (c: CancellationException) {
     throw c
@@ -23,7 +23,7 @@ inline fun <R> runSuspendCatching(block: () -> R): Result<R> = try {
     Result.failure(e)
 }
 
-fun enableStrictMode() {
+public fun enableStrictMode() {
     StrictMode.setThreadPolicy(
         StrictMode.ThreadPolicy.Builder()
             .detectAll()

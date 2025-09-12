@@ -6,12 +6,6 @@ public final class com/bz/movies/core/AppInitializer : androidx/startup/Initiali
 	public fun dependencies ()Ljava/util/List;
 }
 
-public final class com/bz/movies/core/MoviesApp : android/app/Application {
-	public static final field $stable I
-	public fun <init> ()V
-	public fun onCreate ()V
-}
-
 public class dagger/hilt/internal/aggregatedroot/codegen/_com_bz_movies_core_MoviesApp {
 	public fun <init> ()V
 }

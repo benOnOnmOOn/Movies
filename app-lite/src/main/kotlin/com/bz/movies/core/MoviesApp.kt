@@ -5,7 +5,7 @@ import android.enableStrictMode
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class MoviesApp : Application() {
+internal class MoviesApp : Application() {
     override fun onCreate() {
         super.onCreate()
         enableStrictMode()

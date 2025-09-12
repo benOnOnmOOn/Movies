@@ -2,13 +2,13 @@ package com.bz.movies.datastore.repository
 
 import java.time.Instant
 
-interface DataStoreRepository {
+public interface DataStoreRepository {
 
-    suspend fun insertPlayingNowRefreshDate(data: Instant): Result<Unit>
+    public suspend fun insertPlayingNowRefreshDate(data: Instant): Result<Unit>
 
-    suspend fun getPlyingNowRefreshDate(): Result<Instant>
+    public suspend fun getPlyingNowRefreshDate(): Result<Instant>
 
-    suspend fun insertPopularNowRefreshDate(data: Instant): Result<Unit>
+    public suspend fun insertPopularNowRefreshDate(data: Instant): Result<Unit>
 
-    suspend fun getPopularRefreshDate(): Result<Instant>
+    public suspend fun getPopularRefreshDate(): Result<Instant>
 }

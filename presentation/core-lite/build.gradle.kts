@@ -20,12 +20,12 @@ dependencies {
 
     //  HILT
     ksp(libs.hilt.android.compiler)
-    api(libs.hilt.android)
-    api(libs.hilt.core)
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.core)
     api(libs.dagger)
     //
 
-    api(libs.androidx.activity)
+    implementation(libs.androidx.activity)
     api(libs.androidx.lifecycle.viewmodel)
     api(libs.androidx.compose.runtime.android)
 
@@ -39,4 +39,5 @@ dependencies {
 
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
+  implementation(libs.androidx.annotation)
 }
