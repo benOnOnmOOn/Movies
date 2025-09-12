@@ -12,7 +12,9 @@ public interface LocalCurrencyRepository {
 
     public suspend fun getAllSupportedCurrencyRepository(): Result<List<CurrencyDto>>
 
-    public suspend fun insertAllSupportedCurrencyRepository(currencies: List<CurrencyDto>): Result<Unit>
+    public suspend fun insertAllSupportedCurrencyRepository(
+        currencies: List<CurrencyDto>
+    ): Result<Unit>
 }
 
 internal class LocalCurrencyRepositoryImpl(private val currencyDAO: Lazy<CurrencyDAO>) :

@@ -39,5 +39,5 @@ dependencies {
 
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
-  implementation(libs.androidx.annotation)
+    implementation(libs.androidx.annotation)
 }
