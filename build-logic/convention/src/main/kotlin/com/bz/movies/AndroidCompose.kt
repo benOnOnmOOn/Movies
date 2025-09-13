@@ -1,7 +1,6 @@
 package com.bz.movies
 
 import com.android.build.api.dsl.ApplicationExtension
-import com.android.build.api.dsl.CommonExtension
 import com.android.build.gradle.LibraryExtension
 import org.gradle.api.Project
 
