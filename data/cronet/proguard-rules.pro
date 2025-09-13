@@ -30,6 +30,6 @@
 
 
 # Repackage all obfuscated classes to packege specific for this module
--repackageclasses data.database
+-repackageclasses data.cronet
 
 -dontwarn java.lang.invoke.StringConcatFactory

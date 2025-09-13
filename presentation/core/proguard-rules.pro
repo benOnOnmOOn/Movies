@@ -30,6 +30,6 @@
 
 
 # Repackage all obfuscated classes to packege specific for this module
--repackageclasses data.database
+-repackageclasses presentation.core
 
 -dontwarn java.lang.invoke.StringConcatFactory
