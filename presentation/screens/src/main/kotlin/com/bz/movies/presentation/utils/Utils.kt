@@ -32,8 +32,8 @@ internal fun <T> Flow<T>.collectInLaunchedEffectWithLifecycle(
     }
 }
 
-interface LocaleSelector {
-    fun setApplicationLocales(code: String)
+public interface LocaleSelector {
+    public fun setApplicationLocales(code: String)
 
-    fun getCurrentLang(): String?
+    public fun getCurrentLang(): String?
 }

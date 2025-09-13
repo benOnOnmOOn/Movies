@@ -1,7 +1,7 @@
 package com.bz.network.repository
 
-class EmptyBodyException : Exception("Empty body")
+public class EmptyBodyException : Exception("Empty body")
 
-class HttpException(message: String) : Exception(message)
+public class HttpException(message: String) : Exception(message)
 
-class NoInternetException : Exception("No Internet Connection")
+public class NoInternetException : Exception("No Internet Connection")

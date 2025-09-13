@@ -32,7 +32,6 @@ dependencies {
     //region HILT
     api(libs.dagger)
     compileOnly(libs.javax.inject)
-    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)
     ksp(libs.dagger.compiler)
     ksp(libs.hilt.android.compiler)
@@ -83,4 +82,6 @@ dependencies {
     testRuntimeOnly(libs.junit.engine)
     //noinspection UseTomlInstead
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
+    implementation(libs.hilt.core)
 }

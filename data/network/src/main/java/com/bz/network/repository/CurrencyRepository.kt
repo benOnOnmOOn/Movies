@@ -12,10 +12,10 @@ import dagger.Lazy
 
 private const val AUTH_KEY = "cur_live_0VOoymI1vCKyBOKWLupNRIvd3LyzJABKz8V5CrhV"
 
-interface CurrencyRepository {
-    suspend fun getAllCurrencies(): Result<List<CurrencyDto>>
+public interface CurrencyRepository {
+    public suspend fun getAllCurrencies(): Result<List<CurrencyDto>>
 
-    suspend fun getExchangeRate(baseCurrency: String): Result<List<ExchangeRateDto>>
+    public suspend fun getExchangeRate(baseCurrency: String): Result<List<ExchangeRateDto>>
 }
 
 internal class CurrencyRepositoryImpl(

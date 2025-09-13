@@ -9,8 +9,8 @@ import javax.net.SocketFactory
 
 // Create custom SocketFactory that avoid raising untagged socket detected with enabled strict mode
 // https://github.com/square/okhttp/issues/3537
-open class DelegatingSocketFactory(
-    private val delegate: SocketFactory = SocketFactory.getDefault(),
+public open class DelegatingSocketFactory(
+    private val delegate: SocketFactory = getDefault(),
     private val configureSocket: (Socket) -> Socket = { socket ->
         @Suppress("DeprecatedCall")
         TrafficStats.setThreadStatsTag(Thread.currentThread().id.toInt())

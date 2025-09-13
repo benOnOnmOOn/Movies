@@ -17,14 +17,14 @@ import dagger.Lazy
 private const val AUTH_KEY = "55957fcf3ba81b137f8fc01ac5a31fb5"
 private const val LANGUAGE = "en-US"
 
-interface MovieRepository {
-    suspend fun getPlayingNowMovies(): Result<List<MovieDto>>
+public interface MovieRepository {
+    public suspend fun getPlayingNowMovies(): Result<List<MovieDto>>
 
-    suspend fun getPopularMovies(page: Int): Result<List<MovieDto>>
+    public suspend fun getPopularMovies(page: Int): Result<List<MovieDto>>
 
-    suspend fun getMovieDetail(movieId: Int): Result<MoveDetailDto>
+    public suspend fun getMovieDetail(movieId: Int): Result<MoveDetailDto>
 
-    suspend fun getPopularMoviesPage(page: Int): Result<PopularMoviePageDto>
+    public suspend fun getPopularMoviesPage(page: Int): Result<PopularMoviePageDto>
 }
 
 internal class MovieRepositoryImpl(

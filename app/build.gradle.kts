@@ -64,7 +64,7 @@ dependencies {
     releaseImplementation(libs.firebase.perf)
 
     implementation(libs.androidx.startup.runtime)
-    compileOnly(libs.androidx.fragment)
+    implementation(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.androidx.datastore.core)
     implementation(libs.dagger)
@@ -97,8 +97,4 @@ dependencies {
 dependencyGuard {
     // All dependencies included in Production Release APK
     configuration("releaseRuntimeClasspath")
-}
-
-configurations.runtimeOnly {
-    exclude("androidx.fragment", "fragment")
 }

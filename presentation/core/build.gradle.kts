@@ -16,13 +16,13 @@ dependencies {
 
     //  HILT
     ksp(libs.hilt.android.compiler)
-    api(libs.hilt.android)
-    api(libs.hilt.core)
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.core)
     api(libs.dagger)
 
     //
 
-    api(libs.androidx.appcompat)
+    implementation(libs.androidx.appcompat)
     api(libs.androidx.lifecycle.viewmodel)
     api(libs.androidx.compose.runtime.android)
 

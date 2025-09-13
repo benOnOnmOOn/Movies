@@ -1,6 +1,6 @@
 package com.bz.dto
 
-data class MoveDetailDto(
+public data class MoveDetailDto(
     val id: Int,
     val posterUrl: String,
     val publicationDate: String,

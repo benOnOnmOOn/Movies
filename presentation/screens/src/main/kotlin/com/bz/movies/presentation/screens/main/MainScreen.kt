@@ -13,7 +13,7 @@ import com.bz.movies.presentation.navigation.MoviesNavHost
 import com.bz.movies.presentation.theme.MoviesTheme
 
 @Composable
-fun MainMoviesScreen(modifier: Modifier = Modifier) {
+public fun MainMoviesScreen(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
 
     MoviesTheme {

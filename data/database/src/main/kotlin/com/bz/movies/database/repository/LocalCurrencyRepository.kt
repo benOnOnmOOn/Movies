@@ -8,11 +8,13 @@ import com.bz.movies.database.repository.mapper.toEntity
 import com.bz.movies.database.runCatchingWithContext
 import dagger.Lazy
 
-interface LocalCurrencyRepository {
+public interface LocalCurrencyRepository {
 
-    suspend fun getAllSupportedCurrencyRepository(): Result<List<CurrencyDto>>
+    public suspend fun getAllSupportedCurrencyRepository(): Result<List<CurrencyDto>>
 
-    suspend fun insertAllSupportedCurrencyRepository(currencies: List<CurrencyDto>): Result<Unit>
+    public suspend fun insertAllSupportedCurrencyRepository(
+        currencies: List<CurrencyDto>
+    ): Result<Unit>
 }
 
 internal class LocalCurrencyRepositoryImpl(private val currencyDAO: Lazy<CurrencyDAO>) :
