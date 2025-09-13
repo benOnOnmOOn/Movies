@@ -50,6 +50,7 @@ internal class PlayingNowViewModel @Inject constructor(
     val effect = _effect.receiveAsFlow()
 
     init {
+        movieRepository.get()
         collectPlayingNowMovies()
         handleEvent()
     }

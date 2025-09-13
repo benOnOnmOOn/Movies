@@ -1,7 +1,7 @@
 package com.bz.movies.datastore.di
 
 import android.app.Application
-import android.throwOnMainThread
+import com.bz.tools.throwOnMainThread
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.SharedPreferencesMigration

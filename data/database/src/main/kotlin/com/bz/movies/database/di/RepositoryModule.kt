@@ -1,6 +1,6 @@
 package com.bz.movies.database.di
 
-import android.throwOnMainThread
+import com.bz.tools.throwOnMainThread
 import com.bz.movies.database.dao.CurrencyDAO
 import com.bz.movies.database.dao.MovieDAO
 import com.bz.movies.database.dao.PlayingNowMovieDAO

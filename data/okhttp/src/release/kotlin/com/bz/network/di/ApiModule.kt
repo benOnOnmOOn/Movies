@@ -1,7 +1,7 @@
 package com.bz.network.di
 
-import android.DelegatingSocketFactory
-import android.throwOnMainThread
+import com.bz.tools.DelegatingSocketFactory
+import com.bz.tools.throwOnMainThread
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

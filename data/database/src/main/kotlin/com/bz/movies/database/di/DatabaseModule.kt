@@ -1,7 +1,7 @@
 package com.bz.movies.database.di
 
 import android.app.Application
-import android.throwOnMainThread
+import com.bz.tools.throwOnMainThread
 import com.bz.movies.database.MoviesDatabase
 import com.bz.movies.database.createMoviesDatabase
 import com.bz.movies.database.dao.CurrencyDAO

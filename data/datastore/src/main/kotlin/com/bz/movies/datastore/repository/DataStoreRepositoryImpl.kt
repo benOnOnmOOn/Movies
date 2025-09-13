@@ -1,7 +1,7 @@
 package com.bz.movies.datastore.repository
 
 import android.annotation.SuppressLint
-import android.runSuspendCatching
+import com.bz.tools.runSuspendCatching
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit

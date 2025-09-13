@@ -1,6 +1,6 @@
 package com.bz.network.di
 
-import android.throwOnMainThread
+import com.bz.tools.throwOnMainThread
 import com.bz.network.api.service.CurrencyService
 import com.bz.network.api.service.MovieService
 import com.bz.network.repository.CurrencyRepository

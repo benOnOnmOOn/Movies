@@ -1,6 +1,6 @@
 package com.bz.network.repository
 
-import android.runSuspendCatching
+import com.bz.tools.runSuspendCatching
 import com.bz.network.utils.InternetConnection
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
