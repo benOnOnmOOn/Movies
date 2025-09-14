@@ -124,7 +124,6 @@ internal fun Project.configureKotlinTestAndroid(commonExtension: TestExtension) 
     configureKotlin<KotlinAndroidProjectExtension>()
 }
 
-
 /**
  * Configure base Kotlin options for JVM (non-Android)
  */

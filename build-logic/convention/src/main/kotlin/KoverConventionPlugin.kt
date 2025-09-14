@@ -24,11 +24,11 @@ class KoverConventionPlugin : Plugin<Project> {
 }
 
 private fun KoverProjectExtension.configure() {
-    currentProject {
-        createVariant("custom") {
-            add("debug")
-        }
-    }
+//    currentProject {
+//        createVariant("custom") {
+//            add("debug")
+//        }
+//    }
 
     reports {
         total {
