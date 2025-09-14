@@ -31,7 +31,7 @@ fun ApplicationExtension.baseAppConfig() {
         applicationId = "com.bz.movies"
         versionCode = 1
         versionName = "1.0"
-
+        minSdk { version = release(27) }
         targetSdk = 35
         multiDexEnabled = false
     }
@@ -84,7 +84,7 @@ internal fun CommonExtension.defaultBaseConfig() {
 
 internal fun LibraryExtension.defaultBaseLibConfig() {
     defaultConfig {
-        minSdk = 27
+        minSdk { version = release(27) }
         resourceConfigurations += listOf("pl", "en")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -92,7 +92,7 @@ internal fun LibraryExtension.defaultBaseLibConfig() {
 
 internal fun TestExtension.defaultBaseTestConfig() {
     defaultConfig {
-        minSdk = 27
+        minSdk { version = release(27) }
         resourceConfigurations += listOf("pl", "en")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -110,8 +110,8 @@ internal fun Project.configureKotlinAndroidApp(commonExtension: ApplicationExten
  * Configure base Kotlin with Android options
  */
 internal fun Project.configureKotlinAndroid(commonExtension: LibraryExtension) {
-    commonExtension.defaultBaseConfig()
     commonExtension.defaultBaseLibConfig()
+    commonExtension.defaultBaseConfig()
     configureKotlin<KotlinAndroidProjectExtension>()
 }
 

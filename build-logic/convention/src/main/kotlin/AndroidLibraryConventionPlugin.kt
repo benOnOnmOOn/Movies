@@ -11,7 +11,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply("com.android.library")
-//            pluginManager.apply("org.jetbrains.kotlin.android")
+            pluginManager.apply("org.jetbrains.kotlin.android")
             pluginManager.apply("movies.android.lint")
 
             extensions.configure<LibraryExtension> {
