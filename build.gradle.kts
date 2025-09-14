@@ -23,6 +23,7 @@ plugins {
     alias(libs.plugins.firebase.perf) apply false
     alias(libs.plugins.google.services) apply false
     alias(libs.plugins.hilt.android) apply false
+    alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlinx.kover) apply false
     alias(libs.plugins.ksp) apply false

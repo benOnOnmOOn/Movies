@@ -1,5 +1,5 @@
 [versions]
-android-gradle-plugin = "9.0.0-alpha04"
+android-gradle-plugin = "9.0.0-alpha05"
 android-tools = "31.13.0"
 androidx-activity = "1.11.0"
 androidx-appcompat = "1.7.1"
@@ -168,6 +168,7 @@ google-services = { id = "com.google.gms.google-services", version = "4.4.3" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.52.0" }
 #gradle_doctor = { id = "com.osacky.doctor", version = "0.10.0" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version = "0.9.1" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
