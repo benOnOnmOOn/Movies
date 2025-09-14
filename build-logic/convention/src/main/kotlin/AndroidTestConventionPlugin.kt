@@ -1,5 +1,6 @@
 import com.android.build.gradle.TestExtension
 import com.bz.movies.configureKotlinAndroid
+import com.bz.movies.configureKotlinTestAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -10,9 +11,7 @@ class AndroidTestConventionPlugin : Plugin<Project> {
             pluginManager.apply("com.android.test")
             pluginManager.apply("org.jetbrains.kotlin.android")
 
-            extensions.configure<TestExtension> {
-                configureKotlinAndroid(this)
-            }
+            extensions.configure<TestExtension> { configureKotlinTestAndroid(this) }
         }
     }
 }

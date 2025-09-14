@@ -1,6 +1,7 @@
 package com.bz.movies
 
 import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.dsl.TestExtension
 import kotlin.collections.plusAssign
@@ -16,39 +17,8 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 
-fun ApplicationExtension.baseConfig() {
-    compileSdk = 36
-    buildToolsVersion = "36.0.0"
-
-    defaultConfig {
-        minSdk = 27
-        resourceConfigurations += listOf("pl", "en")
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
-
-    testOptions {
-        unitTests.isReturnDefaultValues = true
-        animationsDisabled = true
-        unitTests.all {
-            it.useJUnitPlatform()
-        }
-    }
-
-    packaging.resources.excludes +=
-        setOf(
-            "kotlin/**",
-            "META-INF/**",
-            "META-INF/services/**",
-            "**.properties",
-            "kotlin-tooling-metadata.json",
-            "DebugProbesKt.bin"
-        )
-
+fun ApplicationExtension.baseAppConfig() {
+    defaultBaseConfig()
     dependenciesInfo.apply {
         includeInApk = false
         includeInBundle = false
@@ -84,15 +54,9 @@ fun ApplicationExtension.baseConfig() {
 }
 
 //region Global android configuration
-internal fun LibraryExtension.defaultBaseConfig() {
+internal fun CommonExtension.defaultBaseConfig() {
     compileSdk = 36
     buildToolsVersion = "36.0.0"
-
-    defaultConfig {
-        minSdk = 27
-        resourceConfigurations += listOf("pl", "en")
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
@@ -118,46 +82,27 @@ internal fun LibraryExtension.defaultBaseConfig() {
         )
 }
 
-//region Global android configuration
-internal fun TestExtension.defaultBaseConfig() {
-    compileSdk = 36
-    buildToolsVersion = "36.0.0"
-
+internal fun LibraryExtension.defaultBaseLibConfig() {
     defaultConfig {
         minSdk = 27
         resourceConfigurations += listOf("pl", "en")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+}
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+internal fun TestExtension.defaultBaseTestConfig() {
+    defaultConfig {
+        minSdk = 27
+        resourceConfigurations += listOf("pl", "en")
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    testOptions {
-        unitTests.isReturnDefaultValues = true
-        animationsDisabled = true
-        unitTests.all {
-            it.useJUnitPlatform()
-        }
-    }
-
-    packaging.resources.excludes +=
-        setOf(
-            "kotlin/**",
-            "META-INF/**",
-            "META-INF/services/**",
-            "**.properties",
-            "kotlin-tooling-metadata.json",
-            "DebugProbesKt.bin"
-        )
 }
 
 /**
  * Configure base Kotlin with Android options
  */
 internal fun Project.configureKotlinAndroidApp(commonExtension: ApplicationExtension) {
-    commonExtension.baseConfig()
+    commonExtension.baseAppConfig()
     configureKotlin<KotlinAndroidProjectExtension>()
 }
 
@@ -166,16 +111,18 @@ internal fun Project.configureKotlinAndroidApp(commonExtension: ApplicationExten
  */
 internal fun Project.configureKotlinAndroid(commonExtension: LibraryExtension) {
     commonExtension.defaultBaseConfig()
+    commonExtension.defaultBaseLibConfig()
     configureKotlin<KotlinAndroidProjectExtension>()
 }
 
 /**
  * Configure base Kotlin with Android options
  */
-internal fun Project.configureKotlinAndroid(commonExtension: TestExtension) {
+internal fun Project.configureKotlinTestAndroid(commonExtension: TestExtension) {
     commonExtension.defaultBaseConfig()
     configureKotlin<KotlinAndroidProjectExtension>()
 }
+
 
 /**
  * Configure base Kotlin options for JVM (non-Android)

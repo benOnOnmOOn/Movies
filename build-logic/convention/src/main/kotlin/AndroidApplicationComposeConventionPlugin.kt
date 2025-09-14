@@ -11,9 +11,7 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
             apply(plugin = "com.android.application")
             apply(plugin = "org.jetbrains.kotlin.plugin.compose")
 
-            extensions.configure<ApplicationExtension> {
-                configureAndroidCompose(this)
-            }
+            extensions.configure<ApplicationExtension> { configureAndroidCompose() }
         }
     }
 }

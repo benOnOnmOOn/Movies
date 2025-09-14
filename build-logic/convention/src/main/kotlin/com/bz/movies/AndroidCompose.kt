@@ -1,16 +1,10 @@
 package com.bz.movies
 
-import com.android.build.api.dsl.ApplicationExtension
-import com.android.build.gradle.LibraryExtension
-import org.gradle.api.Project
+import com.android.build.api.dsl.CommonExtension
 
 /**
  * Configure Compose-specific options
  */
-internal fun Project.configureAndroidCompose(commonExtension: ApplicationExtension) {
-    commonExtension.buildFeatures { compose = true }
-}
-
-internal fun Project.configureAndroidCompose(commonExtension: LibraryExtension) {
-    commonExtension.buildFeatures { compose = true }
+internal fun CommonExtension.configureAndroidCompose() {
+    buildFeatures.compose = true
 }
