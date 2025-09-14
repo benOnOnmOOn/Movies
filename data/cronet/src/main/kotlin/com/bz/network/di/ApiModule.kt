@@ -1,8 +1,8 @@
 package com.bz.network.di
 
-import android.DelegatingSocketFactory
 import android.content.Context
-import android.throwOnMainThread
+import com.bz.tools.DelegatingSocketFactory
+import com.bz.tools.throwOnMainThread
 import com.google.android.gms.net.CronetProviderInstaller
 import com.google.android.gms.tasks.Tasks
 import com.google.net.cronet.okhttptransport.CronetCallFactory

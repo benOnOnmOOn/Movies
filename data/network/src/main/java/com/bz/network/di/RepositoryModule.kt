@@ -1,6 +1,5 @@
 package com.bz.network.di
 
-import android.throwOnMainThread
 import com.bz.network.api.service.CurrencyService
 import com.bz.network.api.service.MovieService
 import com.bz.network.repository.CurrencyRepository
@@ -8,6 +7,7 @@ import com.bz.network.repository.CurrencyRepositoryImpl
 import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.MovieRepositoryImpl
 import com.bz.network.utils.InternetConnection
+import com.bz.tools.throwOnMainThread
 import dagger.Lazy
 import dagger.Module
 import dagger.Provides

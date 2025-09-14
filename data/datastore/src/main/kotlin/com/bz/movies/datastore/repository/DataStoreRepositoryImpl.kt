@@ -1,11 +1,11 @@
 package com.bz.movies.datastore.repository
 
 import android.annotation.SuppressLint
-import android.runSuspendCatching
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
+import com.bz.tools.runSuspendCatching
 import java.time.Instant
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first

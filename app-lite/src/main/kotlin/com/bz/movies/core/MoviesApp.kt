@@ -1,7 +1,7 @@
 package com.bz.movies.core
 
 import android.app.Application
-import android.enableStrictMode
+import com.bz.tools.enableStrictMode
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp

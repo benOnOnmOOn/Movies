@@ -1,6 +1,5 @@
 package com.bz.movies.database.di
 
-import android.throwOnMainThread
 import com.bz.movies.database.dao.CurrencyDAO
 import com.bz.movies.database.dao.MovieDAO
 import com.bz.movies.database.dao.PlayingNowMovieDAO
@@ -9,6 +8,7 @@ import com.bz.movies.database.repository.LocalCurrencyRepository
 import com.bz.movies.database.repository.LocalCurrencyRepositoryImpl
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.database.repository.LocalMovieRepositoryImpl
+import com.bz.tools.throwOnMainThread
 import dagger.Lazy
 import dagger.Module
 import dagger.Provides

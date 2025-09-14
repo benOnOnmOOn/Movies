@@ -2,6 +2,7 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>EmptyFunctionBlock:ThreadUtils.kt${ }</ID>
     <ID>EmptyFunctionBlock:Utils.kt${ }</ID>
     <ID>LongParameterList:PlayingNowScreen.kt$( state: MoviesState = MoviesState(), showNoInternetDialog: Boolean = false, showErrorDialog: Boolean = false, onNetworkErrorDismiss: () -&gt; Unit = {}, onErrorDismiss: () -&gt; Unit = {}, sendEvent: (MovieEvent) -&gt; Unit )</ID>
     <ID>LongParameterList:PopularMoviesScreen.kt$( state: MoviesState = MoviesState(), sendEvent: (MovieEvent) -&gt; Unit = {}, showNoInternetDialog: Boolean = false, showErrorDialog: Boolean = false, onNetworkErrorDismiss: () -&gt; Unit = {}, onErrorDismiss: () -&gt; Unit = {}, onMovieClicked: (id: Int) -&gt; Unit = {} )</ID>
@@ -11,6 +12,5 @@
     <ID>MaxLineLength:ApiTest.kt$ApiTest.Companion$overview = """A botched store robbery places Wonder Woman in a global battle against a powerful and mysterious ancient force that puts her powers in jeopardy."""</ID>
     <ID>MaxLineLength:PopularMoviesViewModelTest.kt$PopularMoviesViewModelTest$fun</ID>
     <ID>UnusedParameter:CoreModule.kt$CoreModule$app: Application</ID>
-    <ID>UnusedParameter:KotlinAndroid.kt$project: Project</ID>
   </CurrentIssues>
 </SmellBaseline>

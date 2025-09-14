@@ -1,13 +1,13 @@
 package com.bz.movies.database.di
 
 import android.app.Application
-import android.throwOnMainThread
 import com.bz.movies.database.MoviesDatabase
 import com.bz.movies.database.createMoviesDatabase
 import com.bz.movies.database.dao.CurrencyDAO
 import com.bz.movies.database.dao.MovieDAO
 import com.bz.movies.database.dao.PlayingNowMovieDAO
 import com.bz.movies.database.dao.PopularMovieDAO
+import com.bz.tools.throwOnMainThread
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

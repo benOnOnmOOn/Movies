@@ -1,7 +1,6 @@
 package com.bz.movies.datastore.di
 
 import android.app.Application
-import android.throwOnMainThread
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.SharedPreferencesMigration
@@ -12,6 +11,7 @@ import androidx.datastore.preferences.preferencesDataStoreFile
 import co.touchlab.kermit.Logger
 import com.bz.movies.datastore.repository.DataStoreRepository
 import com.bz.movies.datastore.repository.DataStoreRepositoryImpl
+import com.bz.tools.throwOnMainThread
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -2,6 +2,8 @@ package com.bz.movies
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
+import com.android.build.api.dsl.LibraryExtension
+import com.android.build.api.dsl.TestExtension
 import kotlin.collections.plusAssign
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
@@ -15,8 +17,8 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 
-fun ApplicationExtension.baseConfig(project: Project) {
-    defaultBaseConfig(project)
+fun ApplicationExtension.baseAppConfig() {
+    defaultBaseConfig()
     dependenciesInfo.apply {
         includeInApk = false
         includeInBundle = false
@@ -29,7 +31,7 @@ fun ApplicationExtension.baseConfig(project: Project) {
         applicationId = "com.bz.movies"
         versionCode = 1
         versionName = "1.0"
-
+        minSdk { version = release(27) }
         targetSdk = 35
         multiDexEnabled = false
     }
@@ -52,15 +54,9 @@ fun ApplicationExtension.baseConfig(project: Project) {
 }
 
 //region Global android configuration
-internal fun CommonExtension<*, *, *, *, *, *>.defaultBaseConfig(project: Project) {
+internal fun CommonExtension.defaultBaseConfig() {
     compileSdk = 36
     buildToolsVersion = "36.0.0"
-
-    defaultConfig {
-        minSdk = 27
-        resourceConfigurations += listOf("pl", "en")
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
@@ -86,19 +82,45 @@ internal fun CommonExtension<*, *, *, *, *, *>.defaultBaseConfig(project: Projec
         )
 }
 
+internal fun LibraryExtension.defaultBaseLibConfig() {
+    defaultConfig {
+        minSdk { version = release(27) }
+        resourceConfigurations += listOf("pl", "en")
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+internal fun TestExtension.defaultBaseTestConfig() {
+    defaultConfig {
+        minSdk { version = release(27) }
+        resourceConfigurations += listOf("pl", "en")
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
 /**
  * Configure base Kotlin with Android options
  */
 internal fun Project.configureKotlinAndroidApp(commonExtension: ApplicationExtension) {
-    commonExtension.baseConfig(this)
+    commonExtension.baseAppConfig()
     configureKotlin<KotlinAndroidProjectExtension>()
 }
 
 /**
  * Configure base Kotlin with Android options
  */
-internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, *, *, *, *, *>) {
-    commonExtension.defaultBaseConfig(this)
+internal fun Project.configureKotlinAndroid(commonExtension: LibraryExtension) {
+    commonExtension.defaultBaseLibConfig()
+    commonExtension.defaultBaseConfig()
+    configureKotlin<KotlinAndroidProjectExtension>()
+}
+
+/**
+ * Configure base Kotlin with Android options
+ */
+internal fun Project.configureKotlinTestAndroid(commonExtension: TestExtension) {
+    commonExtension.defaultBaseConfig()
+    commonExtension.defaultBaseTestConfig()
     configureKotlin<KotlinAndroidProjectExtension>()
 }
 
