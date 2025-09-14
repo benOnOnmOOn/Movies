@@ -1,7 +1,7 @@
 package com.bz.network.di
 
-import com.bz.tools.DelegatingSocketFactory
 import android.content.Context
+import com.bz.tools.DelegatingSocketFactory
 import com.bz.tools.throwOnMainThread
 import com.google.android.gms.net.CronetProviderInstaller
 import com.google.android.gms.tasks.Tasks

@@ -2,10 +2,10 @@ package com.bz.network.di
 
 import android.content.Context
 import android.net.ConnectivityManager
-import com.bz.tools.throwOnMainThread
 import androidx.core.content.getSystemService
 import com.bz.network.utils.InternetConnection
 import com.bz.network.utils.InternetConnectionImpl
+import com.bz.tools.throwOnMainThread
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

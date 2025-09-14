@@ -9,5 +9,3 @@ public inline fun throwOnMainThread() {
         "method: $methodName may not be called from main thread."
     }
 }
-
-

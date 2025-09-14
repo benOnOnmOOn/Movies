@@ -1,7 +1,7 @@
 package com.bz.network.repository
 
-import com.bz.tools.runSuspendCatching
 import com.bz.network.utils.InternetConnection
+import com.bz.tools.runSuspendCatching
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
