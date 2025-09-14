@@ -1,5 +1,4 @@
 import com.android.build.api.dsl.ApplicationExtension
-import com.bz.movies.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -11,7 +10,9 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
             apply(plugin = "com.android.application")
             apply(plugin = "org.jetbrains.kotlin.plugin.compose")
 
-            extensions.configure<ApplicationExtension> { configureAndroidCompose() }
+            extensions.configure<ApplicationExtension> {
+                buildFeatures.compose = true
+            }
         }
     }
 }

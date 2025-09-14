@@ -120,6 +120,7 @@ internal fun Project.configureKotlinAndroid(commonExtension: LibraryExtension) {
  */
 internal fun Project.configureKotlinTestAndroid(commonExtension: TestExtension) {
     commonExtension.defaultBaseConfig()
+    commonExtension.defaultBaseTestConfig()
     configureKotlin<KotlinAndroidProjectExtension>()
 }
 

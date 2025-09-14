@@ -16,7 +16,7 @@ class AndroidApplicationFirebaseConventionPlugin : Plugin<Project> {
                     release {
                         with(pluginManager) {
                             apply("com.google.gms.google-services")
-                            apply("com.google.firebase.firebase-perf")
+//                            apply("com.google.firebase.firebase-perf")
                             apply("com.google.firebase.crashlytics")
                         }
                         configure<CrashlyticsExtension> {
