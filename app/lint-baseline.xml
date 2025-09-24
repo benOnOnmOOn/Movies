@@ -23,15 +23,4 @@
             column="27"/>
     </issue>
 
-    <issue
-        id="AndroidGradlePluginVersion"
-        message="A newer version of Gradle than 9.0.0 is available: 9.1.0"
-        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.0.0-bin.zip"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="$HOME/StudioProjects/Movies/gradle/wrapper/gradle-wrapper.properties"
-            line="3"
-            column="17"/>
-    </issue>
-
 </issues>
