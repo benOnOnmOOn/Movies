@@ -60,3 +60,6 @@
 -keepclassmembers class * implements android.os.Parcelable {
     public static final ** CREATOR;
 }
+
+-dontwarn android.util.StatsEvent$Builder
+-dontwarn android.util.StatsEvent

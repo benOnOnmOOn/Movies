@@ -17,6 +17,20 @@ plugins {
 
 android {
     namespace = "com.bz.movies"
+    buildTypes {
+        release {
+            optimization {
+                keepRules {
+                    ignoreFrom(
+                        "org.chromium.net:cronet-api",
+                        "org.chromium.net:cronet-common",
+                        "org.chromium.net:cronet-embedded",
+                        "org.chromium.net:cronet-shared",
+                    )
+                }
+            }
+        }
+    }
 }
 
 extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
