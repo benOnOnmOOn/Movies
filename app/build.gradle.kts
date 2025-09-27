@@ -25,7 +25,7 @@ android {
                         "org.chromium.net:cronet-api",
                         "org.chromium.net:cronet-common",
                         "org.chromium.net:cronet-embedded",
-                        "org.chromium.net:cronet-shared",
+                        "org.chromium.net:cronet-shared"
                     )
                 }
             }
