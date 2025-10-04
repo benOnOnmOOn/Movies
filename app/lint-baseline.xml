@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 9.0.0-alpha08" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.0-alpha08)" variant="all" version="9.0.0-alpha08">
+<issues format="6" by="lint 9.0.0-alpha09" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.0-alpha09)" variant="all" version="9.0.0-alpha09">
 
     <issue
         id="MissingClass"
@@ -21,6 +21,50 @@
             file="src/main/AndroidManifest.xml"
             line="17"
             column="27"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.junit.jupiter:junit-jupiter-api than 5.13.4 is available: 6.0.0"
+        errorLine1="junit = &quot;5.13.4&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="32"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.junit.jupiter:junit-jupiter-engine than 5.13.4 is available: 6.0.0"
+        errorLine1="junit = &quot;5.13.4&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="32"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk than 1.14.5 is available: 1.14.6"
+        errorLine1="mockk = &quot;1.14.5&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="43"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk-dsl than 1.14.5 is available: 1.14.6"
+        errorLine1="mockk = &quot;1.14.5&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="43"
+            column="9"/>
     </issue>
 
 </issues>
