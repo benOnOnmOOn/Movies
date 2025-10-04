@@ -24,14 +24,16 @@ fun ApplicationExtension.baseAppConfig() {
         includeInBundle = false
     }
 
-    @Suppress("UnstableApiUsage", "MissingResourcesProperties")
-    androidResources.generateLocaleConfig = true
+    @Suppress("UnstableApiUsage")
+    androidResources {
+        generateLocaleConfig = true
+        localeFilters += listOf("pl")
+    }
 
     defaultConfig {
         applicationId = "com.bz.movies"
         versionCode = 1
         versionName = "1.0"
-        minSdk { version = release(27) }
         targetSdk = 35
         multiDexEnabled = false
     }
@@ -63,6 +65,9 @@ internal fun CommonExtension.defaultBaseConfig() {
         targetCompatibility = JavaVersion.VERSION_21
     }
 
+    defaultConfig.minSdk { version = release(27) }
+    defaultConfig.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     testOptions {
         unitTests.isReturnDefaultValues = true
         animationsDisabled = true
@@ -82,22 +87,6 @@ internal fun CommonExtension.defaultBaseConfig() {
         )
 }
 
-internal fun LibraryExtension.defaultBaseLibConfig() {
-    defaultConfig {
-        minSdk { version = release(27) }
-        resourceConfigurations += listOf("pl", "en")
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-}
-
-internal fun TestExtension.defaultBaseTestConfig() {
-    defaultConfig {
-        minSdk { version = release(27) }
-        resourceConfigurations += listOf("pl", "en")
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-}
-
 /**
  * Configure base Kotlin with Android options
  */
@@ -110,7 +99,6 @@ internal fun Project.configureKotlinAndroidApp(commonExtension: ApplicationExten
  * Configure base Kotlin with Android options
  */
 internal fun Project.configureKotlinAndroid(commonExtension: LibraryExtension) {
-    commonExtension.defaultBaseLibConfig()
     commonExtension.defaultBaseConfig()
     configureKotlin<KotlinAndroidProjectExtension>()
 }
@@ -120,7 +108,6 @@ internal fun Project.configureKotlinAndroid(commonExtension: LibraryExtension) {
  */
 internal fun Project.configureKotlinTestAndroid(commonExtension: TestExtension) {
     commonExtension.defaultBaseConfig()
-    commonExtension.defaultBaseTestConfig()
     configureKotlin<KotlinAndroidProjectExtension>()
 }
 
