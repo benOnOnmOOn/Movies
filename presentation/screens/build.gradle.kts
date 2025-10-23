@@ -80,8 +80,6 @@ dependencies {
     testImplementation(libs.mockk.dsl)
     testImplementation(libs.turbine)
     testRuntimeOnly(libs.junit.engine)
-    //noinspection UseTomlInstead
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
     implementation(libs.hilt.core)
 }

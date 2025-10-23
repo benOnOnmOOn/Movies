@@ -37,8 +37,6 @@ dependencies {
     runtimeOnly(libs.kotlinx.coroutines.android)
 
     testRuntimeOnly(libs.junit.engine)
-    //noinspection UseTomlInstead
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     testImplementation(libs.mockk.dsl)
     testImplementation(libs.kotlinx.coroutines.test)
