@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 9.0.0-alpha09" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.0-alpha09)" variant="all" version="9.0.0-alpha09">
+<issues format="6" by="lint 9.0.0-alpha11" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.0-alpha11)" variant="all" version="9.0.0-alpha11">
 
     <issue
         id="MissingClass"
@@ -21,6 +21,17 @@
             file="src/main/AndroidManifest.xml"
             line="17"
             column="27"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of Gradle than 9.2.0-rc-2 is available: 9.2.0-rc-3"
+        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.2.0-rc-2-bin.zip"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/wrapper/gradle-wrapper.properties"
+            line="3"
+            column="17"/>
     </issue>
 
 </issues>
