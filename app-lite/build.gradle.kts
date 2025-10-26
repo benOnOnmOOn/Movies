@@ -93,6 +93,7 @@ dependencies {
 
     //  HILT
     ksp(libs.hilt.android.compiler)
+    ksp(libs.kotlin.metadata)
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)
     compileOnly(libs.javax.inject)
