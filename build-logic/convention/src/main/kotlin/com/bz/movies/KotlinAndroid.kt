@@ -4,6 +4,7 @@ import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.dsl.TestExtension
+import kotlin.collections.addAll
 import kotlin.collections.plusAssign
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
@@ -16,6 +17,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+import org.jetbrains.kotlin.gradle.dsl.abi.AbiValidationExtension
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
 
 fun ApplicationExtension.baseAppConfig() {
     defaultBaseConfig()
@@ -126,6 +129,7 @@ internal fun Project.configureKotlinJvm() {
 /**
  * Configure base Kotlin options
  */
+@OptIn(ExperimentalAbiValidation::class)
 private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() = configure<T> {
     when (this) {
         is KotlinAndroidProjectExtension -> compilerOptions
@@ -138,5 +142,20 @@ private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() =
         allWarningsAsErrors = false
         progressiveMode = true
         explicitApi = ExplicitApiMode.Strict
+    }
+    extensions.configure<AbiValidationExtension> {
+        enabled = true
+        filters {
+            excluded {
+                byNames.add("hilt_aggregated_deps**")
+                annotatedWith.addAll(
+                    "dagger.internal.DaggerGenerated",
+                    "javax.annotation.processing.Generated",
+                    "dagger.hilt.codegen.OriginatingElement",
+                    "dagger.hilt.InstallIn",
+                    "dagger.Binds"
+                )
+            }
+        }
     }
 }
