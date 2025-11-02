@@ -1,5 +1,5 @@
 [versions]
-android-gradle-plugin = "9.0.0-alpha11"
+android-gradle-plugin = "9.0.0-alpha13"
 android-tools = "31.13.0"
 androidx-activity = "1.11.0"
 androidx-appcompat = "1.7.1"
@@ -19,19 +19,19 @@ androidx-sqlite = "2.6.1"
 androidx-startup-runtime = "1.2.0"
 annotation = "1.9.1"
 coil = "3.3.0"
-dependency-analysis = "3.3.0"
+dependency-analysis = "3.4.1"
 firebase-analytics = "22.5.0"
 firebase-crashlytics = "19.4.4"
 firebase-crashlytics-plugin = "3.0.6"
-firebase-perf = "22.0.2"
-firebase-perf-plugin = "2.0.1"
+firebase-perf = "22.0.3"
+firebase-perf-plugin = "2.0.2"
 google-cronet = "141.7340.3"
 guava = "33.5.0-android"
 hilt = "2.57.2"
 javax-inject = "1"
-junit = "6.0.0"
+junit = "6.0.1"
 kermit = "2.0.8"
-kotlin = "2.2.21"
+kotlin = "2.3.0-Beta2"
 kotlinx-binary-compatibility = "0.18.1"
 kotlinx-coroutines = "1.10.2"
 kotlinx-kover = "0.9.3"
@@ -42,7 +42,7 @@ lint-compose-checks = "1.4.2"
 lint-slack-checks = "0.11.1"
 mockk = "1.14.6"
 moshi = "1.15.2"
-okhttp = "5.2.1"
+okhttp = "5.3.0"
 play-services-cronet = "18.1.1"
 retrofit = "3.0.0"
 truth = "1.4.5"
@@ -113,6 +113,7 @@ junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", ver
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 kermit-core = { module = "co.touchlab:kermit-core", version.ref = "kermit" }
 kermit-crashlytics = { module = "co.touchlab:kermit-crashlytics", version.ref = "kermit" }
+kotlin-metadata = { module = "org.jetbrains.kotlin:kotlin-metadata-jvm", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }

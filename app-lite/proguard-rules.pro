@@ -45,3 +45,4 @@
 -dontwarn androidx.vectordrawable.graphics.drawable.**
 -dontwarn kotlinx.serialization.**
 -dontwarn androidx.emoji2.**
+-dontwarn androidx.window.extensions.**
