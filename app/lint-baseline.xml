@@ -23,15 +23,4 @@
             column="27"/>
     </issue>
 
-    <issue
-        id="AndroidGradlePluginVersion"
-        message="A newer version of Gradle than 9.2.0-rc-2 is available: 9.2.0-rc-3"
-        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.2.0-rc-2-bin.zip"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="$HOME/work/Movies/Movies/gradle/wrapper/gradle-wrapper.properties"
-            line="3"
-            column="17"/>
-    </issue>
-
 </issues>
