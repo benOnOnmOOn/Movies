@@ -4,7 +4,6 @@ import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.dsl.TestExtension
-import kotlin.collections.addAll
 import kotlin.collections.plusAssign
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
@@ -59,24 +58,21 @@ fun ApplicationExtension.baseAppConfig() {
 }
 
 //region Global android configuration
-internal fun CommonExtension<*, *, *, *, *, *>.defaultBaseConfig() {
+internal fun CommonExtension.defaultBaseConfig() {
     compileSdk = 36
     buildToolsVersion = "36.0.0"
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
+    compileOptions.sourceCompatibility = JavaVersion.VERSION_21
+    compileOptions.targetCompatibility = JavaVersion.VERSION_21
+
 
     defaultConfig.minSdk { version = release(27) }
     defaultConfig.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-    testOptions {
-        unitTests.isReturnDefaultValues = true
-        animationsDisabled = true
-        unitTests.all {
-            it.useJUnitPlatform()
-        }
+    testOptions.unitTests.isReturnDefaultValues = true
+    testOptions.animationsDisabled = true
+    testOptions.unitTests.all {
+        it.useJUnitPlatform()
     }
 
     packaging.resources.excludes +=
