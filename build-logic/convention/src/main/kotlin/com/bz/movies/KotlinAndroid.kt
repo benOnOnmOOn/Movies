@@ -59,7 +59,7 @@ fun ApplicationExtension.baseAppConfig() {
 }
 
 //region Global android configuration
-internal fun CommonExtension.defaultBaseConfig() {
+internal fun CommonExtension<*, *, *, *, *, *>.defaultBaseConfig() {
     compileSdk = 36
     buildToolsVersion = "36.0.0"
 
