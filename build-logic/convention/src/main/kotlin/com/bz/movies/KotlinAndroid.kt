@@ -65,7 +65,6 @@ internal fun CommonExtension.defaultBaseConfig() {
     compileOptions.sourceCompatibility = JavaVersion.VERSION_21
     compileOptions.targetCompatibility = JavaVersion.VERSION_21
 
-
     defaultConfig.minSdk { version = release(27) }
     defaultConfig.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
