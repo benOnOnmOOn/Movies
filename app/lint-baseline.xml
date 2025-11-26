@@ -29,7 +29,7 @@
         errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.2.0-bin.zip"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="$HOME/StudioProjects/Movies/gradle/wrapper/gradle-wrapper.properties"
+            file="$HOME/work/Movies/Movies/gradle/wrapper/gradle-wrapper.properties"
             line="3"
             column="17"/>
     </issue>
