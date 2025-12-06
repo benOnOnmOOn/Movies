@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 9.0.0-beta02" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.0-beta02)" variant="all" version="9.0.0-beta02">
+<issues format="6" by="lint 9.0.0-beta03" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.0-beta03)" variant="all" version="9.0.0-beta03">
 
     <issue
         id="MissingClass"
@@ -29,7 +29,7 @@
         errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.2.0-bin.zip"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="$HOME/work/Movies/Movies/gradle/wrapper/gradle-wrapper.properties"
+            file="$HOME/StudioProjects/Movies/gradle/wrapper/gradle-wrapper.properties"
             line="3"
             column="17"/>
     </issue>
