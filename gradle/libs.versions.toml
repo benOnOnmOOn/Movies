@@ -1,5 +1,5 @@
 [versions]
-android-gradle-plugin = "9.0.0-rc01"
+android-gradle-plugin = "9.0.0-rc03"
 android-tools = "31.13.2"
 androidx-activity = "1.12.2"
 androidx-appcompat = "1.7.1"
@@ -25,16 +25,16 @@ firebase-crashlytics = "19.4.4"
 firebase-crashlytics-plugin = "3.0.6"
 firebase-perf = "22.0.4"
 firebase-perf-plugin = "2.0.2"
-google-cronet = "141.7340.3"
+google-cronet = "143.7445.0"
 guava = "33.5.0-android"
 hilt = "2.57.2"
 javax-inject = "1"
-junit = "6.0.1"
+junit = "6.0.2"
 kermit = "2.0.8"
 kotlin = "2.3.0"
 kotlinx-coroutines = "1.10.2"
 kotlinx-kover = "0.9.4"
-ksp = "2.3.2"
+ksp = "2.3.4"
 ktlint-plugin = "14.0.1"
 leakcanary-android = "3.0-alpha-8"
 lint-compose-checks = "1.4.2"
@@ -167,7 +167,7 @@ google-services = { id = "com.google.gms.google-services", version = "4.4.4" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.53.0" }
 #gradle_doctor = { id = "com.osacky.doctor", version = "0.10.0" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+#kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kotlinx-kover" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
