@@ -1,4 +1,4 @@
-import com.android.build.gradle.TestExtension
+import com.android.build.api.dsl.TestExtension
 import com.bz.movies.configureKotlinAndroid
 import com.bz.movies.configureKotlinTestAndroid
 import org.gradle.api.Plugin

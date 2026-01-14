@@ -1,5 +1,5 @@
+import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
-import com.android.build.gradle.LibraryExtension
 import com.bz.movies.configureKotlinAndroid
 import com.bz.movies.disableUnnecessaryAndroidTests
 import org.gradle.api.Plugin

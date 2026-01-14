@@ -195,11 +195,11 @@ io.coil-kt.coil3:coil-network-okhttp:3.3.0
 io.coil-kt.coil3:coil:3.3.0
 jakarta.inject:jakarta.inject-api:2.0.1
 javax.inject:javax.inject:1
-org.chromium.net:cronet-api:141.7340.3
-org.chromium.net:cronet-common:141.7340.3
-org.chromium.net:cronet-embedded:141.7340.3
-org.chromium.net:cronet-shared:141.7340.3
-org.chromium.net:httpengine-native-provider:141.7340.3
+org.chromium.net:cronet-api:143.7445.0
+org.chromium.net:cronet-common:143.7445.0
+org.chromium.net:cronet-embedded:143.7445.0
+org.chromium.net:cronet-shared:143.7445.0
+org.chromium.net:httpengine-native-provider:143.7445.0
 org.jetbrains.androidx.lifecycle:lifecycle-common:2.9.5
 org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.9.5
 org.jetbrains.androidx.lifecycle:lifecycle-runtime:2.9.5
