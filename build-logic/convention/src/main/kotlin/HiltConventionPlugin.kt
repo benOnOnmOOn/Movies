@@ -10,7 +10,7 @@ class HiltConventionPlugin : Plugin<Project> {
             pluginManager.apply("com.google.devtools.ksp")
             pluginManager.apply("com.google.dagger.hilt.android")
 
-            /** Add support for Android modules, based on [AndroidBasePlugin] */
+            // Add support for Android modules, based on [AndroidBasePlugin]
             pluginManager.withPlugin("com.android.base") {
                 pluginManager.apply("dagger.hilt.android.plugin")
             }

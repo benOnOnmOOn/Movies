@@ -29,8 +29,338 @@
         errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.2.1-bin.zip"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="$HOME/work/Movies/Movies/gradle/wrapper/gradle-wrapper.properties"
+            file="$HOME/StudioProjects/Movies/gradle/wrapper/gradle-wrapper.properties"
             line="3"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 9.0.0 is available: 9.0.1"
+        errorLine1="android-gradle-plugin = &quot;9.0.0&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.library than 9.0.0 is available: 9.0.1"
+        errorLine1="android-gradle-plugin = &quot;9.0.0&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.lint than 9.0.0 is available: 9.0.1"
+        errorLine1="android-gradle-plugin = &quot;9.0.0&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.tools.build:gradle than 9.0.0 is available: 9.0.1"
+        errorLine1="android-gradle-plugin = &quot;9.0.0&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.android.tools:common than 32.0.0 is available: 32.0.1"
+        errorLine1="android-tools = &quot;32.0.0&quot;"
+        errorLine2="                ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="3"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.activity:activity than 1.12.3 is available: 1.12.4"
+        errorLine1="androidx-activity = &quot;1.12.3&quot;"
+        errorLine2="                    ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="4"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.activity:activity-compose than 1.12.3 is available: 1.12.4"
+        errorLine1="androidx-activity = &quot;1.12.3&quot;"
+        errorLine2="                    ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="4"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.animation:animation-android than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.foundation:foundation-android than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.foundation:foundation-layout-android than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.runtime:runtime-android than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.runtime:runtime-annotation than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui-android than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui-graphics-android than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui-test-manifest than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui-text-android than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui-tooling than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui-tooling-preview-android than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui-unit-android than 1.10.2 is available: 1.10.3"
+        errorLine1="androidx-compose = &quot;1.10.2&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger.hilt.android than 2.59 is available: 2.59.1"
+        errorLine1="hilt = &quot;2.59&quot;"
+        errorLine2="       ~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="30"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger:dagger than 2.59 is available: 2.59.1"
+        errorLine1="hilt = &quot;2.59&quot;"
+        errorLine2="       ~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="30"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger:dagger-compiler than 2.59 is available: 2.59.1"
+        errorLine1="hilt = &quot;2.59&quot;"
+        errorLine2="       ~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="30"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger:hilt-android than 2.59 is available: 2.59.1"
+        errorLine1="hilt = &quot;2.59&quot;"
+        errorLine2="       ~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="30"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger:hilt-android-compiler than 2.59 is available: 2.59.1"
+        errorLine1="hilt = &quot;2.59&quot;"
+        errorLine2="       ~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="30"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger:hilt-core than 2.59 is available: 2.59.1"
+        errorLine1="hilt = &quot;2.59&quot;"
+        errorLine2="       ~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="30"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.junit.jupiter:junit-jupiter-api than 6.0.2 is available: 6.0.3"
+        errorLine1="junit = &quot;6.0.2&quot;"
+        errorLine2="        ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="32"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.junit.jupiter:junit-jupiter-engine than 6.0.2 is available: 6.0.3"
+        errorLine1="junit = &quot;6.0.2&quot;"
+        errorLine2="        ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="32"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jetbrains.kotlin.jvm than 2.3.0 is available: 2.3.10"
+        errorLine1="kotlin = &quot;2.3.0&quot;"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="34"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jetbrains.kotlin.plugin.compose than 2.3.0 is available: 2.3.10"
+        errorLine1="kotlin = &quot;2.3.0&quot;"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="34"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jetbrains.kotlinx.kover than 0.9.5 is available: 0.9.7"
+        errorLine1="kotlinx-kover = &quot;0.9.5&quot;"
+        errorLine2="                ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="36"
             column="17"/>
     </issue>
 
@@ -40,7 +370,7 @@
         errorLine1="mockk = &quot;1.14.7&quot;"
         errorLine2="        ~~~~~~~~">
         <location
-            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
             line="42"
             column="9"/>
     </issue>
@@ -51,7 +381,7 @@
         errorLine1="mockk = &quot;1.14.7&quot;"
         errorLine2="        ~~~~~~~~">
         <location
-            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
             line="42"
             column="9"/>
     </issue>
