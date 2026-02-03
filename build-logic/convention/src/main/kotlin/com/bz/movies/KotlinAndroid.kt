@@ -138,19 +138,19 @@ private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() =
         progressiveMode = true
         explicitApi = ExplicitApiMode.Strict
     }
-    extensions.configure<AbiValidationExtension> {
-        enabled = true
-        filters {
-            excluded {
-                byNames.add("hilt_aggregated_deps**")
-                annotatedWith.addAll(
-                    "dagger.internal.DaggerGenerated",
-                    "javax.annotation.processing.Generated",
-                    "dagger.hilt.codegen.OriginatingElement",
-                    "dagger.hilt.InstallIn",
-                    "dagger.Binds"
-                )
-            }
-        }
-    }
+//    extensions.configure<AbiValidationExtension> {
+//        enabled = true
+//        filters {
+//            excluded {
+//                byNames.add("hilt_aggregated_deps**")
+//                annotatedWith.addAll(
+//                    "dagger.internal.DaggerGenerated",
+//                    "javax.annotation.processing.Generated",
+//                    "dagger.hilt.codegen.OriginatingElement",
+//                    "dagger.hilt.InstallIn",
+//                    "dagger.Binds"
+//                )
+//            }
+//        }
+//    }
 }

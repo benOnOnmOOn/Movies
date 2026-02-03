@@ -13,22 +13,24 @@ dependencies {
 
     ksp(libs.moshi.kotlin.codegen)
 
-    // HILT
+    //region HILT
     ksp(libs.hilt.android.compiler)
     ksp(libs.dagger.compiler)
     api(libs.dagger)
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)
-    //
+    //endregion
 
-    // CRONET
+    //region CRONET
     api(libs.cronet.okhttp)
     api(libs.cronet.api)
     runtimeOnly(libs.cronet.embedded)
     implementation(libs.play.services.cronet)
-    //
+    //endregion
 
     api(libs.okhttp)
+
+    implementation(libs.kotlin.stdlib)
 
     runtimeOnly(libs.kotlinx.coroutines.android)
 }

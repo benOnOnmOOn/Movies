@@ -8,4 +8,5 @@ plugins {
 
 dependencies {
     api(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.kotlin.stdlib)
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 9.0.0-rc03" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.0-rc03)" variant="all" version="9.0.0-rc03">
+<issues format="6" by="lint 9.0.0" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.0)" variant="all" version="9.0.0">
 
     <issue
         id="MissingClass"
@@ -25,13 +25,35 @@
 
     <issue
         id="AndroidGradlePluginVersion"
-        message="A newer version of Gradle than 9.2.0 is available: 9.2.1"
-        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.2.0-bin.zip"
+        message="A newer version of Gradle than 9.2.1 is available: 9.3.1"
+        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.2.1-bin.zip"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="$HOME/work/Movies/Movies/gradle/wrapper/gradle-wrapper.properties"
             line="3"
             column="17"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk than 1.14.7 is available: 1.14.9"
+        errorLine1="mockk = &quot;1.14.7&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="42"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk-dsl than 1.14.7 is available: 1.14.9"
+        errorLine1="mockk = &quot;1.14.7&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="42"
+            column="9"/>
     </issue>
 
 </issues>

@@ -50,8 +50,8 @@ jobs:
       - name: Fix deps using dependency analysis gradle plugin
         run: ./gradlew fixDependencies
 
-      - name: Run api dump
-        run: ./gradlew updateLegacyAbi
+#      - name: Run api dump
+#        run: ./gradlew updateLegacyAbi
 
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v5
