@@ -44,4 +44,5 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(libs.mockwebserver)
     testImplementation(libs.junit.api)
+  testImplementation("io.mockk:mockk-core:1.14.9")
 }
