@@ -39,9 +39,10 @@ dependencies {
     //noinspection UseTomlInstead
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    testImplementation(libs.mockk.dsl)
+    testImplementation(libs.junit.api)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockk)
+    testImplementation(libs.mockk.core)
+    testImplementation(libs.mockk.dsl)
     testImplementation(libs.mockwebserver)
-    testImplementation(libs.junit.api)
 }

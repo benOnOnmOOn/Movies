@@ -10,7 +10,7 @@ import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 // import org.gradle.android.AndroidCacheFixPlugin
 // import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+// Top-level build file where you can add configuration options common to all subprojects/modules.
 plugins {
     alias(libs.plugins.android.application) apply false
 //    alias(libs.plugins.android.cache.fix) apply false
@@ -34,6 +34,13 @@ plugins {
 //    alias(libs.plugins.gradle.doctor) apply true
     // Versions plugin need to be enabled here for proper work in whole project
     alias(libs.plugins.gradle.versions) apply true
+}
+
+buildscript {
+    dependencies {
+        // For KGP
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.0")
+    }
 }
 
 //region Dependency Updates Task
