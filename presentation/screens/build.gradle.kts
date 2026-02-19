@@ -83,5 +83,5 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
     implementation(libs.hilt.core)
-  testImplementation("io.mockk:mockk-core:1.14.9")
+    testImplementation("io.mockk:mockk-core:1.14.9")
 }
