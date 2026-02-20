@@ -3,7 +3,7 @@ import kotlin.apply
 import org.gradle.kotlin.dsl.findByType
 
 plugins {
-    alias(libs.plugins.dexcount)
+//    alias(libs.plugins.dexcount)
     alias(libs.plugins.movies.android.application)
     alias(libs.plugins.movies.android.application.compose)
     alias(libs.plugins.movies.android.application.firebase)
