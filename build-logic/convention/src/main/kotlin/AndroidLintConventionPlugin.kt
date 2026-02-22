@@ -26,7 +26,7 @@ class AndroidLintConventionPlugin : Plugin<Project> {
 
 private fun Lint.configure(project: Project) {
     baseline = project.file("lint-baseline.xml")
-    disable += listOf("RawDispatchersUse","MoshiUsageRedundantSiteTarget")
+    disable += listOf("RawDispatchersUse", "MoshiUsageRedundantSiteTarget")
     abortOnError = true
     checkAllWarnings = true
     warningsAsErrors = true
