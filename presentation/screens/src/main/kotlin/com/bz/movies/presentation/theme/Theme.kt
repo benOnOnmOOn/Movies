@@ -43,6 +43,7 @@ internal fun MoviesTheme(
             }
 
             darkTheme -> DarkColorScheme
+
             else -> LightColorScheme
         }
     val view = LocalView.current

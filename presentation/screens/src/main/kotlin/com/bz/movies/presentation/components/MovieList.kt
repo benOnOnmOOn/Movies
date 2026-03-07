@@ -41,10 +41,10 @@ internal inline fun MovieContent(
     ) {
         AsyncImage(
             modifier =
-            Modifier
-                .height(80.dp)
-                .width(80.dp)
-                .padding(4.dp),
+                Modifier
+                    .height(80.dp)
+                    .width(80.dp)
+                    .padding(4.dp),
             model = movieItem.posterUrl,
             contentDescription = movieItem.title
         )
@@ -62,10 +62,10 @@ internal inline fun MovieContent(
         Image(
             painterResource(R.drawable.ic_star),
             modifier =
-            Modifier
-                .height(40.dp)
-                .width(40.dp)
-                .padding(4.dp),
+                Modifier
+                    .height(40.dp)
+                    .width(40.dp)
+                    .padding(4.dp),
             contentDescription = "",
             contentScale = ContentScale.Crop
         )
