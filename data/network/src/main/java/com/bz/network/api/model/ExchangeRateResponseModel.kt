@@ -10,7 +10,9 @@ internal data class ExchangeRateResponseModel(
 )
 
 @JsonClass(generateAdapter = true)
-internal data class ExchangeMetaData(@Json(name = "last_updated_at") val lastUpdatedAt: String)
+internal data class ExchangeMetaData(
+    @param:Json(name = "last_updated_at") val lastUpdatedAt: String
+)
 
 @JsonClass(generateAdapter = true)
 internal data class ExchangeRate(val code: String, val value: Float)
