@@ -23,4 +23,48 @@
             column="27"/>
     </issue>
 
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 9.2.0-alpha02 is available: 9.2.0-alpha04"
+        errorLine1="android-gradle-plugin = &quot;9.2.0-alpha02&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.library than 9.2.0-alpha02 is available: 9.2.0-alpha04"
+        errorLine1="android-gradle-plugin = &quot;9.2.0-alpha02&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.lint than 9.2.0-alpha02 is available: 9.2.0-alpha04"
+        errorLine1="android-gradle-plugin = &quot;9.2.0-alpha02&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.tools.build:gradle than 9.2.0-alpha02 is available: 9.2.0-alpha04"
+        errorLine1="android-gradle-plugin = &quot;9.2.0-alpha02&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="2"
+            column="25"/>
+    </issue>
+
 </issues>

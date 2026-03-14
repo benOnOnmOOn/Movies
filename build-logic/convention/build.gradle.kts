@@ -4,7 +4,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     `kotlin-dsl`
     alias(libs.plugins.android.lint)
-    alias(libs.plugins.dependency.analysis) apply true
     alias(libs.plugins.ktlint) apply true
 }
 

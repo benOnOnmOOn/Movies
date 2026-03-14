@@ -5,7 +5,7 @@ import org.gradle.kotlin.dsl.findByType
 
 plugins {
     alias(libs.plugins.movies.dependency.analysis)
-    alias(libs.plugins.dexcount)
+//    alias(libs.plugins.dexcount)
     alias(libs.plugins.movies.android.application)
     alias(libs.plugins.movies.android.application.compose)
     alias(libs.plugins.movies.hilt)
