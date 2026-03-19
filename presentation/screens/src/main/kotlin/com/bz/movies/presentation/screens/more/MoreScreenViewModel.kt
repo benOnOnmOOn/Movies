@@ -11,7 +11,6 @@ import com.bz.movies.presentation.utils.LocaleSelector
 import com.bz.network.repository.CurrencyRepository
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,7 +18,9 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 internal class MoreScreenViewModel @Inject constructor(
@@ -72,8 +73,10 @@ internal class MoreScreenViewModel @Inject constructor(
                     )
                 }
                 .onFailure {
-                    _state.value.copy(exchangeRate = null)
                     Logger.e("Loading exchange error", it)
+                    _state.update {
+                        _state.value.copy(exchangeRate = null)
+                    }
                 }
         }
     }

@@ -99,8 +99,8 @@ internal class PopularMoviesViewModel @Inject constructor(
                 }
             _effect.send(error)
             Logger.e("Loading error", it)
-            _state.update {
-                it.copy(
+            _state.update { moviesState ->
+                moviesState.copy(
                     isLoading = false,
                     isRefreshing = false
                 )

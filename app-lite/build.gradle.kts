@@ -1,7 +1,4 @@
 import com.autonomousapps.DependencyAnalysisSubExtension
-import kotlin.apply
-import org.gradle.kotlin.dsl.android
-import org.gradle.kotlin.dsl.findByType
 
 plugins {
     alias(libs.plugins.movies.dependency.analysis)

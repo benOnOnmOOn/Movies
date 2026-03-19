@@ -7,14 +7,12 @@ import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
 import com.bz.network.repository.HttpException
 import com.bz.network.repository.MovieRepository
-import dagger.Lazy
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
 import io.mockk.unmockkObject
-import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -27,6 +25,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
+import kotlin.random.Random
 
 class MovieDetailsViewModelTest {
 
@@ -38,7 +37,7 @@ class MovieDetailsViewModelTest {
             SUCCESS_MOVIE_DETAIL
         )
 
-        val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
+        val viewModel = MovieDetailsViewModel { movieRepository }
         viewModel.state.test {
             val actualItem = awaitItem()
             val expectedItem = MovieDetailState()
@@ -59,7 +58,7 @@ class MovieDetailsViewModelTest {
         mockkObject(Random)
         every { Random.nextInt(any(), any()) } returns 69
 
-        val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
+        val viewModel = MovieDetailsViewModel { movieRepository }
         viewModel.state.test {
             assertEquals(MovieDetailState(), awaitItem())
             expectNoEvents()
@@ -82,7 +81,7 @@ class MovieDetailsViewModelTest {
                 )
             } returns Result.failure(HttpException(""))
 
-            val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
+            val viewModel = MovieDetailsViewModel { movieRepository }
             viewModel.fetchMovieDetails(1234)
             viewModel.effect.test {
                 assertEquals(MovieEffect.NetworkConnectionError, awaitItem())
@@ -98,7 +97,7 @@ class MovieDetailsViewModelTest {
             movieRepository.getMovieDetail(any())
         } returns Result.failure(IllegalStateException())
 
-        val viewModel = MovieDetailsViewModel(Lazy { movieRepository })
+        val viewModel = MovieDetailsViewModel { movieRepository }
         viewModel.fetchMovieDetails(1234)
         viewModel.effect.test {
             assertEquals(MovieEffect.UnknownError, awaitItem())

@@ -1,4 +1,3 @@
-import com.android.build.gradle.api.AndroidBasePlugin
 import com.google.devtools.ksp.gradle.KspExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
