@@ -34,3 +34,4 @@
 -dontwarn kotlinx.serialization.**
 -dontwarn androidx.emoji2.**
 -dontwarn androidx.window.extensions.**
+-dontwarn androidx.window.sidecar.**

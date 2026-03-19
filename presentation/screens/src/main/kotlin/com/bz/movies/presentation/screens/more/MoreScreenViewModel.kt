@@ -19,6 +19,7 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -72,8 +73,10 @@ internal class MoreScreenViewModel @Inject constructor(
                     )
                 }
                 .onFailure {
-                    _state.value.copy(exchangeRate = null)
                     Logger.e("Loading exchange error", it)
+                    _state.update {
+                        _state.value.copy(exchangeRate = null)
+                    }
                 }
         }
     }

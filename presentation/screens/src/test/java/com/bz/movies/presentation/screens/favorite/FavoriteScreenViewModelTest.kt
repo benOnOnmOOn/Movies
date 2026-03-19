@@ -3,7 +3,6 @@ package com.bz.movies.presentation.screens.favorite
 import app.cash.turbine.test
 import com.bz.movies.database.repository.LocalMovieRepository
 import com.bz.movies.presentation.screens.common.MoviesState
-import dagger.Lazy
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -28,7 +27,7 @@ class FavoriteScreenViewModelTest {
             every { localMovieRepository.favoritesMovies } returns flowOf(emptyList())
 
             val viewModel = FavoriteScreenViewModel(
-                localMovieRepository = Lazy { localMovieRepository }
+                localMovieRepository = { localMovieRepository }
             )
             viewModel.state.test {
                 val actualItem = awaitItem()
