@@ -41,8 +41,8 @@ jobs:
       - name: Update detekt baseline
         run: ./gradlew detektGenerateBaseline
 
-      - name: Update screen shotest
-        run: ./gradlew :presentation:screens:updateDebugScreenshotTest
+#      - name: Update screenshot test
+#        run: ./gradlew :presentation:screens:updateDebugScreenshotTest
 
       - name: Update dependency guard baseline
         run: ./gradlew dependencyGuardBaseline
