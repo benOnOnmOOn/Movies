@@ -53,3 +53,4 @@
 -dontwarn android.util.StatsEvent$Builder
 -dontwarn android.util.StatsEvent
 -dontwarn androidx.window.extensions.**
+-dontwarn androidx.window.sidecar.**
