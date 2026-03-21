@@ -44,7 +44,7 @@ internal fun PlayingNowScreen(playingNowViewModel: PlayingNowViewModel = hiltVie
 }
 
 @Composable
-private fun PlayingNowScreen(
+internal fun PlayingNowScreen(
     state: MoviesState = MoviesState(),
     showNoInternetDialog: Boolean = false,
     showErrorDialog: Boolean = false,

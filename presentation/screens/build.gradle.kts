@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.movies.strict.dependencies)
     alias(libs.plugins.movies.kover)
     alias(libs.plugins.movies.ktlint)
+    alias(libs.plugins.androidx.compose.screenshot)
 }
 
 kotlin {
@@ -15,6 +16,10 @@ kotlin {
             "kotlinx.coroutines.ExperimentalCoroutinesApi"
         )
     }
+}
+
+android {
+    experimentalProperties["android.experimental.enableScreenshotTest"] = true
 }
 
 dependencies {
@@ -83,5 +88,8 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
     implementation(libs.hilt.core)
-    testImplementation("io.mockk:mockk-core:1.14.9")
+    testImplementation(libs.mockk.core)
+
+    screenshotTestImplementation(libs.androidx.compose.screenshot.validation.api)
+    screenshotTestImplementation(libs.androidx.compose.ui.tooling)
 }

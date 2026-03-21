@@ -2,6 +2,7 @@ package com.bz.movies.presentation.screens.preview
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.android.tools.screenshot.PreviewTest
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MoviesState
 import com.bz.movies.presentation.screens.details.MovieDetailsScreen
@@ -11,6 +12,7 @@ import com.bz.movies.presentation.screens.playingNow.PlayingNowScreen
 import com.bz.movies.presentation.screens.popular.PopularMoviesScreen
 import com.bz.movies.presentation.theme.MoviesTheme
 
+@PreviewTest
 @Preview(showBackground = true)
 @Composable
 private fun MovieDetailsScreenPreview() {
@@ -19,6 +21,7 @@ private fun MovieDetailsScreenPreview() {
     }
 }
 
+@PreviewTest
 @Preview(showBackground = true)
 @Composable
 private fun FavoriteScreenPreview() {
@@ -27,6 +30,7 @@ private fun FavoriteScreenPreview() {
     }
 }
 
+@PreviewTest
 @Preview(showBackground = true)
 @Composable
 private fun MoreScreenPreview() {
@@ -35,6 +39,7 @@ private fun MoreScreenPreview() {
     }
 }
 
+@PreviewTest
 @Preview(showBackground = true)
 @Composable
 private fun PlayingNowScreenPreview() {
@@ -50,6 +55,7 @@ private fun PlayingNowScreenPreview() {
     }
 }
 
+@PreviewTest
 @Preview(showBackground = true)
 @Composable
 private fun PopularMoviesScreenPreview() {
