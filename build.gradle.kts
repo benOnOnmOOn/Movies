@@ -11,6 +11,7 @@ plugins {
 //    alias(libs.plugins.android.cache.fix) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.androidx.room) apply false
+    alias(libs.plugins.androidx.compose.screenshot) apply false
     alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.dependency.guard) apply false
     alias(libs.plugins.firebase.crashlytics) apply false
@@ -31,12 +32,6 @@ plugins {
     alias(libs.plugins.gradle.versions) apply true
 }
 
-buildscript {
-    dependencies {
-        // For KGP
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.0")
-    }
-}
 
 //region Dependency Updates Task
 
