@@ -29,9 +29,20 @@
         errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.4.0-bin.zip"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="$HOME/StudioProjects/Movies/gradle/wrapper/gradle-wrapper.properties"
+            file="$HOME/work/Movies/Movies/gradle/wrapper/gradle-wrapper.properties"
             line="3"
             column="17"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.autonomousapps.dependency-analysis than 3.6.1 is available: 3.7.0"
+        errorLine1="dependency-analysis = &quot;3.6.1&quot;"
+        errorLine2="                      ~~~~~~~">
+        <location
+            file="$HOME/work/Movies/Movies/gradle/libs.versions.toml"
+            line="23"
+            column="23"/>
     </issue>
 
 </issues>
