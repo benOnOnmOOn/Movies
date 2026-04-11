@@ -114,6 +114,8 @@ dependencies {
     debugRuntimeOnly(libs.androidx.compose.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.compose.ui.tooling)
 
+    implementation(libs.androidx.compose.runtime)
+
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
 }

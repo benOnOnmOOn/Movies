@@ -79,6 +79,7 @@ dependencies {
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.androidx.datastore.core)
+    implementation(libs.androidx.compose.runtime)
     implementation(libs.dagger)
 
     implementation(libs.kermit)
@@ -104,6 +105,8 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit.api)
     androidTestRuntimeOnly(libs.junit.engine)
+
+    androidTestImplementation(libs.androidx.compose.runtime)
 }
 
 dependencyGuard {

@@ -16,6 +16,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
+// import org.jetbrains.kotlin.gradle.dsl.abi.AbiValidationExtension
 
 fun ApplicationExtension.baseAppConfig() {
     defaultBaseConfig()
@@ -139,7 +140,7 @@ private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() =
 //    extensions.configure<AbiValidationExtension> {
 //        enabled = true
 //        filters {
-//            excluded {
+//            exclude {
 //                byNames.add("hilt_aggregated_deps**")
 //                annotatedWith.addAll(
 //                    "dagger.internal.DaggerGenerated",
