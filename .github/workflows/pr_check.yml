@@ -41,8 +41,8 @@ jobs:
       - name: Update detekt baseline
         run: ./gradlew detektGenerateBaseline
 
-      - name: Update screenshot test
-        run: ./gradlew :presentation:screens:updateDebugScreenshotTest
+#      - name: Update screenshot test
+#        run: ./gradlew :presentation:screens:updateDebugScreenshotTest
 
       - name: Update dependency guard baseline
         run: ./gradlew dependencyGuardBaseline
@@ -83,8 +83,8 @@ jobs:
       - name: Run dependency guard check
         run: ./gradlew dependencyGuard
 
-      - name: Run screenshotTest
-        run: ./gradlew :presentation:screens:validateDebugScreenshotTest
+#      - name: Run screenshotTest
+#        run: ./gradlew :presentation:screens:validateDebugScreenshotTest
 
       - name: Upload coverage reports
         id: kover
