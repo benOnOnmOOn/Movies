@@ -107,7 +107,6 @@ dependencies {
     androidTestRuntimeOnly(libs.junit.engine)
 
     androidTestImplementation(libs.androidx.compose.runtime)
-
 }
 
 dependencyGuard {
