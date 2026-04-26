@@ -1,10 +1,10 @@
 [versions]
-android-gradle-plugin = "9.1.0"
-android-tools = "32.1.0"
+android-gradle-plugin = "9.2.0"
+android-tools = "32.2.0"
 androidx-activity = "1.13.0"
 androidx-appcompat = "1.7.1"
 androidx-collection = "1.6.0"
-androidx-compose = "1.11.0-rc01"
+androidx-compose = "1.11.0"
 androidx-compose-screenshot = "0.0.1-alpha14"
 androidx-core = "1.18.0"
 androidx-datastore-preferences = "1.2.1"
@@ -14,25 +14,25 @@ androidx-lifecycle = "2.10.0"
 androidx-lint = "1.0.0-alpha06"
 androidx-material3 = "1.4.0"
 androidx-monitor = "1.8.0"
-androidx-navigation-compose = "2.9.7"
+androidx-navigation-compose = "2.9.8"
 androidx-room = "2.8.4"
 androidx-sqlite = "2.6.2"
 androidx-startup-runtime = "1.2.0"
 annotation = "1.10.0"
 coil = "3.4.0"
-dependency-analysis = "3.7.0"
+dependency-analysis = "3.9.0"
 firebase-analytics = "22.5.0"
 firebase-crashlytics = "19.4.4"
 firebase-crashlytics-plugin = "3.0.7"
 firebase-perf = "22.0.5"
 firebase-perf-plugin = "2.0.2"
 google-cronet = "143.7445.0"
-guava = "33.5.0-android"
+guava = "33.6.0-android"
 hilt = "2.59.2"
 javax-inject = "1"
 junit = "6.0.3"
 kermit = "2.1.0"
-kotlin = "2.4.0-Beta1"
+kotlin = "2.4.0-Beta2"
 kotlinx-coroutines = "1.10.2"
 kotlinx-kover = "0.9.8"
 ksp = "2.3.6"
@@ -169,7 +169,7 @@ dexcount = { id = "com.getkeepsafe.dexcount", version = "4.0.0" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics-plugin" }
 firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "firebase-perf-plugin" }
 google-services = { id = "com.google.gms.google-services", version = "4.4.4" }
-gradle-versions = { id = "com.github.ben-manes.versions", version = "0.53.0" }
+gradle-versions = { id = "com.github.ben-manes.versions", version = "0.54.0" }
 #gradle_doctor = { id = "com.osacky.doctor", version = "0.10.0" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 #kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
