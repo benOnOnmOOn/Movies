@@ -27,7 +27,7 @@ dependencies {
 
     implementation(libs.androidx.room.common)
     implementation(libs.androidx.sqlite)
-    implementation(libs.kotlinx.coroutines.core)
+    api(libs.kotlinx.coroutines.core)
 
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)

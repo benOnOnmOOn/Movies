@@ -33,7 +33,7 @@ dependencies {
 
     implementation(libs.androidx.datastore)
     implementation(libs.androidx.datastore.preferences)
-    implementation(libs.androidx.datastore.preferences.core)
+    api(libs.androidx.datastore.preferences.core)
     implementation(libs.kermit)
     implementation(libs.kotlinx.coroutines.core)
 

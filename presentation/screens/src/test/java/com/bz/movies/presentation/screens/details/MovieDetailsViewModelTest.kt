@@ -18,6 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
@@ -50,7 +51,6 @@ class MovieDetailsViewModelTest {
     }
 
     @Test
-    @Disabled("It random fails")
     fun `when viewmodel fetchMovieDetails is called should fetch data from network `() = runTest {
         coEvery { movieRepository.getMovieDetail(any()) } returns Result.success(
             SUCCESS_MOVIE_DETAIL
@@ -109,13 +109,13 @@ class MovieDetailsViewModelTest {
 
     @BeforeEach
     fun setUp() {
-        Dispatchers.setMain(StandardTestDispatcher())
+        Dispatchers.setMain(UnconfinedTestDispatcher())
     }
 
     @AfterEach
     fun tearDown() {
         Dispatchers.resetMain()
-        MainScope().cancel()
+//        MainScope().cancel()
     }
 
     companion object {
