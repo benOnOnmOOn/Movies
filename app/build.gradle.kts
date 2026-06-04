@@ -1,4 +1,7 @@
+@file:OptIn(ExperimentalAbiValidation::class)
+
 import com.autonomousapps.DependencyAnalysisSubExtension
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
 
 plugins {
 //    alias(libs.plugins.dexcount)

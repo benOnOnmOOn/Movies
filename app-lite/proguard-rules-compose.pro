@@ -15,9 +15,6 @@
 -assumenosideeffects public class androidx.compose.runtime.Composer {
      <clinit>();
 }
--assumenosideeffects public class androidx.compose.runtime.ComposerImpl {
-     <clinit>();
-}
 
 -keepclassmembers class androidx.compose.ui.platform.AndroidComposeView {
     android.view.View findViewByAccessibilityIdTraversal(int);

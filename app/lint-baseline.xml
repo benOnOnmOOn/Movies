@@ -23,4 +23,70 @@
             column="27"/>
     </issue>
 
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core than 1.18.0 is available: 1.19.0"
+        errorLine1="androidx-core = &quot;1.18.0&quot;"
+        errorLine2="                ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.18.0 is available: 1.19.0"
+        errorLine1="androidx-core = &quot;1.18.0&quot;"
+        errorLine2="                ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="9"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.autonomousapps.dependency-analysis than 3.14.0 is available: 3.14.1"
+        errorLine1="dependency-analysis = &quot;3.14.0&quot;"
+        errorLine2="                      ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="23"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk than 1.14.9 is available: 1.14.11"
+        errorLine1="mockk = &quot;1.14.9&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="43"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk-core than 1.14.9 is available: 1.14.11"
+        errorLine1="mockk = &quot;1.14.9&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="43"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.mockk:mockk-dsl than 1.14.9 is available: 1.14.11"
+        errorLine1="mockk = &quot;1.14.9&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="43"
+            column="9"/>
+    </issue>
+
 </issues>

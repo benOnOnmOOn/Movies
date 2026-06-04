@@ -44,6 +44,7 @@ gradleEnterprise {
 }
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+//enableFeaturePreview("NO_IMPLICIT_LOOKUP_IN_PROJECT_HIERARCHY")
 
 include(":app")
 include(":data:network")
