@@ -1,8 +1,8 @@
 package com.bz.movies.database.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room3.ColumnInfo
+import androidx.room3.Entity
+import androidx.room3.PrimaryKey
 
 internal const val MOVIE_ENTITY_NAME = "MOVIE_ENTITY"
 

@@ -1,7 +1,7 @@
 package com.bz.movies.database.dao
 
-import androidx.room.Dao
-import androidx.room.Query
+import androidx.room3.Dao
+import androidx.room3.Query
 import com.bz.movies.database.entity.PLAYING_NOW_MOVIE_NAME
 import com.bz.movies.database.entity.PlayingNowMovieEntity
 import kotlinx.coroutines.flow.Flow

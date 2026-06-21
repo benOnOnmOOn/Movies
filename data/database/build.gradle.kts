@@ -27,6 +27,8 @@ dependencies {
 
     implementation(libs.androidx.room.common)
     implementation(libs.androidx.sqlite)
+//    implementation(libs.androidx.sqlite.bundled)
+    implementation(libs.androidx.sqlite.framework)
     api(libs.kotlinx.coroutines.core)
 
     implementation(libs.androidx.room.runtime)

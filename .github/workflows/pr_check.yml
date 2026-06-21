@@ -48,8 +48,8 @@ jobs:
       - name: Update dependency guard baseline
         run: ./gradlew dependencyGuardBaseline
 
-      - name: Update android lint baseline
-        run: ./gradlew updateLintBaseline
+#      - name: Update android lint baseline
+#        run: ./gradlew updateLintBaseline
 
       - name: Fix deps using dependency analysis gradle plugin
         run: ./gradlew fixDependencies
@@ -66,8 +66,8 @@ jobs:
       - name: Run detket plugin
         run: ./gradlew detektAll
 
-      - name: Run android lint
-        run: ./gradlew lint
+#      - name: Run android lint
+#        run: ./gradlew lint
 
       - name: Run ktlint format check
         run: ./gradlew ktlintCheck

@@ -35,3 +35,4 @@
 -dontwarn androidx.emoji2.**
 -dontwarn androidx.window.extensions.**
 -dontwarn androidx.window.sidecar.**
+-dontwarn androidx.sqlite.util.SQLStatementParser**

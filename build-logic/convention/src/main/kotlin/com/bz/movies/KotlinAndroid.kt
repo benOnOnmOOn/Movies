@@ -58,7 +58,7 @@ fun ApplicationExtension.baseAppConfig() {
 
 //region Global android configuration
 internal fun CommonExtension.defaultBaseConfig() {
-    compileSdk = 36
+    compileSdk = 37
     buildToolsVersion = "36.0.0"
 
     compileOptions.sourceCompatibility = JavaVersion.VERSION_21
@@ -131,14 +131,12 @@ private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() =
         else -> TODO("Unsupported project extension $this ${T::class}")
     }.apply {
         jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
-        progressiveMode = true
         jvmTarget = JvmTarget.JVM_21
         allWarningsAsErrors = false
         progressiveMode = true
         explicitApi = ExplicitApiMode.Strict
     }
-//    extensions.configure<AbiValidationExtension> {
-//        enabled = true
+//    abiValidation{
 //        filters {
 //            exclude {
 //                byNames.add("hilt_aggregated_deps**")

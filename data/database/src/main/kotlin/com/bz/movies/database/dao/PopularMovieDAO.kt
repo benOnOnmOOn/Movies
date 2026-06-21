@@ -1,7 +1,7 @@
 package com.bz.movies.database.dao
 
-import androidx.room.Dao
-import androidx.room.Query
+import androidx.room3.Dao
+import androidx.room3.Query
 import com.bz.movies.database.entity.POPULAR_MOVIE_ENTITY_NAME
 import com.bz.movies.database.entity.PopularMovieEntity
 import kotlinx.coroutines.flow.Flow
