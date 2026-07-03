@@ -30,6 +30,7 @@ class StrictDependenciesConventionPlugin : Plugin<Project> {
                 exclude("androidx.viewpager", "viewpager")
                 exclude("androidx.activity", "activity-ktx")
                 exclude("androidx.collection", "collection-ktx")
+                exclude("androidx.core", "core-ktx")
                 exclude("androidx.lifecycle", "lifecycle-runtime-ktx-android")
                 exclude("androidx.lifecycle", "lifecycle-runtime-ktx")
                 exclude("androidx.lifecycle", "lifecycle-viewmodel-ktx")

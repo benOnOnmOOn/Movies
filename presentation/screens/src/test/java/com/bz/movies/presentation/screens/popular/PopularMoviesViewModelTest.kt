@@ -261,7 +261,7 @@ class PopularMoviesViewModelTest {
 
     @BeforeEach
     fun setUp() {
-        Dispatchers.setMain(UnconfinedTestDispatcher())
+        Dispatchers.setMain(StandardTestDispatcher())
     }
 
     @AfterEach

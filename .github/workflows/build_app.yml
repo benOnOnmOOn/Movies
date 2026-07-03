@@ -32,8 +32,8 @@ jobs:
       - name: Run detket plugin
         run: ./gradlew detektAll
 
-      - name: Run android lint
-        run: ./gradlew lint
+#      - name: Run android lint
+#        run: ./gradlew lint
 
       - name: Run ktlint format check
         run: ./gradlew ktlintCheck

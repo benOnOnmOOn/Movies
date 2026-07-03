@@ -31,7 +31,6 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.core)
-    implementation(libs.androidx.core.ktx)
 
     runtimeOnly(libs.kotlinx.coroutines.android)
 

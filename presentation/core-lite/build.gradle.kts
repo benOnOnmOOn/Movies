@@ -29,7 +29,6 @@ dependencies {
     api(libs.androidx.compose.runtime.android)
 
     implementation(libs.androidx.core)
-    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.ui.android)
 

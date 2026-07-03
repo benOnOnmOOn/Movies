@@ -1,10 +1,11 @@
 package com.bz.movies.database
 
 import android.app.Application
-import androidx.room.AutoMigration
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room3.AutoMigration
+import androidx.room3.Database
+import androidx.room3.Room
+import androidx.room3.RoomDatabase
+import androidx.sqlite.driver.AndroidSQLiteDriver
 import com.bz.movies.database.dao.CurrencyDAO
 import com.bz.movies.database.dao.MovieDAO
 import com.bz.movies.database.dao.PlayingNowMovieDAO
@@ -20,7 +21,8 @@ internal fun createMoviesDatabase(context: Application): MoviesDatabase = Room.d
     context = context,
     klass = MoviesDatabase::class.java,
     name = DATABASE_NAME
-).fallbackToDestructiveMigrationOnDowngrade(true)
+).setDriver(AndroidSQLiteDriver())
+    .fallbackToDestructiveMigrationOnDowngrade(true)
     .build()
 
 @Database(

@@ -1,4 +1,4 @@
-import androidx.room.gradle.RoomExtension
+import androidx.room3.gradle.RoomExtension
 import com.google.devtools.ksp.gradle.KspExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -8,7 +8,7 @@ class AndroidRoomConventionPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply("androidx.room")
+            pluginManager.apply("androidx.room3")
             pluginManager.apply("com.google.devtools.ksp")
 
             extensions.configure<KspExtension> {

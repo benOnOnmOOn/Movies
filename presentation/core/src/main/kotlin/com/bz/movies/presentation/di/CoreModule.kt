@@ -12,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 internal class CoreModule {
+
     @Provides
     internal fun provideDb(app: Application): LocaleSelector = object : LocaleSelector {
         override fun setApplicationLocales(code: String) {
