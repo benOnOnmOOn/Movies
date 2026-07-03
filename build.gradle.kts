@@ -1,7 +1,8 @@
 
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import io.gitlab.arturbosch.detekt.Detekt
-import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import dev.detekt.gradle.Detekt
+import dev.detekt.gradle.DetektCreateBaselineTask
+
 // import org.gradle.android.AndroidCacheFixPlugin
 // import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
@@ -86,11 +87,10 @@ tasks.register<Detekt>("detektAll") {
     include(kotlinFiles)
     exclude(resourceFiles, buildFiles)
     reports {
+        checkstyle.required.set(true)
         html.required.set(true)
-        xml.required.set(true)
-        txt.required.set(true)
         sarif.required.set(true)
-        md.required.set(true)
+        markdown.required.set(true)
     }
 }
 

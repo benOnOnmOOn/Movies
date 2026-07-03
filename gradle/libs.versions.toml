@@ -166,7 +166,7 @@ androidx-room = { id = "androidx.room3", version.ref = "androidx-room" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "dependency-analysis" }
 dependency-guard = { id = "com.dropbox.dependency-guard", version = "0.5.0" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.8" }
+detekt = { id = "dev.detekt", version = "2.0.0-alpha.5" }
 dexcount = { id = "com.getkeepsafe.dexcount", version = "4.0.0" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics-plugin" }
 firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "firebase-perf-plugin" }

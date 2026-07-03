@@ -109,7 +109,7 @@ class MovieDetailsViewModelTest {
 
     @BeforeEach
     fun setUp() {
-        Dispatchers.setMain(UnconfinedTestDispatcher())
+        Dispatchers.setMain(StandardTestDispatcher())
     }
 
     @AfterEach
