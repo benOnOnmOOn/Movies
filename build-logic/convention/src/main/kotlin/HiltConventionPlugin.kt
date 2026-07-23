@@ -18,6 +18,7 @@ class HiltConventionPlugin : Plugin<Project> {
                 // Enable some compiler options https://dagger.dev/dev-guide/compiler-options
                 arg("dagger.useBindingGraphFix", "ENABLED")
                 arg("dagger.ignoreProvisionKeyWildcards", "ENABLED")
+                arg("dagger.mapMultibindingDuplicateDetectionFix", "ENABLED")
                 arg("dagger.fullBindingGraphValidation", "ERROR")
             }
         }

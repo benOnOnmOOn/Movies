@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.movies.kover)
     alias(libs.plugins.movies.ktlint)
     alias(libs.plugins.androidx.compose.screenshot)
+    alias(libs.plugins.compose.stability.analyzer)
 }
 
 kotlin {
@@ -92,4 +93,7 @@ dependencies {
 
     screenshotTestImplementation(libs.androidx.compose.screenshot.validation.api)
     screenshotTestImplementation(libs.androidx.compose.ui.tooling)
+}
+
+composeStabilityAnalyzer {
 }
