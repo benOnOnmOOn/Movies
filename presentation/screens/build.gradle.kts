@@ -95,5 +95,5 @@ dependencies {
     screenshotTestImplementation(libs.androidx.compose.ui.tooling)
 }
 
-//composeStabilityAnalyzer {
-//}
+// composeStabilityAnalyzer {
+// }
