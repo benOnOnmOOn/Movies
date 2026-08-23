@@ -23,4 +23,191 @@
             column="27"/>
     </issue>
 
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.room3 than 3.0.0 is available: 3.0.1"
+        errorLine1="androidx-room = &quot;3.0.0&quot;"
+        errorLine2="                ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="18"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.room3:room3-common than 3.0.0 is available: 3.0.1"
+        errorLine1="androidx-room = &quot;3.0.0&quot;"
+        errorLine2="                ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="18"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.room3:room3-compiler than 3.0.0 is available: 3.0.1"
+        errorLine1="androidx-room = &quot;3.0.0&quot;"
+        errorLine2="                ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="18"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.room3:room3-gradle-plugin than 3.0.0 is available: 3.0.1"
+        errorLine1="androidx-room = &quot;3.0.0&quot;"
+        errorLine2="                ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="18"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.room3:room3-runtime than 3.0.0 is available: 3.0.1"
+        errorLine1="androidx-room = &quot;3.0.0&quot;"
+        errorLine2="                ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="18"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.firebase.crashlytics than 3.0.7 is available: 3.0.8"
+        errorLine1="firebase-crashlytics-plugin = &quot;3.0.7&quot;"
+        errorLine2="                              ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="27"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.firebase:firebase-crashlytics-gradle than 3.0.7 is available: 3.0.8"
+        errorLine1="firebase-crashlytics-plugin = &quot;3.0.7&quot;"
+        errorLine2="                              ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="27"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of org.chromium.net:cronet-bundled than 500.0.1 is available: 500.0.2"
+        errorLine1="google-cronet = &quot;500.0.1&quot;"
+        errorLine2="                ~~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="30"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.autonomousapps.dependency-analysis than 3.17.0 is available: 3.18.0"
+        errorLine1="dependency-analysis = &quot;3.17.0&quot;"
+        errorLine2="                      ~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="24"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.guava:guava than 33.6.0-android is available: 33.7.1-android"
+        errorLine1="guava = &quot;33.6.0-android&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="31"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.junit.jupiter:junit-jupiter-api than 6.1.2 is available: 6.1.3"
+        errorLine1="junit = &quot;6.1.2&quot;"
+        errorLine2="        ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="34"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.junit.jupiter:junit-jupiter-engine than 6.1.2 is available: 6.1.3"
+        errorLine1="junit = &quot;6.1.2&quot;"
+        errorLine2="        ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="34"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.slack.lint.compose:compose-lint-checks than 1.5.3 is available: 1.5.4"
+        errorLine1="lint-compose-checks = &quot;1.5.3&quot;"
+        errorLine2="                      ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="42"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.okhttp3:logging-interceptor than 5.4.0 is available: 5.5.0"
+        errorLine1="okhttp = &quot;5.4.0&quot;"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="46"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.okhttp3:mockwebserver than 5.4.0 is available: 5.5.0"
+        errorLine1="okhttp = &quot;5.4.0&quot;"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="46"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.okhttp3:okhttp than 5.4.0 is available: 5.5.0"
+        errorLine1="okhttp = &quot;5.4.0&quot;"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="46"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.okhttp3:okhttp-android than 5.4.0 is available: 5.5.0"
+        errorLine1="okhttp = &quot;5.4.0&quot;"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="$HOME/StudioProjects/Movies/gradle/libs.versions.toml"
+            line="46"
+            column="10"/>
+    </issue>
+
 </issues>

@@ -1,4 +1,3 @@
-
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import dev.detekt.gradle.Detekt
 import dev.detekt.gradle.DetektCreateBaselineTask
@@ -29,8 +28,6 @@ plugins {
     alias(libs.plugins.movies.dependency.analysis) apply true
     alias(libs.plugins.detekt) apply true
 //    alias(libs.plugins.gradle.doctor) apply true
-    // Versions plugin need to be enabled here for proper work in whole project
-    alias(libs.plugins.gradle.versions) apply true
 
     alias(libs.plugins.compose.stability.analyzer) apply false
 }
@@ -55,8 +52,10 @@ fun isNonStable(version: String): Boolean {
 }
 
 tasks.withType<DependencyUpdatesTask> {
+    checkConstraints = true
+    outputFormatter = "text,html"
     rejectVersionIf {
-        isNonStable(candidate.version) && !isNonStable(currentVersion)
+        isNonStable(candidate.version) && !isNonStable(currentVersion) || !satisfiesDeclaredBound
     }
 }
 

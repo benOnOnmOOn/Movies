@@ -23,8 +23,7 @@ dependencies {
 
     //region CRONET
     api(libs.cronet.okhttp)
-    api(libs.cronet.api)
-    runtimeOnly(libs.cronet.embedded)
+    implementation(libs.cronet.bundled)
     implementation(libs.play.services.cronet)
     //endregion
 
