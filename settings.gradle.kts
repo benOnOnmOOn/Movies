@@ -15,7 +15,6 @@ pluginManagement {
 }
 
 plugins {
-    id("com.gradle.enterprise") version ("3.19.2")
     id("io.github.ben-manes.versions.settings") version "0.61.0"
 }
 
@@ -36,13 +35,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Movies"
-
-gradleEnterprise {
-    buildScan {
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
-    }
-}
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
