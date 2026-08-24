@@ -22,9 +22,9 @@ dependencies {
     //endregion
 
     //region CRONET
+    api("org.chromium.net:cronet:500.0.1")
     api(libs.cronet.okhttp)
-    api(libs.cronet.api)
-    runtimeOnly(libs.cronet.embedded)
+    runtimeOnly(libs.cronet.bundled)
     implementation(libs.play.services.cronet)
     //endregion
 
