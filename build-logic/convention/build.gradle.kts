@@ -10,13 +10,13 @@ plugins {
 group = "com.bz.movies.buildlogic"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 }
 
 kotlin {
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_21
+        jvmTarget = JvmTarget.JVM_25
         jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
         allWarningsAsErrors = false
         extraWarnings = false
@@ -40,8 +40,6 @@ dependencies {
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
     compileOnly(libs.room.gradlePlugin)
-    implementation(libs.kotlin.metadata)
-    implementation(libs.truth)
     lintChecks(libs.androidx.lint.gradle)
 }
 

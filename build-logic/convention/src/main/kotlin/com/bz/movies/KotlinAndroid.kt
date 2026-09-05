@@ -61,8 +61,8 @@ internal fun CommonExtension.defaultBaseConfig() {
     compileSdk = 37
     buildToolsVersion = "36.0.0"
 
-    compileOptions.sourceCompatibility = JavaVersion.VERSION_21
-    compileOptions.targetCompatibility = JavaVersion.VERSION_21
+    compileOptions.sourceCompatibility = JavaVersion.VERSION_25
+    compileOptions.targetCompatibility = JavaVersion.VERSION_25
 
     defaultConfig.minSdk { version = release(27) }
     defaultConfig.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -113,8 +113,8 @@ internal fun Project.configureKotlinTestAndroid(commonExtension: TestExtension) 
  */
 internal fun Project.configureKotlinJvm() {
     extensions.configure<JavaPluginExtension> {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_25
+        targetCompatibility = JavaVersion.VERSION_25
     }
 
     configureKotlin<KotlinJvmProjectExtension>()
@@ -131,7 +131,7 @@ private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() =
         else -> TODO("Unsupported project extension $this ${T::class}")
     }.apply {
         jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
-        jvmTarget = JvmTarget.JVM_21
+        jvmTarget = JvmTarget.JVM_25
         allWarningsAsErrors = false
         progressiveMode = true
         explicitApi = ExplicitApiMode.Strict

@@ -8,6 +8,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -46,6 +47,7 @@ internal fun BottomNavigationBar(navController: NavController, modifier: Modifie
 }
 
 @Composable
+@ReadOnlyComposable
 private fun getNavTextColor(isItemSelected: Boolean): Color = if (isItemSelected) {
     Color.Red
 } else {
