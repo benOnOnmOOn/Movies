@@ -79,6 +79,7 @@ androidx.lifecycle:lifecycle-runtime:2.11.0
 androidx.lifecycle:lifecycle-viewmodel-android:2.11.0
 androidx.lifecycle:lifecycle-viewmodel-compose-android:2.11.0
 androidx.lifecycle:lifecycle-viewmodel-compose:2.11.0
+androidx.lifecycle:lifecycle-viewmodel-ktx:2.11.0
 androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.11.0
 androidx.lifecycle:lifecycle-viewmodel-savedstate:2.11.0
 androidx.lifecycle:lifecycle-viewmodel:2.11.0

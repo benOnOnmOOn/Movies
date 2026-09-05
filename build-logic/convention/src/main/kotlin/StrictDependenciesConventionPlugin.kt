@@ -29,7 +29,7 @@ class StrictDependenciesConventionPlugin : Plugin<Project> {
                 exclude("org.checkerframework", "checker-qual")
                 exclude("androidx.viewpager", "viewpager")
                 exclude("androidx.activity", "activity-ktx")
-                exclude("androidx.savedstate","savedstate-ktx")
+                exclude("androidx.savedstate", "savedstate-ktx")
                 exclude("androidx.collection", "collection-ktx")
                 exclude("androidx.core", "core-ktx")
                 exclude("androidx.lifecycle", "lifecycle-runtime-ktx-android")
