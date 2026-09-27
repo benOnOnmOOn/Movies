@@ -15,7 +15,8 @@ pluginManagement {
 }
 
 plugins {
-    id("io.github.ben-manes.versions.settings") version "0.61.0"
+    id("io.github.ben-manes.versions.settings") version "0.64.0"
+    id("com.eygraber.gradle-config-bomb") version "0.1.0"
 }
 
 @Suppress("UnstableApiUsage")
