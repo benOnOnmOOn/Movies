@@ -26,24 +26,15 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-internal interface MovieListSource {
-    val cachedMovies: Flow<List<MovieDto>>
-
-    suspend fun fetchMovies(): Result<List<MovieDto>>
-
-    suspend fun cacheMovies(movies: List<MovieDto>): Result<Unit>
-
-    suspend fun clearCache(): Result<Unit>
-
-    suspend fun markRefreshed(): Result<Unit>
-
-    suspend fun lastRefreshDate(): Result<Instant>
-}
-
 internal class MoviesListDelegate(
     private val scope: CoroutineScope,
     private val localMovieRepository: Lazy<LocalMovieRepository>,
-    private val source: MovieListSource
+    private val cachedMovies: () -> Flow<List<MovieDto>>,
+    private val fetchMovies: suspend () -> Result<List<MovieDto>>,
+    private val cacheMovies: suspend (List<MovieDto>) -> Result<Unit>,
+    private val clearCache: suspend () -> Result<Unit>,
+    private val markRefreshed: suspend () -> Result<Unit>,
+    private val lastRefreshDate: suspend () -> Result<Instant>
 ) {
     private val _state = MutableStateFlow(MoviesState())
     val state: StateFlow<MoviesState> = _state.asStateFlow()
@@ -65,23 +56,23 @@ internal class MoviesListDelegate(
                 localMovieRepository.get().insertFavoriteMovie(event.movieItem.toDTO())
 
             MovieEvent.Refresh -> {
-                source.clearCache()
+                clearCache()
                 _state.update {
                     it.copy(
                         isLoading = true,
                         isRefreshing = true
                     )
                 }
-                fetchMovies()
+                refreshMovies()
             }
         }
     }
 
-    private fun fetchMovies() = scope.launch(Dispatchers.IO) {
-        val result = source.fetchMovies()
+    private fun refreshMovies() = scope.launch(Dispatchers.IO) {
+        val result = fetchMovies()
         result.onSuccess { data ->
-            source.markRefreshed()
-            source.cacheMovies(data)
+            markRefreshed()
+            cacheMovies(data)
         }
         result.onFailure {
             val error =
@@ -105,13 +96,13 @@ internal class MoviesListDelegate(
     @SuppressLint("RawDispatchersUse")
     private fun collectMovies() {
         scope.launch(Dispatchers.IO) {
-            source.lastRefreshDate()
+            lastRefreshDate()
                 .onFailure { Logger.e("Loading error", it) }
                 .onSuccess { Logger.d("Last date : $it") }
 
-            source.cachedMovies
+            cachedMovies()
                 .flowOn(Dispatchers.Main)
-                .onStart { fetchMovies() }
+                .onStart { refreshMovies() }
                 .catch {
                     _effect.send(MovieEffect.UnknownError)
                     Logger.e("Loading error", it)
