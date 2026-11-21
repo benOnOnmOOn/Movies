@@ -1,15 +1,14 @@
 package com.bz.movies.datastore.repository
 
-import android.annotation.SuppressLint
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
 import com.bz.tools.runSuspendCatching
 import com.bz.tools.throwOnMainThread
-import java.time.Instant
 import javax.inject.Inject
-import kotlinx.coroutines.flow.Flow
+import kotlin.time.Clock
+import kotlin.time.Instant
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
@@ -17,32 +16,31 @@ private const val PLAYING_NOW_KEY = "playing_now_refresh_data"
 private const val POPULAR_KEY = "popular_refresh_data"
 
 internal class DataStoreRepositoryImpl @Inject constructor(
-    private val dataStore: DataStore<Preferences>
+    private val dataStore: DataStore<Preferences>,
+    private val clock: Clock
 ) : DataStoreRepository {
     init {
         throwOnMainThread()
     }
 
-    val playingNowKey = longPreferencesKey(PLAYING_NOW_KEY)
-    val popularKey = longPreferencesKey(POPULAR_KEY)
+    private val playingNowKey = longPreferencesKey(PLAYING_NOW_KEY)
+    private val popularKey = longPreferencesKey(POPULAR_KEY)
 
-    override suspend fun insertPlayingNowRefreshDate(data: Instant): Result<Unit> =
-        runSuspendCatching { dataStore.edit { it[playingNowKey] = data.epochSecond } }
+    override suspend fun markPlayingNowRefreshed(): Result<Unit> = markRefreshed(playingNowKey)
 
-    override suspend fun getPlyingNowRefreshDate() = runSuspendCatching {
-        val flow: Flow<Long> = dataStore.data.map { it[playingNowKey] ?: 0L }
-        @SuppressLint("AvoidUsingNotNullOperator")
-        Instant.ofEpochSecond(flow.first())!!
-    }
+    override suspend fun getPlayingNowRefreshDate(): Result<Instant> = readDate(playingNowKey)
 
-    override suspend fun insertPopularNowRefreshDate(data: Instant): Result<Unit> =
+    override suspend fun markPopularRefreshed(): Result<Unit> = markRefreshed(popularKey)
+
+    override suspend fun getPopularRefreshDate(): Result<Instant> = readDate(popularKey)
+
+    private suspend fun markRefreshed(key: Preferences.Key<Long>): Result<Unit> =
         runSuspendCatching {
-            dataStore.edit { it[popularKey] = data.epochSecond }
+            dataStore.edit { it[key] = clock.now().epochSeconds }
         }
 
-    override suspend fun getPopularRefreshDate(): Result<Instant> = runSuspendCatching {
-        val flow: Flow<Long> = dataStore.data.map { it[popularKey] ?: 0L }
-        @SuppressLint("AvoidUsingNotNullOperator")
-        Instant.ofEpochSecond(flow.first())!!
-    }
+    private suspend fun readDate(key: Preferences.Key<Long>): Result<Instant> =
+        runSuspendCatching {
+            Instant.fromEpochSeconds(dataStore.data.map { it[key] ?: 0L }.first())
+        }
 }

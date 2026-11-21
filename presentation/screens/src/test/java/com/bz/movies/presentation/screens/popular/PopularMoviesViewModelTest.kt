@@ -15,7 +15,7 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import java.time.Instant
+import kotlin.time.Instant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
@@ -36,7 +36,7 @@ class PopularMoviesViewModelTest {
     private val localMovieRepository: LocalMovieRepository = mockk(relaxed = true)
 
     private val storeRepository: DataStoreRepository = mockk(relaxed = true) {
-        coEvery { getPopularRefreshDate() } returns Result.success(Instant.now())
+        coEvery { getPopularRefreshDate() } returns Result.success(Instant.fromEpochSeconds(0))
     }
 
     @Test
