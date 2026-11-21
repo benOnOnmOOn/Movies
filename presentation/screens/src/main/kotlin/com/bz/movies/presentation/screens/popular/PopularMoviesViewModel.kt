@@ -18,7 +18,6 @@ import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.time.Instant
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -86,7 +85,7 @@ internal class PopularMoviesViewModel @Inject constructor(
         val result = movieRepository.get().getPopularMovies(1)
         result.onSuccess { data ->
 
-            dataStoreRepository.get().insertPopularNowRefreshDate(Instant.now())
+            dataStoreRepository.get().markPopularRefreshed()
             localMovieRepository.get().insertPopularMovies(data)
         }
         result.onFailure {

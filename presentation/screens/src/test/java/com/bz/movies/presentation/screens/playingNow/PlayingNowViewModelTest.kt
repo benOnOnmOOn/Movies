@@ -10,7 +10,7 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import java.time.Instant
+import kotlin.time.Instant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -27,7 +27,7 @@ class PlayingNowViewModelTest {
     private val localMovieRepository: LocalMovieRepository = mockk(relaxed = true)
 
     private val storeRepository: DataStoreRepository = mockk(relaxed = true) {
-        coEvery { getPlyingNowRefreshDate() } returns Result.success(Instant.now())
+        coEvery { getPlayingNowRefreshDate() } returns Result.success(Instant.fromEpochSeconds(0))
     }
 
     @Test
@@ -56,7 +56,7 @@ class PlayingNowViewModelTest {
             verify(exactly = 1) { localMovieRepository.playingNowMovies }
             coVerify(exactly = 1) { localMovieRepository.insertPlayingNowMovies(any()) }
             coVerify(exactly = 1) { movieRepository.getPlayingNowMovies() }
-            coVerify(exactly = 1) { storeRepository.insertPlayingNowRefreshDate(any()) }
+            coVerify(exactly = 1) { storeRepository.markPlayingNowRefreshed() }
         }
 
     @BeforeEach

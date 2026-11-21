@@ -39,5 +39,12 @@ dependencies {
 
     releaseImplementation(libs.kermit.core)
 
+    testImplementation(libs.junit.api)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockk.core)
+    testImplementation(libs.mockk.dsl)
     testRuntimeOnly(libs.junit.engine)
+    //noinspection UseTomlInstead
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

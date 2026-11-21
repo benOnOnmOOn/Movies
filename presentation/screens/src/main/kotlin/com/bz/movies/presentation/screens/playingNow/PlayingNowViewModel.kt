@@ -17,7 +17,6 @@ import com.bz.network.repository.MovieRepository
 import com.bz.network.repository.NoInternetException
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.time.Instant
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -84,7 +83,7 @@ internal class PlayingNowViewModel @Inject constructor(
         localMovieRepository.get().clearPlayingNowMovies()
         val result = movieRepository.get().getPlayingNowMovies()
         result.onSuccess { data ->
-            dataStoreRepository.get().insertPlayingNowRefreshDate(Instant.now())
+            dataStoreRepository.get().markPlayingNowRefreshed()
             localMovieRepository.get().insertPlayingNowMovies(data)
         }
         result.onFailure {
@@ -115,7 +114,7 @@ internal class PlayingNowViewModel @Inject constructor(
                     }
                 }
                 .collectLatest { data ->
-                    dataStoreRepository.get().getPlyingNowRefreshDate()
+                    dataStoreRepository.get().getPlayingNowRefreshDate()
                         .onFailure { Logger.e("Loading error", it) }
                         .onSuccess { Logger.d("Last date : $it") }
 

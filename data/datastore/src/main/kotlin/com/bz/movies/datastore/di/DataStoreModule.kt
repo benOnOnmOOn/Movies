@@ -18,12 +18,16 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+import kotlin.time.Clock
 
 internal const val USER_PREFERENCES = "Settings"
 
 @Module
 @InstallIn(SingletonComponent::class)
 internal object DataStoreModule {
+    @Provides
+    internal fun provideClock(): Clock = Clock.System
+
     @Singleton
     @Provides
     internal fun providePreferences(app: Application): DataStore<Preferences> {
