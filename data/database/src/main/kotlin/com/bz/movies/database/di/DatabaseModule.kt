@@ -3,10 +3,9 @@ package com.bz.movies.database.di
 import android.app.Application
 import com.bz.movies.database.MoviesDatabase
 import com.bz.movies.database.createMoviesDatabase
+import com.bz.movies.database.dao.CachedMovieDAO
 import com.bz.movies.database.dao.CurrencyDAO
 import com.bz.movies.database.dao.MovieDAO
-import com.bz.movies.database.dao.PlayingNowMovieDAO
-import com.bz.movies.database.dao.PopularMovieDAO
 import com.bz.tools.throwOnMainThread
 import dagger.Module
 import dagger.Provides
@@ -33,16 +32,9 @@ internal object DatabaseModule {
 
     @Singleton
     @Provides
-    internal fun providePlayingNowMovieDao(db: MoviesDatabase): PlayingNowMovieDAO {
+    internal fun provideCachedMovieDao(db: MoviesDatabase): CachedMovieDAO {
         throwOnMainThread()
-        return db.playingNowMovieDAO()
-    }
-
-    @Singleton
-    @Provides
-    internal fun providePopularMovieDao(db: MoviesDatabase): PopularMovieDAO {
-        throwOnMainThread()
-        return db.popularMovieDAO()
+        return db.cachedMovieDAO()
     }
 
     @Singleton

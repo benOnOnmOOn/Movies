@@ -10,7 +10,7 @@ import com.bz.network.api.model.PopularMoviesPageApiResponse
 
 private const val VOTE_MULTIPLER = 10
 
-internal fun MovieApiResponse.toPopularMovieDto() = MovieDto(
+internal fun MovieApiResponse.toMovieDto() = MovieDto(
     id = id,
     posterUrl = posterPath.orEmpty(),
     title = title.orEmpty(),
@@ -19,20 +19,9 @@ internal fun MovieApiResponse.toPopularMovieDto() = MovieDto(
     rating = voteAverage?.let { it * VOTE_MULTIPLER }?.toInt() ?: 0
 )
 
-internal fun PopularMoviesPageApiResponse.toPopularMovieDto() = movies.map {
-    it.toPopularMovieDto()
-}
+internal fun PopularMoviesPageApiResponse.toMovieDto() = movies.map { it.toMovieDto() }
 
-internal fun MovieApiResponse.toPlayingNowMovieDto() = MovieDto(
-    id = id,
-    posterUrl = posterPath.orEmpty(),
-    title = title.orEmpty(),
-    publicationDate = releaseDate.orEmpty(),
-    language = originalLanguage.orEmpty(),
-    rating = voteAverage?.let { it * VOTE_MULTIPLER }?.toInt() ?: 0
-)
-
-internal fun PlayingNowMoviesApiResponse.toMovieDto() = movies.map { it.toPlayingNowMovieDto() }
+internal fun PlayingNowMoviesApiResponse.toMovieDto() = movies.map { it.toMovieDto() }
 
 internal fun MovieDetailsApiResponse.toMovieDetailDto() = MoveDetailDto(
     id = id,
@@ -48,5 +37,5 @@ internal fun PopularMoviesPageApiResponse.toPopularMoviePageDto() = PopularMovie
     page = page,
     totalPages = totalPages,
     totalResults = totalResults,
-    popularMovies = movies.map { it.toPopularMovieDto() }
+    popularMovies = movies.map { it.toMovieDto() }
 )
