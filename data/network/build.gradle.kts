@@ -7,6 +7,12 @@ plugins {
     alias(libs.plugins.movies.strict.dependencies)
 }
 
+android {
+    testFixtures {
+        enable = true
+    }
+}
+
 dependencies {
     api(projects.data.dto)
     implementation(projects.utlis.android)
