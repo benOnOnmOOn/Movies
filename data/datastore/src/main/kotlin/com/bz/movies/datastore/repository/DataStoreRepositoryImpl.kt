@@ -26,20 +26,19 @@ internal class DataStoreRepositoryImpl @Inject constructor(
     private val playingNowKey = longPreferencesKey(PLAYING_NOW_KEY)
     private val popularKey = longPreferencesKey(POPULAR_KEY)
 
-    override suspend fun markPlayingNowRefreshed(): Result<Unit> = markRefreshed(playingNowKey)
+    override suspend fun markPlayingNowRefreshed(): Result<Unit> = runSuspendCatching {
+        dataStore.edit { it[playingNowKey] = clock.now().epochSeconds }
+    }
 
-    override suspend fun getPlayingNowRefreshDate(): Result<Instant> = readDate(playingNowKey)
+    override suspend fun getPlayingNowRefreshDate(): Result<Instant> = runSuspendCatching {
+        Instant.fromEpochSeconds(dataStore.data.map { it[playingNowKey] ?: 0L }.first())
+    }
 
-    override suspend fun markPopularRefreshed(): Result<Unit> = markRefreshed(popularKey)
+    override suspend fun markPopularRefreshed(): Result<Unit> = runSuspendCatching {
+        dataStore.edit { it[popularKey] = clock.now().epochSeconds }
+    }
 
-    override suspend fun getPopularRefreshDate(): Result<Instant> = readDate(popularKey)
-
-    private suspend fun markRefreshed(key: Preferences.Key<Long>): Result<Unit> =
-        runSuspendCatching {
-            dataStore.edit { it[key] = clock.now().epochSeconds }
-        }
-
-    private suspend fun readDate(key: Preferences.Key<Long>): Result<Instant> = runSuspendCatching {
-        Instant.fromEpochSeconds(dataStore.data.map { it[key] ?: 0L }.first())
+    override suspend fun getPopularRefreshDate(): Result<Instant> = runSuspendCatching {
+        Instant.fromEpochSeconds(dataStore.data.map { it[popularKey] ?: 0L }.first())
     }
 }
