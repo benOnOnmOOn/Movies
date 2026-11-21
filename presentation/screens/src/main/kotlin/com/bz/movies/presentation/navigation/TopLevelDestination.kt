@@ -3,7 +3,7 @@ package com.bz.movies.presentation.navigation
 import com.bz.movies.presentation.screens.R
 
 internal data class TopLevelDestination(
-    val route: Route,
+    val route: TopLevelRoute,
     val unselectedIcon: Int,
     val selectedIcon: Int,
     val iconTextId: Int

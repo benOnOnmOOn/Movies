@@ -4,28 +4,28 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import kotlinx.serialization.Serializable
 
-internal sealed interface Route
+internal sealed interface TopLevelRoute
 
 @Serializable
-internal data object PlayingNowRoute : Route
+internal data object PlayingNowRoute : TopLevelRoute
 
 /** Nested graph holding the Popular tab and its details screen, so the tab keeps its own stack. */
 @Serializable
-internal data object PopularGraph : Route
+internal data object PopularGraph : TopLevelRoute
 
 @Serializable
-internal data object PopularRoute : Route
+internal data object PopularRoute : TopLevelRoute
 
 @Serializable
-internal data object FavoriteRoute : Route
+internal data object FavoriteRoute : TopLevelRoute
 
 @Serializable
-internal data object MoreRoute : Route
+internal data object MoreRoute : TopLevelRoute
 
 @Serializable
-internal data class MovieDetailsRoute(val id: Int) : Route
+internal data class MovieDetailsRoute(val id: Int) : TopLevelRoute
 
-internal fun NavController.navigateToTopLevel(route: Route) {
+internal fun NavController.navigateToTopLevel(route: TopLevelRoute) {
     navigate(route) {
         popUpTo(graph.findStartDestination().id) {
             saveState = true
