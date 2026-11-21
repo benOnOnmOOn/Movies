@@ -19,6 +19,7 @@ import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.random.Random
+import kotlin.time.Duration.Companion.hours
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.channels.Channel
@@ -30,7 +31,6 @@ import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlin.time.Duration.Companion.hours
 
 @SuppressLint("MainScopeUsage")
 @HiltViewModel
