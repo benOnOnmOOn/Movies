@@ -115,8 +115,8 @@ dependencies {
     kspAndroidTest(libs.hilt.android.compiler)
 
     androidTestImplementation(libs.androidx.compose.runtime)
-  androidTestImplementation("androidx.compose.ui:ui-test:1.12.0")
-  androidTestImplementation(project(":data:okhttp"))
+    androidTestImplementation(libs.androidx.compose.ui.test)
+    androidTestImplementation(projects.data.okhttp)
 }
 
 dependencyGuard {

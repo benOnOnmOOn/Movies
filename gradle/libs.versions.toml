@@ -67,6 +67,7 @@ androidx-compose-runtime-android = { module = "androidx.compose.runtime:runtime-
 androidx-compose-runtime-annotation = { module = "androidx.compose.runtime:runtime-annotation", version.ref = "androidx-compose" }
 androidx-compose-ui-android = { module = "androidx.compose.ui:ui-android", version.ref = "androidx-compose" }
 androidx-compose-ui-graphics-android = { module = "androidx.compose.ui:ui-graphics-android", version.ref = "androidx-compose" }
+androidx-compose-ui-test = { module = "androidx.compose.ui:ui-test", version.ref = "androidx-compose" }
 androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-compose" }
 androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-compose" }
 androidx-compose-ui-text-android = { module = "androidx.compose.ui:ui-text-android", version.ref = "androidx-compose" }
