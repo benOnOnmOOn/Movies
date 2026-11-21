@@ -1,9 +1,12 @@
 package com.bz.movies.presentation.screens.details
 
 import android.annotation.SuppressLint
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import co.touchlab.kermit.Logger
+import com.bz.movies.presentation.navigation.MovieDetailsRoute
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
@@ -30,8 +33,11 @@ import kotlinx.coroutines.launch
 @SuppressLint("MainScopeUsage")
 @HiltViewModel
 internal class MovieDetailsViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
     private val movieRepository: Lazy<MovieRepository>
 ) : ViewModel() {
+    private val movieId: Int = savedStateHandle.toRoute<MovieDetailsRoute>().id
+
     private val _state = MutableStateFlow(MovieDetailState())
     val state: StateFlow<MovieDetailState> = _state.asStateFlow()
 
@@ -45,10 +51,11 @@ internal class MovieDetailsViewModel @Inject constructor(
             delay(1_000_000)
             _effect.send(MovieEffect.UnknownError)
         }
+        fetchMovieDetails()
     }
 
     @Suppress("MagicNumber")
-    fun fetchMovieDetails(movieId: Int) = viewModelScope.launch(Dispatchers.IO) {
+    private fun fetchMovieDetails() = viewModelScope.launch(Dispatchers.IO) {
         val result = movieRepository.get().getMovieDetail(movieId)
         result.onSuccess { data ->
             _state.update {

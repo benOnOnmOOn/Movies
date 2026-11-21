@@ -12,6 +12,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import org.chromium.net.CronetEngine
 
@@ -19,7 +20,8 @@ internal const val NETWORK_CONNECTION_TIMEOUT = 30L
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal class ApiModule {
+internal object ApiModule {
+    @Singleton
     @Provides
     internal fun provideCronetEngine(@ApplicationContext context: Context): CronetEngine {
         throwOnMainThread()
@@ -31,14 +33,16 @@ internal class ApiModule {
             .build()
     }
 
+    @Singleton
     @Provides
     internal fun provideCronetCallFactory(engine: CronetEngine): CronetCallFactory {
         throwOnMainThread()
         return CronetCallFactory.newBuilder(engine).build()
     }
 
+    @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
+    internal fun provideOkHttpClient(): OkHttpClient {
         throwOnMainThread()
         return OkHttpClient.Builder()
             .connectTimeout(NETWORK_CONNECTION_TIMEOUT, TimeUnit.SECONDS)

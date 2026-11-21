@@ -5,26 +5,22 @@ import com.bz.tools.throwOnMainThread
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
 @Module
-@InstallIn(ViewModelComponent::class)
-internal class ApiModule {
+@InstallIn(SingletonComponent::class)
+internal object ApiModule {
+    @Singleton
     @Provides
-    internal fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        throwOnMainThread()
-        return HttpLoggingInterceptor().apply {
-            setLevel(HttpLoggingInterceptor.Level.BODY)
-        }
-    }
-
-    @Provides
-    internal fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    internal fun provideOkHttpClient(): OkHttpClient {
         throwOnMainThread()
         return OkHttpClient.Builder()
-            .addInterceptor(httpLoggingInterceptor)
+            .addInterceptor(
+                HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) }
+            )
             .socketFactory(DelegatingSocketFactory())
             .build()
     }

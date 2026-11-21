@@ -10,7 +10,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavHostController
 import com.bz.movies.presentation.screens.R
 import com.bz.movies.presentation.screens.common.ErrorDialog
 import com.bz.movies.presentation.screens.common.MovieEffect
@@ -22,7 +21,7 @@ import com.bz.movies.presentation.utils.collectInLaunchedEffectWithLifecycle
 
 @Composable
 internal fun PopularMoviesScreen(
-    navController: NavHostController,
+    onMovieClick: (id: Int) -> Unit,
     popularViewModel: PopularMoviesViewModel = hiltViewModel()
 ) {
     val popular by popularViewModel.state.collectAsStateWithLifecycle()
@@ -43,10 +42,9 @@ internal fun PopularMoviesScreen(
         showNoInternetDialog = noInternetDialog.value,
         showErrorDialog = errorDialog.value,
         onNetworkErrorDismiss = { noInternetDialog.value = false },
-        onErrorDismiss = { errorDialog.value = false }
-    ) {
-        navController.navigate("tab_popular/details/$it")
-    }
+        onErrorDismiss = { errorDialog.value = false },
+        onMovieClicked = onMovieClick
+    )
 }
 
 @Composable

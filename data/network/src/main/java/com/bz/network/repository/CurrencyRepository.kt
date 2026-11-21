@@ -8,7 +8,9 @@ import com.bz.network.api.service.CurrencyService
 import com.bz.network.repository.mapper.toCurrencyDto
 import com.bz.network.repository.mapper.toExchangeRateDto
 import com.bz.network.utils.InternetConnection
+import com.bz.tools.throwOnMainThread
 import dagger.Lazy
+import javax.inject.Inject
 
 private const val AUTH_KEY = "cur_live_0VOoymI1vCKyBOKWLupNRIvd3LyzJABKz8V5CrhV"
 
@@ -18,10 +20,13 @@ public interface CurrencyRepository {
     public suspend fun getExchangeRate(baseCurrency: String): Result<List<ExchangeRateDto>>
 }
 
-internal class CurrencyRepositoryImpl(
+internal class CurrencyRepositoryImpl @Inject constructor(
     private val currencyService: Lazy<CurrencyService>,
     private val internetConnectionChecker: Lazy<InternetConnection>
 ) : CurrencyRepository {
+    init {
+        throwOnMainThread()
+    }
 
     override suspend fun getAllCurrencies(): Result<List<CurrencyDto>> = executeApiCall(
         internetConnectionChecker.get(),

@@ -4,13 +4,21 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import io.mockk.every
 import io.mockk.mockk
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class InternetConnectionImplTest {
 
     private val connectivityManager: ConnectivityManager = mockk(relaxed = true)
+
+    @BeforeEach
+    fun setUp() = stubBackgroundLooper()
+
+    @AfterEach
+    fun tearDown() = clearLooperStub()
 
     @Test
     fun `when connection manager is null then internet connection should return false`() {

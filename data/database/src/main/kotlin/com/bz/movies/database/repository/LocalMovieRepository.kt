@@ -12,7 +12,9 @@ import com.bz.movies.database.repository.mapper.toMovieEntity
 import com.bz.movies.database.repository.mapper.toPlayingNowMovieEntity
 import com.bz.movies.database.repository.mapper.toPopularMovieEntity
 import com.bz.movies.database.runCatchingWithContext
+import com.bz.tools.throwOnMainThread
 import dagger.Lazy
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -38,11 +40,15 @@ public interface LocalMovieRepository {
     public suspend fun clearPopularMovies(): Result<Unit>
 }
 
-internal class LocalMovieRepositoryImpl(
+internal class LocalMovieRepositoryImpl @Inject constructor(
     private val movieDAO: Lazy<MovieDAO>,
     private val playingNowMovieDAO: Lazy<PlayingNowMovieDAO>,
     private val popularMovieDAO: Lazy<PopularMovieDAO>
 ) : LocalMovieRepository {
+    init {
+        throwOnMainThread()
+    }
+
     override val favoritesMovies: Flow<List<MovieDto>>
         get() =
             movieDAO

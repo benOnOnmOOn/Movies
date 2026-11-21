@@ -12,6 +12,7 @@ import co.touchlab.kermit.Logger
 import com.bz.movies.datastore.repository.DataStoreRepository
 import com.bz.movies.datastore.repository.DataStoreRepositoryImpl
 import com.bz.tools.throwOnMainThread
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +23,7 @@ internal const val USER_PREFERENCES = "Settings"
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal class DataStoreModule {
+internal object DataStoreModule {
     @Singleton
     @Provides
     internal fun providePreferences(app: Application): DataStore<Preferences> {
@@ -38,13 +39,11 @@ internal class DataStoreModule {
             produceFile = { app.preferencesDataStoreFile(USER_PREFERENCES) }
         )
     }
+}
 
-    @Singleton
-    @Provides
-    internal fun provideDataStoreRepository(
-        dataStore: DataStore<Preferences>
-    ): DataStoreRepository {
-        throwOnMainThread()
-        return DataStoreRepositoryImpl(dataStore)
-    }
+@Module
+@InstallIn(SingletonComponent::class)
+internal interface DataStoreBindingModule {
+    @Binds
+    fun bindDataStoreRepository(impl: DataStoreRepositoryImpl): DataStoreRepository
 }

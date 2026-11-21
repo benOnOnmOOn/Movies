@@ -1,9 +1,17 @@
+import com.autonomousapps.DependencyAnalysisSubExtension
+
 plugins {
     alias(libs.plugins.movies.dependency.analysis)
     alias(libs.plugins.movies.android.library)
     alias(libs.plugins.movies.hilt)
     alias(libs.plugins.movies.strict.dependencies)
     alias(libs.plugins.movies.ktlint)
+}
+
+extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
+    issues {
+        onUnusedDependencies { exclude("com.google.dagger:hilt-android") }
+    }
 }
 
 dependencies {
@@ -24,9 +32,10 @@ dependencies {
     api(libs.okhttp)
 
     // use debug impl to prevent from adding this deps to release version
-    debugApi(libs.logging.interceptor)
+    debugImplementation(libs.logging.interceptor)
 
     implementation(libs.kotlin.stdlib)
 
     runtimeOnly(libs.kotlinx.coroutines.android)
+    implementation(libs.javax.inject)
 }

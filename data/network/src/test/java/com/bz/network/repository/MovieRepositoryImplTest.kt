@@ -11,14 +11,18 @@ import com.bz.network.api.model.PlayingNowMoviesApiResponse
 import com.bz.network.api.model.PopularMoviesPageApiResponse
 import com.bz.network.api.service.MovieService
 import com.bz.network.utils.InternetConnection
+import com.bz.network.utils.clearLooperStub
+import com.bz.network.utils.stubBackgroundLooper
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
 import okhttp3.ResponseBody.Companion.toResponseBody
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import retrofit2.Response
 
@@ -28,8 +32,15 @@ class MovieRepositoryImplTest {
         mockk {
             every { isConnected } returns true
         }
-    private val movieRepository: MovieRepository =
+    private val movieRepository: MovieRepository by lazy {
         MovieRepositoryImpl({ movieService }, { internetConnection })
+    }
+
+    @BeforeEach
+    fun setUp() = stubBackgroundLooper()
+
+    @AfterEach
+    fun tearDown() = clearLooperStub()
 
     @Test
     fun `getPlayingNowMovies return error if response is null`() = runTest {

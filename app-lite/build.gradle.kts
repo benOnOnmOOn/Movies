@@ -108,7 +108,6 @@ dependencies {
     implementation(libs.okhttp.android)
     implementation(libs.retrofit)
     implementation(libs.androidx.datastore.preferences.core)
-    debugImplementation(libs.logging.interceptor)
 
     releaseImplementation(libs.kermit.core)
 

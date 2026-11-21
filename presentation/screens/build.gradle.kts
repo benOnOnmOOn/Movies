@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.movies.kover)
     alias(libs.plugins.movies.ktlint)
     alias(libs.plugins.androidx.compose.screenshot)
+    alias(libs.plugins.kotlin.serialization)
 //    alias(libs.plugins.compose.stability.analyzer)
 }
 
@@ -63,11 +64,13 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    api(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
     implementation(libs.kermit)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.serialization.core)
 
     runtimeOnly(libs.androidx.startup.runtime)
 

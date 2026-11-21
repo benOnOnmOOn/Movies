@@ -1,7 +1,10 @@
 package com.bz.movies.presentation.screens.details
 
+import androidx.lifecycle.SavedStateHandle
+import androidx.navigation.toRoute
 import app.cash.turbine.test
 import com.bz.dto.MoveDetailDto
+import com.bz.movies.presentation.navigation.MovieDetailsRoute
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
@@ -12,63 +15,39 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
+import io.mockk.mockkStatic
 import io.mockk.unmockkObject
+import io.mockk.unmockkStatic
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class MovieDetailsViewModelTest {
 
     private val movieRepository: MovieRepository = mockk()
 
-    @Test
-    fun `when viewmodel is init it should not make any network call `() = runTest {
-        coEvery { movieRepository.getMovieDetail(any()) } returns Result.success(
-            SUCCESS_MOVIE_DETAIL
-        )
-
-        val viewModel = MovieDetailsViewModel { movieRepository }
-        viewModel.state.test {
-            val actualItem = awaitItem()
-            val expectedItem = MovieDetailState()
-            assertEquals(expectedItem, actualItem)
-
-            coVerify(exactly = 0) { movieRepository.getPopularMovies(any()) }
-
-            expectNoEvents()
-        }
-    }
+    private val savedStateHandle = SavedStateHandle()
 
     @Test
-    fun `when viewmodel fetchMovieDetails is called should fetch data from network `() = runTest {
+    fun `when viewmodel is init it should fetch details for the route movie id`() = runTest {
         coEvery { movieRepository.getMovieDetail(any()) } returns Result.success(
             SUCCESS_MOVIE_DETAIL
         )
         mockkObject(Random)
         every { Random.nextInt(any(), any()) } returns 69
 
-        val viewModel = MovieDetailsViewModel { movieRepository }
-        viewModel.state.test {
-            assertEquals(MovieDetailState(), awaitItem())
-            expectNoEvents()
-        }
-        viewModel.fetchMovieDetails(1234)
-        viewModel.state.test {
-            val actualItem = awaitItem()
-            assertEquals(EXPECTED_DETAILS_STATE, actualItem)
-            expectNoEvents()
-        }
+        val viewModel = MovieDetailsViewModel(savedStateHandle) { movieRepository }
+
+        assertEquals(EXPECTED_DETAILS_STATE, viewModel.state.first { !it.isLoading })
+        coVerify(exactly = 1) { movieRepository.getMovieDetail(MOVIE_ID) }
         unmockkObject(Random)
     }
 
@@ -81,8 +60,7 @@ class MovieDetailsViewModelTest {
                 )
             } returns Result.failure(HttpException(""))
 
-            val viewModel = MovieDetailsViewModel { movieRepository }
-            viewModel.fetchMovieDetails(1234)
+            val viewModel = MovieDetailsViewModel(savedStateHandle) { movieRepository }
             viewModel.effect.test {
                 assertEquals(MovieEffect.NetworkConnectionError, awaitItem())
                 expectNoEvents()
@@ -97,8 +75,7 @@ class MovieDetailsViewModelTest {
             movieRepository.getMovieDetail(any())
         } returns Result.failure(IllegalStateException())
 
-        val viewModel = MovieDetailsViewModel { movieRepository }
-        viewModel.fetchMovieDetails(1234)
+        val viewModel = MovieDetailsViewModel(savedStateHandle) { movieRepository }
         viewModel.effect.test {
             assertEquals(MovieEffect.UnknownError, awaitItem())
             expectNoEvents()
@@ -110,15 +87,22 @@ class MovieDetailsViewModelTest {
     @BeforeEach
     fun setUp() {
         Dispatchers.setMain(StandardTestDispatcher())
+        mockkStatic(SAVED_STATE_HANDLE_KT)
+        every {
+            savedStateHandle.toRoute(MovieDetailsRoute::class, any())
+        } returns MovieDetailsRoute(MOVIE_ID)
     }
 
     @AfterEach
     fun tearDown() {
         Dispatchers.resetMain()
+        unmockkStatic(SAVED_STATE_HANDLE_KT)
 //        MainScope().cancel()
     }
 
     companion object {
+        private const val MOVIE_ID = 1234
+        private const val SAVED_STATE_HANDLE_KT = "androidx.navigation.SavedStateHandleKt"
 
         internal val EXPECTED_DETAILS_STATE = MovieDetailState(
             isLoading = false,
