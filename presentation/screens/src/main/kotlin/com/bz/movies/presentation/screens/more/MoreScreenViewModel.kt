@@ -13,11 +13,8 @@ import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -31,14 +28,10 @@ internal class MoreScreenViewModel @Inject constructor(
     private val _state = MutableStateFlow(MoreState())
     val state: StateFlow<MoreState> = _state.asStateFlow()
 
-    private val _event: MutableSharedFlow<MoreEvent> = MutableSharedFlow()
-    private val event: SharedFlow<MoreEvent> = _event.asSharedFlow()
-
     private val lruCache = lruCache<String, List<ExchangeRateDto>>(maxSize = 2)
 
     init {
         collectCurrentLanguage()
-        handleEvent()
         getCurrencies()
     }
 
@@ -91,11 +84,7 @@ internal class MoreScreenViewModel @Inject constructor(
     }
 
     fun sendEvent(event: MoreEvent) = viewModelScope.launch {
-        _event.emit(event)
-    }
-
-    private fun handleEvent() = viewModelScope.launch {
-        event.collect { handleEvent(it) }
+        handleEvent(event)
     }
 
     private suspend fun handleEvent(event: MoreEvent) {

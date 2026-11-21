@@ -21,11 +21,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
@@ -44,23 +41,15 @@ internal class PopularMoviesViewModel @Inject constructor(
     private val _state = MutableStateFlow(MoviesState())
     val state: StateFlow<MoviesState> = _state.asStateFlow()
 
-    private val _event: MutableSharedFlow<MovieEvent> = MutableSharedFlow()
-    private val event: SharedFlow<MovieEvent> = _event.asSharedFlow()
-
     private val _effect: Channel<MovieEffect> = Channel()
     val effect = _effect.receiveAsFlow()
 
     init {
         collectPopularMovies()
-        handleEvent()
     }
 
-    fun sendEvent(event: MovieEvent) = viewModelScope.launch {
-        _event.emit(event)
-    }
-
-    private fun handleEvent() = viewModelScope.launch(Dispatchers.IO) {
-        event.collect { handleEvent(it) }
+    fun sendEvent(event: MovieEvent) = viewModelScope.launch(Dispatchers.IO) {
+        handleEvent(event)
     }
 
     private suspend fun handleEvent(event: MovieEvent) {
