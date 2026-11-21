@@ -39,8 +39,7 @@ internal class DataStoreRepositoryImpl @Inject constructor(
             dataStore.edit { it[key] = clock.now().epochSeconds }
         }
 
-    private suspend fun readDate(key: Preferences.Key<Long>): Result<Instant> =
-        runSuspendCatching {
-            Instant.fromEpochSeconds(dataStore.data.map { it[key] ?: 0L }.first())
-        }
+    private suspend fun readDate(key: Preferences.Key<Long>): Result<Instant> = runSuspendCatching {
+        Instant.fromEpochSeconds(dataStore.data.map { it[key] ?: 0L }.first())
+    }
 }

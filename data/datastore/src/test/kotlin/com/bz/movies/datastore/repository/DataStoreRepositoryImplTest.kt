@@ -50,7 +50,10 @@ class DataStoreRepositoryImplTest {
         repository.markPlayingNowRefreshed()
 
         assertEquals(Result.success(NOW), repository.getPlayingNowRefreshDate())
-        assertEquals(Result.success(Instant.fromEpochSeconds(0)), repository.getPopularRefreshDate())
+        assertEquals(
+            Result.success(Instant.fromEpochSeconds(0)),
+            repository.getPopularRefreshDate()
+        )
     }
 
     @Test
