@@ -43,4 +43,10 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     testRuntimeOnly(libs.junit.engine)
+
+    androidTestImplementation(libs.androidx.monitor)
+    androidTestImplementation(libs.androidx.room.testing)
+    androidTestImplementation(libs.junit4)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
+    androidTestRuntimeOnly(libs.androidx.test.runner)
 }

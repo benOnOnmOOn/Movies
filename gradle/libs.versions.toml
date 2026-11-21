@@ -101,6 +101,7 @@ androidx-navigation-runtime = { module = "androidx.navigation:navigation-runtime
 androidx-room-common = { module = "androidx.room3:room3-common", version.ref = "androidx-room" }
 androidx-room-compiler = { module = "androidx.room3:room3-compiler", version.ref = "androidx-room" }
 androidx-room-runtime = { module = "androidx.room3:room3-runtime", version.ref = "androidx-room" }
+androidx-room-testing = { module = "androidx.room3:room3-testing", version.ref = "androidx-room" }
 androidx-sqlite = { module = "androidx.sqlite:sqlite", version.ref = "androidx-sqlite" }
 androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "androidx-sqlite" }
 androidx-sqlite-framework = { module = "androidx.sqlite:sqlite-framework", version.ref = "sqlite-framework" }
