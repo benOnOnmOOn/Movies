@@ -1,8 +1,6 @@
 package com.bz.movies.presentation.screens.common
 
 import android.annotation.SuppressLint
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import co.touchlab.kermit.Logger
 import com.bz.dto.MovieDto
 import com.bz.movies.database.repository.LocalMovieRepository
@@ -13,6 +11,7 @@ import com.bz.network.repository.HttpException
 import com.bz.network.repository.NoInternetException
 import dagger.Lazy
 import kotlin.time.Instant
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -41,10 +40,11 @@ internal interface MovieListSource {
     suspend fun lastRefreshDate(): Result<Instant>
 }
 
-internal abstract class MoviesListViewModel(
+internal class MoviesListDelegate(
+    private val scope: CoroutineScope,
     private val localMovieRepository: Lazy<LocalMovieRepository>,
     private val source: MovieListSource
-) : ViewModel() {
+) {
     private val _state = MutableStateFlow(MoviesState())
     val state: StateFlow<MoviesState> = _state.asStateFlow()
 
@@ -55,7 +55,7 @@ internal abstract class MoviesListViewModel(
         collectMovies()
     }
 
-    fun sendEvent(event: MovieEvent) = viewModelScope.launch(Dispatchers.IO) {
+    fun sendEvent(event: MovieEvent) = scope.launch(Dispatchers.IO) {
         handleEvent(event)
     }
 
@@ -77,7 +77,7 @@ internal abstract class MoviesListViewModel(
         }
     }
 
-    private fun fetchMovies() = viewModelScope.launch(Dispatchers.IO) {
+    private fun fetchMovies() = scope.launch(Dispatchers.IO) {
         val result = source.fetchMovies()
         result.onSuccess { data ->
             source.markRefreshed()
@@ -104,7 +104,7 @@ internal abstract class MoviesListViewModel(
 
     @SuppressLint("RawDispatchersUse")
     private fun collectMovies() {
-        viewModelScope.launch(Dispatchers.IO) {
+        scope.launch(Dispatchers.IO) {
             source.lastRefreshDate()
                 .onFailure { Logger.e("Loading error", it) }
                 .onSuccess { Logger.d("Last date : $it") }
