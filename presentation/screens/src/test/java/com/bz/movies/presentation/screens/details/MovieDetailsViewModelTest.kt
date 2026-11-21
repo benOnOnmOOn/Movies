@@ -1,8 +1,10 @@
 package com.bz.movies.presentation.screens.details
 
 import androidx.lifecycle.SavedStateHandle
+import androidx.navigation.toRoute
 import app.cash.turbine.test
 import com.bz.dto.MoveDetailDto
+import com.bz.movies.presentation.navigation.MovieDetailsRoute
 import com.bz.movies.presentation.screens.common.MovieDetailState
 import com.bz.movies.presentation.screens.common.MovieEffect
 import com.bz.movies.presentation.screens.common.MovieItem
@@ -13,7 +15,9 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
+import io.mockk.mockkStatic
 import io.mockk.unmockkObject
+import io.mockk.unmockkStatic
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -30,6 +34,8 @@ class MovieDetailsViewModelTest {
 
     private val movieRepository: MovieRepository = mockk()
 
+    private val savedStateHandle = SavedStateHandle()
+
     @Test
     fun `when viewmodel is init it should fetch details for the route movie id`() = runTest {
         coEvery { movieRepository.getMovieDetail(any()) } returns Result.success(
@@ -38,8 +44,7 @@ class MovieDetailsViewModelTest {
         mockkObject(Random)
         every { Random.nextInt(any(), any()) } returns 69
 
-        val viewModel =
-            MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
+        val viewModel = MovieDetailsViewModel(savedStateHandle) { movieRepository }
 
         assertEquals(EXPECTED_DETAILS_STATE, viewModel.state.first { !it.isLoading })
         coVerify(exactly = 1) { movieRepository.getMovieDetail(MOVIE_ID) }
@@ -55,8 +60,7 @@ class MovieDetailsViewModelTest {
                 )
             } returns Result.failure(HttpException(""))
 
-            val viewModel =
-                MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
+            val viewModel = MovieDetailsViewModel(savedStateHandle) { movieRepository }
             viewModel.effect.test {
                 assertEquals(MovieEffect.NetworkConnectionError, awaitItem())
                 expectNoEvents()
@@ -71,8 +75,7 @@ class MovieDetailsViewModelTest {
             movieRepository.getMovieDetail(any())
         } returns Result.failure(IllegalStateException())
 
-        val viewModel =
-            MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
+        val viewModel = MovieDetailsViewModel(savedStateHandle) { movieRepository }
         viewModel.effect.test {
             assertEquals(MovieEffect.UnknownError, awaitItem())
             expectNoEvents()
@@ -84,16 +87,22 @@ class MovieDetailsViewModelTest {
     @BeforeEach
     fun setUp() {
         Dispatchers.setMain(StandardTestDispatcher())
+        mockkStatic(SAVED_STATE_HANDLE_KT)
+        every {
+            savedStateHandle.toRoute(MovieDetailsRoute::class, any())
+        } returns MovieDetailsRoute(MOVIE_ID)
     }
 
     @AfterEach
     fun tearDown() {
         Dispatchers.resetMain()
+        unmockkStatic(SAVED_STATE_HANDLE_KT)
 //        MainScope().cancel()
     }
 
     companion object {
         private const val MOVIE_ID = 1234
+        private const val SAVED_STATE_HANDLE_KT = "androidx.navigation.SavedStateHandleKt"
 
         internal val EXPECTED_DETAILS_STATE = MovieDetailState(
             isLoading = false,
