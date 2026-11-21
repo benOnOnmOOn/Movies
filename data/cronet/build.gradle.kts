@@ -33,4 +33,5 @@ dependencies {
     implementation(libs.kotlin.stdlib)
 
     runtimeOnly(libs.kotlinx.coroutines.android)
+  implementation(libs.javax.inject)
 }

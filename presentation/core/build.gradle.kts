@@ -9,7 +9,7 @@ plugins {
 }
 
 dependencies {
-    api(projects.presentation.screens)
+    implementation(project(":presentation:screens"))
 
     lintChecks(libs.lint.slack.checks)
 
@@ -36,4 +36,5 @@ dependencies {
 
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
+  implementation(libs.javax.inject)
 }

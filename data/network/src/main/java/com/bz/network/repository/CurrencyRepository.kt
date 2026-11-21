@@ -28,7 +28,6 @@ internal class CurrencyRepositoryImpl @Inject constructor(
         throwOnMainThread()
     }
 
-
     override suspend fun getAllCurrencies(): Result<List<CurrencyDto>> = executeApiCall(
         internetConnectionChecker.get(),
         CurrenciesResponseModel::toCurrencyDto

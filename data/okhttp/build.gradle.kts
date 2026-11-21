@@ -17,16 +17,16 @@ dependencies {
     ksp(libs.hilt.android.compiler)
     ksp(libs.dagger.compiler)
     implementation(libs.hilt.core)
-    implementation(libs.hilt.android)
     api(libs.dagger)
     //endregion
 
     api(libs.okhttp)
 
     // use debug impl to prevent from adding this deps to release version
-    debugApi(libs.logging.interceptor)
+    debugImplementation(libs.logging.interceptor)
 
     implementation(libs.kotlin.stdlib)
 
     runtimeOnly(libs.kotlinx.coroutines.android)
+  implementation(libs.javax.inject)
 }

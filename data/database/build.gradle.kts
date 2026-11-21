@@ -22,7 +22,6 @@ dependencies {
     api(libs.dagger)
     compileOnly(libs.javax.inject)
     implementation(libs.hilt.core)
-    implementation(libs.hilt.android)
     //
 
     implementation(libs.androidx.room.common)

@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <baseline version="1.0">
+    <file name="src/test/java/com/bz/movies/presentation/screens/details/MovieDetailsViewModelTest.kt">
+        <error line="45" column="24" source="standard:property-wrapping" />
+        <error line="45" column="47" source="standard:argument-list-wrapping" />
+        <error line="45" column="64" source="standard:argument-list-wrapping" />
+        <error line="45" column="70" source="standard:argument-list-wrapping" />
+        <error line="45" column="86" source="standard:argument-list-wrapping" />
+        <error line="45" column="87" source="standard:argument-list-wrapping" />
+        <error line="45" column="88" source="standard:argument-list-wrapping" />
+        <error line="45" column="90" source="standard:function-literal" />
+        <error line="45" column="100" source="standard:max-line-length" />
+        <error line="45" column="108" source="standard:function-literal" />
+        <error line="61" column="28" source="standard:property-wrapping" />
+        <error line="61" column="51" source="standard:argument-list-wrapping" />
+        <error line="61" column="68" source="standard:argument-list-wrapping" />
+        <error line="61" column="74" source="standard:argument-list-wrapping" />
+        <error line="61" column="90" source="standard:argument-list-wrapping" />
+        <error line="61" column="91" source="standard:argument-list-wrapping" />
+        <error line="61" column="92" source="standard:argument-list-wrapping" />
+        <error line="61" column="94" source="standard:function-literal" />
+        <error line="61" column="100" source="standard:max-line-length" />
+        <error line="61" column="112" source="standard:function-literal" />
+        <error line="76" column="24" source="standard:property-wrapping" />
+        <error line="76" column="47" source="standard:argument-list-wrapping" />
+        <error line="76" column="64" source="standard:argument-list-wrapping" />
+        <error line="76" column="70" source="standard:argument-list-wrapping" />
+        <error line="76" column="86" source="standard:argument-list-wrapping" />
+        <error line="76" column="87" source="standard:argument-list-wrapping" />
+        <error line="76" column="88" source="standard:argument-list-wrapping" />
+        <error line="76" column="90" source="standard:function-literal" />
+        <error line="76" column="100" source="standard:max-line-length" />
+        <error line="76" column="108" source="standard:function-literal" />
+    </file>
     <file name="src/test/java/com/bz/movies/presentation/screens/popular/PopularMoviesViewModelTest.kt">
         <error line="95" column="101" source="standard:max-line-length" />
         <error line="116" column="101" source="standard:max-line-length" />

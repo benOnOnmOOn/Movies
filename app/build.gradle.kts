@@ -91,7 +91,6 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.okhttp.android)
     implementation(libs.retrofit)
-    debugImplementation(libs.logging.interceptor)
 
     releaseImplementation(libs.guava)
 
