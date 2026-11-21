@@ -36,5 +36,5 @@ dependencies {
 
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
-  implementation(libs.javax.inject)
+    implementation(libs.javax.inject)
 }

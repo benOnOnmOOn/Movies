@@ -13,7 +13,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":presentation:screens"))
+    implementation(projects.presentation.screens)
 
     lintChecks(libs.lint.slack.checks)
 
@@ -38,5 +38,5 @@ dependencies {
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
     implementation(libs.androidx.annotation)
-  implementation(libs.javax.inject)
+    implementation(libs.javax.inject)
 }

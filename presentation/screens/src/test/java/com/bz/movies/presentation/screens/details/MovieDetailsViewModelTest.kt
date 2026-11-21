@@ -14,21 +14,17 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
 import io.mockk.unmockkObject
-import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
+import kotlin.random.Random
 
 class MovieDetailsViewModelTest {
 
@@ -42,7 +38,8 @@ class MovieDetailsViewModelTest {
         mockkObject(Random)
         every { Random.nextInt(any(), any()) } returns 69
 
-        val viewModel = MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
+        val viewModel =
+            MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
 
         assertEquals(EXPECTED_DETAILS_STATE, viewModel.state.first { !it.isLoading })
         coVerify(exactly = 1) { movieRepository.getMovieDetail(MOVIE_ID) }
@@ -58,7 +55,8 @@ class MovieDetailsViewModelTest {
                 )
             } returns Result.failure(HttpException(""))
 
-            val viewModel = MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
+            val viewModel =
+                MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
             viewModel.effect.test {
                 assertEquals(MovieEffect.NetworkConnectionError, awaitItem())
                 expectNoEvents()
@@ -73,7 +71,8 @@ class MovieDetailsViewModelTest {
             movieRepository.getMovieDetail(any())
         } returns Result.failure(IllegalStateException())
 
-        val viewModel = MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
+        val viewModel =
+            MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
         viewModel.effect.test {
             assertEquals(MovieEffect.UnknownError, awaitItem())
             expectNoEvents()
