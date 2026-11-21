@@ -27,8 +27,7 @@ internal class PlayingNowViewModel @Inject constructor(
 
         override suspend fun clearCache() = localMovieRepository.get().clearPlayingNowMovies()
 
-        override suspend fun markRefreshed() =
-            dataStoreRepository.get().markPlayingNowRefreshed()
+        override suspend fun markRefreshed() = dataStoreRepository.get().markPlayingNowRefreshed()
 
         override suspend fun lastRefreshDate() =
             dataStoreRepository.get().getPlayingNowRefreshDate()
