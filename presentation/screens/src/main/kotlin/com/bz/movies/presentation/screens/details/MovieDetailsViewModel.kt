@@ -27,8 +27,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.hours
 
 @SuppressLint("MainScopeUsage")
 @HiltViewModel
@@ -42,13 +44,12 @@ internal class MovieDetailsViewModel @Inject constructor(
     val state: StateFlow<MovieDetailState> = _state.asStateFlow()
 
     private val _effect: Channel<MovieEffect> = Channel()
-    val effect = _effect.consumeAsFlow()
+    val effect = _effect.receiveAsFlow()
 
     init {
         createCustomAppWatcher()
         MainScope().launch(Dispatchers.IO) {
-            @Suppress("MagicNumber")
-            delay(1_000_000)
+            delay(1.hours)
             _effect.send(MovieEffect.UnknownError)
         }
         fetchMovieDetails()

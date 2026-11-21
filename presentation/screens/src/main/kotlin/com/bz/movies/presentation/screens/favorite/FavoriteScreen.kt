@@ -12,10 +12,16 @@ import com.bz.movies.presentation.screens.R
 import com.bz.movies.presentation.screens.common.MovieEvent
 import com.bz.movies.presentation.screens.common.MoviesContent
 import com.bz.movies.presentation.screens.common.MoviesState
+import com.bz.movies.presentation.utils.collectInLaunchedEffectWithLifecycle
 
 @Composable
 internal fun FavoriteScreen(favoriteScreenViewModel: FavoriteScreenViewModel = hiltViewModel()) {
     val playingNow by favoriteScreenViewModel.state.collectAsStateWithLifecycle()
+
+    favoriteScreenViewModel.effect.collectInLaunchedEffectWithLifecycle {
+        // no-op
+    }
+
     FavoriteScreen(playingNow, favoriteScreenViewModel::sendEvent)
 }
 
