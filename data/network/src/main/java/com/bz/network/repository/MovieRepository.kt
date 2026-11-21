@@ -9,7 +9,6 @@ import com.bz.network.api.model.PopularMoviesPageApiResponse
 import com.bz.network.api.service.MovieService
 import com.bz.network.repository.mapper.toMovieDetailDto
 import com.bz.network.repository.mapper.toMovieDto
-import com.bz.network.repository.mapper.toPopularMovieDto
 import com.bz.network.repository.mapper.toPopularMoviePageDto
 import com.bz.network.utils.InternetConnection
 import com.bz.tools.throwOnMainThread
@@ -50,7 +49,7 @@ internal class MovieRepositoryImpl @Inject constructor(
 
     override suspend fun getPopularMovies(page: Int): Result<List<MovieDto>> = executeApiCall(
         internetConnectionChecker.get(),
-        PopularMoviesPageApiResponse::toPopularMovieDto
+        PopularMoviesPageApiResponse::toMovieDto
     ) {
         movieService.get().getPopularMoviePage(
             apiKey = AUTH_KEY,

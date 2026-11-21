@@ -1,16 +1,14 @@
 package com.bz.movies.database.repository
 
 import com.bz.dto.MovieDto
+import com.bz.movies.database.dao.CachedMovieDAO
 import com.bz.movies.database.dao.MovieDAO
-import com.bz.movies.database.dao.PlayingNowMovieDAO
-import com.bz.movies.database.dao.PopularMovieDAO
+import com.bz.movies.database.entity.CachedMovieEntity
+import com.bz.movies.database.entity.MovieCategory
 import com.bz.movies.database.entity.MovieEntity
-import com.bz.movies.database.entity.PlayingNowMovieEntity
-import com.bz.movies.database.entity.PopularMovieEntity
+import com.bz.movies.database.repository.mapper.toCachedMovieEntity
 import com.bz.movies.database.repository.mapper.toMovieDto
 import com.bz.movies.database.repository.mapper.toMovieEntity
-import com.bz.movies.database.repository.mapper.toPlayingNowMovieEntity
-import com.bz.movies.database.repository.mapper.toPopularMovieEntity
 import com.bz.movies.database.runCatchingWithContext
 import com.bz.tools.throwOnMainThread
 import dagger.Lazy
@@ -42,8 +40,7 @@ public interface LocalMovieRepository {
 
 internal class LocalMovieRepositoryImpl @Inject constructor(
     private val movieDAO: Lazy<MovieDAO>,
-    private val playingNowMovieDAO: Lazy<PlayingNowMovieDAO>,
-    private val popularMovieDAO: Lazy<PopularMovieDAO>
+    private val cachedMovieDAO: Lazy<CachedMovieDAO>
 ) : LocalMovieRepository {
     init {
         throwOnMainThread()
@@ -59,19 +56,19 @@ internal class LocalMovieRepositoryImpl @Inject constructor(
 
     override val playingNowMovies: Flow<List<MovieDto>>
         get() =
-            playingNowMovieDAO
+            cachedMovieDAO
                 .get()
-                .observeAllMovies()
+                .observeMovies(MovieCategory.PLAYING_NOW)
                 .flowOn(Dispatchers.IO)
-                .map { it.map(PlayingNowMovieEntity::toMovieDto) }
+                .map { it.map(CachedMovieEntity::toMovieDto) }
 
     override val popularMovies: Flow<List<MovieDto>>
         get() =
-            popularMovieDAO
+            cachedMovieDAO
                 .get()
-                .observeAllMovies()
+                .observeMovies(MovieCategory.POPULAR)
                 .flowOn(Dispatchers.IO)
-                .map { it.map(PopularMovieEntity::toMovieDto) }
+                .map { it.map(CachedMovieEntity::toMovieDto) }
 
     override suspend fun insertFavoriteMovie(movieDto: MovieDto): Result<Unit> =
         runCatchingWithContext { movieDAO.get().insert(movieDto.toMovieEntity()) }
@@ -81,17 +78,21 @@ internal class LocalMovieRepositoryImpl @Inject constructor(
 
     override suspend fun insertPlayingNowMovies(movieDto: List<MovieDto>): Result<Unit> =
         runCatchingWithContext {
-            playingNowMovieDAO.get().insert(movieDto.map { it.toPlayingNowMovieEntity() })
+            cachedMovieDAO.get().insert(
+                movieDto.map { it.toCachedMovieEntity(MovieCategory.PLAYING_NOW) }
+            )
         }
 
     override suspend fun clearPlayingNowMovies(): Result<Unit> =
-        runCatchingWithContext { playingNowMovieDAO.get().clearTable() }
+        runCatchingWithContext { cachedMovieDAO.get().clear(MovieCategory.PLAYING_NOW) }
 
     override suspend fun insertPopularMovies(movieDto: List<MovieDto>): Result<Unit> =
         runCatchingWithContext {
-            popularMovieDAO.get().insert(movieDto.map { it.toPopularMovieEntity() })
+            cachedMovieDAO.get().insert(
+                movieDto.map { it.toCachedMovieEntity(MovieCategory.POPULAR) }
+            )
         }
 
     override suspend fun clearPopularMovies(): Result<Unit> =
-        runCatchingWithContext { popularMovieDAO.get().clearTable() }
+        runCatchingWithContext { cachedMovieDAO.get().clear(MovieCategory.POPULAR) }
 }

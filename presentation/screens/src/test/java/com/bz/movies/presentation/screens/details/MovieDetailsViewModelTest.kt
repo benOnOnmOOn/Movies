@@ -97,7 +97,6 @@ class MovieDetailsViewModelTest {
     fun tearDown() {
         Dispatchers.resetMain()
         unmockkStatic(SAVED_STATE_HANDLE_KT)
-//        MainScope().cancel()
     }
 
     companion object {

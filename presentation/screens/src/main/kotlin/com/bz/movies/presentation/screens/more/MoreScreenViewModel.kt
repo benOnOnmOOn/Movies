@@ -43,18 +43,11 @@ internal class MoreScreenViewModel @Inject constructor(
                 CurrencyDto(symbol = "zł", name = "Polish Zloty", decimalDigits = 2, code = "PLN")
             )
         )
-
-//        val currencyRepository = currencyRepository.get()
-//        currencyRepository.get().getAllCurrencies()
-//        currencyRepository.get().getExchangeRate("EUR")
     }
 
     private fun getExchangeRate(currency: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val exchangeRate = currencyRepository.get().getExchangeRate(currency)
-//            val exchangeRate = Result.success(
-//                listOf(ExchangeRateDto("GBP", Random.nextDouble(0.5, 20.0).toFloat()))
-//            )
             exchangeRate
                 .onSuccess {
                     lruCache.put(currency, it)

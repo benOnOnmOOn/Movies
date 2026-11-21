@@ -53,6 +53,7 @@ dependencies {
     api(libs.androidx.navigation.common)
     api(libs.androidx.navigation.runtime)
 
+    implementation(libs.androidx.annotation)
     implementation(libs.androidx.collection)
     implementation(libs.androidx.collection.jvm)
     implementation(libs.androidx.compose.foundation.android)

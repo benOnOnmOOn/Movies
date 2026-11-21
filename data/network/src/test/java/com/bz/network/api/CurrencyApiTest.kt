@@ -61,8 +61,6 @@ class CurrencyApiTest {
         assertTrue(response.isSuccessful)
 
         assertTrue(response.body() is CurrenciesResponseModel)
-//        val body = response.body()
-//        assertEquals(SUPPORTED_CURRENCIES, body)
     }
 
     @Test
@@ -73,8 +71,6 @@ class CurrencyApiTest {
         assertTrue(response.isSuccessful)
 
         assertTrue(response.body() is ExchangeRateResponseModel)
-//        val body = response.body()
-//        assertEquals(EXPECTED_EXCHANGE_RATE, body)
     }
 
     private companion object {
