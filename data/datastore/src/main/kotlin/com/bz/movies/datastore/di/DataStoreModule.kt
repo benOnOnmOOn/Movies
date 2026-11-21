@@ -23,25 +23,27 @@ internal const val USER_PREFERENCES = "Settings"
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal interface DataStoreModule {
+internal object DataStoreModule {
+    @Singleton
+    @Provides
+    internal fun providePreferences(app: Application): DataStore<Preferences> {
+        throwOnMainThread()
+        return PreferenceDataStoreFactory.create(
+            corruptionHandler = ReplaceFileCorruptionHandler(
+                produceNewData = {
+                    Logger.e("DataStoreModule", it)
+                    emptyPreferences()
+                }
+            ),
+            migrations = listOf(SharedPreferencesMigration(app, USER_PREFERENCES)),
+            produceFile = { app.preferencesDataStoreFile(USER_PREFERENCES) }
+        )
+    }
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+internal interface DataStoreBindingModule {
     @Binds
     fun bindDataStoreRepository(impl: DataStoreRepositoryImpl): DataStoreRepository
-
-    companion object {
-        @Singleton
-        @Provides
-        internal fun providePreferences(app: Application): DataStore<Preferences> {
-            throwOnMainThread()
-            return PreferenceDataStoreFactory.create(
-                corruptionHandler = ReplaceFileCorruptionHandler(
-                    produceNewData = {
-                        Logger.e("DataStoreModule", it)
-                        emptyPreferences()
-                    }
-                ),
-                migrations = listOf(SharedPreferencesMigration(app, USER_PREFERENCES)),
-                produceFile = { app.preferencesDataStoreFile(USER_PREFERENCES) }
-            )
-        }
-    }
 }

@@ -1,5 +1,6 @@
 package com.bz.movies.presentation.screens.details
 
+import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
 import com.bz.dto.MoveDetailDto
 import com.bz.movies.presentation.screens.common.MovieDetailState
@@ -41,7 +42,7 @@ class MovieDetailsViewModelTest {
         mockkObject(Random)
         every { Random.nextInt(any(), any()) } returns 69
 
-        val viewModel = MovieDetailsViewModel(MOVIE_ID) { movieRepository }
+        val viewModel = MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
 
         assertEquals(EXPECTED_DETAILS_STATE, viewModel.state.first { !it.isLoading })
         coVerify(exactly = 1) { movieRepository.getMovieDetail(MOVIE_ID) }
@@ -57,7 +58,7 @@ class MovieDetailsViewModelTest {
                 )
             } returns Result.failure(HttpException(""))
 
-            val viewModel = MovieDetailsViewModel(MOVIE_ID) { movieRepository }
+            val viewModel = MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
             viewModel.effect.test {
                 assertEquals(MovieEffect.NetworkConnectionError, awaitItem())
                 expectNoEvents()
@@ -72,7 +73,7 @@ class MovieDetailsViewModelTest {
             movieRepository.getMovieDetail(any())
         } returns Result.failure(IllegalStateException())
 
-        val viewModel = MovieDetailsViewModel(MOVIE_ID) { movieRepository }
+        val viewModel = MovieDetailsViewModel(SavedStateHandle(mapOf("id" to MOVIE_ID))) { movieRepository }
         viewModel.effect.test {
             assertEquals(MovieEffect.UnknownError, awaitItem())
             expectNoEvents()

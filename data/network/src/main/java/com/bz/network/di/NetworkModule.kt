@@ -15,15 +15,17 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal interface NetworkModule {
+internal object NetworkModule {
+    @Singleton
+    @Provides
+    internal fun provideConnectivityManager(
+        @ApplicationContext context: Context
+    ): ConnectivityManager? = context.getSystemService<ConnectivityManager>()
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+internal interface NetworkBindingModule {
     @Binds
     fun bindInternetConnection(impl: InternetConnectionImpl): InternetConnection
-
-    companion object {
-        @Singleton
-        @Provides
-        internal fun provideConnectivityManager(
-            @ApplicationContext context: Context
-        ): ConnectivityManager? = context.getSystemService<ConnectivityManager>()
-    }
 }

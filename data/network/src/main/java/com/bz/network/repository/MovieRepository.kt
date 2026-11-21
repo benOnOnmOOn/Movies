@@ -12,6 +12,7 @@ import com.bz.network.repository.mapper.toMovieDto
 import com.bz.network.repository.mapper.toPopularMovieDto
 import com.bz.network.repository.mapper.toPopularMoviePageDto
 import com.bz.network.utils.InternetConnection
+import com.bz.tools.throwOnMainThread
 import dagger.Lazy
 import javax.inject.Inject
 
@@ -32,6 +33,10 @@ internal class MovieRepositoryImpl @Inject constructor(
     private val movieService: Lazy<MovieService>,
     private val internetConnectionChecker: Lazy<InternetConnection>
 ) : MovieRepository {
+    init {
+        throwOnMainThread()
+    }
+
     override suspend fun getPlayingNowMovies(): Result<List<MovieDto>> = executeApiCall(
         internetConnectionChecker.get(),
         PlayingNowMoviesApiResponse::toMovieDto

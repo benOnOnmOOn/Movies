@@ -30,7 +30,7 @@ internal fun MoviesNavHost(navController: NavHostController, modifier: Modifier 
                 )
             }
             composable<MovieDetailsRoute> {
-                MovieDetailsScreen()
+                MovieDetailsScreen(movieDetailsViewModel = hiltViewModel())
             }
         }
         composable<FavoriteRoute> {

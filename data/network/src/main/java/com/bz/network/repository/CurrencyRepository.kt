@@ -8,6 +8,7 @@ import com.bz.network.api.service.CurrencyService
 import com.bz.network.repository.mapper.toCurrencyDto
 import com.bz.network.repository.mapper.toExchangeRateDto
 import com.bz.network.utils.InternetConnection
+import com.bz.tools.throwOnMainThread
 import dagger.Lazy
 import javax.inject.Inject
 
@@ -23,6 +24,10 @@ internal class CurrencyRepositoryImpl @Inject constructor(
     private val currencyService: Lazy<CurrencyService>,
     private val internetConnectionChecker: Lazy<InternetConnection>
 ) : CurrencyRepository {
+    init {
+        throwOnMainThread()
+    }
+
 
     override suspend fun getAllCurrencies(): Result<List<CurrencyDto>> = executeApiCall(
         internetConnectionChecker.get(),

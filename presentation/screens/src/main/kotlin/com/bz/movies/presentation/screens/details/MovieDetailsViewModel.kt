@@ -32,16 +32,11 @@ import kotlinx.coroutines.launch
 
 @SuppressLint("MainScopeUsage")
 @HiltViewModel
-internal class MovieDetailsViewModel(
-    private val movieId: Int,
+internal class MovieDetailsViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
     private val movieRepository: Lazy<MovieRepository>
 ) : ViewModel() {
-
-    @Inject
-    constructor(
-        savedStateHandle: SavedStateHandle,
-        movieRepository: Lazy<MovieRepository>
-    ) : this(savedStateHandle.toRoute<MovieDetailsRoute>().id, movieRepository)
+    private val movieId: Int = savedStateHandle.toRoute<MovieDetailsRoute>().id
 
     private val _state = MutableStateFlow(MovieDetailState())
     val state: StateFlow<MovieDetailState> = _state.asStateFlow()

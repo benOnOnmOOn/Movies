@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
 import com.bz.tools.runSuspendCatching
+import com.bz.tools.throwOnMainThread
 import java.time.Instant
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
@@ -18,6 +19,10 @@ private const val POPULAR_KEY = "popular_refresh_data"
 internal class DataStoreRepositoryImpl @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) : DataStoreRepository {
+    init {
+        throwOnMainThread()
+    }
+
     val playingNowKey = longPreferencesKey(PLAYING_NOW_KEY)
     val popularKey = longPreferencesKey(POPULAR_KEY)
 
