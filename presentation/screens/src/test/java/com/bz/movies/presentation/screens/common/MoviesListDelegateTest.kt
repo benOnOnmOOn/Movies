@@ -56,21 +56,20 @@ class MoviesListDelegateTest {
     }
 
     @Test
-    fun `when there is no internet it emits NetworkConnectionError and caches nothing`() =
-        runTest {
-            val delegate = createDelegate(
-                cachedMovies = flowOf(emptyList()),
-                fetchResult = Result.failure(NoInternetException())
-            )
+    fun `when there is no internet it emits NetworkConnectionError and caches nothing`() = runTest {
+        val delegate = createDelegate(
+            cachedMovies = flowOf(emptyList()),
+            fetchResult = Result.failure(NoInternetException())
+        )
 
-            assertEquals(MovieEffect.NetworkConnectionError, delegate.effect.first())
-            assertEquals(
-                MoviesState(isLoading = false, isRefreshing = false),
-                delegate.state.first { !it.isLoading }
-            )
-            assertEquals(emptyList<List<MovieDto>>(), cachedLists.value)
-            assertEquals(0, markRefreshedCalls.value)
-        }
+        assertEquals(MovieEffect.NetworkConnectionError, delegate.effect.first())
+        assertEquals(
+            MoviesState(isLoading = false, isRefreshing = false),
+            delegate.state.first { !it.isLoading }
+        )
+        assertEquals(emptyList<List<MovieDto>>(), cachedLists.value)
+        assertEquals(0, markRefreshedCalls.value)
+    }
 
     @Test
     fun `when fetching fails with an unexpected error it emits UnknownError`() = runTest {
