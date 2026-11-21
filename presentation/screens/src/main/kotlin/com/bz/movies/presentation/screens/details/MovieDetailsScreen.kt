@@ -12,10 +12,16 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.bz.movies.presentation.screens.R
 import com.bz.movies.presentation.screens.common.MovieDetailState
+import com.bz.movies.presentation.utils.collectInLaunchedEffectWithLifecycle
 
 @Composable
 internal fun MovieDetailsScreen(movieDetailsViewModel: MovieDetailsViewModel = hiltViewModel()) {
     val movieDetails by movieDetailsViewModel.state.collectAsStateWithLifecycle()
+
+    movieDetailsViewModel.effect.collectInLaunchedEffectWithLifecycle {
+        // no-op
+    }
+
     MovieDetailsScreen(movieDetails)
 }
 

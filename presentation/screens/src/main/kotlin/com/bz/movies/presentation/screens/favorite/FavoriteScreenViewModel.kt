@@ -22,6 +22,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -33,7 +34,7 @@ internal class FavoriteScreenViewModel @Inject constructor(
     val state: StateFlow<MoviesState> = _state.asStateFlow()
 
     private val _effect: Channel<MovieEffect> = Channel()
-    val effect = _effect.consumeAsFlow()
+    val effect = _effect.receiveAsFlow()
 
     init {
         collectFavoriteMovies()

@@ -46,6 +46,10 @@ class MovieDetailsViewModelTest {
 
         val viewModel = MovieDetailsViewModel(savedStateHandle) { movieRepository }
 
+        viewModel.effect.test {
+            expectNoEvents()
+        }
+
         assertEquals(EXPECTED_DETAILS_STATE, viewModel.state.first { !it.isLoading })
         coVerify(exactly = 1) { movieRepository.getMovieDetail(MOVIE_ID) }
         unmockkObject(Random)

@@ -19,6 +19,7 @@ import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.random.Random
+import kotlin.time.Duration.Companion.hours
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.channels.Channel
@@ -27,6 +28,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -42,13 +44,12 @@ internal class MovieDetailsViewModel @Inject constructor(
     val state: StateFlow<MovieDetailState> = _state.asStateFlow()
 
     private val _effect: Channel<MovieEffect> = Channel()
-    val effect = _effect.consumeAsFlow()
+    val effect = _effect.receiveAsFlow()
 
     init {
         createCustomAppWatcher()
         MainScope().launch(Dispatchers.IO) {
-            @Suppress("MagicNumber")
-            delay(1_000_000)
+            delay(1.hours)
             _effect.send(MovieEffect.UnknownError)
         }
         fetchMovieDetails()
