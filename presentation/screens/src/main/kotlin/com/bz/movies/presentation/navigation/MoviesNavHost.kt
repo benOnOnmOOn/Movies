@@ -4,10 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
+import androidx.navigation.compose.navigation
 import com.bz.movies.presentation.screens.details.MovieDetailsScreen
 import com.bz.movies.presentation.screens.favorite.FavoriteScreen
 import com.bz.movies.presentation.screens.more.MoreScreen
@@ -19,25 +18,26 @@ internal fun MoviesNavHost(navController: NavHostController, modifier: Modifier 
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = RootRoute.PlayingNow.route
+        startDestination = PlayingNowRoute
     ) {
-        composable(RootRoute.PlayingNow.route) {
+        composable<PlayingNowRoute> {
             PlayingNowScreen()
         }
-        composable(RootRoute.Popular.route) {
-            PopularMoviesScreen(navController)
+        navigation<PopularGraph>(startDestination = PopularRoute) {
+            composable<PopularRoute> {
+                PopularMoviesScreen(
+                    onMovieClick = { id -> navController.navigate(MovieDetailsRoute(id)) }
+                )
+            }
+            composable<MovieDetailsRoute> {
+                MovieDetailsScreen()
+            }
         }
-        composable(RootRoute.Favorite.route) {
+        composable<FavoriteRoute> {
             FavoriteScreen()
         }
-        composable(RootRoute.More.route) {
+        composable<MoreRoute> {
             MoreScreen(hiltViewModel())
-        }
-        composable(
-            route = RootRoute.Details.route,
-            arguments = listOf(navArgument("id") { type = NavType.IntType })
-        ) { backStackEntry ->
-            MovieDetailsScreen(backStackEntry.arguments?.getInt("id"))
         }
     }
 }

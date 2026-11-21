@@ -15,10 +15,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.compose.currentBackStackEntryAsState
 
 @Composable
 internal fun BottomNavigationBar(navController: NavController, modifier: Modifier = Modifier) {
-    val currentRootRoute by currentRootRouteAsState(navController)
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = backStackEntry?.destination
 
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
@@ -26,10 +30,11 @@ internal fun BottomNavigationBar(navController: NavController, modifier: Modifie
         contentColor = MaterialTheme.colorScheme.surface
     ) {
         TOP_LEVEL_DESTINATIONS.forEach { destination ->
-            val isItemSelected = currentRootRoute.route.startsWith(destination.rootRoute.route)
+            val isItemSelected =
+                currentDestination?.hierarchy?.any { it.hasRoute(destination.route::class) } == true
             NavigationBarItem(
                 selected = isItemSelected,
-                onClick = { navController.navigateToRootRoute(destination.rootRoute) },
+                onClick = { navController.navigateToTopLevel(destination.route) },
                 icon = { NavIcon(destination, isItemSelected) },
                 alwaysShowLabel = true,
                 label = {

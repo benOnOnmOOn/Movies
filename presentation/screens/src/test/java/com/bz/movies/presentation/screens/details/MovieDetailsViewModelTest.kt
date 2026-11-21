@@ -17,6 +17,7 @@ import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
@@ -33,42 +34,17 @@ class MovieDetailsViewModelTest {
     private val movieRepository: MovieRepository = mockk()
 
     @Test
-    fun `when viewmodel is init it should not make any network call `() = runTest {
-        coEvery { movieRepository.getMovieDetail(any()) } returns Result.success(
-            SUCCESS_MOVIE_DETAIL
-        )
-
-        val viewModel = MovieDetailsViewModel { movieRepository }
-        viewModel.state.test {
-            val actualItem = awaitItem()
-            val expectedItem = MovieDetailState()
-            assertEquals(expectedItem, actualItem)
-
-            coVerify(exactly = 0) { movieRepository.getPopularMovies(any()) }
-
-            expectNoEvents()
-        }
-    }
-
-    @Test
-    fun `when viewmodel fetchMovieDetails is called should fetch data from network `() = runTest {
+    fun `when viewmodel is init it should fetch details for the route movie id`() = runTest {
         coEvery { movieRepository.getMovieDetail(any()) } returns Result.success(
             SUCCESS_MOVIE_DETAIL
         )
         mockkObject(Random)
         every { Random.nextInt(any(), any()) } returns 69
 
-        val viewModel = MovieDetailsViewModel { movieRepository }
-        viewModel.state.test {
-            assertEquals(MovieDetailState(), awaitItem())
-            expectNoEvents()
-        }
-        viewModel.fetchMovieDetails(1234)
-        viewModel.state.test {
-            val actualItem = awaitItem()
-            assertEquals(EXPECTED_DETAILS_STATE, actualItem)
-            expectNoEvents()
-        }
+        val viewModel = MovieDetailsViewModel(MOVIE_ID) { movieRepository }
+
+        assertEquals(EXPECTED_DETAILS_STATE, viewModel.state.first { !it.isLoading })
+        coVerify(exactly = 1) { movieRepository.getMovieDetail(MOVIE_ID) }
         unmockkObject(Random)
     }
 
@@ -81,8 +57,7 @@ class MovieDetailsViewModelTest {
                 )
             } returns Result.failure(HttpException(""))
 
-            val viewModel = MovieDetailsViewModel { movieRepository }
-            viewModel.fetchMovieDetails(1234)
+            val viewModel = MovieDetailsViewModel(MOVIE_ID) { movieRepository }
             viewModel.effect.test {
                 assertEquals(MovieEffect.NetworkConnectionError, awaitItem())
                 expectNoEvents()
@@ -97,8 +72,7 @@ class MovieDetailsViewModelTest {
             movieRepository.getMovieDetail(any())
         } returns Result.failure(IllegalStateException())
 
-        val viewModel = MovieDetailsViewModel { movieRepository }
-        viewModel.fetchMovieDetails(1234)
+        val viewModel = MovieDetailsViewModel(MOVIE_ID) { movieRepository }
         viewModel.effect.test {
             assertEquals(MovieEffect.UnknownError, awaitItem())
             expectNoEvents()
@@ -119,6 +93,7 @@ class MovieDetailsViewModelTest {
     }
 
     companion object {
+        private const val MOVIE_ID = 1234
 
         internal val EXPECTED_DETAILS_STATE = MovieDetailState(
             isLoading = false,
