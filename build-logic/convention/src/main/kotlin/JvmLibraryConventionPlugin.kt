@@ -7,7 +7,7 @@ class JvmLibraryConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("org.jetbrains.kotlin.jvm")
-                apply("movies.android.lint")
+//                apply("movies.android.lint")
             }
             configureKotlinJvm()
         }
