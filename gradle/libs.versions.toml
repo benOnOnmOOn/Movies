@@ -93,6 +93,7 @@ androidx-lint-gradle = { group = "androidx.lint", name = "lint-gradle", version.
 androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "androidx-material3" }
 androidx-monitor = { module = "androidx.test:monitor", version.ref = "androidx-monitor" }
 androidx-test-core = { module = "androidx.test:core", version = "1.7.0" }
+androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.7.0" }
 androidx-test-runner = { module = "androidx.test:runner", version = "1.7.0" }
 androidx-navigation-common = { module = "androidx.navigation:navigation-common", version.ref = "androidx-navigation-compose" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation-compose" }

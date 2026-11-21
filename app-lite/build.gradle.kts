@@ -64,6 +64,7 @@ extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
         onUnusedDependencies { exclude(projects.utlis.leakstub) }
         onUnusedDependencies { exclude(projects.utlis.leakcanary) }
         onUnusedDependencies { exclude(projects.data.network) }
+        onUnusedDependencies { exclude("androidx.test.espresso:espresso-core") }
     }
 }
 
@@ -126,6 +127,7 @@ dependencies {
     androidTestImplementation(libs.androidx.annotation)
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.compose.ui.test)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
