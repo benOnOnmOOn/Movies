@@ -12,6 +12,7 @@ import com.bz.network.repository.mapper.toMovieDto
 import com.bz.network.repository.mapper.toPopularMovieDto
 import com.bz.network.repository.mapper.toPopularMoviePageDto
 import com.bz.network.utils.InternetConnection
+import dagger.Lazy
 import javax.inject.Inject
 
 private const val AUTH_KEY = "55957fcf3ba81b137f8fc01ac5a31fb5"
@@ -28,14 +29,14 @@ public interface MovieRepository {
 }
 
 internal class MovieRepositoryImpl @Inject constructor(
-    private val movieService: MovieService,
-    private val internetConnectionChecker: InternetConnection
+    private val movieService: Lazy<MovieService>,
+    private val internetConnectionChecker: Lazy<InternetConnection>
 ) : MovieRepository {
     override suspend fun getPlayingNowMovies(): Result<List<MovieDto>> = executeApiCall(
-        internetConnectionChecker,
+        internetConnectionChecker.get(),
         PlayingNowMoviesApiResponse::toMovieDto
     ) {
-        movieService.getNowPlayingMovies(
+        movieService.get().getNowPlayingMovies(
             apiKey = AUTH_KEY,
             language = LANGUAGE,
             page = 1
@@ -43,10 +44,10 @@ internal class MovieRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getPopularMovies(page: Int): Result<List<MovieDto>> = executeApiCall(
-        internetConnectionChecker,
+        internetConnectionChecker.get(),
         PopularMoviesPageApiResponse::toPopularMovieDto
     ) {
-        movieService.getPopularMoviePage(
+        movieService.get().getPopularMoviePage(
             apiKey = AUTH_KEY,
             language = LANGUAGE,
             page = page
@@ -54,10 +55,10 @@ internal class MovieRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getMovieDetail(movieId: Int): Result<MoveDetailDto> = executeApiCall(
-        internetConnectionChecker,
+        internetConnectionChecker.get(),
         MovieDetailsApiResponse::toMovieDetailDto
     ) {
-        movieService.getMovieDetails(
+        movieService.get().getMovieDetails(
             apiKey = AUTH_KEY,
             language = LANGUAGE,
             movieId = movieId
@@ -66,10 +67,10 @@ internal class MovieRepositoryImpl @Inject constructor(
 
     override suspend fun getPopularMoviesPage(page: Int): Result<PopularMoviePageDto> =
         executeApiCall(
-            internetConnectionChecker,
+            internetConnectionChecker.get(),
             PopularMoviesPageApiResponse::toPopularMoviePageDto
         ) {
-            movieService.getPopularMoviePage(
+            movieService.get().getPopularMoviePage(
                 apiKey = AUTH_KEY,
                 language = LANGUAGE,
                 page = page

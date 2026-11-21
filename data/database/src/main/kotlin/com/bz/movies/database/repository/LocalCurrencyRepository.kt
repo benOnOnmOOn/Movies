@@ -6,6 +6,7 @@ import com.bz.movies.database.entity.CurrencyEntity
 import com.bz.movies.database.repository.mapper.toDto
 import com.bz.movies.database.repository.mapper.toEntity
 import com.bz.movies.database.runCatchingWithContext
+import dagger.Lazy
 import javax.inject.Inject
 
 public interface LocalCurrencyRepository {
@@ -18,11 +19,11 @@ public interface LocalCurrencyRepository {
 }
 
 internal class LocalCurrencyRepositoryImpl @Inject constructor(
-    private val currencyDAO: CurrencyDAO
+    private val currencyDAO: Lazy<CurrencyDAO>
 ) : LocalCurrencyRepository {
     override suspend fun getAllSupportedCurrencyRepository(): Result<List<CurrencyDto>> =
-        runCatchingWithContext { currencyDAO.getAllCurrencies().map(CurrencyEntity::toDto) }
+        runCatchingWithContext { currencyDAO.get().getAllCurrencies().map(CurrencyEntity::toDto) }
 
     override suspend fun insertAllSupportedCurrencyRepository(currencies: List<CurrencyDto>) =
-        runCatchingWithContext { currencyDAO.insert(currencies.map(CurrencyDto::toEntity)) }
+        runCatchingWithContext { currencyDAO.get().insert(currencies.map(CurrencyDto::toEntity)) }
 }

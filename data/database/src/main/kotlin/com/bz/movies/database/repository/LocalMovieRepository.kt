@@ -12,6 +12,7 @@ import com.bz.movies.database.repository.mapper.toMovieEntity
 import com.bz.movies.database.repository.mapper.toPlayingNowMovieEntity
 import com.bz.movies.database.repository.mapper.toPopularMovieEntity
 import com.bz.movies.database.runCatchingWithContext
+import dagger.Lazy
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -39,13 +40,14 @@ public interface LocalMovieRepository {
 }
 
 internal class LocalMovieRepositoryImpl @Inject constructor(
-    private val movieDAO: MovieDAO,
-    private val playingNowMovieDAO: PlayingNowMovieDAO,
-    private val popularMovieDAO: PopularMovieDAO
+    private val movieDAO: Lazy<MovieDAO>,
+    private val playingNowMovieDAO: Lazy<PlayingNowMovieDAO>,
+    private val popularMovieDAO: Lazy<PopularMovieDAO>
 ) : LocalMovieRepository {
     override val favoritesMovies: Flow<List<MovieDto>>
         get() =
             movieDAO
+                .get()
                 .observeAllMovies()
                 .flowOn(Dispatchers.IO)
                 .map { it.map(MovieEntity::toMovieDto) }
@@ -53,6 +55,7 @@ internal class LocalMovieRepositoryImpl @Inject constructor(
     override val playingNowMovies: Flow<List<MovieDto>>
         get() =
             playingNowMovieDAO
+                .get()
                 .observeAllMovies()
                 .flowOn(Dispatchers.IO)
                 .map { it.map(PlayingNowMovieEntity::toMovieDto) }
@@ -60,29 +63,30 @@ internal class LocalMovieRepositoryImpl @Inject constructor(
     override val popularMovies: Flow<List<MovieDto>>
         get() =
             popularMovieDAO
+                .get()
                 .observeAllMovies()
                 .flowOn(Dispatchers.IO)
                 .map { it.map(PopularMovieEntity::toMovieDto) }
 
     override suspend fun insertFavoriteMovie(movieDto: MovieDto): Result<Unit> =
-        runCatchingWithContext { movieDAO.insert(movieDto.toMovieEntity()) }
+        runCatchingWithContext { movieDAO.get().insert(movieDto.toMovieEntity()) }
 
     override suspend fun deleteFavoriteMovie(movieDto: MovieDto): Result<Unit> =
-        runCatchingWithContext { movieDAO.delete(movieDto.toMovieEntity()) }
+        runCatchingWithContext { movieDAO.get().delete(movieDto.toMovieEntity()) }
 
     override suspend fun insertPlayingNowMovies(movieDto: List<MovieDto>): Result<Unit> =
         runCatchingWithContext {
-            playingNowMovieDAO.insert(movieDto.map { it.toPlayingNowMovieEntity() })
+            playingNowMovieDAO.get().insert(movieDto.map { it.toPlayingNowMovieEntity() })
         }
 
     override suspend fun clearPlayingNowMovies(): Result<Unit> =
-        runCatchingWithContext { playingNowMovieDAO.clearTable() }
+        runCatchingWithContext { playingNowMovieDAO.get().clearTable() }
 
     override suspend fun insertPopularMovies(movieDto: List<MovieDto>): Result<Unit> =
         runCatchingWithContext {
-            popularMovieDAO.insert(movieDto.map { it.toPopularMovieEntity() })
+            popularMovieDAO.get().insert(movieDto.map { it.toPopularMovieEntity() })
         }
 
     override suspend fun clearPopularMovies(): Result<Unit> =
-        runCatchingWithContext { popularMovieDAO.clearTable() }
+        runCatchingWithContext { popularMovieDAO.get().clearTable() }
 }
