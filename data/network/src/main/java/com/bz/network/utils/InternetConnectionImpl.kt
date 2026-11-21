@@ -2,9 +2,11 @@ package com.bz.network.utils
 
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import javax.inject.Inject
 
-internal class InternetConnectionImpl(private val connectivityManager: ConnectivityManager?) :
-    InternetConnection {
+internal class InternetConnectionImpl @Inject constructor(
+    private val connectivityManager: ConnectivityManager?
+) : InternetConnection {
     override val isConnected: Boolean
         get() =
             connectivityManager

@@ -5,16 +5,17 @@ import com.bz.tools.throwOnMainThread
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 
 private const val NETWORK_CONNECTION_TIMEOUT = 30L
 
 @Module
-@InstallIn(ViewModelComponent::class)
-internal class ApiModule {
-
+@InstallIn(SingletonComponent::class)
+internal object ApiModule {
+    @Singleton
     @Provides
     internal fun provideOkHttpClient(): OkHttpClient {
         throwOnMainThread()

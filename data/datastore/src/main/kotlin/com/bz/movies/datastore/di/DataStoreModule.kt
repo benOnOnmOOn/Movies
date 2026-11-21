@@ -12,6 +12,7 @@ import co.touchlab.kermit.Logger
 import com.bz.movies.datastore.repository.DataStoreRepository
 import com.bz.movies.datastore.repository.DataStoreRepositoryImpl
 import com.bz.tools.throwOnMainThread
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,29 +23,25 @@ internal const val USER_PREFERENCES = "Settings"
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal class DataStoreModule {
-    @Singleton
-    @Provides
-    internal fun providePreferences(app: Application): DataStore<Preferences> {
-        throwOnMainThread()
-        return PreferenceDataStoreFactory.create(
-            corruptionHandler = ReplaceFileCorruptionHandler(
-                produceNewData = {
-                    Logger.e("DataStoreModule", it)
-                    emptyPreferences()
-                }
-            ),
-            migrations = listOf(SharedPreferencesMigration(app, USER_PREFERENCES)),
-            produceFile = { app.preferencesDataStoreFile(USER_PREFERENCES) }
-        )
-    }
+internal interface DataStoreModule {
+    @Binds
+    fun bindDataStoreRepository(impl: DataStoreRepositoryImpl): DataStoreRepository
 
-    @Singleton
-    @Provides
-    internal fun provideDataStoreRepository(
-        dataStore: DataStore<Preferences>
-    ): DataStoreRepository {
-        throwOnMainThread()
-        return DataStoreRepositoryImpl(dataStore)
+    companion object {
+        @Singleton
+        @Provides
+        internal fun providePreferences(app: Application): DataStore<Preferences> {
+            throwOnMainThread()
+            return PreferenceDataStoreFactory.create(
+                corruptionHandler = ReplaceFileCorruptionHandler(
+                    produceNewData = {
+                        Logger.e("DataStoreModule", it)
+                        emptyPreferences()
+                    }
+                ),
+                migrations = listOf(SharedPreferencesMigration(app, USER_PREFERENCES)),
+                produceFile = { app.preferencesDataStoreFile(USER_PREFERENCES) }
+            )
+        }
     }
 }

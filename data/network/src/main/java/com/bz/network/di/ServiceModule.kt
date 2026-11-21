@@ -6,8 +6,9 @@ import com.bz.tools.throwOnMainThread
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Qualifier
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -25,21 +26,24 @@ internal annotation class MoviesRetrofit
 internal annotation class CurrencyRetrofit
 
 @Module
-@InstallIn(ViewModelComponent::class)
-internal class ServiceModule {
+@InstallIn(SingletonComponent::class)
+internal object ServiceModule {
 
+    @Singleton
     @Provides
     internal fun provideMoviesApiService(@MoviesRetrofit retrofit: Retrofit): MovieService {
         throwOnMainThread()
         return retrofit.create()
     }
 
+    @Singleton
     @Provides
     internal fun provideCurrencyApiService(@CurrencyRetrofit retrofit: Retrofit): CurrencyService {
         throwOnMainThread()
         return retrofit.create()
     }
 
+    @Singleton
     @Provides
     @MoviesRetrofit
     internal fun provideMoviesRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -51,6 +55,7 @@ internal class ServiceModule {
             .build()
     }
 
+    @Singleton
     @Provides
     @CurrencyRetrofit
     internal fun provideCurrencyRetrofit(okHttpClient: OkHttpClient): Retrofit {

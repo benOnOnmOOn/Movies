@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
 import com.bz.tools.runSuspendCatching
 import java.time.Instant
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -14,8 +15,9 @@ import kotlinx.coroutines.flow.map
 private const val PLAYING_NOW_KEY = "playing_now_refresh_data"
 private const val POPULAR_KEY = "popular_refresh_data"
 
-internal class DataStoreRepositoryImpl(private val dataStore: DataStore<Preferences>) :
-    DataStoreRepository {
+internal class DataStoreRepositoryImpl @Inject constructor(
+    private val dataStore: DataStore<Preferences>
+) : DataStoreRepository {
     val playingNowKey = longPreferencesKey(PLAYING_NOW_KEY)
     val popularKey = longPreferencesKey(POPULAR_KEY)
 

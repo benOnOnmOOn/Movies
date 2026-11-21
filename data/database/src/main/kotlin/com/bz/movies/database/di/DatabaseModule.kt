@@ -16,7 +16,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal class DatabaseModule {
+internal object DatabaseModule {
     @Singleton
     @Provides
     internal fun provideDb(app: Application): MoviesDatabase {

@@ -5,29 +5,25 @@ import android.net.ConnectivityManager
 import androidx.core.content.getSystemService
 import com.bz.network.utils.InternetConnection
 import com.bz.network.utils.InternetConnectionImpl
-import com.bz.tools.throwOnMainThread
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
-@InstallIn(ViewModelComponent::class)
-internal class NetworkModule {
-    @Provides
-    internal fun provideConnectivityManager(
-        @ApplicationContext context: Context
-    ): ConnectivityManager? {
-        throwOnMainThread()
-        return context.getSystemService<ConnectivityManager>()
-    }
+@InstallIn(SingletonComponent::class)
+internal interface NetworkModule {
+    @Binds
+    fun bindInternetConnection(impl: InternetConnectionImpl): InternetConnection
 
-    @Provides
-    internal fun provideInternetConnection(
-        connectivityManager: ConnectivityManager?
-    ): InternetConnection {
-        throwOnMainThread()
-        return InternetConnectionImpl(connectivityManager)
+    companion object {
+        @Singleton
+        @Provides
+        internal fun provideConnectivityManager(
+            @ApplicationContext context: Context
+        ): ConnectivityManager? = context.getSystemService<ConnectivityManager>()
     }
 }

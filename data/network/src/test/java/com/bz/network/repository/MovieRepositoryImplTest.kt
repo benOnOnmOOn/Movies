@@ -29,7 +29,7 @@ class MovieRepositoryImplTest {
             every { isConnected } returns true
         }
     private val movieRepository: MovieRepository =
-        MovieRepositoryImpl({ movieService }, { internetConnection })
+        MovieRepositoryImpl(movieService, internetConnection)
 
     @Test
     fun `getPlayingNowMovies return error if response is null`() = runTest {
