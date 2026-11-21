@@ -13,6 +13,9 @@ plugins {
 
 android {
     namespace = "com.bz.movies.lite"
+    defaultConfig {
+        testInstrumentationRunner = "com.bz.movies.HiltTestRunner"
+    }
     buildTypes {
         release {
             optimization {
@@ -60,6 +63,8 @@ extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
     issues {
         onUnusedDependencies { exclude(projects.utlis.leakstub) }
         onUnusedDependencies { exclude(projects.utlis.leakcanary) }
+        onUnusedDependencies { exclude(projects.data.network) }
+        onUnusedDependencies { exclude("androidx.test.espresso:espresso-core") }
     }
 }
 
@@ -118,6 +123,20 @@ dependencies {
 
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.engine)
+
+    androidTestImplementation(libs.androidx.annotation)
+    androidTestImplementation(libs.androidx.monitor)
+    androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.androidx.test.espresso.core)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.compose.ui.test)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    androidTestImplementation(libs.hilt.android.testing)
+    androidTestImplementation(libs.junit4)
+    androidTestImplementation(libs.mockwebserver)
+    androidTestImplementation(testFixtures(projects.data.network))
+    kspAndroidTest(libs.hilt.android.compiler)
+    androidTestImplementation(libs.androidx.fragment)
 }
 
 dependencyGuard {
@@ -130,8 +149,6 @@ configurations.configureEach {
     exclude("androidx.vectordrawable", "vectordrawable-animated")
     exclude("androidx.versionedparcelable", "versionedparcelable")
     exclude("org.jetbrains.kotlinx", "kotlinx-serialization-bom")
-    exclude("org.jetbrains.kotlinx", "kotlinx-serialization-core-jvm")
-    exclude("org.jetbrains.kotlinx", "kotlinx-serialization-core")
 }
 
 configurations.runtimeOnly {

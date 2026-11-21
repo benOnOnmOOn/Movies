@@ -102,11 +102,6 @@ dependencies {
     debugRuntimeOnly(libs.androidx.compose.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.compose.ui.tooling)
 
-    androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.junit.api)
-    androidTestRuntimeOnly(libs.junit.engine)
-
-    androidTestImplementation(libs.androidx.compose.runtime)
 }
 
 dependencyGuard {
