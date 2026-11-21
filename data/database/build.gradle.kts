@@ -1,3 +1,5 @@
+import com.autonomousapps.DependencyAnalysisSubExtension
+
 plugins {
     alias(libs.plugins.movies.dependency.analysis)
     alias(libs.plugins.movies.android.library)
@@ -6,6 +8,12 @@ plugins {
     alias(libs.plugins.movies.ktlint)
     alias(libs.plugins.movies.kover)
     alias(libs.plugins.movies.strict.dependencies)
+}
+
+extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
+    issues {
+        onUnusedDependencies { exclude("com.google.dagger:hilt-android") }
+    }
 }
 
 dependencies {
@@ -22,6 +30,7 @@ dependencies {
     api(libs.dagger)
     compileOnly(libs.javax.inject)
     implementation(libs.hilt.core)
+    implementation(libs.hilt.android)
     //
 
     implementation(libs.androidx.room.common)
