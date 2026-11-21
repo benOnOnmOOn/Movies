@@ -103,7 +103,7 @@ dependencies {
     debugRuntimeOnly(libs.androidx.compose.ui.tooling)
 
     androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.androidx.test.runner)
+    androidTestRuntimeOnly(libs.androidx.test.runner)
     androidTestImplementation(libs.junit4)
 }
 

@@ -132,9 +132,9 @@ dependencies {
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit4)
     androidTestImplementation(libs.mockwebserver)
-    androidTestImplementation(projects.data.okhttp)
     androidTestImplementation(testFixtures(projects.data.network))
     kspAndroidTest(libs.hilt.android.compiler)
+  androidTestImplementation(libs.androidx.fragment)
 }
 
 dependencyGuard {
