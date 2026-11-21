@@ -117,7 +117,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.runtime)
     androidTestImplementation(libs.androidx.compose.ui.test)
     androidTestImplementation(projects.data.okhttp)
-    androidTestImplementation(testFixtures(projects.data.network))
     androidTestImplementation(libs.mockwebserver)
 }
 

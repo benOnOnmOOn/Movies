@@ -29,12 +29,11 @@ internal object MockApi {
         server = null
     }
 
-    fun redirect(url: HttpUrl): HttpUrl =
-        checkNotNull(server) { "MockApi is not started" }
-            .url(url.encodedPath)
-            .newBuilder()
-            .encodedQuery(url.encodedQuery)
-            .build()
+    fun redirect(url: HttpUrl): HttpUrl = checkNotNull(server) { "MockApi is not started" }
+        .url(url.encodedPath)
+        .newBuilder()
+        .encodedQuery(url.encodedQuery)
+        .build()
 }
 
 internal class RedirectToMockApiInterceptor : Interceptor {
