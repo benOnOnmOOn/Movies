@@ -12,7 +12,7 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.core.app.ActivityScenario
 import androidx.test.platform.app.InstrumentationRegistry
-import com.bz.movies.presentation.screens.R
+import com.bz.movies.presentation.screens.R as ScreensR
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.After
@@ -65,20 +65,20 @@ class FavoriteMoviesFlowTest {
         waitUntilShown(hasText(LIST_MOVIE_TITLE))
         composeRule.onNodeWithText(LIST_MOVIE_TITLE).performClick()
 
-        clickBottomItem(R.string.favorite)
-        composeRule.onNodeWithText(string(R.string.your_favorite_movies)).assertIsDisplayed()
+        clickBottomItem(ScreensR.string.favorite)
+        composeRule.onNodeWithText(string(ScreensR.string.your_favorite_movies)).assertIsDisplayed()
         waitUntilShown(hasText(LIST_MOVIE_TITLE))
 
         // Popular tab: tapping a movie opens its details.
-        clickBottomItem(R.string.popular)
+        clickBottomItem(ScreensR.string.popular)
         waitUntilShown(hasText(LIST_MOVIE_TITLE))
         composeRule.onNodeWithText(LIST_MOVIE_TITLE).performClick()
         waitUntilShown(hasText(DETAILS_RELEASE_DATE))
-        composeRule.onNodeWithText(string(R.string.details_screen_title)).assertIsDisplayed()
+        composeRule.onNodeWithText(string(ScreensR.string.details_screen_title)).assertIsDisplayed()
         composeRule.onNodeWithText(DETAILS_MOVIE_TITLE).assertIsDisplayed()
 
         // Favorite tab: tapping the favorite removes it.
-        clickBottomItem(R.string.favorite)
+        clickBottomItem(ScreensR.string.favorite)
         waitUntilShown(hasText(LIST_MOVIE_TITLE))
         composeRule.onNodeWithText(LIST_MOVIE_TITLE).performClick()
         waitUntilGone(hasText(LIST_MOVIE_TITLE))
