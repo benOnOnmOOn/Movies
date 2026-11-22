@@ -11,6 +11,7 @@ import com.bz.network.repository.HttpException
 import com.bz.network.repository.NoInternetException
 import dagger.Lazy
 import kotlin.time.Instant
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -28,6 +29,7 @@ import kotlinx.coroutines.launch
 
 internal class MoviesListDelegate(
     private val scope: CoroutineScope,
+    private val ioDispatcher: CoroutineDispatcher,
     private val localMovieRepository: Lazy<LocalMovieRepository>,
     private val cachedMovies: () -> Flow<List<MovieDto>>,
     private val fetchMovies: suspend () -> Result<List<MovieDto>>,
@@ -46,7 +48,7 @@ internal class MoviesListDelegate(
         collectMovies()
     }
 
-    fun sendEvent(event: MovieEvent) = scope.launch(Dispatchers.IO) {
+    fun sendEvent(event: MovieEvent) = scope.launch(ioDispatcher) {
         handleEvent(event)
     }
 
@@ -68,7 +70,7 @@ internal class MoviesListDelegate(
         }
     }
 
-    private fun refreshMovies() = scope.launch(Dispatchers.IO) {
+    private fun refreshMovies() = scope.launch(ioDispatcher) {
         val result = fetchMovies()
         result.onSuccess { data ->
             markRefreshed()
@@ -95,7 +97,7 @@ internal class MoviesListDelegate(
 
     @SuppressLint("RawDispatchersUse")
     private fun collectMovies() {
-        scope.launch(Dispatchers.IO) {
+        scope.launch(ioDispatcher) {
             lastRefreshDate()
                 .onFailure { Logger.e("Loading error", it) }
                 .onSuccess { Logger.d("Last date : $it") }

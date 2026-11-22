@@ -101,6 +101,7 @@ dependencies {
 
     debugRuntimeOnly(libs.androidx.compose.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.compose.ui.tooling)
+    implementation(libs.kotlinx.coroutines.core)
 }
 
 dependencyGuard {

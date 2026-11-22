@@ -118,6 +118,7 @@ class MoviesListDelegateTest {
         fetchResult: Result<List<MovieDto>> = Result.success(listOf(MOVIE))
     ) = MoviesListDelegate(
         scope = backgroundScope,
+        ioDispatcher = StandardTestDispatcher(testScheduler),
         localMovieRepository = { localMovieRepository },
         cachedMovies = { cachedMovies },
         fetchMovies = {

@@ -32,6 +32,8 @@ import org.junit.jupiter.api.Test
 
 class PopularMoviesViewModelTest {
 
+    private val testDispatcher = StandardTestDispatcher()
+
     private val movieRepository: MovieRepository = mockk()
     private val localMovieRepository: LocalMovieRepository = mockk(relaxed = true)
 
@@ -48,7 +50,8 @@ class PopularMoviesViewModelTest {
             val viewModel = PopularMoviesViewModel(
                 movieRepository = { movieRepository },
                 localMovieRepository = { localMovieRepository },
-                dataStoreRepository = { storeRepository }
+                dataStoreRepository = { storeRepository },
+                ioDispatcher = testDispatcher
             )
             viewModel.state.test {
                 val actualItem = awaitItem()
@@ -61,6 +64,8 @@ class PopularMoviesViewModelTest {
 
                 expectNoEvents()
             }
+
+            advanceUntilIdle()
 
             verify(exactly = 1) { localMovieRepository.popularMovies }
             coVerify(exactly = 1) { localMovieRepository.insertPopularMovies(any()) }
@@ -77,7 +82,8 @@ class PopularMoviesViewModelTest {
             val viewModel = PopularMoviesViewModel(
                 movieRepository = { movieRepository },
                 localMovieRepository = { localMovieRepository },
-                dataStoreRepository = { storeRepository }
+                dataStoreRepository = { storeRepository },
+                ioDispatcher = testDispatcher
             )
 
             viewModel.effect.test {
@@ -85,6 +91,8 @@ class PopularMoviesViewModelTest {
 
                 expectNoEvents()
             }
+
+            advanceUntilIdle()
 
             verify(exactly = 1) { localMovieRepository.popularMovies }
             coVerify(exactly = 1) { localMovieRepository.insertPopularMovies(any()) }
@@ -102,7 +110,8 @@ class PopularMoviesViewModelTest {
             val viewModel = PopularMoviesViewModel(
                 movieRepository = { movieRepository },
                 localMovieRepository = { localMovieRepository },
-                dataStoreRepository = { storeRepository }
+                dataStoreRepository = { storeRepository },
+                ioDispatcher = testDispatcher
             )
 
             viewModel.effect.test {
@@ -123,7 +132,8 @@ class PopularMoviesViewModelTest {
             val viewModel = PopularMoviesViewModel(
                 movieRepository = { movieRepository },
                 localMovieRepository = { localMovieRepository },
-                dataStoreRepository = { storeRepository }
+                dataStoreRepository = { storeRepository },
+                ioDispatcher = testDispatcher
             )
 
             viewModel.state.test {
@@ -136,6 +146,8 @@ class PopularMoviesViewModelTest {
                 assertEquals(expectedItem2, actualItem2)
                 expectNoEvents()
             }
+
+            advanceUntilIdle()
 
             verify(exactly = 1) { localMovieRepository.popularMovies }
             coVerify(exactly = 0) { localMovieRepository.insertPopularMovies(any()) }
@@ -153,7 +165,8 @@ class PopularMoviesViewModelTest {
             val viewModel = PopularMoviesViewModel(
                 movieRepository = { movieRepository },
                 localMovieRepository = { localMovieRepository },
-                dataStoreRepository = { storeRepository }
+                dataStoreRepository = { storeRepository },
+                ioDispatcher = testDispatcher
             )
 
             viewModel.effect.test {
@@ -175,7 +188,8 @@ class PopularMoviesViewModelTest {
         val viewModel = PopularMoviesViewModel(
             movieRepository = { movieRepository },
             localMovieRepository = { localMovieRepository },
-            dataStoreRepository = { storeRepository }
+            dataStoreRepository = { storeRepository },
+            ioDispatcher = testDispatcher
         )
 
         viewModel.effect.test {
@@ -183,6 +197,8 @@ class PopularMoviesViewModelTest {
 
             expectNoEvents()
         }
+
+        advanceUntilIdle()
 
         coVerify(exactly = 1) { movieRepository.getPopularMovies(any()) }
     }
@@ -196,7 +212,8 @@ class PopularMoviesViewModelTest {
         val viewModel = PopularMoviesViewModel(
             movieRepository = { movieRepository },
             localMovieRepository = { localMovieRepository },
-            dataStoreRepository = { storeRepository }
+            dataStoreRepository = { storeRepository },
+            ioDispatcher = testDispatcher
         )
 
         viewModel.state.test {
@@ -226,7 +243,8 @@ class PopularMoviesViewModelTest {
         val viewModel = PopularMoviesViewModel(
             movieRepository = { movieRepository },
             localMovieRepository = { localMovieRepository },
-            dataStoreRepository = { storeRepository }
+            dataStoreRepository = { storeRepository },
+            ioDispatcher = testDispatcher
         )
 
         viewModel.state.test {
@@ -261,7 +279,7 @@ class PopularMoviesViewModelTest {
 
     @BeforeEach
     fun setUp() {
-        Dispatchers.setMain(StandardTestDispatcher())
+        Dispatchers.setMain(testDispatcher)
     }
 
     @AfterEach
