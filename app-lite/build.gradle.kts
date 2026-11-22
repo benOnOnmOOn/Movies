@@ -78,7 +78,8 @@ dependencies {
     implementation(projects.presentation.screens)
     implementation(projects.utlis.android)
 
-    runtimeOnly(projects.utlis.leakstub)
+    debugRuntimeOnly(projects.utlis.leakcanary)
+    releaseRuntimeOnly(projects.utlis.leakstub)
 
     val enableKover =
         providers.gradleProperty("movies.enableKover").getOrElse("true").toBoolean()
@@ -133,6 +134,7 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit4)
+    androidTestImplementation(libs.leakcanary.android.instrumentation)
     androidTestImplementation(libs.mockwebserver)
     androidTestImplementation(testFixtures(projects.data.network))
     kspAndroidTest(libs.hilt.android.compiler)
