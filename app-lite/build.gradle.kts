@@ -64,7 +64,6 @@ extensions.findByType<DependencyAnalysisSubExtension>()?.apply {
         onUnusedDependencies { exclude(projects.utlis.leakstub) }
         onUnusedDependencies { exclude(projects.utlis.leakcanary) }
         onUnusedDependencies { exclude(projects.data.network) }
-        onUnusedDependencies { exclude("androidx.test.espresso:espresso-core") }
     }
 }
 
@@ -80,6 +79,7 @@ dependencies {
 
     debugRuntimeOnly(projects.utlis.leakcanary)
     releaseRuntimeOnly(projects.utlis.leakstub)
+    debugRuntimeOnly(libs.leakcanary.android)
 
     val enableKover =
         providers.gradleProperty("movies.enableKover").getOrElse("true").toBoolean()

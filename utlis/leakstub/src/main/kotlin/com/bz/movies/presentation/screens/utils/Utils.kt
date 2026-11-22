@@ -2,6 +2,6 @@ package com.bz.movies.presentation.screens.utils
 
 import androidx.lifecycle.ViewModel
 
-@Suppress("EmptyFunctionBlock")
-public fun ViewModel.createCustomAppWatcher() {
+@Suppress("NOTHING_TO_INLINE", "EmptyFunctionBlock")
+public inline fun <reified T : ViewModel> T.createCustomAppWatcher() {
 }

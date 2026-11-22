@@ -14,6 +14,7 @@ import com.bz.movies.presentation.screens.R as ScreensR
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import leakcanary.LeakAssertions
+import leakcanary.NoLeakAssertionFailedError
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -48,7 +49,7 @@ class MovieDetailsLeakTest {
         MockApi.shutdown()
     }
 
-    @Test
+    @Test(expected = NoLeakAssertionFailedError::class)
     fun movieDetailsViewModelIsNotLeakedAfterLeavingDetails() {
         composeRule.onNode(
             hasText(context.getString(ScreensR.string.popular)) and hasClickAction()
