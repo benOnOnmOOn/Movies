@@ -21,13 +21,16 @@ class FavoriteScreenViewModelTest {
 
     private val localMovieRepository: LocalMovieRepository = mockk(relaxed = true)
 
+    private val testDispatcher = StandardTestDispatcher()
+
     @Test
     fun `when local storage is empty then it  should load data from network and store it `() =
         runTest {
             every { localMovieRepository.favoritesMovies } returns flowOf(emptyList())
 
             val viewModel = FavoriteScreenViewModel(
-                localMovieRepository = { localMovieRepository }
+                localMovieRepository = { localMovieRepository },
+                ioDispatcher = testDispatcher
             )
             viewModel.state.test {
                 val actualItem = awaitItem()
@@ -46,7 +49,7 @@ class FavoriteScreenViewModelTest {
 
     @BeforeEach
     fun setUp() {
-        Dispatchers.setMain(StandardTestDispatcher())
+        Dispatchers.setMain(testDispatcher)
     }
 
     @AfterEach

@@ -31,6 +31,7 @@ dependencies {
     implementation(projects.data.dto)
 
     compileOnly(projects.utlis.leakstub)
+    testRuntimeOnly(projects.utlis.leakstub)
 
     lintChecks(libs.lint.slack.checks)
     lintChecks(libs.lint.compose.checks)

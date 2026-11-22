@@ -1,11 +1,11 @@
 package com.bz.movies.presentation.screens.favorite
 
-import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.touchlab.kermit.Logger
 import com.bz.dto.MovieDto
 import com.bz.movies.database.repository.LocalMovieRepository
+import com.bz.movies.presentation.di.IoDispatcher
 import com.bz.movies.presentation.mappers.toDTO
 import com.bz.movies.presentation.mappers.toMovieItem
 import com.bz.movies.presentation.screens.common.MovieEffect
@@ -14,7 +14,7 @@ import com.bz.movies.presentation.screens.common.MoviesState
 import dagger.Lazy
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -28,7 +28,8 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class FavoriteScreenViewModel @Inject constructor(
-    private val localMovieRepository: Lazy<LocalMovieRepository>
+    private val localMovieRepository: Lazy<LocalMovieRepository>,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
     private val _state = MutableStateFlow(MoviesState())
     val state: StateFlow<MoviesState> = _state.asStateFlow()
@@ -40,7 +41,7 @@ internal class FavoriteScreenViewModel @Inject constructor(
         collectFavoriteMovies()
     }
 
-    fun sendEvent(event: MovieEvent) = viewModelScope.launch(Dispatchers.IO) {
+    fun sendEvent(event: MovieEvent) = viewModelScope.launch(ioDispatcher) {
         handleEvent(event)
     }
 
@@ -55,9 +56,8 @@ internal class FavoriteScreenViewModel @Inject constructor(
         }
     }
 
-    @SuppressLint("RawDispatchersUse")
     private fun collectFavoriteMovies() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(ioDispatcher) {
             localMovieRepository.get().favoritesMovies
                 .catch {
                     _effect.send(MovieEffect.UnknownError)
