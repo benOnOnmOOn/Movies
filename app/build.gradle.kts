@@ -101,7 +101,6 @@ dependencies {
 
     debugRuntimeOnly(libs.androidx.compose.ui.test.manifest)
     debugRuntimeOnly(libs.androidx.compose.ui.tooling)
-
 }
 
 dependencyGuard {
