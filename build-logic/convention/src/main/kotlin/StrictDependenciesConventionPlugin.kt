@@ -12,6 +12,8 @@ class StrictDependenciesConventionPlugin : Plugin<Project> {
             if (!enablePlugin) return
 
             target.configurations.configureEach {
+                if (name.contains("lint", ignoreCase = true)) return@configureEach
+
                 exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
                 exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
                 exclude("com.google.code.findbugs", "jsr305")
