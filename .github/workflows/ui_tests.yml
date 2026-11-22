@@ -43,7 +43,14 @@ jobs:
           arch: x86_64
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot
-          script: ./gradlew :app-lite:connectedDebugAndroidTest :data:database:connectedDebugAndroidTest
+          script: >-
+            adb logcat -c;
+            ./gradlew :app-lite:connectedDebugAndroidTest :data:database:connectedDebugAndroidTest;
+            status=$?;
+            adb logcat -d > logcat.txt;
+            grep -E "TestRunner|LeakCanary|AndroidRuntime" logcat.txt | tail -300;
+            if grep -q "Crash of app" logcat.txt; then echo "App crashed during instrumented tests"; status=1; fi;
+            exit $status
 
       - name: Upload test reports
         if: always()
@@ -53,3 +60,4 @@ jobs:
           path: |
             app-lite/build/reports/androidTests/
             data/database/build/reports/androidTests/
+            logcat.txt

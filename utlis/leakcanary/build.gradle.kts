@@ -12,6 +12,7 @@ dependencies {
 
     implementation(libs.leakcanary.watcher)
     implementation(libs.leakcanary.watcher.android.core)
+    runtimeOnly(libs.leakcanary.android)
 
     api(libs.androidx.lifecycle.viewmodel)
 
