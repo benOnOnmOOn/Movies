@@ -3,7 +3,6 @@ package com.bz.movies
 import android.app.Activity
 import android.content.Intent
 import androidx.annotation.StringRes
-import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasText
@@ -19,16 +18,6 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-
-private const val MAIN_ACTIVITY = "com.bz.movies.presentation.MainActivity"
-private const val DATABASE_NAME = "MoviesDB"
-private const val TIMEOUT_MS = 10_000L
-
-// First entries of now_playing_movies.json / popular_movies.json and movie_details.json,
-// shared from the data:network test fixtures.
-private const val LIST_MOVIE_TITLE = "Cruella"
-private const val DETAILS_MOVIE_TITLE = "Wonder Woman 1984"
-private const val DETAILS_RELEASE_DATE = "2020-12-16"
 
 @HiltAndroidTest
 class FavoriteMoviesFlowTest {
@@ -62,42 +51,30 @@ class FavoriteMoviesFlowTest {
     @Test
     fun addFavoriteOpenDetailsAndRemoveFavorite() {
         // Playing now is the start tab: tapping a movie there adds it to favorites.
-        waitUntilShown(hasText(LIST_MOVIE_TITLE))
+        composeRule.waitUntilShown(hasText(LIST_MOVIE_TITLE))
         composeRule.onNodeWithText(LIST_MOVIE_TITLE).performClick()
 
         clickBottomItem(ScreensR.string.favorite)
         composeRule.onNodeWithText(string(ScreensR.string.your_favorite_movies)).assertIsDisplayed()
-        waitUntilShown(hasText(LIST_MOVIE_TITLE))
+        composeRule.waitUntilShown(hasText(LIST_MOVIE_TITLE))
 
         // Popular tab: tapping a movie opens its details.
         clickBottomItem(ScreensR.string.popular)
-        waitUntilShown(hasText(LIST_MOVIE_TITLE))
+        composeRule.waitUntilShown(hasText(LIST_MOVIE_TITLE))
         composeRule.onNodeWithText(LIST_MOVIE_TITLE).performClick()
-        waitUntilShown(hasText(DETAILS_RELEASE_DATE))
+        composeRule.waitUntilShown(hasText(DETAILS_RELEASE_DATE))
         composeRule.onNodeWithText(string(ScreensR.string.details_screen_title)).assertIsDisplayed()
         composeRule.onNodeWithText(DETAILS_MOVIE_TITLE).assertIsDisplayed()
 
         // Favorite tab: tapping the favorite removes it.
         clickBottomItem(ScreensR.string.favorite)
-        waitUntilShown(hasText(LIST_MOVIE_TITLE))
+        composeRule.waitUntilShown(hasText(LIST_MOVIE_TITLE))
         composeRule.onNodeWithText(LIST_MOVIE_TITLE).performClick()
-        waitUntilGone(hasText(LIST_MOVIE_TITLE))
+        composeRule.waitUntilGone(hasText(LIST_MOVIE_TITLE))
     }
 
     private fun clickBottomItem(@StringRes label: Int) {
         composeRule.onNode(hasText(string(label)) and hasClickAction()).performClick()
-    }
-
-    private fun waitUntilShown(matcher: SemanticsMatcher) {
-        composeRule.waitUntil(TIMEOUT_MS) {
-            composeRule.onAllNodes(matcher).fetchSemanticsNodes().isNotEmpty()
-        }
-    }
-
-    private fun waitUntilGone(matcher: SemanticsMatcher) {
-        composeRule.waitUntil(TIMEOUT_MS) {
-            composeRule.onAllNodes(matcher).fetchSemanticsNodes().isEmpty()
-        }
     }
 
     private fun string(@StringRes id: Int): String = context.getString(id)
