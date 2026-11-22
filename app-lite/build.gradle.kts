@@ -137,6 +137,8 @@ dependencies {
     androidTestImplementation(testFixtures(projects.data.network))
     kspAndroidTest(libs.hilt.android.compiler)
     androidTestImplementation(libs.androidx.fragment)
+  androidTestImplementation(libs.kotlinx.coroutines.core)
+  implementation(libs.kotlinx.coroutines.core)
 }
 
 dependencyGuard {
