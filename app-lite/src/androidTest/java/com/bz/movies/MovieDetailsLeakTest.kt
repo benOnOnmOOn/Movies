@@ -2,7 +2,6 @@ package com.bz.movies
 
 import android.app.Activity
 import android.content.Intent
-import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.v2.createEmptyComposeRule
@@ -19,12 +18,6 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-
-private const val MAIN_ACTIVITY = "com.bz.movies.presentation.MainActivity"
-private const val DATABASE_NAME = "MoviesDB"
-private const val TIMEOUT_MS = 10_000L
-private const val LIST_MOVIE_TITLE = "Cruella"
-private const val DETAILS_RELEASE_DATE = "2020-12-16"
 
 @HiltAndroidTest
 class MovieDetailsLeakTest {
@@ -60,23 +53,15 @@ class MovieDetailsLeakTest {
         composeRule.onNode(
             hasText(context.getString(ScreensR.string.popular)) and hasClickAction()
         ).performClick()
-        waitUntilShown(hasText(LIST_MOVIE_TITLE))
+        composeRule.waitUntilShown(hasText(LIST_MOVIE_TITLE))
         composeRule.onNodeWithText(LIST_MOVIE_TITLE).performClick()
-        waitUntilShown(hasText(DETAILS_RELEASE_DATE))
+        composeRule.waitUntilShown(hasText(DETAILS_RELEASE_DATE))
 
         Espresso.pressBack()
-        waitUntilShown(hasText(LIST_MOVIE_TITLE))
-        composeRule.waitUntil(TIMEOUT_MS) {
-            composeRule.onAllNodes(hasText(DETAILS_RELEASE_DATE)).fetchSemanticsNodes().isEmpty()
-        }
+        composeRule.waitUntilShown(hasText(LIST_MOVIE_TITLE))
+        composeRule.waitUntilGone(hasText(DETAILS_RELEASE_DATE))
         composeRule.waitForIdle()
 
         LeakAssertions.assertNoLeaks()
-    }
-
-    private fun waitUntilShown(matcher: SemanticsMatcher) {
-        composeRule.waitUntil(TIMEOUT_MS) {
-            composeRule.onAllNodes(matcher).fetchSemanticsNodes().isNotEmpty()
-        }
     }
 }
