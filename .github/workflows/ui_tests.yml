@@ -49,6 +49,7 @@ jobs:
             status=$?;
             adb logcat -d > logcat.txt;
             grep -E "TestRunner|LeakCanary|AndroidRuntime" logcat.txt | tail -300;
+            if grep -q "Crash of app" logcat.txt; then echo "App crashed during instrumented tests"; status=1; fi;
             exit $status
 
       - name: Upload test reports
