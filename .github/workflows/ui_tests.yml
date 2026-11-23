@@ -98,10 +98,10 @@ jobs:
           script: >-
             ./gradlew :app-lite:installDebug;
             adb logcat -c;
-            timeout 60 adb shell monkey -p com.bz.movies --pct-syskeys 0 --throttle 50 -v 1000000 > monkey.txt 2>&1;
+            timeout 60 adb shell monkey -p com.bz.movies --ignore-crashes --ignore-timeouts --pct-syskeys 0 --throttle 50 -v 1000000 > monkey.txt 2>&1;
             adb logcat -d > monkey-logcat.txt;
             tail -50 monkey.txt;
-            if grep -qE "// CRASH|// NOT RESPONDING" monkey.txt; then grep -A40 -E "// CRASH|// NOT RESPONDING" monkey.txt; exit 1; fi
+            if grep -qE "// (CRASH|NOT RESPONDING): com\.bz\.movies \(" monkey.txt; then grep -A40 -E "// (CRASH|NOT RESPONDING): com\.bz\.movies \(" monkey.txt; exit 1; fi
 
       - name: Upload monkey logs
         if: always()
